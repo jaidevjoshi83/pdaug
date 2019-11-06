@@ -123,33 +123,22 @@ if __name__=='__main__':
     args = parser.parse_args()
 
     if sys.argv[1] == 'Random':
-
         Random_seq(args.seq_num, args.lenmin_s, args.lenmax_s, args.S_proba)
-
     elif sys.argv[1] == 'Helices':
-
         Helices_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
-
     elif sys.argv[1] == 'Kinked':
         Kinked_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
-
     elif sys.argv[1] == 'Oblique':
         Oblique_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
-
     elif sys.argv[1] == 'Centrosymmetric':
         Centrosymmetric_seq(args.seq_num, args.lenmin_s, args.lenmax_s, args.symmetry_s)
-
     elif sys.argv[1] == 'HelicesACP':
         HelicesACP_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
-
     elif sys.argv[1] == 'Hepahelices':
         Hepahelices_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
-
     elif sys.argv[1] == 'AMPngrams':
         AMPngrams_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
-
     elif sys.argv[1] == 'AmphipathicArc':
-
         AmphipathicArc_seq(int(args.seq_num), int(args.lenmin_s), int(args.lenmax_s), int(args.arcsize), args.hyd_gra)
     else:
         print"You entered Wrong Values: "
