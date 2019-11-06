@@ -1,48 +1,56 @@
 from modlamp.sequences import *
 import argparse, sys
+import pandas as pd 
 
 def Random_seq(seq_num, lenmin_s, lenmax_s, S_proba):
     b = Random(seq_num, lenmin_s,lenmax_s)
     b.generate_sequences(proba=S_proba)
-    return b.sequences
+    df = pd.DataFrame(b.sequences, columns=['seq'])
+    df.to_csv('Peptide_library.tsv', sep='\t')
 
 def Helices_seq(seq_num, lenmin_s, lenmax_s):
     h = Helices(seq_num, lenmin_s, lenmax_s)
     h.generate_sequences()
-    return h.sequences
-
+    df = pd.DataFrame(h.sequences, columns=['seq'])
+    df.to_csv('Peptide_library.tsv', sep='\t')
+ 
 def Kinked_seq(seq_num, lenmin_s, lenmax_s):
     k = Kinked(seq_num, lenmin_s, lenmax_s)
     k.generate_sequences()
     k.sequences
-    return k.sequences
+    df = pd.DataFrame(k.sequences, columns=['seq'])
+    df.to_csv('Peptide_library.tsv', sep='\t')
 
 def Oblique_seq(seq_num, lenmin_s, lenmax_s):
     o = Oblique(seq_num, lenmin_s, lenmax_s)
     o.generate_sequences()
     o.sequences
-    return o.sequences
+    df = pd.DataFrame(o.sequences, columns=['seq'])
+    df.to_csv('Peptide_library.tsv', sep='\t')
 
 def Centrosymmetric_seq(seq_num, lenmin_s, lenmax_s, symmetry_s):
     s = Centrosymmetric(seq_num, lenmin_s, lenmax_s)
     s.generate_sequences(symmetry=symmetry_s)
-    return s.sequences
+    df = pd.DataFrame(s.sequences, columns=['seq'])
+    df.to_csv('Peptide_library.tsv', sep='\t')
 
 def HelicesACP_seq(seq_num, lenmin_s, lenmax_s):
     helACP = HelicesACP(seq_num, lenmin_s, lenmax_s)
     helACP.generate_sequences()
-    return helACP.sequences
+    df = pd.DataFrame(helACP.sequences, columns=['seq'])
+    df.to_csv('Peptide_library.tsv', sep='\t')
 
 def Hepahelices_seq(seq_num, lenmin_s, lenmax_s):
     h = Hepahelices(seq_num, lenmin_s, lenmax_s)  
     h.generate_sequences()
-    h.sequences
-
+    df = pd.DataFrame(h.sequences, columns=['seq'])
+    df.to_csv('Peptide_library.tsv', sep='\t')
 
 def AMPngrams_seq(seq_num, lenmin_s, lenmax_s):
     s = AMPngrams(seq_num, lenmin_s, lenmax_s)
     s.generate_sequences()
-    return s.sequences
+    df = pd.DataFrame(s.sequences, columns=['seq'])
+    df.to_csv('Peptide_library.tsv', sep='\t')
 
 def AmphipathicArc_seq(seq_num, lenmin_s, lenmax_s, gen_seq, hyd_gra):
 
@@ -50,10 +58,12 @@ def AmphipathicArc_seq(seq_num, lenmin_s, lenmax_s, gen_seq, hyd_gra):
     amphi_hel.generate_sequences(gen_seq)
 
     if hyd_gra == 'True':
-        return amphi_hel.sequences
+        df = pd.DataFrame(amphi_hel.sequences, columns=['seq'])
+        df.to_csv('Peptide_library.tsv', sep='\t')
     elif hyd_gra == 'False':
         amphi_hel.make_H_gradient()
-        return amphi_hel.sequences
+        df = pd.DataFrame(amphi_hel.sequences, columns=['seq'])
+        df.to_csv('Peptide_library.tsv', sep='\t')
 
 if __name__=='__main__':
 
@@ -113,32 +123,34 @@ if __name__=='__main__':
     args = parser.parse_args()
 
     if sys.argv[1] == 'Random':
-        print AMPngrams_seq(args.seq_num, args.lenmin_s, args.lenmax_s, args.S_proba)
+
+        Random_seq(args.seq_num, args.lenmin_s, args.lenmax_s, args.S_proba)
 
     elif sys.argv[1] == 'Helices':
-        print AMPngrams_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
+
+        Helices_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
 
     elif sys.argv[1] == 'Kinked':
-        print Kinked_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
+        Kinked_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
 
     elif sys.argv[1] == 'Oblique':
-        print Oblique_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
+        Oblique_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
 
     elif sys.argv[1] == 'Centrosymmetric':
-        print Centrosymmetric_seq(args.seq_num, args.lenmin_s, args.lenmax_s, args.symmetry_s)
+        Centrosymmetric_seq(args.seq_num, args.lenmin_s, args.lenmax_s, args.symmetry_s)
 
     elif sys.argv[1] == 'HelicesACP':
-        print HelicesACP_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
+        HelicesACP_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
 
     elif sys.argv[1] == 'Hepahelices':
-        print Hepahelices_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
+        Hepahelices_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
 
     elif sys.argv[1] == 'AMPngrams':
-        print AMPngrams_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
+        AMPngrams_seq(args.seq_num, args.lenmin_s, args.lenmax_s)
 
     elif sys.argv[1] == 'AmphipathicArc':
 
-        print AmphipathicArc_seq(int(args.seq_num), int(args.lenmin_s), int(args.lenmax_s), int(args.arcsize), args.hyd_gra)
+        AmphipathicArc_seq(int(args.seq_num), int(args.lenmin_s), int(args.lenmax_s), int(args.arcsize), args.hyd_gra)
     else:
         print"You entered Wrong Values: "
 
