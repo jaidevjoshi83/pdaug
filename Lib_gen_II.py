@@ -16,7 +16,7 @@ def frg_gen(ofs, fs, a):
     frg_list = []
 
     if ofs > fs:
-        print "Offset count be greater then frg size"
+        print ("Offset count be greater then frg size")
         sys.exit()
 
     else:
@@ -29,9 +29,11 @@ def frg_gen(ofs, fs, a):
         if e < len(a):
             frg_list.append(a[i:e])
             #print i, e
-    print frg_list
+    print (frg_list)
     return set(frg_list)
 
+
+#print (frg_gen(4,10,a))
 
 
 AA = ['A','R','N','D','B','C','E','Q','Z','G','H','I','L','K','M','F','P','S','T','W','Y','V']
@@ -62,32 +64,47 @@ AAs = 'ARNDCEQGHILKMFPSTWYV'
 
 def Random_peptides(AAs, pep_len, pep_num):
 
-    output_peptide_library = []
+    out_pep_lib = []
     raw = [x for x in AA]
-    un_seq = []
 
-    print raw
-
-    for x in range(5):
-        for i in range(15):
+    for x in range(pep_num):
+        un_seq = []
+        for i in range(pep_len):
             un_seq.append(random.choice(raw))
-
-
-
-
-    #for i in pep_len:
-     #   print un_seq.append(random.choice(raw))
-
-    #for x in range(pep_num):
-     #   for a in range(pep_len):
-      #      un_seq.append(random.choice(raw))
-       # print un_seq
         
+        out_pep_lib.append("".join(un_seq))
+    return out_pep_lib
 
-    #output_peptide_library.append("".join(un_seq))
+l = Random_peptides(AAs, 15, 1000)
+
+#print (len(l))
+#print (len(set(l))) 
 
 
-Random_peptides(AAs, 15, 10)
+
+w = 4
+f = 10
+
+a = "MGSSHHHHHHSSGLVPRGSHMARVTLVLRYAARSDRGLVRANNEDSVYAGARLLA"
+     
+
+print (a[0:10])
+print (a[10:20])
+print (a[20:30])
+print (a[30:40])
+print (a[40:50])
+
+for i in range((int(len(a)/f))):
+
+    i = i+10
+    print (i, i)
+
+
+s:s+10
+
+
+
+
 
 
 
