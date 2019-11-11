@@ -1,5 +1,4 @@
 import tempfile
-import shutil
 import pandas as pd
 import shutil
 import sys
@@ -13,7 +12,6 @@ from fragbuilder import peptide
 import os
 
 class Str_DS_class(object):
-
 
     def read_pep_file(self, pep_infile):
         
@@ -55,7 +53,6 @@ class Str_DS_class(object):
         Str_DS_class().structure_gen(my_pep, out_dir)
     
     
-
 if __name__=="__main__":
     
     
@@ -78,7 +75,6 @@ if __name__=="__main__":
                         default=os.path.join(os.getcwd(),'OutDir'),
                         help="Path to out file")  
 
-    #Arc.add_argument("-d", "--out_dir_name", required=None, default=os.path.join(os.getcwd(),'report_dirr'),   help="Path to out file")  
                                                
     args = parser.parse_args()
     Str_DS_class().main_process(args.pep, args.DesOut, args.OutDir)
