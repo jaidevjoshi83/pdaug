@@ -5,16 +5,11 @@ import os
 
 def Decriptor_generator(inpfile, DesType, out_dir):
 
-
     if not os.path.exists(out_dir):
             os.makedirs(out_dir)
 
     df = pd.read_csv(inpfile)
-
     list_pep_name = df[df.columns.tolist()[0]].tolist()
-
-    #print list_pep_name
-
     out_df = pd.DataFrame()
 
     for p in list_pep_name:
@@ -65,8 +60,6 @@ def Decriptor_generator(inpfile, DesType, out_dir):
 
         df  = pd.DataFrame(DS, index=[0])
         out_df = pd.concat([out_df, df], axis=0)
-
-    #print out_df
     out_df.to_csv(os.path.join(out_dir,'pep_des.tsv'), index=True,sep='\t')
 
 
@@ -94,8 +87,6 @@ if __name__=="__main__":
 
                                                
     args = parser.parse_args()
-  
-
     Decriptor_generator(args.pep, args.DesType, args.OutDir)
 
-    #Decriptor_generator('jai.csv', 'PAAC')
+   
