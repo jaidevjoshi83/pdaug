@@ -11,7 +11,6 @@ import pandas as pd
 
 def MutatedPeptides(input_file, index_list, AA, output_dir):
 
-
     if not os.path.exists(os.path.join(os.getcwd(), output_dir)):
         os.makedirs(os.path.join(os.getcwd(), output_dir))
 
@@ -60,8 +59,6 @@ def MutatedPeptides(input_file, index_list, AA, output_dir):
     df = pd.DataFrame(out_put, columns=["Peptide"])
     df.to_csv(os.path.join(output_dir,'pep.tsv'), index=False,sep='\t')
 
-
-
 def RandomPeptides(AAs, pep_length, out_pep_num, output_dir):
 
     if not os.path.exists(os.path.join(os.getcwd(), output_dir)):
@@ -90,7 +87,6 @@ def RandomPeptides(AAs, pep_length, out_pep_num, output_dir):
 
     df = pd.DataFrame(out_pep_lib, columns=["Peptide"])
     df.to_csv(os.path.join(output_dir,'pep.tsv'), index=False,sep='\t')
-
 
 def SlidingWindowPeptide(infile, window_size, frag_size, output_dir):
 
@@ -123,8 +119,6 @@ def SlidingWindowPeptide(infile, window_size, frag_size, output_dir):
     print pep_list
     df = pd.DataFrame(pep_list, columns=["Peptide"])
     df.to_csv(os.path.join(output_dir,'pep.tsv'), index=False,sep='\t')
-
-
 
 if __name__=='__main__':
 
