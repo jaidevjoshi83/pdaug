@@ -74,7 +74,6 @@ if __name__=="__main__":
                         required=None,
                         default=os.path.join(os.getcwd(),'OutDir'),
                         help="Path to out file")  
-
                                                
     args = parser.parse_args()
     Str_DS_class().main_process(args.pep, args.DesOut, args.OutDir)
