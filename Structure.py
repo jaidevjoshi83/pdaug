@@ -34,7 +34,6 @@ class Str_DS_class(object):
             pep = peptide.Peptide(seq, nterm = "charged", cterm = "neutral")
             pep.regularize()
             pep.write_pdb(os.path.join(out_dir, seq+".pdb"))
-          
             obConversion = openbabel.OBConversion()
             obConversion.SetInAndOutFormats("pdb", "sdf")
             mol = openbabel.OBMol()
