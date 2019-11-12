@@ -1,9 +1,7 @@
 from modlamp.descriptors import *
-from modlamp.sequences import *
 import os
 import pandas as pd
  
-
 def Descriptor_calcultor(DesType, inputfile, out_dir, ph, amide ):
 
     if not os.path.exists(out_dir):
@@ -76,7 +74,7 @@ def Descriptor_calcultor(DesType, inputfile, out_dir, ph, amide ):
 
 if __name__=="__main__":
 
-    seq = ['AFDGHLKI','AFDGHLKI','AFDGHLKI','AFDGHLKI']
+
 
     import argparse
     
