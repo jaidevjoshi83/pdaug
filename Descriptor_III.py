@@ -2,7 +2,6 @@ from modlamp.descriptors import *
 import pandas as pd
 import os
 
-
 def AutoCorrCal(InFile, window, ScaleName, out_dir):
 
     if not os.path.exists(out_dir):
@@ -18,7 +17,6 @@ def AutoCorrCal(InFile, window, ScaleName, out_dir):
     columns = ["CroAut_"+str(i) for i in range(len(df[0]))]
     df = pd.DataFrame(df, columns=columns)
     df.to_csv(os.path.join(out_dir,'pep_des.tsv'), index=True,sep='\t')
-
 
 def CrossCorrCal(InFile, window, ScaleName, out_dir):
 
@@ -36,7 +34,6 @@ def CrossCorrCal(InFile, window, ScaleName, out_dir):
     df = pd.DataFrame(df, columns=columns)
     df.to_csv(os.path.join(out_dir,'pep_des.tsv'), index=True,sep='\t')
 
-
 def CalculateMovementCal(InFile, window, angle, modality, ScaleName, out_dir):
 
     if not os.path.exists(out_dir):
@@ -51,7 +48,6 @@ def CalculateMovementCal(InFile, window, angle, modality, ScaleName, out_dir):
 
     df = pd.DataFrame(df, columns=['Movement'])
     df.to_csv(os.path.join(out_dir,'pep_des.tsv'), index=True,sep='\t')
-
 
 def CalculateGlobalCal(InFile, window, modality, ScaleName, out_dir):
 
@@ -68,7 +64,6 @@ def CalculateGlobalCal(InFile, window, modality, ScaleName, out_dir):
     df = pd.DataFrame(df, columns=['Global'])
     df.to_csv(os.path.join(out_dir,'pep_des.tsv'), index=True, sep='\t')
 
-
 def CalculateProfileCal(InFile, prof_type, window, ScaleName, out_dir):
 
     if not os.path.exists(out_dir):
@@ -83,7 +78,6 @@ def CalculateProfileCal(InFile, prof_type, window, ScaleName, out_dir):
 
     df = pd.DataFrame(df, columns=['hyPhoPro','hyPhoMov'])
     df.to_csv(os.path.join(out_dir,'pep_des.tsv'), index=True, sep='\t')
-
 
 def CalculateArcCal(InFile, modality, out_dir): 
 
@@ -101,14 +95,12 @@ def CalculateArcCal(InFile, modality, out_dir):
     df = pd.DataFrame(df, columns=columns)
     df.to_csv(os.path.join(out_dir,'pep_des.tsv'), index=True, sep='\t')
 
-
 #AutoCorrCal('jai.csv', 8, 'MSS', 'AutCor' )
 #CrossCorrCal('jai.csv', 4, 'MSS', 'CroCor')
 #CalculateMovementCal('jai.csv', 7, 100, 'max', 'kytedoolittle', 'Movement' )
 #CalculateGlobalCal('jai.csv', 7, 'max', 'kytedoolittle', 'Global')
 #CalculateProfileCal('jai.csv', 'H', 7, 'kytedoolittle', 'profile' )
 #CalculateArcCal('jai.csv', 'max', "des")
-
 
 if __name__=="__main__":
 
@@ -172,6 +164,3 @@ if __name__=="__main__":
         CalculateArcCal(args.InFile, args.modality, args.out_dir)
     else:
         print"You entered Wrong Values: "
-
-
-   
