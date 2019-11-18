@@ -1,47 +1,209 @@
+import matplotlib
+matplotlib.use('Agg')
+import numpy as np
+import sys,os
+from scipy import interp
+import pylab as pl
+import pandas as pd
 
-def SVM_classification(InData,
+###############################################################
+from sklearn.metrics import *
+from sklearn import preprocessing
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_recall_fscore_support
+from sklearn.metrics import roc_curve, auc
+from sklearn.model_selection import StratifiedKFold
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+###############################################################
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import SGDClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+###############################################################
+from itertools import cycle
+import matplotlib.image as mpimg
+from plot_grid_search_digits_final_1 import * 
+################################################################
 
-    C,
-    kernel
-    degree,
-    gamma,
-    coef0,
-    shrinking,
-    probability,
-    tol,
-    cache_size,
-    class_weight,
-    verbose,
-    max_iter,
-    decision_function_shape,
-    random_state,
-    OutDir):
+"""
+LR = LogisticRegression(solver='lbfgs')
+GNB = GaussianNB()
+KNB = KNeighborsClassifier()
+DT = DecisionTreeClassifier()
+SV = SVC(probability=True,gamma='scale')
+RF = RandomForestClassifier(n_estimators=10)
+SGDC =  SGDClassifier(loss='log')
+GBC = GradientBoostingClassifier()
+"""
 
-def SGD_Classification(InData, 
-    loss 
-    penalty 
-    alpha
-    l1_ratio
-    fit_intercept, 
-    max_iter, 
-    tol, 
-    shuffle, 
-    verbose, 
-    epsilon, 
-    n_jobs, 
-    random_state, 
-    learning_rate, 
-    eta0, 
-    power_t, 
-    early_stopping, 
-    validation_fraction, 
-    n_iter_no_change, 
-    class_weight, 
-    warm_start, 
-    average,
-    OutDir):
+def Data_Label_Gen(InFile):
 
-def DecisionTree_Classification(InData,
+    df = pd.read_csv(InFile,sep='\t',error_bad_lines=False)
+    clm_list = df.columns.tolist()
+    X_data = df[clm_list[0:len(clm_list)-1]].values
+    y_data = df[clm_list[len(clm_list)-1]].values
+
+    return X_data, y_label
+
+def Fit_Model(InFile, Test_Method, OutDir, OutFile, NoOfFolds):
+
+    if Test_Method == 'Internal':
+
+        for i, (train, test) in enumerate(folds.split(X, y)):
+
+    ############Changes###############################
+
+            if Selected_Sclaer=='Min_Max':
+                scaler = MinMaxScaler().fit(X[train])
+                x_train = scaler.transform(X[train])
+                x_test = scaler.transform(X[test])
+
+            elif Selected_Sclaer=='Standard_Scaler':
+                scaler = preprocessing.StandardScaler().fit(X[train])
+                x_train = scaler.transform(X[train])
+                x_test = scaler.transform(X[test]) 
+
+            elif Selected_Sclaer == 'No_Scaler':
+                x_train = X[train]
+                x_test = X[test]
+
+            else:
+                print('Scalling Method option was not correctly selected...!')
+
+
+            prob = model.fit(x_train, y[train]).predict_proba(x_test)
+            predicted = model.fit(x_train, y[train]).predict(x_test)
+
+            fpr, tpr, thresholds = roc_curve(y[test], prob[:, 1])
+            mean_tpr += interp(mean_fpr, fpr, tpr)
+            mean_tpr[0] = 0.0
+
+            TN, FP, FN, TP = confusion_matrix(y[test], predicted).ravel()
+
+            accuracy_score_l.append(round(accuracy_score(y[test], predicted),3))
+            a = precision_recall_fscore_support(y[test], predicted, average='macro')
+            precision_l.append(round(a[0],3))
+            recall_l.append(round(a[1],3))
+            f_score_l .append(round(a[2],3))
+
+        accuracy_score_mean = round(float(sum(accuracy_score_l)/float(len(accuracy_score_l))),3)
+        precision_mean = round(float(sum(precision_l)/float(len(precision_l))),3)
+        recall_mean = round(float(sum(recall_l)/float(len(recall_l))),3)
+        f_score_mean = round(float(sum(f_score_l )/float(len(f_score_l ))),3)
+
+        pl.plot([0, 1], [0, 1], '--', lw=2)
+        mean_tpr /= folds.get_n_splits(X, y)
+        mean_tpr[-1] = 1.0
+        mean_auc = auc(mean_fpr, mean_tpr)
+
+        ##################### Changed #########################################
+        V_header = ["accuracy","presision","recall","f1","mean_auc"]
+        v_values = [accuracy_score_mean,precision_mean,recall_mean,f_score_mean,mean_auc]
+        mname  = ("Logistic_Regression","GaussianNB","KNeighbors","DecisionTree","SVC", "Ranodm Forest","SGDClassifier","GradBoost" )
+        #########################################################################
+
+    elif Test_Method == 'External':
+
+            if Selected_Sclaer=='Min_Max':
+                scaler = MinMaxScaler().fit(X_train) 
+                x_train = scaler.transform(X_train)  
+                x_test = scaler.transform(X_test) 
+            elif Selected_Sclaer=='Standard_Scaler':
+                scaler = preprocessing.StandardScaler().fit(X_train)
+                x_train = scaler.transform(X_train)
+                x_test = scaler.transform(X_test) 
+
+            elif Selected_Sclaer == 'No_Scaler':
+                x_train = X_train
+                x_test = X_test
+
+            else:
+                print('Scalling Method option was not correctly selected...!')
+
+
+            prob = model.fit(x_train, y_train).predict_proba(x_test)
+            predicted = model.fit(x_train, y_train).predict(x_test)
+
+            fpr, tpr, thresholds = roc_curve(y_test, prob[:, 1])
+            mean_tpr += interp(mean_fpr, fpr, tpr)
+            mean_tpr[0] = 0.0
+
+            TN, FP, FN, TP = confusion_matrix(y_test, predicted).ravel()
+
+            accuracy_score_mean = round(accuracy_score(y_test, predicted),3)
+            a = precision_recall_fscore_support(y_test, predicted, average='macro')
+            precision = round(a[0],3)
+            recall= round(a[1],3)
+            f_score= round(a[2],3)
+
+
+            pl.plot([0, 1], [0, 1], '--', lw=2)
+            mean_tpr /= folds.get_n_splits(X, y)
+            mean_tpr[-1] = 1.0
+            mean_auc = auc(mean_fpr, mean_tpr)
+
+        ##################### Changed #########################################
+            V_header = ["accuracy","presision","recall","f1","mean_auc"]
+            v_values = [accuracy_score_mean,precision_mean,recall_mean,f_score_mean,mean_auc]
+            mname  = ("Logistic_Regression","GaussianNB","KNeighbors","DecisionTree","SVC", "Ranodm Forest","SGDClassifier","GradBoost" )
+            
+
+    return V_header, v_values, mean_fpr, mean_tpr, mean_auc
+
+def SVM_classification(C, kernel, degree, gamma, coef0, shrinking, probability, tol, cache_size, class_weight, verbose, max_iter, decision_function_shape, random_state):
+
+    pera = {"C":C, 
+    "kernel":kernel, 
+    "degree":degree, 
+    "gamma":gamma, 
+    "coef0":coef0, 
+    "shrinking":shrinking,
+    "probability":probability, 
+    "tol":tol, 
+    "cache_size":cache_size, 
+    "class_weight":class_weight, 
+    "verbose":verbose, 
+    "max_iter":max_iter, 
+    "decision_function_shape":decision_function_shape, 
+    "random_state":random_state}
+
+    model = SVC(pera**)
+
+    
+
+    prob = model.fit(X[train], y[train]).predict_proba(X[test])
+    predicted = model.fit(X[train], y[train]).predict(X[test])
+
+def SGD_Classification( loss, penalty, alpha, l1_ratio, fit_intercept, max_iter, tol, shuffle, verbose, epsilon, n_jobs, random_state, learning_rate, eta0, power_t, early_stopping, validation_fraction, n_iter_no_change, class_weight, warm_start, average):
+
+    pera = {"loss":loss, 
+    "penalty":penalty, 
+    "alpha":alpha,
+    "l1_ratio":l1_ratio,
+    "fit_intercept":fit_intercept, 
+    "max_iter":max_iter, 
+    "tol":tol, 
+    "shuffle":shuffle, 
+    "verbose":verbose, 
+    "epsilon":epsilon, 
+    "n_jobs":n_jobs, 
+    "random_state":random_state, 
+    "learning_rate":learning_rate, 
+    "eta0":eta0, 
+    "power_t":power_t, 
+    "early_stopping":early_stopping, 
+    "validation_fraction":validation_fraction, 
+    "n_iter_no_change":n_iter_no_change, 
+    "class_weight":class_weight, 
+    "warm_start":warm_start, 
+    "average":average}
+
+def DecisionTree_Classification(
     criterion,
     splitter, 
     max_depth, 
@@ -54,10 +216,23 @@ def DecisionTree_Classification(InData,
     min_impurity_decrease, 
     min_impurity_split, 
     class_weight, 
-    presort,
-    OutDir):
+    presort):
 
-def GradientBoosting_Classification(InData,
+    pera = {"criterion":criterion,
+    "splitter":splitter, 
+    "max_depth":max_depth, 
+    "min_samples_split":min_samples_split, 
+    "min_samples_leaf":min_samples_leaf, 
+    "min_weight_fraction_leaf":min_weight_fraction_leaf, 
+    "max_features":max_features, 
+    "random_state":random_state, 
+    "max_leaf_nodes":max_leaf_nodes, 
+    "min_impurity_decrease":min_impurity_decrease, 
+    "min_impurity_split":min_impurity_split, 
+    "class_weight":class_weight, 
+    "presort":presort}:
+
+def GradientBoosting_Classification(
     loss, 
     learning_rate, 
     n_estimators, 
@@ -78,10 +253,31 @@ def GradientBoosting_Classification(InData,
     presort, 
     validation_fraction, 
     n_iter_no_change, 
-    tol,
-    OutDir):
+    tol):
 
-def RandomForestClassifier(InData, 
+    pera = {"loss":loss, 
+    "learning_rate":learning_rate, 
+    "n_estimators":n_estimators, 
+    "subsample":subsample, 
+    "criterion":criterion, 
+    "min_samples_split":min_samples_split, 
+    "min_samples_leaf":min_samples_leaf, 
+    "min_weight_fraction_leaf":min_weight_fraction_leaf, 
+    "max_depth":max_depth, 
+    "min_impurity_decrease":min_impurity_decrease,
+    "min_impurity_split":min_impurity_split, 
+    "init":init, 
+    "random_state":random_state, 
+    "max_features":max_features, 
+    "verbose":verbose, 
+    "max_leaf_nodes":max_leaf_nodes, 
+    "warm_start":warm_start, 
+    "presort":presort, 
+    "validation_fraction":validation_fraction, 
+    "n_iter_no_change":n_iter_no_change, 
+    "tol":tol}:
+
+def RandomForestClassifier( 
     n_estimators, 
     criterion, 
     max_depth, 
@@ -98,10 +294,27 @@ def RandomForestClassifier(InData,
     random_state, 
     verbose, 
     warm_start, 
-    class_weight,
-    OutDir):
+    class_weight):
 
-def LogisticRegression(InData,
+    pera = {"n_estimators":n_estimators, 
+    "criterion":criterion, 
+    "max_depth":max_depth, 
+    "min_samples_split":min_samples_split, 
+    "min_samples_leaf":min_samples_leaf, 
+    "min_weight_fraction_leaf":min_weight_fraction_leaf, 
+    "max_features":max_features, 
+    "max_leaf_nodes":max_leaf_nodes, 
+    "min_impurity_decrease":min_impurity_decrease, 
+    "min_impurity_split":min_samples_split, 
+    "bootstrap":bootstrap, 
+    "oob_score":oob_score, 
+    "n_jobs":n_jobs, 
+    "random_state":random_state, 
+    "verbose":verbose, 
+    "warm_start":warm_start, 
+    "class_weight":class_weight}
+
+def LogisticRegression(
     penalty, 
     dual, 
     tol, 
@@ -116,23 +329,39 @@ def LogisticRegression(InData,
     verbose, 
     warm_start 
     n_jobs, 
-    l1_ratio,
-    OutDir):
+    l1_ratio):
 
-def KNeighbors_Classifier(n_neighbors,
-    weights, 
-    algorithm, 
-    leaf_size, 
-    p, 
-    metric, 
-    metric_params, 
-    n_jobs,
-    OutDir):
+    pera = {"penalty":penalty, 
+    "dual":dual, 
+    "tol":tol, 
+    "C":C, 
+    "fit_intercept":fit_intercept, 
+    "intercept_scaling":intercept_scaling, 
+    "class_weight":class_weight, 
+    "random_state":random_state, 
+    "solver":solver, 
+    "max_iter":max_iter, 
+    "multi_class":multi_class, 
+    "verbose":verbose, 
+    "warm_start":warm_start
+    "n_jobs":n_jobs, 
+    "l1_ratio":l1_ratio}
 
-def GaussianNB(InData, 
+def KNeighbors_Classifier(n_neighbors, weights, algorithm, leaf_size, p, metric, metric_params,  n_jobs):
+
+    pera = {"weights":weights, "algorithm":algorithm, "leaf_size"leaf_size, "p":p, "metric":metric, "metric_params":metric_params, "n_jobs":n_jobs}
+
+    return 
+
+def GaussianNB( 
     priors, 
-    var_smoothing, 
-    OutDir):    
+    var_smoothing):  
+
+    pera = {"priors":priors, 
+    "var_smoothing"var_smoothing}:     
+
+
+def main(algo, InFile)
 
 if __name__=="__main__":
 
