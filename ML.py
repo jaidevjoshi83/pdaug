@@ -141,13 +141,12 @@ def Fit_Model(InFile, Test_Method, OutDir, OutFile, NoOfFolds):
             recall= round(a[1],3)
             f_score= round(a[2],3)
 
-
             pl.plot([0, 1], [0, 1], '--', lw=2)
             mean_tpr /= folds.get_n_splits(X, y)
             mean_tpr[-1] = 1.0
             mean_auc = auc(mean_fpr, mean_tpr)
 
-        ##################### Changed #########################################
+            ##################### Changed #########################################
             V_header = ["accuracy","presision","recall","f1","mean_auc"]
             v_values = [accuracy_score_mean,precision_mean,recall_mean,f_score_mean,mean_auc]
             mname  = ("Logistic_Regression","GaussianNB","KNeighbors","DecisionTree","SVC", "Ranodm Forest","SGDClassifier","GradBoost" )
@@ -179,7 +178,8 @@ def SVM_classification(C, kernel, degree, gamma, coef0, shrinking, probability, 
     prob = model.fit(X[train], y[train]).predict_proba(X[test])
     predicted = model.fit(X[train], y[train]).predict(X[test])
 
-def SGD_Classification( loss, penalty, alpha, l1_ratio, fit_intercept, max_iter, tol, shuffle, verbose, epsilon, n_jobs, random_state, learning_rate, eta0, power_t, early_stopping, validation_fraction, n_iter_no_change, class_weight, warm_start, average):
+def SGD_Classification( loss, penalty, alpha, l1_ratio, fit_intercept, max_iter, tol, shuffle, verbose, epsilon, n_jobs,
+    random_state, learning_rate, eta0, power_t, early_stopping, validation_fraction, n_iter_no_change, class_weight, warm_start, average):
 
     pera = {"loss":loss, 
     "penalty":penalty, 
@@ -203,20 +203,8 @@ def SGD_Classification( loss, penalty, alpha, l1_ratio, fit_intercept, max_iter,
     "warm_start":warm_start, 
     "average":average}
 
-def DecisionTree_Classification(
-    criterion,
-    splitter, 
-    max_depth, 
-    min_samples_split, 
-    min_samples_leaf, 
-    min_weight_fraction_leaf, 
-    max_features, 
-    random_state, 
-    max_leaf_nodes, 
-    min_impurity_decrease, 
-    min_impurity_split, 
-    class_weight, 
-    presort):
+def DecisionTree_Classification(criterion, splitter, max_depth, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, max_features, 
+    random_state, max_leaf_nodes, min_impurity_decrease, min_impurity_split, class_weight, presort):
 
     pera = {"criterion":criterion,
     "splitter":splitter, 
@@ -232,28 +220,8 @@ def DecisionTree_Classification(
     "class_weight":class_weight, 
     "presort":presort}:
 
-def GradientBoosting_Classification(
-    loss, 
-    learning_rate, 
-    n_estimators, 
-    subsample, 
-    criterion, 
-    min_samples_split, 
-    min_samples_leaf, 
-    min_weight_fraction_leaf, 
-    max_depth, 
-    min_impurity_decrease,
-    min_impurity_split, 
-    init, 
-    random_state, 
-    max_features, 
-    verbose, 
-    max_leaf_nodes, 
-    warm_start, 
-    presort, 
-    validation_fraction, 
-    n_iter_no_change, 
-    tol):
+def GradientBoosting_Classification(loss, learning_rate, n_estimators, subsample, criterion, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, 
+    max_depth, min_impurity_decrease,min_impurity_split, init, random_state, max_features, verbose, max_leaf_nodes, warm_start, presort, validation_fraction, n_iter_no_change, tol):
 
     pera = {"loss":loss, 
     "learning_rate":learning_rate, 
@@ -277,24 +245,8 @@ def GradientBoosting_Classification(
     "n_iter_no_change":n_iter_no_change, 
     "tol":tol}:
 
-def RandomForestClassifier( 
-    n_estimators, 
-    criterion, 
-    max_depth, 
-    min_samples_split, 
-    min_samples_leaf, 
-    min_weight_fraction_leaf, 
-    max_features, 
-    max_leaf_nodes, 
-    min_impurity_decrease, 
-    min_impurity_split, 
-    bootstrap, 
-    oob_score, 
-    n_jobs, 
-    random_state, 
-    verbose, 
-    warm_start, 
-    class_weight):
+def RandomForestClassifier( n_estimators, criterion, max_depth, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, max_features, max_leaf_nodes, min_impurity_decrease, 
+    min_impurity_split, bootstrap, oob_score, n_jobs, random_state, verbose, warm_start, class_weight):
 
     pera = {"n_estimators":n_estimators, 
     "criterion":criterion, 
@@ -314,22 +266,7 @@ def RandomForestClassifier(
     "warm_start":warm_start, 
     "class_weight":class_weight}
 
-def LogisticRegression(
-    penalty, 
-    dual, 
-    tol, 
-    C, 
-    fit_intercept, 
-    intercept_scaling, 
-    class_weight, 
-    random_state, 
-    solver, 
-    max_iter, 
-    multi_class, 
-    verbose, 
-    warm_start 
-    n_jobs, 
-    l1_ratio):
+def LogisticRegression(penalty, dual, tol, C, fit_intercept, intercept_scaling, class_weight, random_state, solver, max_iter, multi_class, verbose, warm_start n_jobs, l1_ratio):
 
     pera = {"penalty":penalty, 
     "dual":dual, 
@@ -353,9 +290,7 @@ def KNeighbors_Classifier(n_neighbors, weights, algorithm, leaf_size, p, metric,
 
     return 
 
-def GaussianNB( 
-    priors, 
-    var_smoothing):  
+def GaussianNB(  priors, var_smoothing):  
 
     pera = {"priors":priors, 
     "var_smoothing"var_smoothing}:     
