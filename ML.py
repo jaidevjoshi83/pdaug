@@ -30,33 +30,49 @@ import matplotlib.image as mpimg
 from plot_grid_search_digits_final_1 import * 
 ################################################################
 
-"""
-LR = LogisticRegression(solver='lbfgs')
-GNB = GaussianNB()
-KNB = KNeighborsClassifier()
-DT = DecisionTreeClassifier()
-SV = SVC(probability=True,gamma='scale')
-RF = RandomForestClassifier(n_estimators=10)
-SGDC =  SGDClassifier(loss='log')
-GBC = GradientBoostingClassifier()
-"""
 
-def Data_Label_Gen(InFile):
 
-    df = pd.read_csv(InFile,sep='\t',error_bad_lines=False)
-    clm_list = df.columns.tolist()
-    X_data = df[clm_list[0:len(clm_list)-1]].values
-    y_data = df[clm_list[len(clm_list)-1]].values
+def ReturnData(TrainFile,  TestMethod, TestFile=None):
+    
+    if (TestFile == None) and (TestMethod == 'Internal' or 'CrossVal'):
 
-    return X_data, y_label
+        df = pd.read_csv(TrainFile, sep='\t')
+        clm_list = df.columns.tolist()
+        X_train = df[clm_list[0:len(clm_list)-1]].values
+        y_train = df[clm_list[len(clm_list)-1]].values
+        return X_train, y_train, TestMethod
+
+    elif (TestFile is not None) and (TestMethod == 'External'):
+
+        df = pd.read_csv(TrainFile, sep='\t')
+        clm_list = df.columns.tolist()
+        X_train = df[clm_list[0:len(clm_list)-1]].values
+        y_train = df[clm_list[len(clm_list)-1]].values
+
+        df1 = pd.read_csv(TestFile, sep='\t')
+        clm_list = df1.columns.tolist()
+        X_test = df1[clm_list[0:len(clm_list)-1]].values
+        y_test = df1[clm_list[len(clm_list)-1]].values
+
+        return X_train, y_train, X_test, y_test, TestMethod
+
+    elif (TestFile is not None) and (TestMethod == 'Predict'):
+
+        df = pd.read_csv(TrainFile, sep='\t')
+        clm_list = df.columns.tolist()
+        X_train = df[clm_list[0:len(clm_list)-1]].values
+        y_train = df[clm_list[len(clm_list)-1]].values
+
+        df = pd.read_csv(TestFile, sep='\t')
+        Y_test = df
+
+        return X_train, y_train, Y_test, TestMethod
 
 def Fit_Model(InFile, Test_Method, OutDir, OutFile, NoOfFolds):
 
     if Test_Method == 'Internal':
 
         for i, (train, test) in enumerate(folds.split(X, y)):
-
-    ############Changes###############################
 
             if Selected_Sclaer=='Min_Max':
                 scaler = MinMaxScaler().fit(X[train])
@@ -74,7 +90,6 @@ def Fit_Model(InFile, Test_Method, OutDir, OutFile, NoOfFolds):
 
             else:
                 print('Scalling Method option was not correctly selected...!')
-
 
             prob = model.fit(x_train, y[train]).predict_proba(x_test)
             predicted = model.fit(x_train, y[train]).predict(x_test)
@@ -106,52 +121,94 @@ def Fit_Model(InFile, Test_Method, OutDir, OutFile, NoOfFolds):
         v_values = [accuracy_score_mean,precision_mean,recall_mean,f_score_mean,mean_auc]
         mname  = ("Logistic_Regression","GaussianNB","KNeighbors","DecisionTree","SVC", "Ranodm Forest","SGDClassifier","GradBoost" )
         #########################################################################
+        return V_header, v_values, mean_fpr, mean_tpr, mean_auc
 
     elif Test_Method == 'External':
 
-            if Selected_Sclaer=='Min_Max':
-                scaler = MinMaxScaler().fit(X_train) 
-                x_train = scaler.transform(X_train)  
-                x_test = scaler.transform(X_test) 
-                
-            elif Selected_Sclaer=='Standard_Scaler':
-                scaler = preprocessing.StandardScaler().fit(X_train)
-                x_train = scaler.transform(X_train)
-                x_test = scaler.transform(X_test) 
-
-            elif Selected_Sclaer == 'No_Scaler':
-                x_train = X_train
-                x_test = X_test
-
-            else:
-                print('Scalling Method option was not correctly selected...!')
-
-
-            prob = model.fit(x_train, y_train).predict_proba(x_test)
-            predicted = model.fit(x_train, y_train).predict(x_test)
-
-            fpr, tpr, thresholds = roc_curve(y_test, prob[:, 1])
-            mean_tpr += interp(mean_fpr, fpr, tpr)
-            mean_tpr[0] = 0.0
-
-            TN, FP, FN, TP = confusion_matrix(y_test, predicted).ravel()
-
-            accuracy_score_mean = round(accuracy_score(y_test, predicted),3)
-            a = precision_recall_fscore_support(y_test, predicted, average='macro')
-            precision = round(a[0],3)
-            recall= round(a[1],3)
-            f_score= round(a[2],3)
-
-            pl.plot([0, 1], [0, 1], '--', lw=2)
-            mean_tpr /= folds.get_n_splits(X, y)
-            mean_tpr[-1] = 1.0
-            mean_auc = auc(mean_fpr, mean_tpr)
-
-            ##################### Changed #########################################
-            V_header = ["accuracy","presision","recall","f1","mean_auc"]
-            v_values = [accuracy_score_mean,precision_mean,recall_mean,f_score_mean,mean_auc]
-            mname  = ("Logistic_Regression","GaussianNB","KNeighbors","DecisionTree","SVC", "Ranodm Forest","SGDClassifier","GradBoost" )
+        if Selected_Sclaer=='Min_Max':
+            scaler = MinMaxScaler().fit(X_train) 
+            x_train = scaler.transform(X_train)  
+            x_test = scaler.transform(X_test) 
             
+        elif Selected_Sclaer=='Standard_Scaler':
+            scaler = preprocessing.StandardScaler().fit(X_train)
+            x_train = scaler.transform(X_train)
+            x_test = scaler.transform(X_test) 
+
+        elif Selected_Sclaer == 'No_Scaler':
+            x_train = X_train
+            x_test = X_test
+
+        else:
+            print('Scalling Method option was not correctly selected...!')
+
+        prob = model.fit(x_train, y_train).predict_proba(x_test)
+        predicted = model.fit(x_train, y_train).predict(x_test)
+
+        fpr, tpr, thresholds = roc_curve(y_test, prob[:, 1])
+        mean_tpr += interp(mean_fpr, fpr, tpr)
+        mean_tpr[0] = 0.0
+
+        TN, FP, FN, TP = confusion_matrix(y_test, predicted).ravel()
+
+        accuracy_score_mean = round(accuracy_score(y_test, predicted),3)
+        a = precision_recall_fscore_support(y_test, predicted, average='macro')
+        precision = round(a[0],3)
+        recall= round(a[1],3)
+        f_score= round(a[2],3)
+
+        pl.plot([0, 1], [0, 1], '--', lw=2)
+        mean_tpr /= folds.get_n_splits(X, y)
+        mean_tpr[-1] = 1.0
+        mean_auc = auc(mean_fpr, mean_tpr)
+
+        ##################### Changed #########################################
+        V_header = ["accuracy","presision","recall","f1","mean_auc"]
+        v_values = [accuracy_score_mean,precision_mean,recall_mean,f_score_mean,mean_auc]
+        mname  = ("Logistic_Regression","GaussianNB","KNeighbors","DecisionTree","SVC", "Ranodm Forest","SGDClassifier","GradBoost" )
+        return V_header, v_values, mean_fpr, mean_tpr, mean_auc
+
+    elif Test_Method == "TestSplit":
+
+        X_train, X_test, y_train, y_test = train_test_split(X_data, y_label, test_size=TestSize, random_state=0)
+
+        if Selected_Sclaer=='Min_Max':
+            scaler = MinMaxScaler().fit(X_train) 
+            x_train = scaler.transform(X_train)  
+            x_test = scaler.transform(X_test) 
+            
+        elif Selected_Sclaer=='Standard_Scaler':
+            scaler = preprocessing.StandardScaler().fit(X_train)
+            x_train = scaler.transform(X_train)
+            x_test = scaler.transform(X_test) 
+
+        elif Selected_Sclaer == 'No_Scaler':
+            x_train = X_train
+            x_test = X_test
+
+        else:
+            print('Scalling Method option was not correctly selected...!')
+
+    elif Test_Method == "Predict":
+
+        if Selected_Sclaer=='Min_Max':
+            scaler = MinMaxScaler().fit(X_train) 
+            x_train = scaler.transform(X_train)  
+            x_test = scaler.transform(X_test) 
+            
+        elif Selected_Sclaer=='Standard_Scaler':
+            scaler = preprocessing.StandardScaler().fit(X_train)
+            x_train = scaler.transform(X_train)
+            x_test = scaler.transform(X_test) 
+
+        elif Selected_Sclaer == 'No_Scaler':
+            x_train = X_train
+            x_test = X_test
+
+        else:
+            print('Scalling Method option was not correctly selected...!')
+
+        predicted = model.fit(x_train, y_train).predict(x_test)
 
     return V_header, v_values, mean_fpr, mean_tpr, mean_auc
 
@@ -172,12 +229,10 @@ def SVM_classification(C, kernel, degree, gamma, coef0, shrinking, probability, 
     "decision_function_shape":decision_function_shape, 
     "random_state":random_state}
 
+
     model = SVC(pera**)
 
-    
-
-    prob = model.fit(X[train], y[train]).predict_proba(X[test])
-    predicted = model.fit(X[train], y[train]).predict(X[test])
+    return model
 
 def SGD_Classification( loss, penalty, alpha, l1_ratio, fit_intercept, max_iter, tol, shuffle, verbose, epsilon, n_jobs,
     random_state, learning_rate, eta0, power_t, early_stopping, validation_fraction, n_iter_no_change, class_weight, warm_start, average):
@@ -204,6 +259,10 @@ def SGD_Classification( loss, penalty, alpha, l1_ratio, fit_intercept, max_iter,
     "warm_start":warm_start, 
     "average":average}
 
+    model =  SGDClassifier(pera**)
+
+    return model
+
 def DecisionTree_Classification(criterion, splitter, max_depth, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, max_features, 
     random_state, max_leaf_nodes, min_impurity_decrease, min_impurity_split, class_weight, presort):
 
@@ -220,6 +279,10 @@ def DecisionTree_Classification(criterion, splitter, max_depth, min_samples_spli
     "min_impurity_split":min_impurity_split, 
     "class_weight":class_weight, 
     "presort":presort}:
+
+    model = DecisionTreeClassifier(pera**)
+
+    return model
 
 def GradientBoosting_Classification(loss, learning_rate, n_estimators, subsample, criterion, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, 
     max_depth, min_impurity_decrease,min_impurity_split, init, random_state, max_features, verbose, max_leaf_nodes, warm_start, presort, validation_fraction, n_iter_no_change, tol):
@@ -246,6 +309,10 @@ def GradientBoosting_Classification(loss, learning_rate, n_estimators, subsample
     "n_iter_no_change":n_iter_no_change, 
     "tol":tol}:
 
+    model =  GradientBoostingClassifier(pera**)
+
+    return model
+
 def RandomForestClassifier( n_estimators, criterion, max_depth, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, max_features, max_leaf_nodes, min_impurity_decrease, 
     min_impurity_split, bootstrap, oob_score, n_jobs, random_state, verbose, warm_start, class_weight):
 
@@ -267,6 +334,10 @@ def RandomForestClassifier( n_estimators, criterion, max_depth, min_samples_spli
     "warm_start":warm_start, 
     "class_weight":class_weight}
 
+    model = RandomForestClassifier(pera**)
+
+    return model
+
 def LogisticRegression(penalty, dual, tol, C, fit_intercept, intercept_scaling, class_weight, random_state, solver, max_iter, multi_class, verbose, warm_start n_jobs, l1_ratio):
 
     pera = {"penalty":penalty, 
@@ -285,19 +356,61 @@ def LogisticRegression(penalty, dual, tol, C, fit_intercept, intercept_scaling, 
     "n_jobs":n_jobs, 
     "l1_ratio":l1_ratio}
 
+    model = LogisticRegression(pera**)
+
+    return model
+
 def KNeighbors_Classifier(n_neighbors, weights, algorithm, leaf_size, p, metric, metric_params,  n_jobs):
 
     pera = {"weights":weights, "algorithm":algorithm, "leaf_size"leaf_size, "p":p, "metric":metric, "metric_params":metric_params, "n_jobs":n_jobs}
+    
+    model = KNeighborsClassifier(pera**)
 
-    return 
+    return model
 
-def GaussianNB(  priors, var_smoothing):  
+def GaussianNB( priors, var_smoothing):  
 
     pera = {"priors":priors, 
-    "var_smoothing"var_smoothing}:     
+    "var_smoothing"var_smoothing}:  
+
+    model = GaussianNB(pera**) 
+
+    return model  
+
+python ML.py -A SV -T train.csv -t test.csv -M CrossVal 
 
 
-def main(algo, InFile)
+def main(TrainFile, TestFile=None, OutFile, TestMethod, InAlgo):
+
+    X_train, y_train, X_test, y_test, TestMethod = TestMethodReturnData(TrainFile, TestFile, TestMethod)
+
+    if InAlgo == "LR":
+        model = LogisticRegression()
+        Fit_Model()
+    elif InAlgo == "GNB":
+        model = GaussianNB()
+        Fit_Model()
+    elif InAlgo == "KNB":
+        model = KNeighbors_Classifier()
+        Fit_Model()
+    elif InAlgo == "DT":
+        model = DecisionTree_Classification()
+        Fit_Model()
+    elif InAlgo == "SV":
+        model = SVM_classification()
+        Fit_Model()
+    elif InAlgo == "RF":
+        model = RandomForestClassifier()
+        Fit_Model()
+    elif InAlgo == "SGDC":
+        SGD_Classification()
+        Fit_Model()
+    elif InAlgo == "GBC":
+        model = GradientBoosting_Classification()
+        Fit_Model()
+    else:
+        print("Something")
+
 
 if __name__=="__main__":
 
