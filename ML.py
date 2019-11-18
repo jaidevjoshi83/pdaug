@@ -113,6 +113,7 @@ def Fit_Model(InFile, Test_Method, OutDir, OutFile, NoOfFolds):
                 scaler = MinMaxScaler().fit(X_train) 
                 x_train = scaler.transform(X_train)  
                 x_test = scaler.transform(X_test) 
+                
             elif Selected_Sclaer=='Standard_Scaler':
                 scaler = preprocessing.StandardScaler().fit(X_train)
                 x_train = scaler.transform(X_train)
