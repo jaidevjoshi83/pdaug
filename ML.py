@@ -68,7 +68,7 @@ def ReturnData(TrainFile,  TestMethod, TestFile=None):
 
         return X_train, y_train, Y_test, TestMethod
 
-def Fit_Model(InFile, Test_Method, OutDir, OutFile, NoOfFolds):
+def Fit_Model(X_train, y_train, Test_Method, OutDir, OutFile, , X_test=None, y_test=None, NoOfFolds=None):
 
     if Test_Method == 'Internal':
 
