@@ -215,6 +215,9 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
 
         HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 
+        print "Internal"
+
+
     elif Test_Method == 'External':
 
         X_train,y_train,X_test,y_test = ReturnData(TrainData, Test_Method, TestData)
@@ -236,8 +239,8 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         else:
             print('Scalling Method option was not correctly selected...!')
 
-        prob = model.fit(x_train, y_train).predict_proba(x_test)
-        predicted = model.fit(x_train, y_train).predict(x_test)
+        prob = Algo.fit(x_train, y_train).predict_proba(x_test)
+        predicted = Algo.fit(x_train, y_train).predict(x_test)
 
         fpr, tpr, thresholds = roc_curve(y_test, prob[:, 1])
         TN, FP, FN, TP = confusion_matrix(y_test, predicted).ravel()
@@ -261,7 +264,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         v_values = [accu_score, pre_score, rec_score, f_score, auc_score]
 
         pl.figure()
-        pl.plot(fpr, tpr, '-', color='red',label='AUC = %0.2f' % mean_auc, lw=2)
+        pl.plot(fpr, tpr, '-', color='red',label='AUC = %0.2f' % auc_score, lw=2)
         pl.xlim([0.0, 1.0])
         pl.ylim([0.0, 1.05])
         pl.xlabel('False Positive Rate')
@@ -269,7 +272,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.title('ROC Cureve for All the classifier')
         pl.legend(loc="lower right")
 
-        df.to_csv(os.path.join(Workdirpath, OutFile), columns=V_header)
+        df = pd.DataFrame([v_values], columns=V_header)
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "out.jpg"))
 
         pl.figure()
@@ -278,6 +281,8 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.jpg"))
         pl.show()
         HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
+
+        print "External"
 
     elif Test_Method == "TestSplit":
 
@@ -339,6 +344,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.jpg"))
         pl.show()
         HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
+        print "TestSplit"
 
     elif Test_Method == "Predict":
 
@@ -362,6 +368,8 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
             print('Scalling Method option was not correctly selected...!')
 
         predicted = model.fit(x_train, y_train).predict(x_test)
+
+        print "TestSplit"
 
         return predicted
 
@@ -387,6 +395,8 @@ def SVM_Classifier(C, kernel, degree, gamma, coef0, shrinking, probability, tol,
     }
 
     model = SVC(**pera )
+
+    print Fit_Model
     
     Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, Workdirpath=Workdirpath, htmlOutDir=htmlOutDir, OutFile=OutFile, htmlFname=htmlFname,  NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile)
 
