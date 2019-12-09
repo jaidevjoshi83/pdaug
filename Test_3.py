@@ -29,6 +29,54 @@ from itertools import cycle
 import matplotlib.image as mpimg
 ################################################################
 
+def HTML_Gen(html):
+
+    out_html = open(html,'w')             
+    part_1 =  """
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>Bootstrap Example</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <body>
+    <style>
+    div.container_1 {
+      width:600px;
+      margin: auto;
+     padding-right: 10; 
+    }
+    div.table {
+      width:600px;
+      margin: auto;
+     padding-right: 10; 
+    }
+    </style>
+    </head>
+    <div class="jumbotron text-center">
+      <h1> Machine Learning Algorithm Assessment Report </h1>
+    </div>
+    <div class="container">
+      <h2> ROC curve and result summary Graph </h2>
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="2.jpg" alt="Smiley face" height="350" width="350">
+        </div>
+        <div class="col-sm-4">
+          <img src="out.jpg" alt="Smiley face" height="350" width="350">
+        </div>
+      </div>
+    </div>
+    </body>
+    </html>
+    """ 
+    out_html.write(part_1)
+    out_html.close()
+
 def ReturnData(TrainFile,  TestMethod, TestFile=None):
     
     if (TestFile == None) and (TestMethod == 'Internal' or 'CrossVal'):
@@ -39,7 +87,6 @@ def ReturnData(TrainFile,  TestMethod, TestFile=None):
         y_train = df[clm_list[len(clm_list)-1]].values
         X_test = None 
         y_test = None
-
         return X_train, y_train, X_test, y_test
 
     elif (TestFile is not None) and (TestMethod == 'External'):
@@ -52,7 +99,6 @@ def ReturnData(TrainFile,  TestMethod, TestFile=None):
         clm_list = df1.columns.tolist()
         X_test = df1[clm_list[0:len(clm_list)-1]].values
         y_test = df1[clm_list[len(clm_list)-1]].values
-
         return X_train, y_train, X_test, y_test
 
     elif (TestFile is not None) and (TestMethod == 'Predict'):
@@ -65,7 +111,6 @@ def ReturnData(TrainFile,  TestMethod, TestFile=None):
         df = pd.read_csv(TestFile, sep='\t')
         X_test = df
         y_test = None
-
         return X_train, y_train, X_train, y_train
 
 def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  htmlOutDir, OutFile, htmlFname,    NoOfFolds=None, TestSize=None, TestData=None ):
@@ -74,7 +119,6 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         os.makedirs(htmlOutDir)
 
     if Test_Method == 'Internal':
-
         X,y,_,_ = ReturnData(TrainData, Test_Method)
 
         mean_tpr = 0.0
@@ -155,16 +199,21 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.title('ROC Cureve for All the classifier')
         pl.legend(loc="lower right")
 
-        ###############################################################################################################################
-        V_header = ["accuracy","presision","recall","f1","mean_auc"]                                                                  #
-        v_values = [round(accuracy_score_mean, 3), round(precision_mean, 3), round(recall_mean, 3),round(f_score_mean, 3), round(mean_auc, 3)]                                          # 
-        mname  = ("Logistic_Regression","GaussianNB","KNeighbors","DecisionTree","SVC", "Ranodm Forest","SGDClassifier","GradBoost" ) #
-        ###############################################################################################################################
+        ########################################################################################################################################
+        V_header = ["accuracy","presision","recall","f1","mean_auc"]                                                                           #
+        v_values = [round(accuracy_score_mean, 3), round(precision_mean, 3), round(recall_mean, 3),round(f_score_mean, 3), round(mean_auc, 3)] #                                         # 
+        ########################################################################################################################################
 
         df = pd.DataFrame([v_values], columns=V_header)
-
         df.to_csv(os.path.join(Workdirpath, OutFile), columns=V_header)
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "out.jpg"))
+        pl.figure()
+        pl.bar(V_header, v_values, color=(0.2, 0.4, 0.6, 0.6))
+        pl.xlabel('Accuracy Perameters', fontweight='bold', color = 'orange', fontsize='17', horizontalalignment='center')
+        pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.jpg"))
+        pl.show()
+
+        HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 
     elif Test_Method == 'External':
 
@@ -211,7 +260,24 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         V_header = ["accuracy","presision","recall","f1","mean_auc"]
         v_values = [accu_score, pre_score, rec_score, f_score, auc_score]
 
-        return V_header, v_values
+        pl.figure()
+        pl.plot(fpr, tpr, '-', color='red',label='AUC = %0.2f' % mean_auc, lw=2)
+        pl.xlim([0.0, 1.0])
+        pl.ylim([0.0, 1.05])
+        pl.xlabel('False Positive Rate')
+        pl.ylabel('True Positive Rate')
+        pl.title('ROC Cureve for All the classifier')
+        pl.legend(loc="lower right")
+
+        df.to_csv(os.path.join(Workdirpath, OutFile), columns=V_header)
+        pl.savefig(os.path.join(Workdirpath, htmlOutDir, "out.jpg"))
+
+        pl.figure()
+        pl.bar(V_header, v_values, color=(0.2, 0.4, 0.6, 0.6))
+        pl.xlabel('Accuracy Perameters', fontweight='bold', color = 'orange', fontsize='17', horizontalalignment='center')
+        pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.jpg"))
+        pl.show()
+        HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 
     elif Test_Method == "TestSplit":
 
@@ -266,8 +332,13 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
 
         V_header = ["accuracy","presision","recall","f1","mean_auc"]
         v_values = [accu_score, pre_score, rec_score, f_score, auc_score]
- 
-        return v_values
+
+        pl.figure()
+        pl.bar(V_header, v_values, color=(0.2, 0.4, 0.6, 0.6))
+        pl.xlabel('Accuracy Perameters', fontweight='bold', color = 'orange', fontsize='17', horizontalalignment='center')
+        pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.jpg"))
+        pl.show()
+        HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 
     elif Test_Method == "Predict":
 
@@ -367,7 +438,6 @@ def DT_Classifier(criterion, splitter, max_depth, min_samples_split, min_samples
     model = DecisionTreeClassifier(**pera)
 
     Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, Workdirpath=Workdirpath, htmlOutDir=htmlOutDir, OutFile=OutFile, htmlFname=htmlFname,  NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile)
-
 
 def GB_Classifier(loss, learning_rate, n_estimators, subsample, criterion, min_samples_split, min_samples_leaf, min_weight_fraction_leaf,  max_depth, min_impurity_decrease,min_impurity_split, init, random_state, max_features, verbose, max_leaf_nodes, warm_start, presort, validation_fraction, n_iter_no_change, tol, ccpalpha, TrainFile, TestMethod, SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, Workdirpath):
 
