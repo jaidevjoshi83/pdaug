@@ -120,7 +120,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer, NoOfFolds=None, Tes
             else:
                 print('Scalling Method option was not correctly selected...!')
             #print x_train, y[train],x_test
-            print x_test
+            print (x_test)
 
             prob = Algo.fit(x_train, y[train]).predict_proba(x_test)
             predicted = Algo.fit(x_train, y[train]).predict(x_test)
@@ -323,7 +323,7 @@ def SVM_Classifier(C, kernel, degree, gamma, coef0, shrinking, probability, tol,
     }
 
     model = SVC( **pera )
-    print model
+    print (model)
 
     Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile)
 
@@ -353,10 +353,10 @@ def SGD_Classifier( loss, penalty, alpha, l1_ratio, fit_intercept, max_iter, tol
     "average":average}
 
     model =  SGDClassifier(**pera)
-    return model
 
-def DT_Classifier(criterion, splitter, max_depth, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, max_features, 
-    random_state, max_leaf_nodes, min_impurity_decrease, min_impurity_split, class_weight, presort, TrainFile, TestMethod, SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, OfileName, Workdirpath):
+    Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile)
+
+def DT_Classifier(criterion, splitter, max_depth, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, max_features,  random_state, max_leaf_nodes, min_impurity_decrease, min_impurity_split, class_weight, presort, ccpalpha, TrainFile, TestMethod, SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, OfileName, Workdirpath):
 
     pera = {"criterion":criterion,
     "splitter":splitter, 
@@ -370,13 +370,14 @@ def DT_Classifier(criterion, splitter, max_depth, min_samples_split, min_samples
     "min_impurity_decrease":min_impurity_decrease, 
     "min_impurity_split":min_impurity_split, 
     "class_weight":class_weight, 
-    "presort":presort}
+    "presort":presort,
+    "ccp_alpha":ccpalpha}
 
     model = DecisionTreeClassifier(**pera)
-    return model
+    Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile)
 
 def GB_Classifier(loss, learning_rate, n_estimators, subsample, criterion, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, 
-    max_depth, min_impurity_decrease,min_impurity_split, init, random_state, max_features, verbose, max_leaf_nodes, warm_start, presort, validation_fraction, n_iter_no_change, tol, TrainFile, TestMethod, SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, OfileName, Workdirpath):
+    max_depth, min_impurity_decrease,min_impurity_split, init, random_state, max_features, verbose, max_leaf_nodes, warm_start, presort, validation_fraction, n_iter_no_change, tol, ccpalpha, TrainFile, TestMethod, SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, OfileName, Workdirpath):
 
     pera = {"loss":loss, 
     "learning_rate":learning_rate, 
@@ -398,13 +399,14 @@ def GB_Classifier(loss, learning_rate, n_estimators, subsample, criterion, min_s
     "presort":presort, 
     "validation_fraction":validation_fraction, 
     "n_iter_no_change":n_iter_no_change, 
-    "tol":tol}
+    "tol":tol,
+    "ccp_alpha":ccpalpha}
 
     model =  GradientBoostingClassifier(**pera)
-    return model
+    Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile)
 
-def RF_Classifier( n_estimators, criterion, max_depth, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, max_features, max_leaf_nodes, min_impurity_decrease, 
-    min_impurity_split, bootstrap, oob_score, n_jobs, random_state, verbose, warm_start, class_weight, ccp_alpha, max_samples, TrainFile, TestMethod, SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, OfileName, Workdirpath):
+def RF_Classifier( n_estimators, criterion, max_depth, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, max_features, max_leaf_nodes, min_impurity_decrease,  min_impurity_split, bootstrap, oob_score, n_jobs, random_state, verbose, warm_start, class_weight, TrainFile, TestMethod, SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, OfileName, Workdirpath):
+
 
     pera = {"n_estimators":n_estimators, 
     "criterion":criterion, 
@@ -425,7 +427,7 @@ def RF_Classifier( n_estimators, criterion, max_depth, min_samples_split, min_sa
     "class_weight":class_weight}
 
     model = RandomForestClassifier(**pera)
-    return model
+    Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile)
 
 def LR_Classifier(penalty, dual, tol, C, fit_intercept, intercept_scaling, class_weight, random_state, solver, max_iter, multi_class, verbose, warm_start, n_jobs, l1_ratio, TrainFile, TestMethod, SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, OfileName, Workdirpath):
 
@@ -446,14 +448,19 @@ def LR_Classifier(penalty, dual, tol, C, fit_intercept, intercept_scaling, class
     "l1_ratio":l1_ratio}
 
     model = LogisticRegression(**pera)
-    return model
+    Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile)
 
 def KN_Classifier(n_neighbors, weights, algorithm, leaf_size, p, metric, metric_params,  n_jobs, TrainFile, TestMethod,  SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, OfileName, Workdirpath):
 
-    pera = {"weights":weights, "algorithm":algorithm, "leaf_size":leaf_size, "p":p, "metric":metric, "metric_params":metric_params, "n_jobs":n_jobs}
+    pera = {"weights":weights, 
+    "algorithm":algorithm, 
+    "leaf_size":leaf_size, 
+    "p":p, "metric":metric, 
+    "metric_params":metric_params, 
+    "n_jobs":n_jobs}
     
     model = KNeighborsClassifier(**pera)
-    return model
+    Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile)
 
 def GNB_Classifier( priors, var_smoothing, TrainFile, TestMethod,  SelectedSclaer, NFolds, Testspt, TestFile, OutFile, htmlOutDir, htmlFname, OfileName, Workdirpath):  
 
@@ -462,8 +469,7 @@ def GNB_Classifier( priors, var_smoothing, TrainFile, TestMethod,  SelectedSclae
 
     model = GaussianNB(**pera) 
     Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, NoOfFolds=NFolds, TestSize=Testspt, TestData=TestFile )
-
-    return model  
+  
 
 if __name__=="__main__":
 
@@ -533,7 +539,7 @@ if __name__=="__main__":
     sgdc.add_argument("--OfileName", required=False, help="")
     sgdc.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="")
 
-    dtc = subparsers.add_parser('DTC')
+    dtc = subparsers.add_parser('DTC') 
     dtc.add_argument("--criterion", required=False, default='gini', help="")
     dtc.add_argument("--splitter", required=False, default='best', help="" )
     dtc.add_argument("--max_depth", required=False, default=None, help="")
@@ -547,6 +553,7 @@ if __name__=="__main__":
     dtc.add_argument("--min_impurity_split", required=False, default=None, help="")
     dtc.add_argument("--class_weight", required=False, default=None, help="")
     dtc.add_argument("--presort", required=False, default=False, help="")
+    dtc.add_argument("--ccpalpha", required=False, default=0.0, help="")
     dtc.add_argument("--TrainFile", required=True, default=None, help="")
     dtc.add_argument("--TestMethod", required=True, default=None, help="")
     dtc.add_argument("--SelectedSclaer", required=True, help="")
@@ -581,6 +588,7 @@ if __name__=="__main__":
     gbc.add_argument("--validation_fraction", required=False,default=0.1) 
     gbc.add_argument("--n_iter_no_change", required=False, default=None) 
     gbc.add_argument("--tol", required=False, default=0.0001)
+    gbc.add_argument("--ccpalpha", required=False, default=0.0, help="")
     gbc.add_argument("--TrainFile", required=True, default=None, help="")
     gbc.add_argument("--TestMethod", required=True, default=None, help="")
     gbc.add_argument("--SelectedSclaer", required=True, help="")
@@ -594,7 +602,7 @@ if __name__=="__main__":
     gbc.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="")
 
     rfc = subparsers.add_parser('RFC')
-    rfc.add_argument("--n_estimators", required=False, default='warn') 
+    rfc.add_argument("--n_estimators", required=False, default=100) 
     rfc.add_argument("--criterion", required=False,default='gini') 
     rfc.add_argument("--max_depth", required=False,default=None) 
     rfc.add_argument("--min_samples_split", required=False,default=2) 
@@ -632,9 +640,9 @@ if __name__=="__main__":
     lrc.add_argument("--intercept_scaling", default=1 )
     lrc.add_argument("--class_weight", default=None)
     lrc.add_argument("--random_state", default=None) 
-    lrc.add_argument("--solver", default='warn') 
+    lrc.add_argument("--solver", required=False, default='lbfgs') 
     lrc.add_argument("--max_iter", default=100), 
-    lrc.add_argument("--multi_class", default='warn') 
+    lrc.add_argument("--multi_class", default='auto') 
     lrc.add_argument("--verbose", default=0, )
     lrc.add_argument("--warm_start", default=False, )
     lrc.add_argument("--n_jobs", default=None, )
@@ -692,21 +700,21 @@ if __name__=="__main__":
 if   sys.argv[1] == 'SVMC':
     SVM_Classifier(args.C, args.kernel, args.degree, args.gamma, args.coef0, args.shrinking, args.probability, args.tol, args.cache_size, args.class_weight, args.verbose, args.max_iter, args.decision_function_shape, args.randomRtate, args.TrainFile, args.TestMethod,  args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
 elif sys.argv[1] == 'SGDC':   
-    SGD_Classifier( args.loss, args.penalty, args.alpha, args.l1_ratio, args.fit_intercept, args.max_iter, args.tol, args.shuffle, args.verbose, args.epsilon, args.n_jobs, args.random_state, args.learning_rate, args.eta0, args.power_t, args.early_stopping, args.validation_fraction, args.n_iter_no_change, args.class_weight, args.warm_start, args.average, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+    SGD_Classifier( args.loss, args.penalty, args.alpha, args.l1_ratio, args.fit_intercept, args.max_iter, args.tol, args.shuffle, args.verbose, args.epsilon, args.n_jobs, args.random_state, args.learning_rate, args.eta0, args.power_t, args.early_stopping, args.validation_fraction, args.n_iter_no_change, args.class_weight, args.warm_start, args.average, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
 elif sys.argv[1] == 'DTC':
-    DT_Classifier(args.criterion, args.splitter, args.max_depth, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf, args.max_features,  args.random_state, args.max_leaf_nodes, args.min_impurity_decrease, args.min_impurity_split, args.class_weight, args.presort, args.ccp_alpha, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+    DT_Classifier(args.criterion, args.splitter, args.max_depth, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf, args.max_features,  args.random_state, args.max_leaf_nodes, args.min_impurity_decrease, args.min_impurity_split, args.class_weight, args.presort, args.ccpalpha, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
 elif sys.argv[1] == 'GBC':
-    GB_Classifier(args.loss, args.learning_rate, args.n_estimators, args.subsample, args.criterion, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf,  args.max_depth, args.min_impurity_decrease, args.min_impurity_split, args.init, args.random_state, args.max_features, args.verbose, args.max_leaf_nodes, args.warm_start, args.presort, args.validation_fraction, args.n_iter_no_change, args.tol, args.ccp_alpha, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+    GB_Classifier(args.loss, args.learning_rate, args.n_estimators, args.subsample, args.criterion, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf,  args.max_depth, args.min_impurity_decrease, args.min_impurity_split, args.init, args.random_state, args.max_features, args.verbose, args.max_leaf_nodes, args.warm_start, args.presort, args.validation_fraction, args.n_iter_no_change, args.tol, args.ccpalpha, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
 elif sys.argv[1] == 'RFC':
-    RF_Classifier( args.n_estimators, args.criterion, args.max_depth, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf, args.max_features, args.max_leaf_nodes, args.min_impurity_decrease,  args.min_impurity_split, args.bootstrap, args.oob_score, args.n_jobs, args.random_state, args.verbose, args.warm_start, args.class_weight, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+    RF_Classifier( args.n_estimators, args.criterion, args.max_depth, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf, args.max_features, args.max_leaf_nodes, args.min_impurity_decrease,  args.min_impurity_split, args.bootstrap, args.oob_score, args.n_jobs, args.random_state, args.verbose, args.warm_start, args.class_weight, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
 elif sys.argv[1] == 'LRC':
-    LR_Classifier(args.penalty, args.dual, args.tol, args.C, args.fit_intercept, args.intercept_scaling, args.class_weight, args.random_state, args.solver, args.max_iter, args.multi_class, args.verbose, args.warm_start, args.n_jobs, args.l1_ratio, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+    LR_Classifier(args.penalty, args.dual, args.tol, args.C, args.fit_intercept, args.intercept_scaling, args.class_weight, args.random_state, args.solver, args.max_iter, args.multi_class, args.verbose, args.warm_start, args.n_jobs, args.l1_ratio, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
 elif sys.argv[1] == 'KNC':
-    KN_Classifier(args.n_neighbors, args.weights, args.algorithm, args.leaf_size, args.p, args.metric, args.metric_params,  args.n_jobs, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+    KN_Classifier(args.n_neighbors, args.weights, args.algorithm, args.leaf_size, args.p, args.metric, args.metric_params,  args.n_jobs, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
 elif sys.argv[1] == 'GNBC':
     GNB_Classifier(args.priors, args.var_smoothing, args.TrainFile, args.TestMethod,  args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)  
 else:
-    print "its not accurate"
+    print ("its not accurate")
     exit()
 
 
