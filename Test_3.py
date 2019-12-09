@@ -689,22 +689,26 @@ if __name__=="__main__":
 
     args = parser.parse_args()
 
-    if   sys.argv[1] == 'SVMC':
-        SVM_classification(args.C, args.kernel, args.degree, args.gamma, args.coef0, args.shrinking, args.probability, args.tol, args.cache_size, args.class_weight, args.verbose, args.max_iter, args.decision_function_shape, args.randomState, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
-    elif sys.argv[1] == 'GNBC':
-        GaussianNB_Classifier(args.priors, args.var_smoothing, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
-    elif sys.argv[1] == 'DTC':
-        DecisionTree_Classification(args.criterion, args.splitter, args.max_depth, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf, args.max_features, args.random_state, args.max_leaf_nodes, args.min_impurity_decrease, args.min_impurity_split, args.class_weight, args.presort, args.TrainFile, args.TestMethod, args.NFolds, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
-    elif sys.argv[1] == 'GBC':
-        GradientBoosting_Classification(args.loss, args.learning_rate, args.n_estimators, args.subsample, args.criterion, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf,  args.max_depth, args.min_impurity_decrease, args.min_impurity_split, args.init, args.random_state, args.max_features, args.verbose, args.max_leaf_nodes, args.warm_start, args.presort, args.validation_fraction, args.n_iter_no_change, args.tol, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
-    elif sys.argv[1] == 'RFC':
-        RandomForestClassifier( args.n_estimators, args.criterion, args.max_depth, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf, args.max_features, args.max_leaf_nodes, args.min_impurity_decrease,  args.min_impurity_split, args.bootstrap, args.oob_score, args.n_jobs, rargs.andom_state, args.verbose, args.warm_start, args.class_weight, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
-    elif sys.argv[1] == 'LRC':
-        LogisticRegression(args.penalty, args.dual, args.tol, args.C, args.fit_intercept, args.intercept_scaling, args.class_weight, args.random_state, args.solver, args.max_iter, args.multi_class, args.verbose, args.warm_start, args.n_jobs, args.l1_ratio, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
-    elif sys.argv[1] == 'KNC':
-        KNeighbors_Classifier(args.n_neighbors, args.weights, args.algorithm, args.leaf_size, args.p, args.metric, args.metric_params,  args.n_jobs, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
-    elif sys.argv[1] == 'SGDC':
-        SGD_Classification(args.loss, args.penalty, args.alpha, args.l1_ratio, args.fit_intercept, args.max_iter, args.tol, args.shuffle, args.verbose, args.epsilon, args.n_jobs, args.random_state, args.learning_rate, args.eta0, args.power_t, args.early_stopping, args.validation_fraction, args.n_iter_no_change, args.class_weight, args.warm_start, args.average, args.TrainFile, args.TestMethod, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
-    else:
-        print "its not accurate"
-        exit()
+if   sys.argv[1] == 'SVMC':
+    SVM_Classifier(args.C, args.kernel, args.degree, args.gamma, args.coef0, args.shrinking, args.probability, args.tol, args.cache_size, args.class_weight, args.verbose, args.max_iter, args.decision_function_shape, args.randomRtate, args.TrainFile, args.TestMethod,  args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+elif sys.argv[1] == 'SGDC':   
+    SGD_Classifier( args.loss, args.penalty, args.alpha, args.l1_ratio, args.fit_intercept, args.max_iter, args.tol, args.shuffle, args.verbose, args.epsilon, args.n_jobs, args.random_state, args.learning_rate, args.eta0, args.power_t, args.early_stopping, args.validation_fraction, args.n_iter_no_change, args.class_weight, args.warm_start, args.average, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+elif sys.argv[1] == 'DTC':
+    DT_Classifier(args.criterion, args.splitter, args.max_depth, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf, args.max_features,  args.random_state, args.max_leaf_nodes, args.min_impurity_decrease, args.min_impurity_split, args.class_weight, args.presort, args.ccp_alpha, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+elif sys.argv[1] == 'GBC':
+    GB_Classifier(args.loss, args.learning_rate, args.n_estimators, args.subsample, args.criterion, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf,  args.max_depth, args.min_impurity_decrease, args.min_impurity_split, args.init, args.random_state, args.max_features, args.verbose, args.max_leaf_nodes, args.warm_start, args.presort, args.validation_fraction, args.n_iter_no_change, args.tol, args.ccp_alpha, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+elif sys.argv[1] == 'RFC':
+    RF_Classifier( args.n_estimators, args.criterion, args.max_depth, args.min_samples_split, args.min_samples_leaf, args.min_weight_fraction_leaf, args.max_features, args.max_leaf_nodes, args.min_impurity_decrease,  args.min_impurity_split, args.bootstrap, args.oob_score, args.n_jobs, args.random_state, args.verbose, args.warm_start, args.class_weight, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+elif sys.argv[1] == 'LRC':
+    LR_Classifier(args.penalty, args.dual, args.tol, args.C, args.fit_intercept, args.intercept_scaling, args.class_weight, args.random_state, args.solver, args.max_iter, args.multi_class, args.verbose, args.warm_start, args.n_jobs, args.l1_ratio, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+elif sys.argv[1] == 'KNC':
+    KN_Classifier(args.n_neighbors, args.weights, args.algorithm, args.leaf_size, args.p, args.metric, args.metric_params,  args.n_jobs, args.TrainFile, args.TestMethod, args.InAlgo, args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)
+elif sys.argv[1] == 'GNBC':
+    GNB_Classifier(args.priors, args.var_smoothing, args.TrainFile, args.TestMethod,  args.SelectedSclaer, args.NFolds, args.Testspt, args.TestFile, args.OutFile, args.htmlOutDir, args.htmlFname, args.OfileName, args.Workdirpath)  
+else:
+    print "its not accurate"
+    exit()
+
+
+
+
