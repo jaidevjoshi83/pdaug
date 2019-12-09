@@ -120,8 +120,6 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
             else:
                 print('Scalling Method option was not correctly selected...!')
 
-            #print (x_test)
-
             prob = Algo.fit(x_train, y[train]).predict_proba(x_test)
             predicted = Algo.fit(x_train, y[train]).predict(x_test)
 
@@ -157,16 +155,13 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.title('ROC Cureve for All the classifier')
         pl.legend(loc="lower right")
 
-
         ###############################################################################################################################
         V_header = ["accuracy","presision","recall","f1","mean_auc"]                                                                  #
         v_values = [round(accuracy_score_mean, 3), round(precision_mean, 3), round(recall_mean, 3),round(f_score_mean, 3), round(mean_auc, 3)]                                          # 
         mname  = ("Logistic_Regression","GaussianNB","KNeighbors","DecisionTree","SVC", "Ranodm Forest","SGDClassifier","GradBoost" ) #
         ###############################################################################################################################
 
-
         df = pd.DataFrame([v_values], columns=V_header)
-
 
         df.to_csv(os.path.join(Workdirpath, OutFile), columns=V_header)
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "out.jpg"))
