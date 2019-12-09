@@ -229,7 +229,6 @@ def SVM_classification(C, kernel, degree, gamma, coef0, shrinking, probability, 
     "decision_function_shape":decision_function_shape, 
     "random_state":random_state}
 
-
     model = SVC(pera**)
 
     return model
