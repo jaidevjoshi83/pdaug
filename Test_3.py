@@ -211,12 +211,9 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.bar(V_header, v_values, color=(0.2, 0.4, 0.6, 0.6))
         pl.xlabel('Accuracy Perameters', fontweight='bold', color = 'orange', fontsize='17', horizontalalignment='center')
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.jpg"))
-        pl.show()
-
+        #pl.show()
         HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
-
         print "Internal"
-
 
     elif Test_Method == 'External':
 
@@ -279,7 +276,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.bar(V_header, v_values, color=(0.2, 0.4, 0.6, 0.6))
         pl.xlabel('Accuracy Perameters', fontweight='bold', color = 'orange', fontsize='17', horizontalalignment='center')
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.jpg"))
-        pl.show()
+        #pl.show()
         HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 
         print "External"
@@ -342,7 +339,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.bar(V_header, v_values, color=(0.2, 0.4, 0.6, 0.6))
         pl.xlabel('Accuracy Perameters', fontweight='bold', color = 'orange', fontsize='17', horizontalalignment='center')
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.jpg"))
-        pl.show()
+        #pl.show()
         HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
         print "TestSplit"
 
