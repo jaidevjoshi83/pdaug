@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-I", "--InFile", required=True, default=None, help=".fasta or .tsv")
 parser.add_argument("-O", "--OutFile", required=True, default=None, help=".fasta or .tsv")
 parser.add_argument("-M", "--Method", required=True, default=None, help="Path to target tsv file")
-parser.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
+parser.add_argument("-W","--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
 
 args = parser.parse_args()
 
