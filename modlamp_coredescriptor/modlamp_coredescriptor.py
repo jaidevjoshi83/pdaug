@@ -7,8 +7,8 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("-I", "--InFile", required=True, default=None, help=".fasta or .tsv")
 parser.add_argument("-O", "--OutFile", required=True, default=None, help=".fasta or .tsv")
-parser.add_argument("-M", "--Method", required=True, default=None, help="Path to target tsv file")
-parser.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
+#parser.add_argument("-M", "--Method", required=True, default=None, help="Path to target tsv file")
+#parser.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
 
 
 args = parser.parse_args()
@@ -38,17 +38,18 @@ elif args.InFile.split('.tsv') :
 else:
     pass
 
-df = 	pd.DataFrame()
+df =    pd.DataFrame()
 
 for i, l in enumerate(Pep):
 
-	D = PeptideDescriptor([l])
-	D.count_ngrams([ 2])
+    D = PeptideDescriptor([l])
+    D.count_ngrams([2])
 
-	df1 = pd.DataFrame(D.descriptor, index=["sequence"+str(i),])
-	df = pd.concat([df, df1], axis=0)
+    df1 = pd.DataFrame(D.descriptor, index=["sequence"+str(i),])
+    df = pd.concat([df, df1], axis=0)
 
-print df.fillna(0)
+df =  df.fillna(0)
+df.to_csv(args.OutFile, sep='\t', index=None)
 
 
 

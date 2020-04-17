@@ -1,0 +1,89 @@
+<tool id="modlamp_corefunctions" name="modlamp corefunctions" version="1.1.2">
+  <description> core functions</description>
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/modlamp_corefunctions.py'  '$SelCoreFunction.CoreFunction'
+
+                        #if $SelCoreFunction.CoreFunction == 'mutateAA'
+                            --InFile $SelCoreFunction.InFile
+                            --nr $SelCoreFunction.nr
+                            --Prob $SelCoreFunction.prob
+
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+                        #end if 
+
+                        #if $SelCoreFunction.CoreFunction == 'filterduplicates'
+                            --InFile $SelCoreFunction.InFile                          
+                        #end if 
+
+                        #if $SelCoreFunction.CoreFunction == 'keepnaturalaa'
+                            --InFile $SelCoreFunction.InFile
+                        #end if 
+
+                        #if $SelCoreFunction.CoreFunction == 'filteraa'
+                            --InFile $SelCoreFunction.InFile
+                            --FilterAA $SelCoreFunction.FilterAA
+                        #end if 
+    ]]></command>
+
+  <inputs>
+
+    <conditional name='SelCoreFunction' >
+
+        <param name="CoreFunction" type="select" label="Analysis" argument="">
+          <option value="mutateAA">mutateAA</option>
+          <option value="filterduplicates">filterduplicates</option>
+          <option value="keepnaturalaa">keepnaturalaa</option>
+          <option value="filteraa">filteraa</option>
+        </param>
+
+        <when value="mutateAA">
+            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
+            <param name="nr" type="integer" label="nr" value="3" help="--nr" />
+            <param name="prob" type="boolean" label="prob" value="" help="--Prob" />
+        </when>
+
+        <when value="filterduplicates">
+            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
+        </when>
+
+        <when value="keepnaturalaa">
+            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
+        </when>
+
+        <when value="filteraa">
+            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
+            <param name="FilterAA" type="text" value="eisenberg" label="FilterAA" help="--FilterAA"/>
+        </when>
+
+    </conditional>
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+        <data name='output2' format='html' label="repot.html" />
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+

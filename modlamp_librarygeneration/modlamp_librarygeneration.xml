@@ -1,0 +1,175 @@
+<tool id="modlamp_librarygeneration" name="modlamp_librarygeneration" version="1.1.2">
+  <description>for any numerical column</description>
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/modlamp_librarygeneration.py'  '$SelLibGene.LibGene'
+
+
+
+                        #if $SelLibGene.LibGene == 'Random'
+                            --seq_num $SelLibGene.seq_num
+                            --lenmax_s $SelLibGene.lenmax_s
+                            --lenmin_s $SelLibGene.lenmin_s
+                            --S_proba  $SelLibGene.S_proba
+                        #end if 
+
+                        #if $SelLibGene.LibGene == 'Helices'
+                            --seq_num $SelLibGene.seq_num
+                            --lenmax_s $SelLibGene.lenmax_s
+                            --lenmin_s $SelLibGene.lenmin_s                         
+                        #end if 
+
+                        #if $SelLibGene.LibGene == 'Kinked'
+                            --seq_num $SelLibGene.seq_num
+                            --lenmax_s $SelLibGene.lenmax_s
+                            --lenmin_s $SelLibGene.lenmin_s
+                        #end if 
+
+                        #if $SelLibGene.LibGene == 'Oblique'
+                            --seq_num $SelLibGene.seq_num
+                            --lenmax_s $SelLibGene.lenmax_s
+                            --lenmin_s $SelLibGene.lenmin_s
+                        #end if 
+
+                        #if $SelLibGene.LibGene == 'Centrosymmetric'
+                            --seq_num $SelLibGene.seq_num
+                            --lenmax_s $SelLibGene.lenmax_s
+                            --lenmin_s $SelLibGene.lenmin_s
+                        #end if 
+
+                        #if $SelLibGene.LibGene == 'HelicesACP'
+                            --seq_num $SelLibGene.seq_num
+                            --lenmax_s $SelLibGene.lenmax_s
+                            --lenmin_s $SelLibGene.lenmin_s
+                        #end if    
+
+                        #if $SelLibGene.LibGene == 'Hepahelices'
+                            --seq_num $SelLibGene.seq_num
+                            --lenmax_s $SelLibGene.lenmax_s
+                            --lenmin_s $SelLibGene.lenmin_s
+                        #end if 
+
+                        #if $SelLibGene.LibGene == 'AMPngrams'
+                            --seq_num $SelLibGene.seq_num
+                            --lenmax_s $SelLibGene.lenmax_s
+                            --lenmin_s $SelLibGene.lenmin_s
+                        #end if
+
+                        #if $SelLibGene.LibGene == 'AmphipathicArc' 
+                            --seq_num $SelLibGene.seq_num
+                            --lenmax_s $SelLibGene.lenmax_s
+                            --lenmin_s $SelLibGene.lenmin_s
+                        #end if                                    
+
+    ]]></command>
+
+
+  <inputs>
+
+
+    <conditional name='SelLibGene' >
+
+        <param name="LibGene" type="select" label="LibGene" argument="">
+          <option value="Random">Random</option>
+          <option value="Helices">Helices</option>
+          <option value="Kinked">Kinked</option>
+          <option value="Oblique">Oblique</option>
+          <option value="Centrosymmetric">Centrosymmetric</option>
+          <option value="HelicesACP">HelicesACP</option>
+          <option value="Hepahelices">Hepahelices</option>
+          <option value="AMPngrams">AMPngrams</option>
+          <option value="AmphipathicArc">AmphipathicArc</option>
+
+        </param>
+
+        <when value="Random">
+            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
+            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
+            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+            <param name="S_proba"  type="float" value="1.0" label="S_proba" argument="--S_proba" />
+           
+        </when>
+
+        <when value="Helices">
+            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
+            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
+            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+
+        </when>
+
+        <when value="Kinked">
+            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
+            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
+            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+
+        </when>
+
+        <when value="Oblique">
+            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
+            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
+            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+
+        </when>
+
+        <when value="Centrosymmetric">
+            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
+            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
+            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+            <param name="symmetry_s" type="text" value="asymmetric" label="symmetry_s" argument="--symmetry_s" />
+        </when>
+
+        <when value="HelicesACP">
+            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
+            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
+            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+        </when>
+
+        <when value="Hepahelices">
+            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
+            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
+            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+        </when>
+
+        <when value="AMPngrams">
+            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
+            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
+            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+        </when>
+
+        <when value="AmphipathicArc">
+            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
+            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
+            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+            <param name="arcsize" type="integer" value="180" argument="--arcsize" />
+        </when>
+
+    </conditional>
+  </inputs>
+
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+        <data name='output2' format='html' label="repot.html" />
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+

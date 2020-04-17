@@ -1,0 +1,147 @@
+<tool id="modlamp_analysis" name="modlamp analysis" version="1.1.2">
+  <description>for any numerical column</description>
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/modlamp_analysis.py'  '$SelAnalysis.Analysis'
+
+                        #if $SelAnalysis.Analysis == 'CalcAAFreq'
+                            --InFile $SelAnalysis.input1
+
+                            --htmlOutDir '$output2.extra_files_path'
+
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'H'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --Scale $SelAnalysis.settings.scale
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'                            
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'uH'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --Scale $SelAnalysis.settings.scale
+                            --Window $SelAnalysis.settings.window
+                            --Angle $SelAnalysis.settings.angle
+                            --Modality $SelAnalysis.settings.modality
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'charge'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --ph $SelAnalysis.settings.ph
+                            --Amide $SelAnalysis.settings.amide
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'Len'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --C $SelAnalysis.settings.C
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'PlotSummary'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --InFile $SelAnalysis.Analysis.input2
+                            --InFile $SelAnalysis.Analysis.input3
+                            --C $SelAnalysis.settings.C
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+
+                        #end if                       
+
+                    
+
+    ]]></command>
+
+
+  <inputs>
+
+
+    <conditional name='SelAnalysis' >
+
+        <param name="Analysis" type="select" label="MLAlgo" argument="">
+          <option value="CalcAAFreq">CalcAAFreq</option>
+          <option value="H">H</option>
+          <option value="uH">uH</option>
+          <option value="charge">charge</option>
+          <option value="Len">Len</option>
+          <option value="PlotSummary">PlotSummary</option>
+        </param>
+
+        <when value="CalcAAFreq">
+            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+        </when>
+
+        <when value="H">
+            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+            <param name="scale" type="text" value="eisenberg" label="hydrophobicity scale" help="See syntax below"/>
+        </when>
+
+        <when value="uH">
+            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+            <param name="scale" type="text" value="eisenberg" label="hydrophobicity scale" help="See syntax below"/>
+            <param name="Window" type="integer" label="Window" value="1000" help="--Window" />
+            <param name="Angle" type="integer" label="Angle" value="100" help="--Angle" />
+            <param name="Modality" type="text" value="max" label="hydrophobicity scale" help="--Modality"/>
+        </when>
+
+
+        <when value="charge">
+            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+            <param name="ph" type="float" label="ph" value="7.0"  help="--ph" />
+            <param name="amide" type="boolean" label="amide" value="true" help="--Amide" />
+        </when>
+
+        <when value="Len">
+            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+        </when>
+
+        <when value="PlotSummary">
+            <param name="input1" type="data" format="tabular" argument= "--InFile1"/>
+            <param name="input2" type="data" format="tabular" argument= "--InFile2"/>
+            <param name="input3" type="data" format="tabular" argument= "--InFile3"/>
+        </when>
+    </conditional>
+  </inputs>
+
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+        <data name='output2' format='html' label="repot.html" />
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+
