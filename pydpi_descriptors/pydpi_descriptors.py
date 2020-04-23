@@ -74,6 +74,16 @@ if __name__=="__main__":
                         required=True,
                         default=None,
                         help="pep file")
+
+    parser.add_argument("-f", "--L",
+                        required=True,
+                        default=None,
+                        help="pep file")
+
+    parser.add_argument("-f", "--w",
+                        required=True,
+                        default=None,
+                        help="pep file")
                         
     parser.add_argument("-t", "--DesType",
                         required=True,

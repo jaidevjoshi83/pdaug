@@ -9,8 +9,18 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/TSVtoFASTA.py'  -I '$InFile' -M '$Method
-                            
+
+            python '$__tool_directory__/TSVtoFASTA.py'  -I '$InFile' -M '$Method' 
+
+            #if $Method == 'WithClassLable'
+              -P '$OutFile1' -N '$OutFile2' 
+            #end if
+
+          #if $Method == 'NoClassLable'
+               -O '$OutFile3'
+          #end if 
+
+                 
     ]]></command>
 
   <inputs>
@@ -22,9 +32,12 @@
   </inputs>
 
   <outputs>
-        <data name='OutFile1' format='tabular' label="1.tsv" />  
-        <data name='OutFile2' format='tabular' label="2.tsv" />   
-        <data name='OutFile3' format='tabular' label="3.tsv" />
+        <data name='OutFile1' format='tabular' label="Positive.fasta" />  
+        <data name='OutFile2' format='tabular' label="Negative.fasta" />   
+          <filter> $Method == "NoClassLable"</filter>
+        <data name='OutFile3' format='tabular' label="Out.tsv" >
+          <filter> $Method == "WithClassLable"</filter>
+        </data>
   </outputs>
   <tests>
     <test>

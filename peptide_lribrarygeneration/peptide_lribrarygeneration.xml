@@ -1,0 +1,123 @@
+<tool id="peptide_lribrarygeneration" name="peptide lribrarygeneration" version="1.1.2">
+  <description>for any numerical column</description>
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/peptide_lribrarygeneration.py'  '$SelAnalysis.Analysis'
+
+                        #if $SelAnalysis.Analysis == 'CalcAAFreq'
+                            --InFile $SelAnalysis.input1
+
+                            --htmlOutDir '$output2.extra_files_path'
+
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'H'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --Scale $SelAnalysis.settings.scale
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'                            
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'uH'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --Scale $SelAnalysis.settings.scale
+                            --Window $SelAnalysis.settings.window
+                            --Angle $SelAnalysis.settings.angle
+                            --Modality $SelAnalysis.settings.modality
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'charge'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --ph $SelAnalysis.settings.ph
+                            --Amide $SelAnalysis.settings.amide
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'Len'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --C $SelAnalysis.settings.C
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+
+                        #end if 
+
+                        #if $SelAnalysis.Analysis == 'PlotSummary'
+                            --InFile $SelAnalysis.Analysis.input1
+                            --InFile $SelAnalysis.Analysis.input2
+                            --InFile $SelAnalysis.Analysis.input3
+                            --C $SelAnalysis.settings.C
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2'
+                            --OutFile '$output1'
+
+                        #end if                               
+
+    ]]></command>
+
+  <inputs>
+
+
+    <conditional name='SelMethod' >
+
+        <param name="Method" type="select" label="MLAlgo" argument="">
+          <option value="MutatedPeptides">MutatedPeptides</option>
+          <option value="RandomPeptides">RandomPeptides</option>
+          <option value="SlidingWindowPeptide">SlidingWindowPeptide</option>
+        </param>
+
+        <when value="MutatedPeptides">
+            <param name="input1" type="text" label="Peptide sequence" argument= "--sequence" />
+            <param name="mutation_site_list" label="Mutation Site" type="text" argument="--mutation_site_list" />
+            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" />
+        </when>
+
+        <when value="RandomPeptides">
+            <param name="AA_list" type="text" label="Peptide sequence" argument="-AA_list" />
+            <param name="pep_length" type="integer" label="Peptide Legnth" value="7" argument="--pep_length" />
+            <param name="out_pep_length" type="integer" label="Output Peptide Legnth" value="7" argument="--out_pep_length" />
+        </when>
+
+        <when value="SlidingWindowPeptide">
+            <param name="input1" type="data" label="Input Sequence" format="tabular" argument= "--TrainFile"/>
+            <param name="WinSize" type="integer" label="Window Size" value="3" help="--winSize" />
+            <param name="FragSize" type="integer" label="Fragment Size" value="7" help="--FragSize" />
+        </when>
+    </conditional>
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='fasta' label="out.fasta" />    
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+

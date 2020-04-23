@@ -1,0 +1,52 @@
+<tool id="peptide_uversky" name="peptide uversky" version="0.1.0" python_template_version="3.6">
+    <description> Plot a heatmap</description>
+    <requirements>
+
+      <requirement type="package" version="0.25.3">pandas</requirement>
+      <requirement type="package" version="0.9.0">quantiprot</requirement> 
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/peptide_uversky.py'  --Fasta1 '$input1' --Fasta2 '$input2' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2' 
+             
+    ]]></command>
+
+    <inputs>
+      <param name="input1" type="data" format="fasta" argument= "--Fasta1" help="--Fasta1"/>
+      <param name="input2" type="data" format="fasta" argument="--Fasta2"  help="--Fasta2"/>
+    </inputs>
+
+    <outputs>   
+        <data name='output2' format='html' label="repot.html" />
+    </outputs>
+ 
+    <tests>
+        <test>
+            <param name="input1" value="test1.fasta"/>
+            <param name="input2" value="test2.fasta"/>
+            <output name="output2" file="report.html"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+
+
+    ]]></help>
+    <citations>
+        <citation type="bibtex">
+
+@misc{githubseqtk,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {seqtk},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/lh3/seqtk},
+
+}</citation>
+    </citations>
+</tool>
+
+
+

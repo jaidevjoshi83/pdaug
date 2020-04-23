@@ -1,0 +1,92 @@
+<tool id="pydpi_descriptors" name="pydpi descriptors" version="1.1.2">
+  <description>for any numerical column</description>
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/pydpi_descriptors.py'  
+                          
+    ]]></command>
+
+  <inputs>
+
+
+    <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+
+    <conditional name="AdvanceSetting">
+
+        <param name="DesType" type="select" label="DesType" argument="">
+          <option value="PAAC">PAAC</option>
+          <option value="APAAC">APAAC</option>
+          <option value="CTD" selected="true">CTD</option>
+          <option value="DPComp">DPComp</option>
+          <option value="GearyAuto">GearyAuto</option>
+          <option value="MoranAuto">MoranAuto</option>
+          <option value="MoreauBrotoAuto">MoreauBrotoAuto</option>
+          <option value="QSO">QSO</option>
+          <option value="SOCN">SOCN></option>
+          <option value="TPComp">TPComp</option>
+          <option value="All">All</option>  
+        </param>
+
+
+        <when value="PAAC">
+            <conditional name="AdvanceSetting">
+                <param name="Setting" type="select" label="Choose the source BIOM format">
+                    <option value="Default" selected="true">Default</option>
+                    <option value="Advance_perameters">Advance_perameters</option>
+                </param>
+                <when value="UserDefine">
+                    <param name="lamda" type="integer" value="5" argument= "--lamda"/>
+                    <param name="weight" type="float" value="0.5" argument= "--weight"/>
+                </when>
+
+                <when value="Default">
+                </when>
+            </conditional>
+        </when>
+
+        <when value="APAAC">
+            <conditional name="AdvanceSetting">
+                <param name="Setting" type="select" label="Choose the source BIOM format">
+                    <option value="Default" selected="true">Default</option>
+                    <option value="UserDefine">UserDefine</option>
+                </param>
+                <when value="UserDefine">
+                    <param name="lamda" type="integer" value="5" argument= "--lamda"/>
+                    <param name="weight" type="float" value="0.5" argument= "--weight"/>
+                </when>
+
+                <when value="Default">
+                </when>
+            </conditional>
+        </when>
+
+    </conditional>
+
+
+
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+

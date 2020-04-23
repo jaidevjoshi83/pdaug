@@ -1,0 +1,53 @@
+<tool id="modlamp_wetlab" name="modlamp wetlab" version="1.1.2">
+  <description> core functions</description>
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/modlamp_wetlab.py'  
+
+    ]]></command>
+
+  <inputs>
+
+    <param name="input1" type="data" format="tabular" argument= "--InFile"/>
+    <param name="Method" type="select" label="Analysis" argument="">
+      <option value="calc_meanres_ellipticity">calc_meanres_ellipticity</option>
+      <option value="calc_molar_ellipticity">calc_molar_ellipticity</option>
+    </param>
+
+    <param name="WhichData" type="text"  argument= "--WhichData"/>
+    <param name="Wmin" type="integer" value="0" label="Wmin"  help="--Wmin" />
+    <param name="Wmax" type="integer"  value="0" label="Wmax"  help="--Wmax" />
+    <param name="amide" type="boolean" label="boolean" help="--boolean" />
+    <param name="pathlen" type="float" value="0.0" label="bathlen" help="--pathlen" />
+
+    <param name="Combined" type="select" label="Combine" argument="--Combine">
+      <option value="sovent">solvent</option>
+      <option value="all">all</option>
+    </param>
+
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+

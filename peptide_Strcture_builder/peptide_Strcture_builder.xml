@@ -1,0 +1,36 @@
+<tool id="peptide_Strcture_builder" name="peptide Strcture builder" version="1.1.2">
+  <description>for any numerical column</description>
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/peptide_Structure_builder.py' -p '$input1' -o '$output1'
+                                       
+    ]]></command>
+
+  <inputs>
+    <param name="input1" type="data" format="fasta" argument= "--pep"/>
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='fasta' label="out.fasta" />    
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+
