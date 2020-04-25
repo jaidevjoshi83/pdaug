@@ -96,6 +96,8 @@ def Run_fisher(Fasta1, Fasta2, windows_per_frame, overlap_factor, xlabel, ylabel
                             
 
     HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
+
+    
 if __name__=="__main__":
     
     
@@ -147,11 +149,23 @@ if __name__=="__main__":
                         required=True,
                         default=None,
                         help="Path to out file")
+
+    parser.add_argument("--htmlOutDir", 
+                        required=False, 
+                        default=os.path.join(os.getcwd(),'report_dir'), 
+                        help="HTML Out Dir")
+
+    parser.add_argument("--htmlFname", 
+                        required=False, 
+                        help="HTML out file", 
+                        default="jai.html")
+
+    parser.add_argument("--Workdirpath", 
+                        required=False, 
+                        default=os.getcwd(), 
+                        help="Working Directory Path")
       
-    parser.add_argument("-f", "--frame_range",
-                        required=False,
-                        default=None,
-                        help="Path to out file")          
+         
                                                
     args = parser.parse_args()
     Run_fisher(args.Fasta1, args.Fasta2, args.windows_per_frame, args.overlap_factor, args.xlabel, args.ylabel, args.pop1_label, args.pop2_label, args.out_file_path, args.file_name)

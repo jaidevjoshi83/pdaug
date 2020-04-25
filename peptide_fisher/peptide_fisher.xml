@@ -1,14 +1,14 @@
-<tool id="peptide_fisher" name="peptide fisher" version="0.1.0" python_template_version="3.6">
+<tool id="peptide_fisher" name="peptide fisher" version="0.1.0" python_template_version="2.7.18">
 	<description> Plot a heatmap</description>
     <requirements>
-      <requirement type="package" version="3.1.2">matplotlib</requirement>
-      <requirement type="package" version="0.25.3">pandas</requirement>
-      <requirement type="package" version="0.9.0">seaborn</requirement> 
+      <requirement type="package" version="2.7.18">python</requirement>
+      <requirement type="package" version="2.2.5">matplotlib</requirement>
+      <requirement type="package" version="0.2.4">quantiprot</requirement>
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/peptide_fisher.py'  
+        python '$__tool_directory__/peptide_fisher.py'  --Fasta1 '$Fasta1' --Fasta2 '$Fasta2' --overlap_factor '$overlap_factor' --windows_per_frame '$windows_per_frame' --xlabel '$xlabel' --ylabel '$ylabel' --pop1_label '$pop1_label' --pop2_label '$pop2_label' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
              
     ]]></command>
 
@@ -17,10 +17,10 @@
       <param name="Fasta2" type="data"  label="Fasta2" argument="--Fasta2" help="" />
       <param name="overlap_factor" type="integer" value="1" label="overlap_factor" argument="--overlap_factor" help="" />
       <param name="windows_per_frame" type="integer" value="10" label="windows_per_frame" argument="--windows_per_frame" help="" />
-      <param name="xlabel" type="text"  label="xlabel" argument="--xlabel" help="" />
-      <param name="ylabel" type="text"  label="ylabel" argument="--ylabel" help="" />
-      <param name="pop1_label" type="text" label="--pop1_label" argument="--pop1_label" help="" />
-      <param name="pop2_label" type="text" label="--pop2_label" argument="--pop2_label" help="" />
+      <param name="xlabel" type="text"  label="xlabel" value="mean volume" argument="--xlabel" help="" />
+      <param name="ylabel" type="text"  label="ylabel" value="mean hydropathy" argument="--ylabel" help="" />
+      <param name="pop1_label" type="text" label="--pop1_label" value="amyloids" argument="--pop1_label" help="" />
+      <param name="pop2_label" type="text" label="--pop2_label" value="non amyloids" argument="--pop2_label" help="" />
     </inputs>
 
     <outputs>   
@@ -29,32 +29,12 @@
  
     <tests>
         <test>
-            <param name="input1" value="test.tsv"/>
             <output name="output2" file="report.html"/>
         </test>
     </tests>
 
     <help><![CDATA[
-usage: Graph.py [-h] -I IN_FILE [-H FIGHIGHT] [-W FIGWIDTH] [-R ROTATION]
-                [--htmlOutDir HTMLOUTDIR] [--htmlFname HTMLFNAME]
-                [--Workdirpath WORKDIRPATH]
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -I IN_FILE, --in_file IN_FILE
-                        Path to target tsv file
-  -H FIGHIGHT, --FigHight FIGHIGHT
-                        Path to target tsv file
-  -W FIGWIDTH, --FigWidth FIGWIDTH
-                        Path to target tsv file
-  -R ROTATION, --Rotation ROTATION
-                        Path to target tsv file
-  --htmlOutDir HTMLOUTDIR
-                        HTML Out Dir
-  --htmlFname HTMLFNAME
-                        HTML out file
-  --Workdirpath WORKDIRPATH
-                        Working Directory Path
 
     ]]></help>
     <citations>
