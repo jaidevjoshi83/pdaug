@@ -2,7 +2,7 @@
 	<description> Plot a heatmap</description>
     <requirements>
       <requirement type="package" version="2.7.18">python</requirement>
-      <requirement type="package" version="2.2.5">matplotlib</requirement>
+      <requirement type="package" version="1.4.1">powerlaw</requirement>
       <requirement type="package" version="0.2.4">quantiprot</requirement>
     </requirements>
 
@@ -15,8 +15,8 @@
     <inputs>
       <param name="Fasta1" type="data"  label="Fasta1" argument="--Fasta1" help="" />
       <param name="Fasta2" type="data"  label="Fasta2" argument="--Fasta2" help="" />
-      <param name="overlap_factor" type="integer" value="1" label="overlap_factor" argument="--overlap_factor" help="" />
-      <param name="windows_per_frame" type="integer" value="10" label="windows_per_frame" argument="--windows_per_frame" help="" />
+      <param name="overlap_factor" type="integer" value="5" label="overlap_factor" argument="--overlap_factor" help="" />
+      <param name="windows_per_frame" type="integer" value="5" label="windows_per_frame" argument="--windows_per_frame" help="" />
       <param name="xlabel" type="text"  label="xlabel" value="mean volume" argument="--xlabel" help="" />
       <param name="ylabel" type="text"  label="ylabel" value="mean hydropathy" argument="--ylabel" help="" />
       <param name="pop1_label" type="text" label="--pop1_label" value="amyloids" argument="--pop1_label" help="" />

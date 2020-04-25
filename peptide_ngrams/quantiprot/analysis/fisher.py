@@ -1,20 +1,42 @@
-import os
-import sys
-sys.path.insert(0, os.path.abspath('..'))
+# Copyright (c) 2016-2017 Bogumil M. Konopka & Witold Dyrka
+# This software was developed in Kotulska Lab at Politechnika Wroclawska.
+# This module is a part of Quantiprot, released under the MIT license:
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+"""
+This module provides functions for analysing local distribution of samples
+in the feature space defined by quantitative features.
 
-from quantiprot.utils.io import load_fasta_file
-from quantiprot.utils.feature import Feature, FeatureSet
-from quantiprot.metrics.aaindex import get_aa2volume, get_aa2hydropathy
-from quantiprot.metrics.basic import average
-# Local Fisher-test related imports:
-#from quantiprot.analysis.fisher import local_fisher_2d, _plot_local_fisher_2d
-from matplotlib import pyplot as plt
-
+Functions:
+    _count_frame: discretize space and count instances
+    local_fisher_2d: perform a Fisher test for evaluating local differences of
+                     distribution of sequences in comparison to global
+                     distribution in a space defined by selected features.
+"""
 
 from math import log10, floor
+
 import numpy as np
 from matplotlib import pyplot as plt
+
 from scipy.stats import fisher_exact
+
 from quantiprot.utils.sequence import SequenceSet, compact
 
 
@@ -47,8 +69,8 @@ def _count_frame(data, frame_range, num_bins):
 
 
     #Count points in each grid cell
-    grid_x[-1] += 1 # the last cell has to contain data at the border
-    grid_y[-1] += 1 # the last cell has to contain data at the border
+    grid_x[-1] += 1	# the last cell has to contain data at the border
+    grid_y[-1] += 1	# the last cell has to contain data at the border
 
     gte_x = np.matrix(data[:, 0] >= grid_x, dtype='float64')
     lt_x = np.matrix(data[:, 0] < grid_x, dtype='float64')
@@ -217,7 +239,7 @@ def local_fisher_2d(set1, set2, features=None, \
 
 
 def _plot_local_fisher_2d(fisher_res, xlabel="feat_1", ylabel="feat_2",
-                          pop1_label="pop_1", pop2_label="pop_2", out_file_path=None, fig_width=8, fig_hight=8, fig_hspace=0.35, fig_wspace=0.25):
+                          pop1_label="pop_1", pop2_label="pop_2"):
     """
     Plot results of the local Fisher's extact test in the 2d space.
 
@@ -255,11 +277,6 @@ def _plot_local_fisher_2d(fisher_res, xlabel="feat_1", ylabel="feat_2",
         for pos_y in range(len(fisher_or[0])):
             if abs(fisher_or[pos_x][pos_y]) == np.inf:
                 fisher_or[pos_x][pos_y] = np.sign(fisher_or[pos_x][pos_y])*vmax_abs
-
-    ##### Extra Fig perimeters added ################################
-    plt.figure(figsize=(fig_width, fig_hight)) # Figure size 
-    plt.subplots_adjust(hspace = fig_hspace, wspace = fig_wspace) # space between the subplots. 
-    ##################################################################
 
     plt.subplot(221)
     plt.pcolormesh(fisher_res["w_center_x"], fisher_res["w_center_y"],
@@ -303,161 +320,4 @@ def _plot_local_fisher_2d(fisher_res, xlabel="feat_1", ylabel="feat_2",
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.title("Fisher test\np-value (logarithm of 10)")
-
-    #Savefig function added with preserving default behavior
-
-    if out_file_path==None:
-        plt.show()
-    else:
-        plt.savefig(out_file_path,dpi=300)
-
-
-def HTML_Gen(html):
-
-    out_html = open(html,'w')             
-    part_1 =  """
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <title>Bootstrap Example</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <body>
-    <style>
-    div.container_1 {
-      width:600px;
-      margin: auto;
-     padding-right: 10; 
-    }
-    div.table {
-      width:600px;
-      margin: auto;
-     padding-right: 10; 
-    }
-    </style>
-    </head>
-    <div class="jumbotron text-center">
-      <h1> Machine Learning Algorithm Assessment Report </h1>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <img src="1.png" alt="Smiley face" height="500" width="400">
-        </div>
-
-      </div>
-    </div>
-    </body>
-    </html>
-    """ 
-    out_html.write(part_1)
-    out_html.close()
-# Load sets of amyloidogenic and non-amyloidogenic peptides:
-
-def run(Fasta1, Fasta2, windows_per_frame, overlap_factor, xlabel, ylabel, pop1_label, pop2_label, htmlOutDir, htmlFname, Workdirpath):
-
-    if not os.path.exists(htmlOutDir):
-        os.makedirs(htmlOutDir)
-
-    amyload_pos_seq = load_fasta_file(Fasta1)
-    amyload_neg_seq = load_fasta_file(Fasta2)
-
-    # Calculate quantitive features: volume and hydropathy
-    mean_volume = Feature(get_aa2volume()).then(average)
-    mean_hydropathy = Feature(get_aa2hydropathy()).then(average)
-
-    fs = FeatureSet("volume'n'hydropathy")
-    fs.add(mean_volume)
-    fs.add(mean_hydropathy)
-
-    amyload_pos_conv_seq = fs(amyload_pos_seq)
-    amyload_neg_conv_seq = fs(amyload_neg_seq)
-
-    # Do local Fisher:
-    result = local_fisher_2d(amyload_pos_conv_seq, amyload_neg_conv_seq,
-                             windows_per_frame=int(windows_per_frame), overlap_factor=int(overlap_factor))
-
-    # Plot local Fisher:
-    _plot_local_fisher_2d(result, xlabel=xlabel,
-                                  ylabel=ylabel,
-                                  pop1_label=pop1_label,
-                                  pop2_label=pop2_label,
-                                  out_file_path =os.path.join(Workdirpath, htmlOutDir, "1.png") 
-                                  )
-
-    
-    #   plt.savefig(os.path.join(Workdirpath, htmlOutDir, "1.png"))
-
-    HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
-
-if __name__=="__main__":
-    
-    
-    import argparse
-    
-    parser = argparse.ArgumentParser()
-    
-    parser.add_argument("-f1", "--Fasta1",
-                        required=True,
-                        default=None,
-                        help="pep file")
-                        
-    parser.add_argument("-f2", "--Fasta2",
-                        required=True,
-                        default=None,
-                        help="out put file name for str Descriptors")   
-
-    parser.add_argument("-o", "--overlap_factor",
-                        required=False,
-                        default=5,
-                        help="Path to out file")  
-
-    parser.add_argument("-w", "--windows_per_frame",
-                        required=False,
-                        default=5,
-                        help="Path to out file")  
-
-    parser.add_argument("-x", "--xlabel",
-                        required=True,
-                        default=None,
-                        help="Path to out file")  
-
-    parser.add_argument("-y", "--ylabel",
-                        required=True,
-                        default=None,
-                        help="Path to out file")  
-
-    parser.add_argument("-p1", "--pop1_label",
-                        required=True,
-                        default=None,
-                        help="Path to out file")  
-
-    parser.add_argument("-p2", "--pop2_label",
-                        required=True,
-                        default=None,
-                        help="Path to out file") 
-
-
-    parser.add_argument("--htmlOutDir", 
-                        required=False, 
-                        default=os.path.join(os.getcwd(),'report_dir'), 
-                        help="HTML Out Dir")
-
-    parser.add_argument("--htmlFname", 
-                        required=False, 
-                        help="HTML out file", 
-                        default="jai.html")
-
-    parser.add_argument("--Workdirpath", 
-                        required=False, 
-                        default=os.getcwd(), 
-                        help="Working Directory Path")
-                                                
-    args = parser.parse_args()
-
-    run(args.Fasta1, args.Fasta2, args.windows_per_frame, args.overlap_factor, args.xlabel, args.ylabel, args.pop1_label, args.pop2_label, args.htmlOutDir, args.htmlFname, args.Workdirpath)
-
+    plt.show()
