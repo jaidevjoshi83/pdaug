@@ -346,7 +346,7 @@ def HTML_Gen(html):
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <img src="1.png" alt="Smiley face" height="800" width="800">
+          <img src="1.png" alt="Smiley face" height="500" width="400">
         </div>
 
       </div>
@@ -404,43 +404,42 @@ if __name__=="__main__":
     parser.add_argument("-f1", "--Fasta1",
                         required=True,
                         default=None,
-                        help="pep file")
+                        help="Peptide sequence")
                         
     parser.add_argument("-f2", "--Fasta2",
                         required=True,
                         default=None,
-                        help="out put file name for str Descriptors")   
+                        help="Peptide sequence")   
 
     parser.add_argument("-o", "--overlap_factor",
                         required=False,
-                        default=5,
-                        help="Path to out file")  
+                        default=1,
+                        help="overlap_factor (int):ratio between the size of a sliding window and a discretization grid cell (default 1)")  
 
     parser.add_argument("-w", "--windows_per_frame",
                         required=False,
-                        default=5,
-                        help="Path to out file")  
+                        default=10,
+                        help=" windows_per_frame (int): ratio between the whole feature space and the sliding window (default 10)")  
 
     parser.add_argument("-x", "--xlabel",
                         required=True,
                         default=None,
-                        help="Path to out file")  
+                        help="X - label")  
 
     parser.add_argument("-y", "--ylabel",
                         required=True,
                         default=None,
-                        help="Path to out file")  
+                        help="Y - label")  
 
     parser.add_argument("-p1", "--pop1_label",
                         required=True,
                         default=None,
-                        help="Path to out file")  
+                        help="first data set label")  
 
     parser.add_argument("-p2", "--pop2_label",
                         required=True,
                         default=None,
-                        help="Path to out file") 
-
+                        help="Second data set label") 
 
     parser.add_argument("--htmlOutDir", 
                         required=False, 

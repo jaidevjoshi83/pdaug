@@ -1,24 +1,43 @@
 <tool id="pydpi_descriptors" name="pydpi descriptors" version="1.1.2">
   <description>for any numerical column</description>
   <requirements>
+    <requirement type="package" version="2.7.18">python</requirement>
     <requirement type="package" version="0.24.2">pandas</requirement>
-    <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="1.0">pydpi</requirement>
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/pydpi_descriptors.py'  
-                          
+        python '$__tool_directory__/pydpi_descriptors.py' --InFile $input1 
+
+        --DesType $SelectDiscriptor.DesType
+
+        #if $SelectDiscriptor.DesType == 'PAAC'
+          --Lamda $SelectDiscriptor.Lamda
+          --Weight $SelectDiscriptor.Weight
+        #end if 
+
+        #if $SelectDiscriptor.DesType == 'APAAC'
+          --Lamda $SelectDiscriptor.Lamda
+          --Weight $SelectDiscriptor.Weight
+        #end if
+
+        #if $SelectDiscriptor.DesType == 'All'
+          --Lamda $SelectDiscriptor.Lamda
+          --Weight $SelectDiscriptor.Weight
+        #end if
+
+        -O '$output1'
+                  
     ]]></command>
 
   <inputs>
 
+      <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
 
-    <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
-
-    <conditional name="AdvanceSetting">
+      <conditional name="SelectDiscriptor">
 
         <param name="DesType" type="select" label="DesType" argument="">
           <option value="PAAC">PAAC</option>
@@ -29,53 +48,34 @@
           <option value="MoranAuto">MoranAuto</option>
           <option value="MoreauBrotoAuto">MoreauBrotoAuto</option>
           <option value="QSO">QSO</option>
-          <option value="SOCN">SOCN></option>
+          <option value="SOCN">SOCN</option>
           <option value="TPComp">TPComp</option>
           <option value="All">All</option>  
         </param>
 
-
-        <when value="PAAC">
-            <conditional name="AdvanceSetting">
-                <param name="Setting" type="select" label="Choose the source BIOM format">
-                    <option value="Default" selected="true">Default</option>
-                    <option value="Advance_perameters">Advance_perameters</option>
-                </param>
-                <when value="UserDefine">
-                    <param name="lamda" type="integer" value="5" argument= "--lamda"/>
-                    <param name="weight" type="float" value="0.5" argument= "--weight"/>
-                </when>
-
-                <when value="Default">
-                </when>
-            </conditional>
+        <when value="PAAC" >
+          <param name="Lamda" type="integer" value="5" argument= "--Lamda"/>
+          <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
 
-        <when value="APAAC">
-            <conditional name="AdvanceSetting">
-                <param name="Setting" type="select" label="Choose the source BIOM format">
-                    <option value="Default" selected="true">Default</option>
-                    <option value="UserDefine">UserDefine</option>
-                </param>
-                <when value="UserDefine">
-                    <param name="lamda" type="integer" value="5" argument= "--lamda"/>
-                    <param name="weight" type="float" value="0.5" argument= "--weight"/>
-                </when>
-
-                <when value="Default">
-                </when>
-            </conditional>
+        <when value="APAAC" >
+          <param name="Lamda" type="integer" value="5" argument= "--Lamda"/>
+          <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
 
-    </conditional>
+        <when value="All" >
+          <param name="Lamda" type="integer" value="5" argument= "--Lamda"/>
+          <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
+        </when>
 
-
+      </conditional>
 
   </inputs>
 
-  <outputs>
-        <data name='output1' format='tabular' label="out.tsv" />    
-  </outputs>
+    <outputs>
+        <data name='output1' format='tabular' label="1.tsv" multiple="false" />  
+    </outputs>
+
   <tests>
     <test>
       <param name="input" value="1.bed"/>

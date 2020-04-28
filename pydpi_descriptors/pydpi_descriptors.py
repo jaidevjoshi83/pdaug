@@ -2,25 +2,25 @@ import pandas as pd
 from pydpi.pypro import PyPro
 import os
 
+def Decriptor_generator(InFile, Lamda, Weight, DesType, Out_file):
 
-def Decriptor_generator(inpfile, DesType, out_dir):
-
-    if not os.path.exists(out_dir):
-            os.makedirs(out_dir)
-
-    df = pd.read_csv(inpfile)
+    df = pd.read_csv(InFile)
     list_pep_name = df[df.columns.tolist()[0]].tolist()
+
     out_df = pd.DataFrame()
 
-    for p in list_pep_name:
+    for seq in list_pep_name:
+
+        print seq
 
         protein = PyPro()
-        protein.ReadProteinSequence(p)
+
+        protein.ReadProteinSequence(seq)
 
         if DesType == 'PAAC':
-            DS = protein.GetPAAC(lamda=5,weight=0.5)
+            DS = protein.GetPAAC(lamda=int(Lamda), weight=float(Weight))
         elif DesType == 'APAAC':
-            DS = protein.GetAPAAC(lamda=5,weight=0.5)
+            DS = protein.GetAPAAC(lamda=int(Lamda), weight=float(Weight))
         elif DesType == 'CTD':
             DS = protein.GetCTD()
         elif DesType == 'DPComp':
@@ -38,8 +38,8 @@ def Decriptor_generator(inpfile, DesType, out_dir):
         elif DesType == 'TPComp':
             DS = protein.GetTPComp()
         elif DesType == 'All':
-            DS_1 = protein.GetPAAC(lamda=5,weight=0.5)
-            DS_2 = protein.GetAPAAC(lamda=5,weight=0.5)
+            DS_1 = protein.GetPAAC(lamda=int(Lamda), weight=float(Weight))
+            DS_2 = protein.GetAPAAC(lamda=int(Lamda), weight=float(Weight))
             DS_3 = protein.GetCTD()
             DS_4 = protein.GetDPComp()
             DS_5 = protein.GetGearyAuto()
@@ -55,12 +55,12 @@ def Decriptor_generator(inpfile, DesType, out_dir):
                 DS.update(D)
         else:
 
-            print "Enter correct"
+            print ("Enter correct")
             pass
 
         df  = pd.DataFrame(DS, index=[0])
         out_df = pd.concat([out_df, df], axis=0)
-    out_df.to_csv(os.path.join(out_dir,'pep_des.tsv'), index=True,sep='\t')
+    out_df.to_csv(Out_file, index=True,sep='\t')
 
 
 if __name__=="__main__":
@@ -70,18 +70,18 @@ if __name__=="__main__":
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("-f", "--pep",
+    parser.add_argument("-I", "--InFile",
                         required=True,
                         default=None,
                         help="pep file")
 
-    parser.add_argument("-f", "--L",
-                        required=True,
+    parser.add_argument("-l", "--Lamda",
+                        required=False,
                         default=None,
                         help="pep file")
 
-    parser.add_argument("-f", "--w",
-                        required=True,
+    parser.add_argument("-w", "--Weight",
+                        required=False,
                         default=None,
                         help="pep file")
                         
@@ -90,13 +90,12 @@ if __name__=="__main__":
                         default=None,
                         help="out put file name for str Descriptors")   
 
-    parser.add_argument("-o", "--OutDir",
-                        required=None,
-                        default=os.path.join(os.getcwd(),'OutDir'),
-                        help="Path to out file")  
-
-                                               
+    parser.add_argument("-O", "--Out_file",
+                        required=False,  
+                        default="Out.tsv",
+                        help="Path to target tsv file")  
+                              
     args = parser.parse_args()
-    Decriptor_generator(args.pep, args.DesType, args.OutDir)
+    Decriptor_generator(args.InFile, args.Lamda, args.Weight, args.DesType, args.Out_file)
 
    

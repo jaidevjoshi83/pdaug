@@ -1,15 +1,16 @@
 <tool id="peptide_box_plot" name="peptide box plot" version="0.1.0" python_template_version="3.6">
 	<description> Plot a heatmap</description>
     <requirements>
-      <requirement type="package" version="3.1.2">matplotlib</requirement>
+      <requirement type="package" version="2.2.3">matplotlib</requirement>
       <requirement type="package" version="0.25.3">pandas</requirement>
       <requirement type="package" version="0.9.0">seaborn</requirement> 
+
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/peptide_box_plot.py'  
-             
+        python '$__tool_directory__/peptide_box_plot.py' --InFile '$InFile' --Method '$Method' -Rx '$Rx' -Ry '$Ry' --FigHight '$FigHight' --FigWidth '$FigWidth' --Index '$Index'  --ClassLabel '$ClassLabel' --Features '$Features' --Label '$Label' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
+              
     ]]></command>
 
     <inputs>
@@ -19,14 +20,11 @@
       <param name="Ry" type="integer" value="40" label="RotationY" argument="--RotationY" help="" />
       <param name="FigHight" type="integer" value="10" label="FigHight" argument="--FigHight" help="" />
       <param name="FigWidth" type="integer" value="8" label="FigWidth" argument="--FigWidth" help="" />
-      <param name="ImageName" type="text" label="ImageName" argument="--ImageName" help="" />
       <param name="Index" type="boolean" value="false" label="Index" argument="--Index" help="" />
-      <param name="ClassLable" type="text"  label="ClassLable" argument="--ClassLable" help="" />
+      <param name="ClassLabel" type="text"  label="ClassLabel" argument="--ClassLabel" help="" />
       <param name="Features" type="text"  label="Features" argument="--Features" help="" />
-      <param name="Label" type="text"  label="Label" argument="--Label" help="" />
+      <param name="Label" type="text"  label="Label" argument="--Label" help="x label" />
     </inputs>
-
-
 
     <outputs>   
         <data name='output2' format='html' label="repot.html" />

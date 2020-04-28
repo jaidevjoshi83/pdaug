@@ -41,7 +41,7 @@ def HTML_Gen(html):
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <img src="out.png" alt="Smiley face" height="500" width="400">
+          <img src="out.png" alt="Smiley face" height="800" width="800">
         </div>
 
       </div>
@@ -60,12 +60,12 @@ def BoxPlot(InFile, Feature1, Feature2, Feature3, Label, RotationX, RotationY, F
         os.makedirs(htmlOutDir)
 
     df  = pd.read_csv(InFile, sep="\t")
-    plt.figure(figsize=(FigHight,FigWidth))
+    plt.figure(figsize=(int(FigHight),int(FigWidth)))
 
     if Feature3 == False:
         sns.scatterplot(x=Feature1, y=Feature2, hue=Label, data=df)
-        plt.xticks(rotation=RotationX)
-        plt.yticks(rotation=RotationY)
+        plt.xticks(rotation=int(RotationX))
+        plt.yticks(rotation=int(RotationY))
         plt.savefig(os.path.join(Workdirpath, 'out.png'))
 
     else:
@@ -81,7 +81,7 @@ def BoxPlot(InFile, Feature1, Feature2, Feature3, Label, RotationX, RotationY, F
         ax.set_ylabel(Feature2)
         ax.set_zlabel(Feature3)
 
-        plt.savefig(os.path.join(Workdirpath, 'out.png'))
+        plt.savefig(os.path.join(Workdirpath, htmlOutDir, 'out.png'))
 
     HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 

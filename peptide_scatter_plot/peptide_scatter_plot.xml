@@ -8,12 +8,11 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/peptide_scatter_plot.py'  
-             
+        python '$__tool_directory__/peptide_scatter_plot.py' --InFile '$input1' -F1 '$f1' -F2 '$f2' -F3 '$f3' -Rx '$Rx' -Ry '$Ry' -H '$FigHight' -W '$FigWidth' -L '$Label ' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'              
     ]]></command>
 
     <inputs>
-      <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+      <param name="input1" type="data" format="tabular" argument= "--InFile"/>
       <param name="f1" type="text" label="Feature1" help="--Feature1" />
       <param name="f2" type="text" label="Feature2" help="--Feature2" /> 
       <param name="f3" type="text" label="Feature3" help="--Feature3" />
