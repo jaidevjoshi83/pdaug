@@ -10,64 +10,44 @@
     <command detect_errors="exit_code"><![CDATA[
 
 
-        python '$__tool_directory__/modlamp_peptidedescriptor.py'  '$SelLibGene.LibGene'
+        python '$__tool_directory__/modlamp_peptidedescriptor.py'  '$SelDescriptor.Descriptor'
 
+        				--InFile '$InFile'
 
-
-                        #if $SelLibGene.LibGene == 'Random'
-                            --seq_num $SelLibGene.seq_num
-                            --lenmax_s $SelLibGene.lenmax_s
-                            --lenmin_s $SelLibGene.lenmin_s
-                            --S_proba  $SelLibGene.S_proba
+                        #if $SelDescriptor.Descriptor == 'AutoCorrCal'
+                            --WindowSize $SelDescriptor.WindowSize
+                            --ScaleName $SelDescriptor.ScaleName
                         #end if 
 
-                        #if $SelLibGene.LibGene == 'Helices'
-                            --seq_num $SelLibGene.seq_num
-                            --lenmax_s $SelLibGene.lenmax_s
-                            --lenmin_s $SelLibGene.lenmin_s                         
+                        #if $SelDescriptor.Descriptor == 'CrossCorrCal'
+                            --WindowSize $SelDescriptor.WindowSize
+                            --ScaleName $SelDescriptor.ScaleName                        
                         #end if 
 
-                        #if $SelLibGene.LibGene == 'Kinked'
-                            --seq_num $SelLibGene.seq_num
-                            --lenmax_s $SelLibGene.lenmax_s
-                            --lenmin_s $SelLibGene.lenmin_s
+                        #if $SelDescriptor.Descriptor == 'CalculateMovement'
+                            --WindowSize $SelDescriptor.WindowSize
+                            --Angle $SelDescriptor.Angle
+                            --Modality $SelDescriptor.Modality
+                            --ScaleName $SelDescriptor.ScaleName
                         #end if 
 
-                        #if $SelLibGene.LibGene == 'Oblique'
-                            --seq_num $SelLibGene.seq_num
-                            --lenmax_s $SelLibGene.lenmax_s
-                            --lenmin_s $SelLibGene.lenmin_s
+                        #if $SelDescriptor.Descriptor == 'GlobalCal'
+                            --WindowSize $SelDescriptor.WindowSize
+                            --Modality $SelDescriptor.Modality
+                            --ScaleName $SelDescriptor.ScaleName
                         #end if 
 
-                        #if $SelLibGene.LibGene == 'Centrosymmetric'
-                            --seq_num $SelLibGene.seq_num
-                            --lenmax_s $SelLibGene.lenmax_s
-                            --lenmin_s $SelLibGene.lenmin_s
+                        #if $SelDescriptor.Descriptor == 'ProfileCal'
+                            --ProfType $SelDescriptor.ProfType 
+                            --WindowSize $SelDescriptor.WindowSize
+                            --ScaleName $SelDescriptor.ScaleName
                         #end if 
 
-                        #if $SelLibGene.LibGene == 'HelicesACP'
-                            --seq_num $SelLibGene.seq_num
-                            --lenmax_s $SelLibGene.lenmax_s
-                            --lenmin_s $SelLibGene.lenmin_s
+                        #if $SelDescriptor.Descriptor == 'ArcCal'
+                            --Modality $SelDescriptor.Modality
                         #end if    
 
-                        #if $SelLibGene.LibGene == 'Hepahelices'
-                            --seq_num $SelLibGene.seq_num
-                            --lenmax_s $SelLibGene.lenmax_s
-                            --lenmin_s $SelLibGene.lenmin_s
-                        #end if 
-
-                        #if $SelLibGene.LibGene == 'AMPngrams'
-                            --seq_num $SelLibGene.seq_num
-                            --lenmax_s $SelLibGene.lenmax_s
-                            --lenmin_s $SelLibGene.lenmin_s
-                        #end if
-
-                        #if $SelLibGene.LibGene == 'AmphipathicArc' 
-                            --seq_num $SelLibGene.seq_num
-                            --lenmax_s $SelLibGene.lenmax_s
-                            --lenmin_s $SelLibGene.lenmin_s
-                        #end if                                    
+                        --OutFile $output1
 
     ]]></command>
 
@@ -75,9 +55,12 @@
   <inputs>
 
 
-    <conditional name='SelLibGene' >
+  	<param name="InFile" type="data" format="fasta" argument= "--InFile"/>
 
-        <param name="LibGene" type="select" label="LibGene" argument="">
+
+    <conditional name='SelDescriptor' >
+
+        <param name="Descriptor" type="select" label="LibGene" argument="">
           <option value="AutoCorrCal">AutoCorrCal</option>
           <option value="CrossCorrCal">CrossCorrCal</option>
           <option value="CalculateMovement">CalculateMovement</option>
@@ -86,21 +69,17 @@
           <option value="ArcCal">ArcCal</option>
         </param>
 
-        <when value="AutoCorrCal">
-            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
+        <when value="AutoCorrCal">          
             <param name="WindowSize" type="integer" value="7" argument="--WindowSize" />
             <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
         </when>
 
         <when value="CrossCorrCal">
-            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
             <param name="WindowSize" type="integer" value="7" argument="--WindowSize" />
             <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
-
         </when>
 
         <when value="CalculateMovement">
-            <param name="InFile"  type="data" formate="tabular" argument= "--seq_num"/>
             <param name="WindowSize" type="integer" value="1000" argument="--WindowSize" />
             <param name="Angle" type="integer" value="100" argument="--Angle" />
             <param name="Modality" type="text" value="max" argument="--Modality" />
@@ -108,7 +87,6 @@
         </when>
 
         <when value="GlobalCal">
-            <param name="InFile"  type="data" formate="tabular" argument= "--seq_num"/>
             <param name="WindowSize" type="integer" value="1000" argument="--lenmin_s" />
             <param name="Modality" type="text" value="max" argument="--Modality" />
             <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
@@ -116,16 +94,13 @@
         </when>
 
         <when value="ProfileCal">
-            <param name="InFile" type="data" formate="tabular" argument= "--InFile"/>
             <param name="ProfType" type="text" value="uH" argument="--ProfType" />
             <param name="WindowSize" type="integer" value="7" argument="--lenmin_s" />
             <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
         </when>
 
         <when value="ArcCal">
-            <param name="InFile"  type="data" formate="tabular" argument= "--seq_num"/>
             <param name="Modality" type="text" value="max" argument="--Modality" />
-            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
         </when>
 
     </conditional>
@@ -134,7 +109,6 @@
 
   <outputs>
         <data name='output1' format='tabular' label="out.tsv" />    
-        <data name='output2' format='html' label="repot.html" />
   </outputs>
   <tests>
     <test>
