@@ -4,7 +4,7 @@ import argparse
 
 def TSVtoFASTA(InFile, Method, Positive, Negative, OutFile):
 
-    if Method == 'WithClassLable':
+    if Method == 'WithClassLabel':
 
         f = open(InFile)
         lines = f.readlines()
@@ -27,7 +27,7 @@ def TSVtoFASTA(InFile, Method, Positive, Negative, OutFile):
                 of2.write('>peptide_'+str(m)+'\n')
                 of2.write(line.split('\t')[0]+'\n')
 
-    elif Method == 'NoClassLable':
+    elif Method == 'NoClassLabel':
 
         f = open(InFile)
         lines = f.readlines()

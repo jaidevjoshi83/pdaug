@@ -9,35 +9,39 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-
             python '$__tool_directory__/TSVtoFASTA.py'  -I '$InFile' -M '$Method' 
 
-            #if $Method == 'WithClassLable'
-              -P '$OutFile1' -N '$OutFile2' 
+            #if $Method == 'WithClassLabel'
+              -P '$OutFile1' 
+              -N '$OutFile2' 
             #end if
 
-          #if $Method == 'NoClassLable'
-               -O '$OutFile3'
+          #if $Method == 'NoClassLabel'
+              -O '$OutFile3'
           #end if 
-
-                 
+   
     ]]></command>
 
   <inputs>
     <param name="InFile" type="data" format="tabular" argument= "--InFile1"/>
     <param name="Method" type="select" label="Method"  argument="" help="--Method" >   
-      <option value="WithClassLable"  > WithClassLable </option>
-      <option value="NoClassLable" selected="true" > NoClassLable </option>
+      <option value="WithClassLabel"> WithClassLabel </option>
+      <option value="NoClassLabel" selected="true" > NoClassLabel </option>
     </param> 
   </inputs>
 
   <outputs>
-        <data name='OutFile1' format='tabular' label="Positive.fasta" />  
-        <data name='OutFile2' format='tabular' label="Negative.fasta" />   
-          <filter> $Method == "NoClassLable"</filter>
-        <data name='OutFile3' format='tabular' label="Out.tsv" >
-          <filter> $Method == "WithClassLable"</filter>
-        </data>
+    <data name='OutFile1' format='tabular' label="Positive.fasta" >  
+       <filter>Method == "WithClassLabel"</filter>
+    </data>
+
+    <data name='OutFile2' format='tabular' label="Negative.fasta">   
+       <filter>Method == "WithClassLabel"</filter>
+    </data>
+
+    <data name='OutFile3' format='tabular' label="Out.tsv" >
+      <filter>Method == "NoClassLabel"</filter>
+    </data>
   </outputs>
   <tests>
     <test>

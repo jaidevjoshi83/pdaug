@@ -2,8 +2,9 @@
 	<description>  plot ngrams</description>
     <requirements>
       <requirement type="package" version="2.7.18">python</requirement>
+      <requirement type="package" version="1.4.6">powerlaw</requirement>
       <requirement type="package" version="0.2.4">quantiprot</requirement>
-      <requirement type="package" version="1.4.1">powerlaw</requirement>
+      
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
