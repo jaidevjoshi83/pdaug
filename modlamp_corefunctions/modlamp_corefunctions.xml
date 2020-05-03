@@ -12,57 +12,47 @@
 
         python '$__tool_directory__/modlamp_corefunctions.py'  '$SelCoreFunction.CoreFunction'
 
-                        #if $SelCoreFunction.CoreFunction == 'mutateAA'
-                            --InFile $SelCoreFunction.InFile
-                            --nr $SelCoreFunction.nr
-                            --Prob $SelCoreFunction.prob
+              --InFile '$InFile'
 
-                            --htmlOutDir '$output2.extra_files_path'
-                            --htmlFname '$output2'
-                            --OutFile '$output1'
-                        #end if 
+              #if $SelCoreFunction.CoreFunction == 'mutateAA'
+                  --nr $SelCoreFunction.nr
+                  --Prob $SelCoreFunction.prob
+              #end if 
 
-                        #if $SelCoreFunction.CoreFunction == 'filterduplicates'
-                            --InFile $SelCoreFunction.InFile                          
-                        #end if 
+              #if $SelCoreFunction.CoreFunction == 'filteraa'
+                  --FilterAA $SelCoreFunction.FilterAA
+              #end if 
 
-                        #if $SelCoreFunction.CoreFunction == 'keepnaturalaa'
-                            --InFile $SelCoreFunction.InFile
-                        #end if 
+              --FastOut '$output1'
 
-                        #if $SelCoreFunction.CoreFunction == 'filteraa'
-                            --InFile $SelCoreFunction.InFile
-                            --FilterAA $SelCoreFunction.FilterAA
-                        #end if 
     ]]></command>
 
   <inputs>
 
+    <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
+
     <conditional name='SelCoreFunction' >
 
         <param name="CoreFunction" type="select" label="Analysis" argument="">
-          <option value="mutateAA">mutateAA</option>
-          <option value="filterduplicates">filterduplicates</option>
-          <option value="keepnaturalaa">keepnaturalaa</option>
-          <option value="filteraa">filteraa</option>
+          <option value="mutateAA">Mutate Amino Acid</option>
+          <option value="filterduplicates">Filter Duplicates</option>
+          <option value="keepnaturalaa">Keep Naturalaa</option>
+          <option value="filteraa">Filter Amino Acid</option>
         </param>
 
         <when value="mutateAA">
-            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
-            <param name="nr" type="integer" label="nr" value="3" help="--nr" />
-            <param name="prob" type="boolean" label="prob" value="" help="--Prob" />
+            <param name="nr" type="integer" label="Number of mutations" value="3" help="--nr" />
+            <param name="prob" type="float" label="prob" value="1.0" help="--Prob" />
         </when>
 
         <when value="filterduplicates">
-            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
+
         </when>
 
         <when value="keepnaturalaa">
-            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
         </when>
 
         <when value="filteraa">
-            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
             <param name="FilterAA" type="text" value="eisenberg" label="FilterAA" help="--FilterAA"/>
         </when>
 
@@ -70,8 +60,7 @@
   </inputs>
 
   <outputs>
-        <data name='output1' format='tabular' label="out.tsv" />    
-        <data name='output2' format='html' label="repot.html" />
+        <data name='output1' format='tabular' label="out.fasta" />    
   </outputs>
   <tests>
     <test>

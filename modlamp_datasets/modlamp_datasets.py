@@ -5,10 +5,7 @@ from modlamp.datasets import load_ACPvsRandom
 import os
 import pandas as pd
 
-def DataGen(DataBaseType, OutDir):
-
-    if not os.path.exists(str(OutDir)):
-        os.makedirs(str(OutDir))
+def DataGen(DataBaseType, OutFile):
 
     if DataBaseType == 'AMPvsTM':
         data = load_AMPvsTM()
@@ -22,17 +19,22 @@ def DataGen(DataBaseType, OutDir):
     elif DataBaseType == 'ACPvsRandom':
         data = load_ACPvsRandom()
     else:
-        print "Enter Correct Values"
+        print ("Enter Correct Values")
         exit()
 
     Target = data.target.tolist()
+    Target_list = set(Target)
     df = data.sequences
 
+
     Target = pd.DataFrame(Target, columns=['Target'])
+    df = pd.DataFrame(df, columns=['Peptide'])
+    
     df = pd.DataFrame(df)
     df = pd.concat([df, Target], axis=1)
 
-    df.to_csv(os.path.join(OutDir,'pep_des.tsv'), index=True,sep='\t')
+    df.to_csv(OutFile, index=False, sep='\t')
+
 
 if __name__=="__main__":
 
@@ -44,10 +46,10 @@ if __name__=="__main__":
                         default=None,
                         help="pep file")
                         
-    parser.add_argument("-o", "--OutDir",
-                        required=True,
-                        default=None,
+    parser.add_argument("-o", "--OutFile",
+                        required=False,
+                        default='Out.tsv',
                         help="out put file name for str Descriptors")   
 
     args = parser.parse_args()
-    DataGen(args.DataBaseType, args.OutDir)
+    DataGen(args.DataBaseType, args.OutFile)

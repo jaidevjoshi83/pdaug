@@ -1,5 +1,5 @@
-<tool id="modlamp_coredescriptor" name="modlamp_coredescriptor" version="1.1.2">
-  <description>for any numerical column</description>
+<tool id="TEST" name="TEST" version="1.1.2">
+  <description>for anym numerical column</description>
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="4.1.2">modlamp</requirement> 
@@ -9,16 +9,19 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/modlamp_coredescriptor.py'  -I '$input1' -O '$output1'              
-
+        python '$__tool_directory__/modlamp_plot.py'  --InFile '$InFile' -O '$output1'
+                                   
     ]]></command>
 
   <inputs>
-    <param name="input1" type="data" format="fasta" argument= "--InFile1"/>
+
+    <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
+
   </inputs>
 
+
   <outputs>
-        <data name='output1' format='tabular' label="out.tsv" />    
+        <data name='output1' format='fasta' label="out.fasta" />    
   </outputs>
   <tests>
     <test>

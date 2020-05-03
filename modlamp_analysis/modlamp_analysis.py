@@ -34,16 +34,12 @@ def HTML_Gen(html):
     </style>
     </head>
     <div class="jumbotron text-center">
-      <h1> Machine Learning Algorithm Assessment Report </h1>
+      <h1> Plot summary </h1>
     </div>
     <div class="container">
-      <h2> ROC curve and result summary Graph </h2>
       <div class="row">
         <div class="col-sm-4">
-          <img src="2.png" alt="Smiley face" height="350" width="350">
-        </div>
-        <div class="col-sm-4">
-          <img src="out.png" alt="Smiley face" height="350" width="350">
+          <img src="out.png" alt="Smiley face" height="800" width="1000">
         </div>
       </div>
     </div>
@@ -105,15 +101,39 @@ PlotSaummary.add_argument("--Workdirpath", required=False, default=os.getcwd(), 
 args = parser.parse_args()
 
 
+def ReturnPeptide(Infile):
 
+    file = open(Infile)
+    lines = file.readlines()
+
+    Index = []
+    Pep = []
+
+    for line in lines:
+        if '>' in line:
+            line = line.strip('\n')
+            line = line.strip('\r')
+            Index.append(line.strip('\n'))
+        else:
+            line = line.strip('\n')
+            line = line.strip('\r')
+            Pep.append(line)
+    return Pep, Index
 
 if sys.argv[1] == 'CalcAAFreq':
 
     if not os.path.exists(args.htmlOutDir):
         os.makedirs(args.htmlOutDir)
 
-    df = pd.read_csv(args.InFile, sep="\t")
-    g = GlobalAnalysis(df[df.columns.tolist()[0]].tolist())
+    Pep, Index = ReturnPeptide(args.InFile)
+
+    print (len(Index))
+
+    print (len(Pep))
+
+
+    g = GlobalAnalysis(Pep)
+
     g.calc_aa_freq(plot=True, color='#83AF9B', filename=os.path.join(args.Workdirpath, args.htmlOutDir, args.PlotFile))
     df1 =  pd.DataFrame(g.aafreq[0], columns=['aa_freq'])
     df1.to_csv(os.path.join(args.Workdirpath, args.OutFile),  sep='\t', index=None)
@@ -121,51 +141,64 @@ if sys.argv[1] == 'CalcAAFreq':
 
 elif sys.argv[1] == 'H':
 
-    df = pd.read_csv(args.InFile, sep="\t")
-    g = GlobalAnalysis(df[df.columns.tolist()[0]].tolist())
+    Pep, _ = ReturnPeptide(args.InFile)
+
+    g = GlobalAnalysis(Pep)
     g.calc_H(args.Scale)
     df1 = pd.DataFrame(g.H[0].T, columns=['H'])
     df1.to_csv(os.path.join(args.Workdirpath, args.OutFile),  sep='\t', index=None)
 
-
 elif sys.argv[1] == 'uH':
-    df = pd.read_csv(args.InFile, sep="\t")
-    g = GlobalAnalysis(df[df.columns.tolist()[0]].tolist())
-    g.calc_uH(args.Window, args.Angle, args.Modality)
+
+    Pep, _ = ReturnPeptide(args.InFile)
+
+    g = GlobalAnalysis(Pep)
+
+    g.calc_uH(int(args.Window), int(args.Angle), args.Modality)
     df1 = pd.DataFrame(g.uH[0].T, columns=['uH'])
+
     df1.to_csv(os.path.join(args.Workdirpath, args.OutFile),  sep='\t', index=None)
   
 
 elif sys.argv[1] == 'charge':
-    df = pd.read_csv(args.InFile, sep="\t")
-    g = GlobalAnalysis(df[df.columns.tolist()[0]].tolist())
-    g.calc_charge(args.ph, args.Amide)
+
+    Pep, _ = ReturnPeptide(args.InFile)
+
+    for p in Pep:
+        print (p)
+
+    g = GlobalAnalysis(Pep)
+
+    if args.Amide == 'true':
+        amide = True
+    else:
+      amide = False
+
+    g.calc_charge(float(args.ph), amide)
     df1 = pd.DataFrame(g.charge[0].T, columns=['charge'])
     df1.to_csv(os.path.join(args.Workdirpath, args.OutFile),  sep='\t', index=None)
 
 elif sys.argv[1] == 'Len':
 
-    df = pd.read_csv(args.InFile, sep="\t")
-    df1 = pd.DataFrame([len(x) for x in df[df.columns.tolist()[0]].tolist()], columns=['c'])
+    Pep, _ = ReturnPeptide(args.InFile)
+
+    df1 = pd.DataFrame([len(x) for x in Pep], columns=['c'])
     df1.to_csv(os.path.join(args.Workdirpath, args.OutFile),  sep='\t', index=None)
 
 elif sys.argv[1] == "PlotSummary":
     if not os.path.exists(args.htmlOutDir):
         os.makedirs(args.htmlOutDir)
 
-    df1 = df = pd.read_csv(args.InFile1, sep="\t")
-    seqs1 = df[df.columns.tolist()[0]].tolist()
-    df2 = pd.read_csv(args.InFile2, sep="\t")
-    seqs2 = df2[df2.columns.tolist()[0]].tolist()
+    seqs1, _ = ReturnPeptide(args.InFile1)
+    seqs2, _ = ReturnPeptide(args.InFile2)
 
     if args.InFile3 == None:
         g = GlobalAnalysis([seqs1, seqs2])
     else:
-        df3 = pd.read_csv(args.InFile3, sep="\t")
-        seqs3 = df3[df3.columns.tolist()[0]].tolist()
+        seqs3, _ = ReturnPeptide(args.InFile3)
         g = GlobalAnalysis([seqs1, seqs2, seqs3])
 
-    g.plot_summary(filename=os.path.join(args.Workdirpath, args.htmlOutDir, args.OutFile), colors=None, plot=True)
+    g.plot_summary(filename=os.path.join(args.Workdirpath, args.htmlOutDir, 'Out.png'), colors=None, plot=True)
     HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname))
 
 

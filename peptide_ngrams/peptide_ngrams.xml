@@ -9,7 +9,7 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python2 '$__tool_directory__/ex_ngrams.py' -f1 '$fasta1' -f2 '$fasta2' 
+        python2 '$__tool_directory__/peptide_ngrams.py' -f1 '$fasta1' -f2 '$fasta2'  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
              
     ]]></command>
 

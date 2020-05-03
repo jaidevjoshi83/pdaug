@@ -14,122 +14,115 @@
 
                         #if $SelAnalysis.Analysis == 'CalcAAFreq'
                             --InFile $SelAnalysis.input1
-
                             --htmlOutDir '$output2.extra_files_path'
-
                             --htmlFname '$output2'
                             --OutFile '$output1'
                         #end if 
 
                         #if $SelAnalysis.Analysis == 'H'
-                            --InFile $SelAnalysis.Analysis.input1
-                            --Scale $SelAnalysis.settings.scale
-                            --htmlOutDir '$output2.extra_files_path'
-                            --htmlFname '$output2'
+                            --InFile $SelAnalysis.input1
+                            --Scale $SelAnalysis.scale
                             --OutFile '$output1'                            
                         #end if 
 
                         #if $SelAnalysis.Analysis == 'uH'
-                            --InFile $SelAnalysis.Analysis.input1
-                            --Scale $SelAnalysis.settings.scale
-                            --Window $SelAnalysis.settings.window
-                            --Angle $SelAnalysis.settings.angle
-                            --Modality $SelAnalysis.settings.modality
-                            --htmlOutDir '$output2.extra_files_path'
-                            --htmlFname '$output2'
+                            --InFile $SelAnalysis.input1
+                            --Scale $SelAnalysis.Scale
+                            --Window $SelAnalysis.Window
+                            --Angle $SelAnalysis.Angle
+                            --Modality $SelAnalysis.Modality
                             --OutFile '$output1'
-
                         #end if 
 
                         #if $SelAnalysis.Analysis == 'charge'
-                            --InFile $SelAnalysis.Analysis.input1
-                            --ph $SelAnalysis.settings.ph
-                            --Amide $SelAnalysis.settings.amide
-                            --htmlOutDir '$output2.extra_files_path'
-                            --htmlFname '$output2'
+                            --InFile $SelAnalysis.input1
+                            --ph $SelAnalysis.ph
+                            --Amide $SelAnalysis.amide
                             --OutFile '$output1'
 
                         #end if 
 
                         #if $SelAnalysis.Analysis == 'Len'
-                            --InFile $SelAnalysis.Analysis.input1
-                            --C $SelAnalysis.settings.C
-                            --htmlOutDir '$output2.extra_files_path'
-                            --htmlFname '$output2'
+                            --InFile $SelAnalysis.input1
                             --OutFile '$output1'
-
                         #end if 
 
                         #if $SelAnalysis.Analysis == 'PlotSummary'
-                            --InFile $SelAnalysis.Analysis.input1
-                            --InFile $SelAnalysis.Analysis.input2
-                            --InFile $SelAnalysis.Analysis.input3
-                            --C $SelAnalysis.settings.C
+                            --InFile1 $SelAnalysis.input1
+                            --InFile2 $SelAnalysis.input2
+                            --InFile3 $SelAnalysis.input3
                             --htmlOutDir '$output2.extra_files_path'
                             --htmlFname '$output2'
-                            --OutFile '$output1'
-
                         #end if                       
-
-                    
-
     ]]></command>
 
 
   <inputs>
 
-
     <conditional name='SelAnalysis' >
 
         <param name="Analysis" type="select" label="MLAlgo" argument="">
-          <option value="CalcAAFreq">CalcAAFreq</option>
-          <option value="H">H</option>
-          <option value="uH">uH</option>
-          <option value="charge">charge</option>
-          <option value="Len">Len</option>
-          <option value="PlotSummary">PlotSummary</option>
+          <option value="CalcAAFreq">Calculate amino acide frequency</option>
+          <option value="H">Calculate global hydrophobicity</option>
+          <option value="uH">Calculating hydrophobic moments</option>
+          <option value="charge">Calculate the total molecular charge</option>
+          <option value="Len">Calculate sequence length</option>
+          <option value="PlotSummary">Plot Summary</option>
         </param>
 
         <when value="CalcAAFreq">
-            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
         </when>
 
         <when value="H">
-            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
             <param name="scale" type="text" value="eisenberg" label="hydrophobicity scale" help="See syntax below"/>
         </when>
 
         <when value="uH">
-            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
-            <param name="scale" type="text" value="eisenberg" label="hydrophobicity scale" help="See syntax below"/>
+            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
+            <param name="Scale" type="text" value="eisenberg" label="hydrophobicity scale" help="See syntax below"/>
             <param name="Window" type="integer" label="Window" value="1000" help="--Window" />
             <param name="Angle" type="integer" label="Angle" value="100" help="--Angle" />
-            <param name="Modality" type="text" value="max" label="hydrophobicity scale" help="--Modality"/>
+            <param name="Modality" type="select"  label="hydrophobicity scale" help="--Modality">
+                <option value="max" >Max</option> 
+                <option value="mean">Mean</option> 
+            </param>
+
         </when>
 
-
         <when value="charge">
-            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
             <param name="ph" type="float" label="ph" value="7.0"  help="--ph" />
             <param name="amide" type="boolean" label="amide" value="true" help="--Amide" />
         </when>
 
         <when value="Len">
-            <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
         </when>
 
         <when value="PlotSummary">
-            <param name="input1" type="data" format="tabular" argument= "--InFile1"/>
-            <param name="input2" type="data" format="tabular" argument= "--InFile2"/>
-            <param name="input3" type="data" format="tabular" argument= "--InFile3"/>
+            <param name="input1" type="data" format="fasta" argument= "--InFile1"/>
+            <param name="input2" type="data" format="fasta" argument= "--InFile2"/>
+            <param name="input3" type="data" format="fasta" argument= "--InFile3"/>
         </when>
     </conditional>
   </inputs>
 
 
   <outputs>
-        <data name='output1' format='tabular' label="out.tsv" />    
-        <data name='output2' format='html' label="repot.html" />
+        <data name='output1' format='tabular' label="out.tsv" > 
+            <filter>SelAnalysis['Analysis'] != "PlotSummary"</filter>
+        </data>
+
+
+        <data name='output2' format='html' label="repot.html" >
+             <filter>SelAnalysis['Analysis'] != "H"</filter>
+             <filter>SelAnalysis['Analysis'] != "uH"</filter>
+             <filter>SelAnalysis['Analysis'] != "charge"</filter>
+             <filter>SelAnalysis['Analysis'] != "Len"</filter>
+        </data>
+
   </outputs>
   <tests>
     <test>
