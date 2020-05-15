@@ -1,36 +1,57 @@
 <tool id="modlamp_wetlab" name="modlamp wetlab" version="1.1.2">
   <description> core functions</description>
   <requirements>
-    <requirement type="package" version="0.24.2">pandas</requirement>
-    <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="0.25.3">pandas</requirement>
+    <requirement type="package" version="3.1.2">matplotlib</requirement>
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/modlamp_wetlab.py'  
+        python '$__tool_directory__/modlamp_wetlab.py' --Method '$SelMethod.Method' --Wmin '$SelMethod.Wn' --Wmax '$SelMethod.Wx'  --InFiles '$input1'  
+
+                  #if $SelMethod.Method == 'PlotData'
+                    --CalcType '$SelMethod.CalcType'
+                  #end if
+
+                  #if $SelMethod.Method == 'Calculate_Halicity'
+                    --Temperature '$SelMethod.Temp'
+                    --FinLenCorrOption '$SelMethod.K'
+                    --Induction '$SelMethod.Induction'
+                  #end if                
 
     ]]></command>
 
   <inputs>
 
-    <param name="input1" type="data" format="tabular" argument= "--InFile"/>
-    <param name="Method" type="select" label="Analysis" argument="">
-      <option value="calc_meanres_ellipticity">calc_meanres_ellipticity</option>
-      <option value="calc_molar_ellipticity">calc_molar_ellipticity</option>
-    </param>
+    <param name="input1" type="data" format="tabular"  multiple="true" argument= "--TrainFile"/>
 
-    <param name="WhichData" type="text"  argument= "--WhichData"/>
-    <param name="Wmin" type="integer" value="0" label="Wmin"  help="--Wmin" />
-    <param name="Wmax" type="integer"  value="0" label="Wmax"  help="--Wmax" />
-    <param name="amide" type="boolean" label="boolean" help="--boolean" />
-    <param name="pathlen" type="float" value="0.0" label="bathlen" help="--pathlen" />
+    <conditional name='SelMethod' >
 
-    <param name="Combined" type="select" label="Combine" argument="--Combine">
-      <option value="sovent">solvent</option>
-      <option value="all">all</option>
-    </param>
+      <param name="Method" type="select" label="Method" argument="">
+        <option value="PlotData">Plot Data</option>
+        <option value="Calculate_Halicity">Calculate Halicity</option>
+      </param>
+
+      <when value="PlotData">
+        <param name="Wn" type="integer" value='185' argument= "--Wn"/>
+        <param name="Wx" type="integer" value='260' argument= "--Wx"/>
+        <param name="CalcType" type="select" label="CalcType" argument="">
+          <option value="molar_ellipticity">calc_molar_ellipticity</option>
+          <option value="mean_residue_ellipticity">calc_mean_residue_ellipticity</option>
+          <option value="circular_dichroism">calc_circular_dichroism</option>
+        </param>
+      </when>
+
+      <when value="Calculate_Halicity">
+        <param name="Wn" type="integer" value='185' argument= "--Wn"/>
+        <param name="Wx" type="integer" value='260' argument= "--Wx"/>
+        <param name="Temp" type="float" value="24" argument="--Temprature" />
+        <param name="K"   type="float" value="2.0" argument="--FinLenCorrOption" />
+        <param name="Induction" type="boolean" value='true' argument="--Induction " /> 
+      </when>
+    </conditional>
 
   </inputs>
 

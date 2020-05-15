@@ -18,6 +18,8 @@ import os
 from os import listdir, makedirs
 from os.path import join, exists, splitext
 
+import matplotlib
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -55,7 +57,7 @@ class CD:
     Recognized solvents are **W** for water and **T** for TFE.
     """
     
-    def __init__(self, directory, wmin, wmax, Workdirpath, htmlOutDir, htmlFname, amide=True, pathlen=1):
+    def __init__(self, directory, wmin, wmax, amide=True, pathlen=1):
         """Init method for class CD.
         
         :param directory: {str} directory containing all data files to be read. Files need a **.csv** ending
@@ -98,11 +100,6 @@ class CD:
         self.wmax = wmax
         self.amide = amide
         self.pathlen = pathlen
-
-        self.htmlOutDir = htmlOutDir 
-        self.Workdirpath = Workdirpath
-        self.htmlFname = htmlFname
-
         
         self._read_header()  # call the _read_header function to fill up all attributes
     
@@ -199,7 +196,7 @@ class CD:
         return self.meanres_ellipticity
    
     
-    def _plot_single(self, w, d, col, y_label, title, filename, y_min, y_max):
+    def _plot_single(self, w, d, col, y_label, title, filename, y_min, y_max, OutPath):
         """Private plot function used by :py:func:`modlamp.wetlab.CD.plot()` for plotting single CD plots"""
         
         fig, ax = plt.subplots()
@@ -216,9 +213,9 @@ class CD:
         plt.ylim((y_min / 1000., y_max / 1000.))
         img_name = splitext(filename)[0] + '.pdf'
         #plt.savefig(join(self.directory, 'PDF', img_name), dpi=150)
-        plt.savefig(os.path.join(self.Workdirpath, self.htmlOutDir, "1.pdf"))
+        plt.savefig(os.path.join(OutPath, "1.png"))
     
-    def _plot_double(self, w, dt, dw, y_label, title, filename, y_min, y_max):
+    def _plot_double(self, w, dt, dw, y_label, title, filename, y_min, y_max, OutPath):
         """Private plot function used by :py:func:`modlamp.wetlab.CD.plot()` for plotting combined CD plots"""
         
         fig, ax = plt.subplots()
@@ -238,9 +235,9 @@ class CD:
         plt.legend(loc=1)
         img_name = splitext(filename)[0] + '_M.pdf'
         #plt.savefig(join(self.directory, 'PDF', img_name), dpi=150)
-        plt.savefig(os.path.join(self.Workdirpath, self.htmlOutDir, "2.pdf"))
+        plt.savefig(os.path.join(OutPath, "2.png"))
     
-    def _plot_all(self, data, w, y_lim):
+    def _plot_all(self, data, w, y_lim, OutPath):
 
         if not os.path.exists(self.htmlOutDir):
             os.makedirs(self.htmlOutDir)
@@ -282,7 +279,7 @@ class CD:
         #plt.savefig(join(self.directory, 'PDF', 'all.pdf'), dpi=150)
         #print "ok"
         #plt.show()
-        plt.savefig(os.path.join(self.Workdirpath, self.htmlOutDir, "3.pdf"))
+        plt.savefig(os.path.join(OutPath, "3.png"))
     
     def _check_datatype(self, data, i, comb_flag):
         """Private function to check data type; used by :py:func`modlamp.wetlab.CD.plot` and
@@ -313,9 +310,9 @@ class CD:
         
         return d, d2, y_label, y_min, y_max
     
-    def plot(self, data='mean_residue_ellipticity', combine='solvent', ylim=None):
-        if not os.path.exists(self.htmlOutDir):
-            os.makedirs(self.htmlOutDir)
+    def plot(self, Workdirpath, htmlOutDir, data='mean_residue_ellipticity', combine='solvent', ylim=None):
+        if not os.path.exists(os.path.join(Workdirpath, htmlOutDir)):
+            os.makedirs(os.path.join(Workdirpath, htmlOutDir))
         """Method to generate CD plots for all read data in the initial directory.
         
         :param data: {str} which data should be plotted (``mean residue ellipticity``, ``molar ellipticity`` or
@@ -353,6 +350,8 @@ class CD:
         # check input data option
         if data in ['mean_residue_ellipticity', 'molar_ellipticity', 'circular_dichroism']:
             # loop through all data for single plots
+
+            print data
             for i, f in enumerate(self.filenames):
                 
                 # get data type to be plotted
@@ -368,16 +367,14 @@ class CD:
                     y_max = 1000 * ylim[1]
                 
                 # plot single plots
-                self._plot_single(w, d, col, y_label, self.names[i] + ' ' + self.solvent[i], f, y_min, y_max)
+                self._plot_single(w, d, col, y_label, self.names[i] + ' ' + self.solvent[i], f, y_min, y_max, os.path.join(Workdirpath, htmlOutDir))
                 # plot mixed plots
                 if combine == 'solvent' and i % 2 == 0:
-                    self._plot_double(w, d, d2, y_label, self.names[i], f, y_min, y_max)
+                    self._plot_double(w, d, d2, y_label, self.names[i], f, y_min, y_max, os.path.join(Workdirpath, htmlOutDir))
             
             if combine == 'all':
-                self._plot_all(data, w, ylim)
+                self._plot_all(data, w, ylim, os.path.join(Workdirpath, htmlOutDir))
 
-
-        
         else:
             print("ERROR\nWrong data option given!\nAvailable:")
             print("['mean_residue_ellipticity', 'molar_ellipticity', 'circular_dichroism']")
@@ -393,18 +390,18 @@ class CD:
         :return: .csv data files saved to the directory containing the read files.
         """
         # check if output folder exists already, else create one
-        if not exists(join(self.directory, 'Dichro')):
-            makedirs(join(self.directory, 'Dichro'))
+        if not exists(join(os.getcwd(), 'Dichro')):
+            makedirs(join(os.getcwd(), 'Dichro'))
         
         if data in ['mean_residue_ellipticity', 'molar_ellipticity', 'circular_dichroism']:
             # loop through all data for single plots
             for i, f in enumerate(self.filenames):
                 # get data type to be plotted
                 d, _, _, _, _ = self._check_datatype(data, i, False)
-                w = range(self.wmax, self.wmin - 1, -1)  # wavelengths
+                w = range(int(self.wmax), int(self.wmin) - 1, -1)  # wavelengths
                 dichro = pd.DataFrame(data=zip(w, d), columns=["V1", "V2"], dtype='float')
-                fname = splitext(f)[0] + '.csv'
-                dichro.to_csv(join(self.directory, 'Dichro', fname), sep=';', index=False)
+                fname = splitext(f)[0] + '.tsv'
+                dichro.to_csv(join(os.getcwd(),'Dichro', fname), sep=';', index=False)
     
     def helicity(self, temperature=24., k=3.5, induction=True, filename=None):
         """Method to calculate the percentage of helicity out of the mean residue ellipticity data.
@@ -467,7 +464,7 @@ class CD:
                     self.helicity_values['Induction'] = induct
             
             if filename:
-                self.helicity_values.to_csv(filename, index=False)
+                self.helicity_values.to_csv(filename, index=False, sep="\t")
         
         else:
             print("ERROR\nmeanres_ellipticity data array empty, call the calculate function first:")
@@ -475,47 +472,123 @@ class CD:
 
 
 if __name__=="__main__":
+    
 
+    from modlamp_wetlab_I import CD
+    import os, glob
     import argparse
-    
+    import string
+
+
+
     parser = argparse.ArgumentParser()
-    
+
     parser.add_argument("-I", "--InFiles", required=True, default=None, help="Path to target tsv file")
-    parser.add_argument("-D", "--WhichData", required=True, default=None, help="mean_residue_ellipticity, molar_ellipticity or circular dichroism" )
+    parser.add_argument("-M", "--Method", required=True, default=None, help="mean_residue_ellipticity, molar_ellipticity or circular dichroism" )
     parser.add_argument("-Wn", "--Wmin", required=True, default=None, help="Method")
     parser.add_argument("-Wx", "--Wmax", required=True, default=None, help="Roatate ticks")
     parser.add_argument("-a", "--amide", required=False, default=True, help="Roatate ticks")
     parser.add_argument("-p", "--pathlen", required=False,  default=1,  help="Figure Hight")
-    parser.add_argument("-M", "--Method", required=True,  default=None,  help="Figure Hight")
+    parser.add_argument("-L", "--CalcType", required=False,  default='molar_ellipticity',  help="Figure Hight")
     parser.add_argument("--htmlOutDir",  required=False, default=os.path.join(os.getcwd(),'report_dir'), help="HTML Out Dir")
     parser.add_argument("--htmlFname", required=False, help="HTML out file", default="jai.html")
     parser.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
     parser.add_argument("-C","--Combined", required=False, default='solvent')
-    parser.add_argument("--OutFile", required=False, default='Out.csv', help="Out.tsv")
-    #parser.add_argument("-L", "--ylim", required=None, default="")
+    parser.add_argument("-O","--OutFile", required=False, default='Out.csv', help="Out.tsv")
+    parser.add_argument("-T", "--Temperature", required=False, default=24, help="Method")
+    parser.add_argument("-K", "--FinLenCorrOption", required=False, default=3.0, help="")
+    parser.add_argument("-D", "--Induction", required=False, default=True, help="")
 
     args = parser.parse_args()
 
-    cd = CD(args.InFiles, args.Wmin, args.Wmax, args.Workdirpath, args.htmlOutDir, args.htmlFname, args.amide, args.pathlen)
 
-    if args.Method == 'calc_meanres_ellipticity':
+    def HTML_Gen(html, ImgPath):
+
+        Im = glob.glob(os.path.join(ImgPath,'*.png'))
+
+        out_html = open(html,'w')             
+        part_1 =  """
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <title>Bootstrap Example</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <body>
+        <style>
+        div.container_1 {
+          width:600px;
+          margin: auto;
+         padding-right: 10; 
+        }
+        div.table {
+          width:600px;
+          margin: auto;
+         padding-right: 10; 
+        }
+        </style>
+        </head>
+        <div class="jumbotron text-center">
+          <h1> Machine Learning Algorithm Assessment Report </h1>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+        """
+        out_html.write(part_1)
+
+        for I in Im:
+
+            Img = "     <img src=%s alt='Smiley face' height='500' width='700'>"%I.split('/')[-1]
+            out_html.write(Img+'\n')
+
+        part_2 = """
+            </div>
+          </div>
+        </div>
+        </body>
+        </html>
+        """ 
+        out_html.write(part_2)
+        out_html.close()
+
+    if args.amide == 'true':
+        Am = True 
+    elif args.amide == 'false':
+        Am = False
+
+    if args.Induction == 'true':
+        Ind  = True 
+    elif args.Induction == 'false':
+        Ind = False
+
+    cd = CD(args.InFiles, int(args.Wmin), int(args.Wmax), amide=Am, pathlen=float(args.pathlen))
+
+    if args.Method == "Plot_data":
+
+        if args.CalcType == 'molar_ellipticity':
+            cd.calc_molar_ellipticity()
+            cd.dichroweb(args.CalcType)
+            cd.plot(Workdirpath=args.Workdirpath, htmlOutDir=args.htmlOutDir, data=args.CalcType, combine='solvent')
+        elif args.CalcType == 'mean_residue_ellipticity':
+            cd.calc_meanres_ellipticity()
+            cd.dichroweb(args.CalcType)
+            cd.plot(Workdirpath=args.Workdirpath, htmlOutDir=args.htmlOutDir, data=args.CalcType, combine='solvent')
+        if args.CalcType == 'circular_dichroism':
+            cd.calc_molar_ellipticity()
+            cd.dichroweb(args.CalcType)
+            cd.plot(Workdirpath=args.Workdirpath, htmlOutDir=args.htmlOutDir, data=args.CalcType, combine='solvent')
+        HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname), os.path.join(args.Workdirpath, args.htmlOutDir),)
+
+    elif args.Method == "Calculate_Halicity":
+
         cd.calc_meanres_ellipticity()
-        cd.plot(data=args.WhichData, combine=args.Combined)
-        df = pd.DataFrame()
-        for f in cd.meanres_ellipticity:
-            df = pd.concat([df,pd.DataFrame(f)], axis=1)
-        print df
-        df.to_csv(os.path.join(args.Workdirpath, args.OutFile),  sep='\t')
-
-    elif args.Method == 'calc_molar_ellipticity':
-        cd.calc_molar_ellipticity()
-        cd.plot(data=args.WhichData, combine=args.Combined)
-        df = pd.DataFrame()
-        for f in cd.molar_ellipticity:
-            df = pd.concat([df,pd.DataFrame(f)], axis=1)
-        print df
-        df.to_csv(os.path.join(args.Workdirpath, args.OutFile), sep='\t')
-
-
-
+        cd.helicity(temperature=float(args.Temperature), k=float(args.FinLenCorrOption), induction=Ind, filename='Halicity.tsv')
+        cd.helicity_values
+    else:
+        pass
 

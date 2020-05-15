@@ -45,7 +45,7 @@ def HTML_Gen(html):
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <img src="1.png" alt="Smiley face" height="500" width="400">
+          <img src="1.png" alt="Smiley face" height="800" width="800">
         </div>
 
       </div>
