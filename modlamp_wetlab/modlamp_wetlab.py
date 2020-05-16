@@ -486,7 +486,7 @@ if __name__=="__main__":
     parser.add_argument("-M", "--Method", required=True, default=None, help="mean_residue_ellipticity, molar_ellipticity or circular dichroism" )
     parser.add_argument("-Wn", "--Wmin", required=True, default=None, help="Method")
     parser.add_argument("-Wx", "--Wmax", required=True, default=None, help="Roatate ticks")
-    parser.add_argument("-a", "--amide", required=False, default=True, help="Roatate ticks")
+    parser.add_argument("-a", "--amide", required=True, default=None, help="Roatate ticks")
     parser.add_argument("-p", "--pathlen", required=False,  default=1,  help="Figure Hight")
     parser.add_argument("-L", "--CalcType", required=False,  default='molar_ellipticity',  help="Figure Hight")
     parser.add_argument("--htmlOutDir",  required=False, default=os.path.join(os.getcwd(),'report_dir'), help="HTML Out Dir")
@@ -555,17 +555,23 @@ if __name__=="__main__":
         out_html.write(part_2)
         out_html.close()
 
+
     if args.amide == 'true':
         Am = True 
     elif args.amide == 'false':
         Am = False
+    else:
+        pass
 
     if args.Induction == 'true':
         Ind  = True 
     elif args.Induction == 'false':
         Ind = False
+    else:
+        pass
 
     cd = CD(args.InFiles, int(args.Wmin), int(args.Wmax), amide=Am, pathlen=float(args.pathlen))
+
 
     if args.Method == "Plot_data":
 

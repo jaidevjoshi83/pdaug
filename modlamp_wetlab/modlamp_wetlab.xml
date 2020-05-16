@@ -32,11 +32,11 @@
     <conditional name='SelMethod' >
 
       <param name="Method" type="select" label="Method" argument="">
-        <option value="PlotData">Plot Data</option>
+        <option value="Plot_data">Plot Data</option>
         <option value="Calculate_Halicity">Calculate Halicity</option>
       </param>
 
-      <when value="PlotData">
+      <when value="Plot_data">
         <param name="Wn" type="integer" value='185' argument= "--Wn"/>
         <param name="Wx" type="integer" value='260' argument= "--Wx"/>
         <param name="CalcType" type="select" label="CalcType" argument="">
