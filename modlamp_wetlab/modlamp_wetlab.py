@@ -580,6 +580,7 @@ if __name__=="__main__":
             cd.dichroweb(args.CalcType)
             cd.plot(Workdirpath=args.Workdirpath, htmlOutDir=args.htmlOutDir, data=args.CalcType, combine='solvent')
             os.system('ls -lh')
+            os.system('ls Dichro/')
         elif args.CalcType == 'mean_residue_ellipticity':
             cd.calc_meanres_ellipticity()
             cd.dichroweb(args.CalcType)
