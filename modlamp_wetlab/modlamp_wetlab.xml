@@ -3,6 +3,7 @@
   <requirements>
     <requirement type="package" version="0.25.3">pandas</requirement>
     <requirement type="package" version="3.1.2">matplotlib</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
