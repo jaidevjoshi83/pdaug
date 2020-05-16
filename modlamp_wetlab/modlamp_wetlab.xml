@@ -11,7 +11,7 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/modlamp_wetlab.py' --Method '$SelMethod.Method' --Wmin '$SelMethod.Wn' --Wmax '$SelMethod.Wx'  --InFiles '$input1'  
+        python '$__tool_directory__/modlamp_wetlab.py' --Method '$SelMethod.Method' --Wmin '$SelMethod.Wn' --Wmax '$SelMethod.Wx'  --InFiles '$input1'  --pathlen '$pathlen' --amide '$amide'
 
                   #if $SelMethod.Method == 'PlotData'
                     --CalcType '$SelMethod.CalcType'
@@ -28,6 +28,8 @@
   <inputs>
 
     <param name="input1" type="data" format="tabular"  multiple="true" argument= "--TrainFile"/>
+    <param name="amide" type='boolean' value="true" argument="--amide" />
+    <param name="pathlen" type='float' value="1" argument="--pathlen" />
 
     <conditional name='SelMethod' >
 
