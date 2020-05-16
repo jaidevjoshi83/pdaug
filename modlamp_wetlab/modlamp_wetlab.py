@@ -351,7 +351,6 @@ class CD:
         if data in ['mean_residue_ellipticity', 'molar_ellipticity', 'circular_dichroism']:
             # loop through all data for single plots
 
-            print data
             for i, f in enumerate(self.filenames):
                 
                 # get data type to be plotted
