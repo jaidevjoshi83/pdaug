@@ -21,6 +21,8 @@
                     --Temperature '$SelMethod.Temp'
                     --FinLenCorrOption '$SelMethod.K'
                     --Induction '$SelMethod.Induction'
+                    --HelicityOut '$output3'
+
                   #end if      
 
                   --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'          
@@ -48,6 +50,7 @@
           <option value="mean_residue_ellipticity">calc_mean_residue_ellipticity</option>
           <option value="circular_dichroism">calc_circular_dichroism</option>
         </param>
+        
       </when>
 
       <when value="Calculate_Halicity">
@@ -62,10 +65,20 @@
   </inputs>
 
   <outputs>
+ 
+    <data name='output2' format='html' label="report.html" > 
+      <filter>SelMethod['Method'] == "Plot_data"</filter>
+    </data>
     <collection name="output1" type="list" label="OuTData">
-        <discover_datasets pattern="__name_and_ext__" type='tsv' directory="Dichro" />
-    </collection>  
-    <data name='output2' format='html' label="report.html" /> 
+        <discover_datasets pattern="__name_and_ext__" type='tsp' directory="Dichro" />
+        <filter>SelMethod['Method'] == "Plot_data"</filter>
+    </collection> 
+
+    <data name='output3' format='tabular' label="helicity.tsv" >
+      <filter>SelMethod['Method'] == "Calculate_Halicity"</filter>
+    </data>
+
+
   </outputs>
   <tests>
     <test>

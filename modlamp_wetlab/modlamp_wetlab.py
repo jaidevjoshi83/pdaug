@@ -81,7 +81,8 @@ class CD:
         # read filenames from directory
        # files = listdir(directory)
         files = directory.split(',')
-        self.filenames = [filename for filename in files if filename.endswith('.tsv')]  # get all .csv files in dir
+
+        self.filenames = [filename for filename in files if filename.endswith('.dat')]  # get all .csv files in dir
         
         # initialize attributes
         self.names = list()
@@ -213,6 +214,7 @@ class CD:
         plt.ylim((y_min / 1000., y_max / 1000.))
         img_name = splitext(filename)[0] + '.pdf'
         #plt.savefig(join(self.directory, 'PDF', img_name), dpi=150)
+        #print os.path.join(OutPath, "2.png")
         plt.savefig(os.path.join(OutPath, "1.png"))
     
     def _plot_double(self, w, dt, dw, y_label, title, filename, y_min, y_max, OutPath):
@@ -235,6 +237,8 @@ class CD:
         plt.legend(loc=1)
         img_name = splitext(filename)[0] + '_M.pdf'
         #plt.savefig(join(self.directory, 'PDF', img_name), dpi=150)
+
+        print os.path.join(OutPath, "2.png")
         plt.savefig(os.path.join(OutPath, "2.png"))
     
     def _plot_all(self, data, w, y_lim, OutPath):
@@ -279,6 +283,7 @@ class CD:
         #plt.savefig(join(self.directory, 'PDF', 'all.pdf'), dpi=150)
         #print "ok"
         #plt.show()
+        #print os.path.join(OutPath, "2.png")
         plt.savefig(os.path.join(OutPath, "3.png"))
     
     def _check_datatype(self, data, i, comb_flag):
@@ -389,18 +394,20 @@ class CD:
         :return: .csv data files saved to the directory containing the read files.
         """
         # check if output folder exists already, else create one
-        if not exists(join(os.getcwd(), 'Dichro')):
-            makedirs(join(os.getcwd(), 'Dichro'))
+
+        if not exists(os.path.join(os.getcwd(), 'Dichro')):
+            makedirs(os.path.join(os.getcwd(), 'Dichro'))
         
         if data in ['mean_residue_ellipticity', 'molar_ellipticity', 'circular_dichroism']:
             # loop through all data for single plots
             for i, f in enumerate(self.filenames):
+               
                 # get data type to be plotted
                 d, _, _, _, _ = self._check_datatype(data, i, False)
                 w = range(int(self.wmax), int(self.wmin) - 1, -1)  # wavelengths
                 dichro = pd.DataFrame(data=zip(w, d), columns=["V1", "V2"], dtype='float')
-                fname = splitext(f)[0] + '.tsv'
-                dichro.to_csv(join(os.getcwd(),'Dichro', fname), sep=';', index=False)
+                fname = f.split('/')[-1].split('.')[0] + '.tsv'
+                dichro.to_csv(os.path.join(os.getcwd(),'Dichro', fname), sep=';', index=False)
     
     def helicity(self, temperature=24., k=3.5, induction=True, filename=None):
         """Method to calculate the percentage of helicity out of the mean residue ellipticity data.
@@ -479,7 +486,6 @@ if __name__=="__main__":
     import string
 
 
-
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-I", "--InFiles", required=True, default=None, help="Path to target tsv file")
@@ -497,6 +503,7 @@ if __name__=="__main__":
     parser.add_argument("-T", "--Temperature", required=False, default=24, help="Method")
     parser.add_argument("-K", "--FinLenCorrOption", required=False, default=3.0, help="")
     parser.add_argument("-D", "--Induction", required=False, default=True, help="")
+    parser.add_argument("-H", "--HelicityOut", required=False, default='Helicity.tsv', help="")
 
     args = parser.parse_args()
 
@@ -579,7 +586,6 @@ if __name__=="__main__":
             cd.calc_molar_ellipticity()
             cd.dichroweb(args.CalcType)
             cd.plot(Workdirpath=args.Workdirpath, htmlOutDir=args.htmlOutDir, data=args.CalcType, combine='solvent')
-            os.system("ls -lh")
         elif args.CalcType == 'mean_residue_ellipticity':
             cd.calc_meanres_ellipticity()
             cd.dichroweb(args.CalcType)
@@ -593,7 +599,7 @@ if __name__=="__main__":
     elif args.Method == "Calculate_Halicity":
 
         cd.calc_meanres_ellipticity()
-        cd.helicity(temperature=float(args.Temperature), k=float(args.FinLenCorrOption), induction=Ind, filename='Halicity.tsv')
+        cd.helicity(temperature=float(args.Temperature), k=float(args.FinLenCorrOption), induction=Ind, filename=args.HelicityOut)
         cd.helicity_values
     else:
         pass
