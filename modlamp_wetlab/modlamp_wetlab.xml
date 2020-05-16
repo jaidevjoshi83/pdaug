@@ -23,7 +23,7 @@
                     --Induction '$SelMethod.Induction'
                   #end if      
 
-                  --htmlOutDir '$output2.extra_files_path'            
+                  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'          
 
     ]]></command>
 
@@ -65,7 +65,7 @@
     <collection name="output1" type="list" label="OuTData">
         <discover_datasets pattern="__name_and_ext__" type='tsv' directory="Dichro" />
     </collection>  
-        <data name='output2' format='html' label="report.html" /> 
+    <data name='output2' format='html' label="report.html" /> 
   </outputs>
   <tests>
     <test>

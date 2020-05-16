@@ -490,7 +490,7 @@ if __name__=="__main__":
     parser.add_argument("-p", "--pathlen", required=False,  default=1,  help="Figure Hight")
     parser.add_argument("-L", "--CalcType", required=False,  default='molar_ellipticity',  help="Figure Hight")
     parser.add_argument("--htmlOutDir",  required=False, default=os.path.join(os.getcwd(),'report_dir'), help="HTML Out Dir")
-    parser.add_argument("--htmlFname", required=False, help="HTML out file", default="jai.html")
+    parser.add_argument("--htmlFname", required=False, help="HTML out file", default="Out.html")
     parser.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
     parser.add_argument("-C","--Combined", required=False, default='solvent')
     parser.add_argument("-O","--OutFile", required=False, default='Out.csv', help="Out.tsv")
