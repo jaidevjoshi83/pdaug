@@ -81,7 +81,7 @@ class CD:
         # read filenames from directory
        # files = listdir(directory)
         files = directory.split(',')
-        self.filenames = [filename for filename in files if filename.endswith('.csv')]  # get all .csv files in dir
+        self.filenames = [filename for filename in files if filename.endswith('.tsv')]  # get all .csv files in dir
         
         # initialize attributes
         self.names = list()
@@ -128,8 +128,8 @@ class CD:
             self.solvent.append(head[3].split('\r\n')[0])
             
             # read CD data
-            wlengths = [int(line.split(',')[0]) for line in data]  # get rid of s***** line ends
-            ellipts = [float(line.split(',')[1].split('\r\n')[0]) for line in data]
+            wlengths = [int(line.split('\t')[0]) for line in data]  # get rid of s***** line ends
+            ellipts = [float(line.split('\t')[1].split('\r\n')[0]) for line in data]
             self.circular_dichroism.append(np.array(list(zip(wlengths, ellipts))))
             
             # calculate MW and transform concentration to mg/ml
@@ -579,8 +579,8 @@ if __name__=="__main__":
             cd.calc_molar_ellipticity()
             cd.dichroweb(args.CalcType)
             cd.plot(Workdirpath=args.Workdirpath, htmlOutDir=args.htmlOutDir, data=args.CalcType, combine='solvent')
-            os.system('ls -lh')
-            os.system('ls Dichro/')
+            os.environ['p'] = os.getcwd()
+            os.system("echo $p/Dichro")
         elif args.CalcType == 'mean_residue_ellipticity':
             cd.calc_meanres_ellipticity()
             cd.dichroweb(args.CalcType)
