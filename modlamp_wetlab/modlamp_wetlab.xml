@@ -21,7 +21,9 @@
                     --Temperature '$SelMethod.Temp'
                     --FinLenCorrOption '$SelMethod.K'
                     --Induction '$SelMethod.Induction'
-                  #end if                
+                  #end if      
+
+                  --htmlOutDir '$output2.extra_files_path'            
 
     ]]></command>
 
@@ -61,6 +63,7 @@
 
   <outputs>
         <data name='output1' format='tabular' label="out.tsv" />    
+        <data name='output2' format='html' label="report.html" /> 
   </outputs>
   <tests>
     <test>
