@@ -62,7 +62,9 @@
   </inputs>
 
   <outputs>
-        <data name='output1' format='tabular' label="out.tsv" />    
+    <collection name="output1" type="list" label="OuTData">
+        <discover_datasets pattern="__name_and_ext__" type='tsv' directory="Dichro" />
+    </collection>  
         <data name='output2' format='html' label="report.html" /> 
   </outputs>
   <tests>
