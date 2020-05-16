@@ -473,7 +473,7 @@ class CD:
 if __name__=="__main__":
     
 
-    from modlamp_wetlab_I import CD
+
     import os, glob
     import argparse
     import string
