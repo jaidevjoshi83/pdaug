@@ -39,7 +39,7 @@
        <filter>Method == "WithClassLabel"</filter>
     </data>
 
-    <data name='OutFile3' format='tabular' label="Out.tsv" >
+    <data name='OutFile3' format='tabular' label="Out.fasta" >
       <filter>Method == "NoClassLabel"</filter>
     </data>
   </outputs>

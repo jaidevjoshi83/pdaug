@@ -1,3 +1,4 @@
+import modlamp
 from modlamp.datasets import load_AMPvsTM
 from modlamp.datasets import load_AMPvsUniProt
 from modlamp.datasets import load_ACPvsTM

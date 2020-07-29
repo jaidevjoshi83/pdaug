@@ -2,6 +2,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
+import quantiprot
 from quantiprot.utils.io import load_fasta_file
 from quantiprot.utils.feature import Feature, FeatureSet
 from quantiprot.metrics.aaindex import get_aa2volume, get_aa2hydropathy

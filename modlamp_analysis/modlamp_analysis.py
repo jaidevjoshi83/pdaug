@@ -92,7 +92,6 @@ Len.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="Wor
 PlotSaummary = subparsers.add_parser('PlotSummary')
 PlotSaummary.add_argument("-I1","--InFile1", required=True, default=None, help="")
 PlotSaummary.add_argument("-I2", "--InFile2", required=True, default=None, help="Out.tsv")
-PlotSaummary.add_argument("-I3","--InFile3", required=False, default=None, help="")
 PlotSaummary.add_argument("--OutFile", required=False, default='Out.png', help="out.png")
 PlotSaummary.add_argument("--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'), help="HTML Out Dir")
 PlotSaummary.add_argument("--htmlFname", required=False, help="HTML out file", default="jai.html")
@@ -127,9 +126,9 @@ if sys.argv[1] == 'CalcAAFreq':
 
     Pep, Index = ReturnPeptide(args.InFile)
 
-    print (len(Index))
+    #print (len(Index))
 
-    print (len(Pep))
+    #print (len(Pep))
 
 
     g = GlobalAnalysis(Pep)
@@ -192,11 +191,9 @@ elif sys.argv[1] == "PlotSummary":
     seqs1, _ = ReturnPeptide(args.InFile1)
     seqs2, _ = ReturnPeptide(args.InFile2)
 
-    if args.InFile3 == None:
-        g = GlobalAnalysis([seqs1, seqs2])
-    else:
-        seqs3, _ = ReturnPeptide(args.InFile3)
-        g = GlobalAnalysis([seqs1, seqs2, seqs3])
+    
+    g = GlobalAnalysis([seqs1, seqs2])
+
 
     g.plot_summary(filename=os.path.join(args.Workdirpath, args.htmlOutDir, 'Out.png'), colors=None, plot=True)
     HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname))

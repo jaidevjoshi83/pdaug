@@ -2,16 +2,32 @@ import pandas as pd
 from pydpi.pypro import PyPro
 import os
 
+
 def Decriptor_generator(InFile, Lamda, Weight, DesType, Out_file):
 
-    df = pd.read_csv(InFile)
-    list_pep_name = df[df.columns.tolist()[0]].tolist()
+    #df = pd.read_csv(InFile, sep="\t")
+    #list_pep_name = df[df.columns.tolist()[0]].tolist()
+
+    list_pep_name = []
+    f = open(InFile)
+    lines = f.readlines()
+    
+    for line in lines:
+        if ">" in line:
+            pass
+        else:
+            list_pep_name.append(line)
+
+    #try: 
+    #    target = df[df.columns.tolist()[1]]
+    #    print (target)
+    #except:
+    #    pass
+    #
 
     out_df = pd.DataFrame()
 
     for seq in list_pep_name:
-
-        print seq
 
         protein = PyPro()
 
@@ -60,7 +76,8 @@ def Decriptor_generator(InFile, Lamda, Weight, DesType, Out_file):
 
         df  = pd.DataFrame(DS, index=[0])
         out_df = pd.concat([out_df, df], axis=0)
-    out_df.to_csv(Out_file, index=True,sep='\t')
+
+    out_df.to_csv(Out_file, index=False, sep='\t')
 
 
 if __name__=="__main__":

@@ -35,7 +35,7 @@ def TSVtoFASTA(InFile, Method, Positive, Negative, OutFile):
 
         for i, line in enumerate(lines[1:]):
             of1.write('>peptide_'+str(i)+'\n')
-            of1.write(line.split('\t')[0])
+            of1.write(line.split('\t')[0]+'\n')
 
     else:
         pass

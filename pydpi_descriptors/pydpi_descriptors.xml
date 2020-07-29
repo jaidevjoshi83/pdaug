@@ -35,7 +35,7 @@
 
   <inputs>
 
-      <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+      <param name="input1" type="data" format="fasta" argument= "--TrainFile"/>
 
       <conditional name="SelectDiscriptor">
 

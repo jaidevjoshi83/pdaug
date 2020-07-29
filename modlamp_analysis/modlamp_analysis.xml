@@ -1,8 +1,8 @@
 <tool id="modlamp_analysis" name="modlamp analysis" version="1.1.2">
   <description>for any numerical column</description>
   <requirements>
-    <requirement type="package" version="0.24.2">pandas</requirement>
-    <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="1.0.5">pandas</requirement>
+    <requirement type="package" version="4.2.1">modlamp</requirement> 
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
@@ -50,7 +50,6 @@
                         #if $SelAnalysis.Analysis == 'PlotSummary'
                             --InFile1 $SelAnalysis.input1
                             --InFile2 $SelAnalysis.input2
-                            --InFile3 $SelAnalysis.input3
                             --htmlOutDir '$output2.extra_files_path'
                             --htmlFname '$output2'
                         #end if                       
@@ -104,7 +103,6 @@
         <when value="PlotSummary">
             <param name="input1" type="data" format="fasta" argument= "--InFile1"/>
             <param name="input2" type="data" format="fasta" argument= "--InFile2"/>
-            <param name="input3" type="data" format="fasta" argument= "--InFile3"/>
         </when>
     </conditional>
   </inputs>
