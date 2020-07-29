@@ -1,5 +1,5 @@
 <tool id="modlamp_analysis" name="modlamp analysis" version="1.1.2">
-  <description>for any numerical column</description>
+  <description></description>
   <requirements>
     <requirement type="package" version="1.0.5">pandas</requirement>
     <requirement type="package" version="4.2.1">modlamp</requirement> 
