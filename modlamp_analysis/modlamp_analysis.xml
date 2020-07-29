@@ -114,7 +114,7 @@
         </data>
 
 
-        <data name='output2' format='html' label="repot.html" >
+        <data name='output2' format='html' label="report.html" >
              <filter>SelAnalysis['Analysis'] != "H"</filter>
              <filter>SelAnalysis['Analysis'] != "uH"</filter>
              <filter>SelAnalysis['Analysis'] != "charge"</filter>

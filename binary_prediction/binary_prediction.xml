@@ -606,7 +606,7 @@
 
     <outputs>
         <data name='output1' format='tabular' label="out.tsv" />    
-        <data name='output2' format='html' label="repot.html" />
+        <data name='output2' format='html' label="report.html" />
     </outputs>
  
     <tests>

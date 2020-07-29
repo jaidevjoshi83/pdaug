@@ -107,7 +107,7 @@
 
 
   <outputs>   
-        <data name='output2' format='html' label="repot.html" />
+        <data name='output2' format='html' label="report.html" />
   </outputs>
   <tests>
     <test>

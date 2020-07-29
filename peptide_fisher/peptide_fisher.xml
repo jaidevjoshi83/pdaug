@@ -24,7 +24,7 @@
     </inputs>
 
     <outputs>   
-        <data name='output2' format='html' label="repot.html" />
+        <data name='output2' format='html' label="report.html" />
     </outputs>
  
     <tests>
@@ -38,7 +38,7 @@
             <param name="ylabel" value="mean hydropathy" />
             <param name="pop1_label"  value="amyloids" />
             <param name="pop2_label"  value="non amyloids" />
-            <output name="output2" value="repot.html" />
+            <output name="output2" value="report.html" />
         </test>
     </tests>
 
