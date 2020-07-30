@@ -1,5 +1,5 @@
 <tool id="binary_prediction" name="Binary Prediction" version="0.1.0" python_template_version="3.6">
-	<description> predict binary microbiom data </description>
+	<description>predict binary microbiom data</description>
     <requirements>
       <requirement type="package" version="3.1.2">matplotlib</requirement>
       <requirement type="package" version="3.6">python</requirement>
@@ -606,7 +606,7 @@
 
     <outputs>
         <data name='output1' format='tabular' label="out.tsv" />    
-        <data name='output2' format='html' label="repot.html" />
+        <data name='output2' format='html' label="report.html" />
     </outputs>
  
     <tests>

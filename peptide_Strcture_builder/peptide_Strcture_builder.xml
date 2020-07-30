@@ -1,5 +1,5 @@
 <tool id="peptide_Strcture_builder" name="peptide Strcture builder" version="1.1.2">
-  <description>for any numerical column</description>
+  <description></description>
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="1.0.1">fragbuilder</requirement>

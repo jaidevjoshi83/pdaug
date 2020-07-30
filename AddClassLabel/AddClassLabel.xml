@@ -12,12 +12,13 @@
   </stdio>
 
     <command detect_errors="exit_code"><![CDATA[
-        python '$__tool_directory__/AddClassLabel.py' -I '$input1' -C '$ClassLabel' -O '$OutFile1'          
+        python '$__tool_directory__/AddClassLabel.py' -I '$input1' -C '$ClassLabel' -O '$OutFile1' -t '$ClassLabelTitle'
     ]]></command>
 
   <inputs>
-    <param name="input1" type="data" format="tabular"  multiple="true" argument= "--TrainFile"/>
-    <param name="ClassLabel" type='text' value="0" argument="--amide" />
+    <param name="input1" type="data" format="tabular"  multiple="true" argument= "--InFile"/>
+    <param name="ClassLabel" type='text' value="0" argument="--ClassLabel" />
+    <param name="ClassLabelTitle" type='text' value="Class_label" argument="--ClassLabelTitle" />
   </inputs>
 
   <outputs>

@@ -1,5 +1,5 @@
 <tool id="peptide_uversky" name="peptide uversky" version="0.1.0" python_template_version="3.6">
-    <description> Plot a heatmap</description>
+    <description>Plot Uversky</description>
     
     <requirements>
       <requirement type="package" version="2.7.18">python</requirement>
@@ -19,7 +19,7 @@
     </inputs>
 
     <outputs>   
-        <data name='output2' format='html' label="repot.html" />
+        <data name='output2' format='html' label="report.html" />
     </outputs>
  
     <tests>
