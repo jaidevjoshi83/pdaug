@@ -1,5 +1,5 @@
-<tool id="modlamp_plot" name="modlamp plot" version="1.1.2">
-  <description>for any numerical column</description>
+<tool id="Peptide_data_plotting" name="Peptide data plotting" version="1.1.2">
+  <description>Creates various plots to analyze peptide data</description>
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="4.1.2">modlamp</requirement> 

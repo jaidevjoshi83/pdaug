@@ -1,5 +1,5 @@
-<tool id="peptide_lribrarygeneration" name="peptide Library Generation" version="1.1.2">
-  <description>for any numerical column</description>
+<tool id="Peptide_library_generation_1" name="Peptide library generation-1" version="1.1.2">
+  <description>Generates peptide sequence library</description>
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
   </requirements>

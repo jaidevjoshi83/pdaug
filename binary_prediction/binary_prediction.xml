@@ -1,5 +1,5 @@
-<tool id="binary_prediction" name="Binary Prediction" version="0.1.0" python_template_version="3.6">
-	<description> predict binary microbiom data </description>
+<tool id="ML_Models" name="ML Models" version="0.1.0" python_template_version="3.6">
+	<description> Machne learning modeling </description>
     <requirements>
       <requirement type="package" version="3.1.2">matplotlib</requirement>
       <requirement type="package" version="3.6">python</requirement>

@@ -1,5 +1,5 @@
-<tool id="peptide_fisher" name="peptide fisher" version="0.1.0" >
-	<description> Plot a heatmap</description>
+<tool id="Fishers_Plot" name="Fisher's plot" version="0.1.0" >
+	<description>Analyze peptide sequence data based on feature spaces </description>
     <requirements>
       <requirement type="package" version="2.7.18">python</requirement>
       <requirement type="package" version="1.4.6">powerlaw</requirement>

@@ -1,5 +1,5 @@
-<tool id="modlamp_corefunctions" name="modlamp corefunctions" version="1.1.2">
-  <description> core functions</description>
+<tool id="Peptide_core_functions" name="Peptide core functions" version="1.1.2">
+  <description> Manipulation and preprocessing of peptide datasets</description>
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="4.1.2">modlamp</requirement> 

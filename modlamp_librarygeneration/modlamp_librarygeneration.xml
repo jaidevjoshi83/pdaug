@@ -1,5 +1,5 @@
-<tool id="modlamp_librarygeneration" name="modlamp_librarygeneration" version="1.1.2">
-  <description>for any numerical column</description>
+<tool id="Peptide library generation-2" name="Peptide library generation-2" version="1.1.2">
+  <description>Generates peptide sequence library </description>
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="4.1.2">modlamp</requirement> 

@@ -1,5 +1,5 @@
-<tool id="AddClassLabel" name="AddClassLabel" version="1.1.2">
-  <description> core functions</description>
+<tool id="AddClassLabel" name="Add Class Label" version="1.1.2">
+  <description> Add class label to training data set</description>
 
   <requirements>
     <requirement type="package" version="2.7.18">python</requirement>

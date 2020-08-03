@@ -1,5 +1,5 @@
 <tool id="TSVtoFASTA" name="TSVtoFASTA" version="1.1.2">
-  <description>for any numerical column</description>
+  <description>Converts tabular peptide sequence data into fasta formates </description>
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="4.1.2">modlamp</requirement> 

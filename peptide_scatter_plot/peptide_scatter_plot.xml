@@ -1,5 +1,5 @@
-<tool id="peptide_scatter_plot" name="peptide catter plot" version="0.1.0" python_template_version="3.6">
-	<description> Plot a heatmap</description>
+<tool id="Scatter_plot" name="Scatter plot" version="0.1.0" python_template_version="3.6">
+	<description>Analyze peptide descriptor data using scatter plot</description>
     <requirements>
       <requirement type="package" version="3.1.2">matplotlib</requirement>
       <requirement type="package" version="0.25.3">pandas</requirement>

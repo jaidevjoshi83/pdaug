@@ -1,5 +1,5 @@
-<tool id="modlamp_wetlab" name="modlamp wetlab" version="1.1.2">
-  <description> core functions</description>
+<tool id="Peptide_CD_spectral_analysis" name="Peptide CD spectral analysis" version="1.1.2">
+  <description>Analysis of circular dichroism spectral data </description>
   <requirements>
     <requirement type="package" version="2.7.18">python</requirement>
     <requirement type="package" version="4.1.2">modlamp</requirement> 
