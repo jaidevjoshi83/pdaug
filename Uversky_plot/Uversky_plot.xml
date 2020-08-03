@@ -1,6 +1,6 @@
-<tool id="Peptide_ngrams" name="peptide ngrams" version="0.1.0" python_template_version="2.7.18">
-	<description>plot ngrams</description>
-  
+<tool id="Uversky_plot" name="Uversky plot" version="0.1.0" python_template_version="3.6">
+    <description>Uversky plot to analyze ordered and disordered proteins</description>
+    
     <requirements>
       <requirement type="package" version="2.7.18">python</requirement>
       <requirement type="package" version="1.4.6">powerlaw</requirement>
@@ -9,13 +9,13 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python2 '$__tool_directory__/peptide_ngrams.py' -f1 '$fasta1' -f2 '$fasta2'  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
+        python '$__tool_directory__/peptide_uversky.py'  --Fasta1 '$input1' --Fasta2 '$input2' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2' 
              
     ]]></command>
 
     <inputs>
-      <param name="fasta1" type="data" format="fasta" argument= "--fasta1"/>
-      <param name="fasta2" type="data" format="fasta" argument= "--fasta2"/>
+      <param name="input1" type="data" format="fasta" argument= "--Fasta1" help="--Fasta1"/>
+      <param name="input2" type="data" format="fasta" argument="--Fasta2"  help="--Fasta2"/>
     </inputs>
 
     <outputs>   
@@ -24,6 +24,8 @@
  
     <tests>
         <test>
+            <param name="input1" value="test1.fasta"/>
+            <param name="input2" value="test2.fasta"/>
             <output name="output2" file="report.html"/>
         </test>
     </tests>

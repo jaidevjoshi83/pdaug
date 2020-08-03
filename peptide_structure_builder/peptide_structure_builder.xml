@@ -1,0 +1,36 @@
+<tool id="peptide_structure_builder" name="Peptide strcture builder" version="1.1.2">
+  <description>Builds 3D structures of peptide sequences up to 3 amino acid </description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="1.0.1">fragbuilder</requirement>
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__/peptide_Strcture_builder.py' -p '$input1'  
+
+    ]]></command>
+
+  <inputs>
+    <param name="input1" type="data" format="fasta" argument= "--pep"/>
+  </inputs>
+
+  <outputs>
+    <collection name="output" type="list" label="OuTData">
+        <discover_datasets pattern="__name_and_ext__" type='pdb' directory="DataFile" />
+    </collection>
+  </outputs>  
+
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>

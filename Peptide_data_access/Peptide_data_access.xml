@@ -1,0 +1,46 @@
+<tool id="Peptide_data_access" name="Peptide data access" version="1.1.2">
+  <description>Fetch peptide data from inbuild datasets and public databases</description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/modlamp_datasets.py' -d '$DataBaseType' -o '$output1'
+
+                  
+    ]]></command>
+
+
+  <inputs>
+    <param name="DataBaseType" type="select" label="DataBaseType"  argument="" help="--DataBaseType" >   
+                <option value="AMPvsTM" selected="true" > AMPvsTM </option>
+                <option value="AMPvsUniProt" > AMPvsUniProt </option>
+                <option value="ACPvsTM"> ACPvsTM </option>
+                <option vlaue="ACPvsRandom"> ACPvsRandom </option>
+              </param> 
+  </inputs>
+
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+

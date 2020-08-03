@@ -1,0 +1,82 @@
+<tool id="Peptide_library_generation_1" name="Peptide library generation-1" version="1.1.2">
+  <description>Generates peptide sequence library</description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/peptide_lribrarygeneration.py' '$SelMethod.Method'
+
+                        --outputFile '$output1'
+
+                        #if $SelMethod.Method == 'MutatedPeptides'
+                          --sequence '$SelMethod.input1'
+                          --mutation_site_list '$SelMethod.mutation_site_list'
+                          --AA_list '$SelMethod.AA_list'
+                        #end if 
+
+                        #if $SelMethod.Method == 'RandomPeptides'
+                          --AA_list '$SelMethod.AA_list'
+                          --pep_length '$SelMethod.pep_length'
+                          --out_pep_lenght '$SelMethod.out_pep_length'
+                        #end if 
+
+                        #if $SelMethod.Method == 'SlidingWindowPeptide'
+                          --InFile '$SelMethod.input1'
+                          --winSize '$SelMethod.WinSize'
+                          --FragSize '$SelMethod.FragSize'
+                        #end if     
+
+    ]]></command>
+
+  <inputs>
+
+
+    <conditional name='SelMethod' >
+
+        <param name="Method" type="select" label="MLAlgo" argument="">
+          <option value="MutatedPeptides">MutatedPeptides</option>
+          <option value="RandomPeptides">RandomPeptides</option>
+          <option value="SlidingWindowPeptide">SlidingWindowPeptide</option>
+        </param>
+
+        <when value="MutatedPeptides">
+            <param name="input1" type="text" label="Peptide sequence" argument= "--sequence" />
+            <param name="mutation_site_list" label="Mutation Site" type="text" argument="--mutation_site_list" />
+            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" />
+        </when>
+
+        <when value="RandomPeptides">
+            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" />
+            <param name="pep_length" type="integer" label="Peptide Legnth" value="7" argument="--pep_length" />
+            <param name="out_pep_length" type="integer" label="Nomber of peptides" value="7" argument="--out_pep_length" />
+        </when>
+
+        <when value="SlidingWindowPeptide">
+            <param name="input1" type="data" label="Input Sequence" format="fasta" argument= "--InFile"/>
+            <param name="WinSize" type="integer" label="Window Size" value="3" help="--winSize" />
+            <param name="FragSize" type="integer" label="Fragment Size" value="7" help="--FragSize" />
+        </when>
+    </conditional>
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='fasta' label="out.fasta" />    
+  </outputs>
+  <tests>
+    <test>
+
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+

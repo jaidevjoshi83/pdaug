@@ -1,9 +1,7 @@
 <tool id="TSVtoFASTA" name="TSVtoFASTA" version="1.1.2">
-<<<<<<< HEAD
+
   <description>Converts tabular peptide sequence data into fasta formates </description>
-=======
-  <description></description>
->>>>>>> 694aebdf2cb580aa13d0e0d0f2e1330c705a9f9f
+
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="4.1.2">modlamp</requirement> 

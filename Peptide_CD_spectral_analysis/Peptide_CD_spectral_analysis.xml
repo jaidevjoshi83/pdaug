@@ -1,0 +1,97 @@
+<tool id="Peptide_CD_spectral_analysis" name="Peptide CD spectral analysis" version="1.1.2">
+  <description>Analysis of circular dichroism spectral data </description>
+
+  <requirements>
+    <requirement type="package" version="2.7.18">python</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="2.2.5">matplotlib</requirement>
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/modlamp_wetlab.py' --Method '$SelMethod.Method' --Wmin '$SelMethod.Wn' --Wmax '$SelMethod.Wx'  --InFiles '$input1'  --pathlen '$pathlen' --amide '$amide'
+
+                  #if $SelMethod.Method == 'Plot_data'
+                    --CalcType '$SelMethod.CalcType'
+                  #end if
+
+                  #if $SelMethod.Method == 'Calculate_Halicity'
+                    --Temperature '$SelMethod.Temp'
+                    --FinLenCorrOption '$SelMethod.K'
+                    --Induction '$SelMethod.Induction'
+                    --HelicityOut '$output3'
+
+                  #end if      
+
+                  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'          
+
+    ]]></command>
+
+  <inputs>
+
+    <param name="input1" type="data" format="tabular"  multiple="true" argument= "--TrainFile"/>
+    <param name="amide" type='boolean' value="true" argument="--amide" />
+    <param name="pathlen" type='float' value="1" argument="--pathlen" />
+
+    <conditional name='SelMethod' >
+
+      <param name="Method" type="select" label="Method" argument="">
+        <option value="Plot_data">Plot Data</option>
+        <option value="Calculate_Halicity">Calculate Halicity</option>
+      </param>
+
+      <when value="Plot_data">
+        <param name="Wn" type="integer" value='185' argument= "--Wn"/>
+        <param name="Wx" type="integer" value='260' argument= "--Wx"/>
+        <param name="CalcType" type="select" label="CalcType" argument="">
+          <option value="molar_ellipticity">calc_molar_ellipticity</option>
+          <option value="mean_residue_ellipticity">calc_mean_residue_ellipticity</option>
+          <option value="circular_dichroism">calc_circular_dichroism</option>
+        </param>
+        
+      </when>
+
+      <when value="Calculate_Halicity">
+        <param name="Wn" type="integer" value='185' argument= "--Wn"/>
+        <param name="Wx" type="integer" value='260' argument= "--Wx"/>
+        <param name="Temp" type="float" value="24" argument="--Temprature" />
+        <param name="K"   type="float" value="2.0" argument="--FinLenCorrOption" />
+        <param name="Induction" type="boolean" value='true' argument="--Induction " /> 
+      </when>
+    </conditional>
+
+  </inputs>
+
+  <outputs>
+ 
+    <data name='output2' format='html' label="report.html" > 
+      <filter>SelMethod['Method'] == "Plot_data"</filter>
+    </data>
+    <collection name="output1" type="list" label="OuTData">
+        <discover_datasets pattern="__name_and_ext__" type='tsp' directory="Dichro" />
+        <filter>SelMethod['Method'] == "Plot_data"</filter>
+    </collection> 
+
+    <data name='output3' format='tabular' label="helicity.tsv" >
+      <filter>SelMethod['Method'] == "Calculate_Halicity"</filter>
+    </data>
+
+
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="1.bed"/>
+      <param name="cond" value="c2"/>
+      <output name="out_file1" file="gsummary_out1.tabular"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+
