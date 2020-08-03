@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <tool id="Peptide_data_access" name="Peptide data access" version="1.1.2">
   <description>Fetch peptide data from inbuild datasets and public databases</description>
+=======
+<tool id="modlamp_datasets" name="modlamp datasets" version="1.1.2">
+  <description></description>
+>>>>>>> 694aebdf2cb580aa13d0e0d0f2e1330c705a9f9f
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="4.1.2">modlamp</requirement> 

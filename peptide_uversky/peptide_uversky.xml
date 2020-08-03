@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <tool id="Uversky_plot" name="Uversky plot" version="0.1.0" python_template_version="3.6">
     <description>Uversky plot to analyze ordered and disordered proteins</description>
+=======
+<tool id="peptide_uversky" name="peptide uversky" version="0.1.0" python_template_version="3.6">
+    <description>Plot Uversky</description>
+>>>>>>> 694aebdf2cb580aa13d0e0d0f2e1330c705a9f9f
     
     <requirements>
       <requirement type="package" version="2.7.18">python</requirement>
@@ -19,7 +24,7 @@
     </inputs>
 
     <outputs>   
-        <data name='output2' format='html' label="repot.html" />
+        <data name='output2' format='html' label="report.html" />
     </outputs>
  
     <tests>

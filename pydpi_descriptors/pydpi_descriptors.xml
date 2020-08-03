@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <tool id="Peptide_Sequence_Descriptors" name="Peptide Sequence Descriptors" version="1.1.2">
   <description>Calculates sequence-based descriptor of the peptide sequences</description>
+=======
+<tool id="pydpi_descriptors" name="pydpi descriptors" version="1.1.2">
+  <description></description>
+>>>>>>> 694aebdf2cb580aa13d0e0d0f2e1330c705a9f9f
   <requirements>
     <requirement type="package" version="2.7.18">python</requirement>
     <requirement type="package" version="0.24.2">pandas</requirement>

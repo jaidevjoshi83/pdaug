@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <tool id="BoxPlot" name="BoxPlot" version="0.1.0" python_template_version="3.6">
 	<description> BoxPlot for descriptors</description>
+=======
+<tool id="peptide_box_plot" name="peptide box plot" version="0.1.0" python_template_version="3.6">
+	<description>Plot a boxplot</description>
+>>>>>>> 694aebdf2cb580aa13d0e0d0f2e1330c705a9f9f
     <requirements>
       <requirement type="package" version="2.2.3">matplotlib</requirement>
       <requirement type="package" version="0.25.3">pandas</requirement>
@@ -27,7 +32,7 @@
     </inputs>
 
     <outputs>   
-        <data name='output2' format='html' label="repot.html" />
+        <data name='output2' format='html' label="report.html" />
     </outputs>
  
     <tests>

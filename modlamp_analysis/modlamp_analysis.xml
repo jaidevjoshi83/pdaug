@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <tool id="Peptide_sequence_analysis" name="Peptide sequence analysis" version="1.1.2">
   <description>Peptide sequence analysis</description>
+=======
+<tool id="modlamp_analysis" name="modlamp analysis" version="1.1.2">
+  <description></description>
+>>>>>>> 694aebdf2cb580aa13d0e0d0f2e1330c705a9f9f
   <requirements>
     <requirement type="package" version="1.0.5">pandas</requirement>
     <requirement type="package" version="4.2.1">modlamp</requirement> 
@@ -114,7 +119,7 @@
         </data>
 
 
-        <data name='output2' format='html' label="repot.html" >
+        <data name='output2' format='html' label="report.html" >
              <filter>SelAnalysis['Analysis'] != "H"</filter>
              <filter>SelAnalysis['Analysis'] != "uH"</filter>
              <filter>SelAnalysis['Analysis'] != "charge"</filter>
