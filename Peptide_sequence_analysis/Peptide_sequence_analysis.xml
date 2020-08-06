@@ -61,7 +61,7 @@
 
     <conditional name='SelAnalysis' >
 
-        <param name="Analysis" type="select" label="MLAlgo" argument="">
+        <param name="Analysis" type="select" label="Analysis options" argument="">
           <option value="CalcAAFreq">Calculate amino acide frequency</option>
           <option value="H">Calculate global hydrophobicity</option>
           <option value="uH">Calculating hydrophobic moments</option>
@@ -71,7 +71,7 @@
         </param>
 
         <when value="CalcAAFreq">
-            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
+            <param name="input1" type="data" format="fasta" label="Input file" argument= "--InFile"/>
         </when>
 
         <when value="H">

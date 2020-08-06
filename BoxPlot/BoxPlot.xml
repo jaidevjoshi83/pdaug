@@ -10,21 +10,17 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/peptide_box_plot.py' --InFile '$InFile' --Method '$Method' -Rx '$Rx' -Ry '$Ry' --FigHight '$FigHight' --FigWidth '$FigWidth' --Index '$Index'  --ClassLabel '$ClassLabel' --Features '$Features' --Label '$Label' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
+        python '$__tool_directory__/BoxPlot.py' --InFile '$InFile' -Rx '$Rx' -Ry '$Ry' --FigHight '$FigHight' --FigWidth '$FigWidth'  --Features '$Features'  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
               
     ]]></command>
 
     <inputs>
-      <param name="InFile" type="data"  label="InFile" argument="--InFile" help="" />
-      <param name="Method" type="text"  label="Method" argument="--Method" help="" />
-      <param name="Rx" type="integer" value="40" label="RotationX" argument="--RotationX" help="" />
-      <param name="Ry" type="integer" value="40" label="RotationY" argument="--RotationY" help="" />
-      <param name="FigHight" type="integer" value="10" label="FigHight" argument="--FigHight" help="" />
-      <param name="FigWidth" type="integer" value="8" label="FigWidth" argument="--FigWidth" help="" />
-      <param name="Index" type="boolean" value="false" label="Index" argument="--Index" help="" />
-      <param name="ClassLabel" type="text"  label="ClassLabel" argument="--ClassLabel" help="" />
-      <param name="Features" type="text"  label="Features" argument="--Features" help="" />
-      <param name="Label" type="text"  label="Label" argument="--Label" help="x label" />
+      <param name="InFile" type="data"  label="Infile" argument="--InFile" help="Input files with peptide descriptors" />
+      <param name="Rx" type="integer" value="40" label="Rotation of X-axis label" argument="--RotationX" help="" />
+      <param name="Ry" type="integer" value="40" label="Rotation of Y-axis label" argument="--RotationY" help="" />
+      <param name="FigHight" type="integer" value="10" label="Figure Hight" argument="--FigHight" help="" />
+      <param name="FigWidth" type="integer" value="8" label="Figure Width" argument="--FigWidth" help="" />
+      <param name="Features" type="text"  label="List of features" argument="--Features" help="Ex. feature-1,feature-2,feature-3" />
     </inputs>
 
     <outputs>   

@@ -1,10 +1,10 @@
-<tool id="modlamp_analysis" name="modlamp analysis" version="1.1.2">
-  <description></description>
+<tool id="Word2Vec" name="Word2Vec" python_template_version="3.7" version="1.1.2">
+  <description>The skip-gram model</description>
   <requirements>
     <requirement type="package" version="1.0.3">pandas</requirement>
     <requirement type="package" version="1.76">biopython</requirement> 
     <requirement type="package" version="3.5">nltk</requirement> 
-    <requirement type="package" version="3.7.1">gensim</requirement>
+    <requirement type="package" version="3.8.0">gensim</requirement>
     <requirement type="package" version="0.23.1">scikit-learn</requirement>
     <requirement type="package" version="1.18.4">numpy</requirement>
   </requirements>
@@ -13,19 +13,19 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/Word2Vec.py' -M '$model' -I '$input1' -R '$row' -C '$column' -O '$outFile'
+        python '$__tool_directory__/Word2Vec.py' -I '$input' -M $meanCount' -S '$size' -W '$window' -O '$OutFile'
         
     ]]></command>
 
   <inputs>
-    <param name="model" type="data" format="fasta" argument= "--InFile"/>
-    <param name="input1" type="data" format="fasta" argument= "--InFile"/>
-    <param name="row" label="row" help="row"/>
-    <param name="column" label="row" value="200" help="column"/>
+    <param name="input" type="data" label="Input fasta file" format="fasta" argument= "--Input"/>
+    <param name="meanCount" type="integer" label="Ignores all words with total frequency lower than this" value="0" format="fasta" argument= "--min_count"/>
+    <param name="size" type="integer" label="Dimensionality of the word vectors" value="200" format="fasta" argument= "--size"/>
+    <param name="window" type="integer" label="Maximum distance between the current and predicted word within a sentence" value="5" argument="--window" help="row"/>
   </inputs>
 
   <outputs>
-    <data name='output1' format='tabular' label="out.tsv" />
+    <data name='OutFile' format='model' label="out.model" />
   </outputs>
 
   <tests>

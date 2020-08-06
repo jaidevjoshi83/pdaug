@@ -9,7 +9,7 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/peptide_uversky.py'  --Fasta1 '$input1' --Fasta2 '$input2' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2' 
+        python '$__tool_directory__/Uversky_plot.py'  --Fasta1 '$input1' --Fasta2 '$input2' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2' 
              
     ]]></command>
 

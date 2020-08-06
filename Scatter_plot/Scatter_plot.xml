@@ -9,7 +9,7 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/peptide_scatter_plot.py' --InFile '$input1' -F1 '$f1' -F2 '$f2' -F3 '$f3' -Rx '$Rx' -Ry '$Ry' -H '$FigHight' -W '$FigWidth' -L '$Label ' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'              
+        python '$__tool_directory__/Scatter_plot.py' --InFile '$input1' -F1 '$f1' -F2 '$f2' -F3 '$f3' -Rx '$Rx' -Ry '$Ry' -H '$FigHight' -W '$FigWidth' -L '$Label ' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'              
     ]]></command>
 
     <inputs>

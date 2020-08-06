@@ -220,11 +220,11 @@
 
     <inputs>
 
-      <param name="input1" type="data" format="tabular" argument= "--TrainFile"/>
+      <param name="input1" label="Input file" type="data" format="tabular" argument= "--TrainFile"/>
 
       <conditional name='SelMLAlgo' >
 
-        <param name="MLAlgo" type="select" label="MLAlgo" argument="">
+        <param name="MLAlgo" type="select" label="Select Machine Learning algorithms" argument="">
           <option value="SVMC">SVMC</option>
           <option value="SGDC">SGDC</option>
           <option value="DTC">DTC</option>
@@ -238,7 +238,7 @@
 
         <when value="SVMC">
         <conditional name="settings">
-            <param name="advanced" type="select" label="Specify advanced parameters">
+            <param name="advanced" type="select" label="Select advanced parameters">
                 <option value="simple" selected="true">No, use program defaults.</option>
                 <option value="advanced">Yes, see full parameter list.</option>
             </param>
@@ -585,7 +585,7 @@
           <option value="Predict">Predict</option>
         </param>
         <when value="Internal">
-          <param name="nFolds" type="integer" label="TestMethod" value="5" min="5" max="10" help="(-X)" />
+          <param name="nFolds" type="integer" label="Cross validation" value="5" min="5" max="10" help="(--nfold)" />
         </when>
         <when value="TestSplit">
           <param name="TestSplit" type="float" label="TestMethod" value="0.2" min="0.0" max="1.0" help="(-X)" />
@@ -598,7 +598,7 @@
         </when>
       </conditional>
 
-      <param name="scalling" type="select" label="Scalling data" argument="--SelectedSclaer">
+      <param name="scalling" type="select" label="Method to scale the data" argument="--SelectScaler">
         <option value="Min_Max"> Min_Max </option>
         <option value="Standard_Scaler"> Standard_Scaler </option>
         <option value="No_Scaler"> No_Scaler </option>

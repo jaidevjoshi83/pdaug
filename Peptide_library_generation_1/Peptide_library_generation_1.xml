@@ -39,7 +39,7 @@
 
     <conditional name='SelMethod' >
 
-        <param name="Method" type="select" label="MLAlgo" argument="">
+        <param name="Method" type="select" label="Methods to generate peptides " argument="">
           <option value="MutatedPeptides">MutatedPeptides</option>
           <option value="RandomPeptides">RandomPeptides</option>
           <option value="SlidingWindowPeptide">SlidingWindowPeptide</option>

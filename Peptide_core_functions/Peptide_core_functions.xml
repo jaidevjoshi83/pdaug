@@ -12,7 +12,7 @@
     <command detect_errors="exit_code"><![CDATA[
 
 
-        python '$__tool_directory__/modlamp_corefunctions.py'  '$SelCoreFunction.CoreFunction'
+        python '$__tool_directory__/Peptide_core_functions.py'  '$SelCoreFunction.CoreFunction'
 
               --InFile '$InFile'
 
@@ -31,11 +31,11 @@
 
   <inputs>
 
-    <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
+    <param name="InFile" type="data" format="fasta" label="Input file" argument= "--InFile"/>
 
     <conditional name='SelCoreFunction' >
 
-        <param name="CoreFunction" type="select" label="Analysis" argument="">
+        <param name="CoreFunction" type="select" label="Analysis options" argument="">
           <option value="mutateAA">Mutate Amino Acid</option>
           <option value="filterduplicates">Filter Duplicates</option>
           <option value="keepnaturalaa">Keep Naturalaa</option>
@@ -44,11 +44,10 @@
 
         <when value="mutateAA">
             <param name="nr" type="integer" label="Number of mutations" value="3" help="--nr" />
-            <param name="prob" type="float" label="prob" value="1.0" help="--Prob" />
+            <param name="prob" type="float" label="probability" value="1.0" help="--Prob" />
         </when>
 
         <when value="filterduplicates">
-
         </when>
 
         <when value="keepnaturalaa">

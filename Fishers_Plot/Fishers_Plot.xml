@@ -8,7 +8,7 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/peptide_fisher.py'  --Fasta1 '$Fasta1' --Fasta2 '$Fasta2' --overlap_factor '$overlap_factor' --windows_per_frame '$windows_per_frame' --xlabel '$xlabel' --ylabel '$ylabel' --pop1_label '$pop1_label' --pop2_label '$pop2_label' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
+        python '$__tool_directory__/Fishers_Plot.py'  --Fasta1 '$Fasta1' --Fasta2 '$Fasta2' --overlap_factor '$overlap_factor' --windows_per_frame '$windows_per_frame' --xlabel '$xlabel' --ylabel '$ylabel' --pop1_label '$pop1_label' --pop2_label '$pop2_label' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
              
     ]]></command>
 

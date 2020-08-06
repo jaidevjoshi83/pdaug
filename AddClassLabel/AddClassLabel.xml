@@ -16,9 +16,9 @@
     ]]></command>
 
   <inputs>
-    <param name="input1" type="data" format="tabular"  multiple="true" argument= "--InFile"/>
-    <param name="ClassLabel" type='text' value="0" argument="--ClassLabel" />
-    <param name="ClassLabelTitle" type='text' value="Class_label" argument="--ClassLabelTitle" />
+    <param name="input1" type="data" label="Input file" format="tabular"  multiple="true" argument= "--InFile"/>
+    <param name="ClassLabel" type='text' label="Class Label" value="0" argument="--ClassLabel" />
+    <param name="ClassLabelTitle" label="Class Label Title"  type='text' value="Class_label" argument="--ClassLabelTitle" />
   </inputs>
 
   <outputs>

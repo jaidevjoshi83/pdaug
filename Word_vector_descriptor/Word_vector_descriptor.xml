@@ -1,0 +1,55 @@
+<tool id="Word_vector_descriptor" name="Word vector descriptor" version="0.1.0" python_template_version="3.7">
+    <description>Uversky plot to analyze ordered and disordered proteins</description>
+    
+    <requirements>
+      <requirement type="package" version="3.5">nltk</requirement>
+      <requirement type="package" version="1.0.3">pandas</requirement>
+      <requirement type="package" version="1.76">biopython</requirement>
+      <requirement type="package" version="3.8.0">gensim</requirement>
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+
+       python '$__tool_directory__/Word_vector_descriptor.py' -I '$input' -M '$mincount' -S '$size' -W '$window' -g '$SG' -O '$output' 
+             
+    ]]></command>
+
+    <inputs>
+      <param name="ModelInput" type="data" label="Input model file" format="model" argument= "--ModelInput"/>
+      <param name="Input" type="data" label="Training data" format="fasta" argument= "--InputFasta"/>
+      <param name="row" type="integer" label="Number of traning samples" optional="true" argument= "--row"/>
+      <param name="column" type="integer" label="Number of descriptors" optional="true" argument= "--column"/>
+      <param name="positive" type="integer" label="Positives samples" optional="true" argument= "--positive"/>
+      <param name="negative" type="integer" label="Negative samples" optional="true" argument= "--negative"/>
+    </inputs>
+
+    <outputs>   
+        <data name='output2' format='html' label="report.html" />
+    </outputs>
+ 
+    <tests>
+        <test>
+            <param name="input1" value="test1.fasta"/>
+            <param name="input2" value="test2.fasta"/>
+            <output name="output2" file="report.html"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+
+
+    ]]></help>
+    <citations>
+        <citation type="bibtex">
+
+@misc{githubseqtk,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {seqtk},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/lh3/seqtk},
+
+}</citation>
+    </citations>
+</tool>

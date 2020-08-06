@@ -1,0 +1,64 @@
+<tool id="Word_vectors" name="Word vecto" version="0.1.0" python_template_version="2.7.18">
+	<description>plot ngrams</description>
+  
+    <requirements>
+      <requirement type="package" version="3.5">nltk</requirement>
+      <requirement type="package" version="1.0.3">pandas</requirement>
+      <requirement type="package" version="1.76">biopython</requirement>
+      <requirement type="package" version="3.7.1">gensim</requirements>
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+
+        python2 '$__tool_directory__/word_vectors.py' -I '$input' -M '$mincount' -S '$size' -W '$window' -g '$SG' -O '$output'
+             
+    ]]></command>
+
+    <inputs>
+      <param name="input" type="data" format="fasta" argument= "--Input"/>
+      <param name="mincount" type="data" format="fasta" argument= "--min_count"/>
+      <param name="size" type="data" format="fasta" argument= "--size"/>
+      <param name="window" type="data" format="fasta" argument= "--sg"/>
+    </inputs>
+
+    <outputs>   
+        <data name='output' format='html' label="report.html" />
+    </outputs>
+ 
+    <tests>
+        <test>
+            <output name="output2" file="report.html"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+
+
+    ]]></help>
+    <citations>
+        <citation type="bibtex">
+
+@misc{githubseqtk,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {seqtk},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/lh3/seqtk},
+
+}</citation>
+    </citations>
+</tool>
+
+  -h, --help            show this help message and exit
+  -I INPUT, --Input INPUT
+                        Path to target tsv file
+  -M MIN_COUNT, --min_count MIN_COUNT
+                        Path to target tsv file
+  -S SIZE, --size SIZE  Path to target tsv file
+  -W WINDOW, --window WINDOW
+                        Path to target tsv file
+  -g SG, --sg SG        Path to target tsv file
+  -O OUTFILE, --OutFile OUTFILE
+                        Path to target tsv file
+

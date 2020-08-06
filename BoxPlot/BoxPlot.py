@@ -52,7 +52,7 @@ def HTML_Gen(html):
     out_html.write(part_1)
     out_html.close()
 
-def BoxPlot(InFile, Method, Feature, Label, RotationX, RotationY, FigHight, FigWidth,  Workdirpath, htmlOutDir, htmlFname, Index, ClassLabel):
+def BoxPlot(InFile, Feature, RotationX, RotationY, FigHight, FigWidth,  Workdirpath, htmlOutDir, htmlFname):
 
     Workdirpath = os.path.join(os.getcwd(),'report_dir')
 
@@ -61,23 +61,12 @@ def BoxPlot(InFile, Method, Feature, Label, RotationX, RotationY, FigHight, FigW
 
     df  = pd.read_csv(InFile, sep="\t")
 
-    if Method == 'Feature':
-
-        f = Feature.split(',')
-
-        plt.figure(figsize=(int(FigHight),int(FigWidth)))
-        sns.boxplot(data=df[f])
-        plt.xticks(rotation=int(RotationX))
-        plt.yticks(rotation=int(RotationY))
-        plt.savefig(os.path.join(Workdirpath, htmlOutDir, "Out.png"), dpi=600)
-
-    else:
-
-        f = Feature.split(',')
-        sns.boxplot(x=Label, y=df[f[0]], width=0.3, data=df, linewidth=0.4, fliersize=0.5)
-        plt.xticks(rotation=RotationX)
-        plt.yticks(rotation=RotationY)
-        plt.savefig(os.path.join(Workdirpath, htmlOutDir, "Out.png"), dpi=600)
+    f = Feature.split(',')
+    plt.figure(figsize=(int(FigHight),int(FigWidth)))
+    sns.boxplot(data=df[f])
+    plt.xticks(rotation=int(RotationX))
+    plt.yticks(rotation=int(RotationY))
+    plt.savefig(os.path.join(Workdirpath, htmlOutDir, "Out.png"), dpi=600)
 
     HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 
@@ -88,21 +77,17 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser()
     
     parser.add_argument("-I", "--InFile", required=True, default=None, help="Input file")
-    parser.add_argument("-M", "--Method", required=True, default=None, help="Plotting method")
     parser.add_argument("-Rx", "--RotationX", required=False, default=0, help="Roatate xticks")
     parser.add_argument("-Ry", "--RotationY", required=False, default=0, help="Roatate yticks")
     parser.add_argument("-H", "--FigHight", required=False,  default=6,  help="Figure Hight")
     parser.add_argument("-W", "--FigWidth", required=False, default=4, help="Figure Width")
-    parser.add_argument("-Ix", "--Index", required=False, default=True, help="Index")
-    parser.add_argument("-C", "--ClassLabel", required=False, default="class_label", help="Class Label")
     parser.add_argument("-F", "--Features", required=True, default=None, help="Feature list to plot")
-    parser.add_argument("-O","--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="HTML Out Dir")
-    parser.add_argument("-Hf","--htmlFname", required=False, help="HTML out file", default="jai.html")
-    parser.add_argument("-Wp","--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
-    parser.add_argument("-L","--Label", required=False, default=False, help="X axis label")
+    parser.add_argument("-O", "--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="HTML Out Dir")
+    parser.add_argument("-Hf", "--htmlFname", required=False, help="HTML out file", default="jai.html")
+    parser.add_argument("-Wp", "--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
     args = parser.parse_args()
 
-BoxPlot(args.InFile, args.Method, args.Features, args.Label, args.RotationX, args.RotationY, args.FigHight, args.FigWidth,  args.Workdirpath,  args.htmlOutDir, args.htmlFname, args.Index, args.ClassLabel)
+BoxPlot(args.InFile, args.Features, args.RotationX, args.RotationY, args.FigHight, args.FigWidth,  args.Workdirpath,  args.htmlOutDir, args.htmlFname)
 
 
 
