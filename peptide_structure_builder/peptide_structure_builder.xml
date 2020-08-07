@@ -26,11 +26,8 @@
   <tests>
     <test>
       <param name="input1" value="test.fasta"/>
-      <output_collection name="output" type="list" lines_diff=>
-        <element name="GLF" has_n_lines="5" file="DataFile/GLF.pdb"/>
-        <element name="HLL" has_n_lines="5" file="DataFile/HLL.pdb"/>
-        <element name="ILF" has_n_lines="5" file="DataFile/ILF.pdb"/>
-        <element name="ILL" has_n_lines="5" file="DataFile/ILL.pdb"/>
+      <output_collection name="output" type="list"  >
+        <element name="GLF" file="DataFile/GLF.pdb" lines_diff="6" />
       </output_collection>
     </test>
   </tests>

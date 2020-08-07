@@ -4,7 +4,7 @@
 
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
-    <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="4.2.1">modlamp</requirement> 
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
@@ -24,9 +24,8 @@
   </outputs>
   <tests>
     <test>
-      <param name="input" value="1.bed"/>
-      <param name="cond" value="c2"/>
-      <output name="out_file1" file="gsummary_out1.tabular"/>
+      <param name="input1" value="test.fasta"/>
+      <output name="output1" file="out.tsv"/>
     </test>
   </tests>
   <help>
