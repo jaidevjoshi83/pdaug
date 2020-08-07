@@ -29,8 +29,13 @@
  
     <tests>
         <test>
-            <param name="input1" value="test.tsv"/>
-            <output name="output2" file="report.html"/>
+            <param name="InFile" value="test.tsv"/>
+            <param name="Rx" value="40"/>
+            <param name="Ry" value="40"/>
+            <param name="FigHight" value="10"/>
+            <param name="FigWidth" value="8"/>
+            <param name="Features" value="a1,a2,a3"/>
+            <output name="output2" file="report_dir/report.html"/>
         </test>
     </tests>
 

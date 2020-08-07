@@ -9,7 +9,7 @@
     <exit_code range="1" level="fatal" />
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
-        python '$__tool_directory__/peptide_Strcture_builder.py' -p '$input1'  
+        python '$__tool_directory__/peptide_structure_builder.py' -p '$input1'  
 
     ]]></command>
 

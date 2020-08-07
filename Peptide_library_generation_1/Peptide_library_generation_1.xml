@@ -10,7 +10,7 @@
     <command detect_errors="exit_code"><![CDATA[
 
 
-        python '$__tool_directory__/peptide_lribrarygeneration.py' '$SelMethod.Method'
+        python '$__tool_directory__/Peptide_library_generation_1.py' '$SelMethod.Method'
 
                         --outputFile '$output1'
 

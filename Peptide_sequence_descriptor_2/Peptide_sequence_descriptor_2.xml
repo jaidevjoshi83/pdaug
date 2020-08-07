@@ -11,7 +11,7 @@
     <command detect_errors="exit_code"><![CDATA[
 
 
-        python '$__tool_directory__/modlamp_peptidedescriptor.py'  '$SelDescriptor.Descriptor'
+        python '$__tool_directory__/Peptide_sequence_descriptor_2.py'  '$SelDescriptor.Descriptor'
 
         				--InFile '$InFile'
 

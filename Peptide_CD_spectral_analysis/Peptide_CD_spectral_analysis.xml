@@ -12,7 +12,7 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/modlamp_wetlab.py' --Method '$SelMethod.Method' --Wmin '$SelMethod.Wn' --Wmax '$SelMethod.Wx'  --InFiles '$input1'  --pathlen '$pathlen' --amide '$amide'
+        python '$__tool_directory__/Peptide_CD_spectral_analysis.py' --Method '$SelMethod.Method' --Wmin '$SelMethod.Wn' --Wmax '$SelMethod.Wx'  --InFiles '$input1'  --pathlen '$pathlen' --amide '$amide'
 
                   #if $SelMethod.Method == 'Plot_data'
                     --CalcType '$SelMethod.CalcType'

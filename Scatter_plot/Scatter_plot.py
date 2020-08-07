@@ -7,6 +7,7 @@ import seaborn as sns, numpy as np, pandas as pd, random
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+
 def HTML_Gen(html):
 
     out_html = open(html,'w')             
@@ -74,7 +75,6 @@ def BoxPlot(InFile, Feature1, Feature2, Feature3, Label, RotationX, RotationY, F
 
         fig = plt.figure(figsize=(6,6))
         ax = Axes3D(fig)
-
         g = ax.scatter(df[Feature1], df[Feature2], df[Feature3], c=df[Feature1], marker='o', depthshade=False, cmap='Paired')
 
         ax.set_xlabel(Feature1)
@@ -106,9 +106,3 @@ if __name__=="__main__":
     args = parser.parse_args()
 
 BoxPlot(args.InFile, args.Feature1, args.Feature2, args.Feature3, args.Label, args.RotationX, args.RotationY, args.FigHight, args.FigWidth, args.Workdirpath,  args.htmlOutDir, args.htmlFname)
-
-
-
-
-
-

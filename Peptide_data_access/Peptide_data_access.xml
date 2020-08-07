@@ -10,7 +10,7 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/modlamp_datasets.py' -d '$DataBaseType' -o '$output1'
+        python '$__tool_directory__/Peptide_data_access.py' -d '$DataBaseType' -o '$output1'
                   
     ]]></command>
 
@@ -30,9 +30,8 @@
 
   <tests>
     <test>
-      <param name="input" value="1.bed"/>
-      <param name="cond" value="c2"/>
-      <output name="out_file1" file="gsummary_out1.tabular"/>
+      <param name="DataBaseType" value="AMPvsTM"/>
+      <output name="output1" file="out.tsv"/>
     </test>
   </tests>
   

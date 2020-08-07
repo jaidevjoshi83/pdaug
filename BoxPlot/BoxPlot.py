@@ -1,9 +1,13 @@
+import matplotlib
+matplotlib.use('Agg')
 import glob, os
-
 import pandas as pd 
 import seaborn as sns
-import matplotlib.pyplot as plt;plt.interactive(True)
-import matplotlib
+#import matplotlib.pyplot as plt;plt.interactive(True)
+#import matplotlib
+#matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
 
 
 

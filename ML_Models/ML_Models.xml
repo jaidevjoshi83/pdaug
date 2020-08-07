@@ -10,7 +10,7 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/binary_prediction.py'  '$SelMLAlgo.MLAlgo'
+        python '$__tool_directory__/ML_Models.py'  '$SelMLAlgo.MLAlgo'
 
                         #if $SelMLAlgo.MLAlgo == 'SVMC'
                             #if $SelMLAlgo.settings.advanced == "advanced"

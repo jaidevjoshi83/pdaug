@@ -11,7 +11,7 @@
     <command detect_errors="exit_code"><![CDATA[
 
 
-        python '$__tool_directory__/modlamp_analysis.py'  '$SelAnalysis.Analysis'
+        python '$__tool_directory__/Peptide_sequence_analysis.py'  '$SelAnalysis.Analysis'
 
                         #if $SelAnalysis.Analysis == 'CalcAAFreq'
                             --InFile $SelAnalysis.input1

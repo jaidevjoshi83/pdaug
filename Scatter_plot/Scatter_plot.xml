@@ -32,7 +32,16 @@
     <tests>
         <test>
             <param name="input1" value="test.tsv"/>
-            <output name="output2" file="report.html"/>
+            <param name="f1" value="a1"/>
+            <param name="f2" value="a2"/>
+            <param name="f3" value="a3"/>
+            <param name="Rx" value="30"/>
+            <param name="Ry" value="30"/>d
+            <param name="FigHight" value="10"/>
+            <param name="FigWidth" value="8"/>
+            <param name="Label" value="test"/>
+            <output name="output2" file="report_dir/report.html"/>
+
         </test>
     </tests>
 

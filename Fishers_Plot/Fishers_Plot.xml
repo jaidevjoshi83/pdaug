@@ -29,16 +29,15 @@
  
     <tests>
         <test>
-            <output name="output2" file="report.html"/>
-            <param name="Fasta1" value="Amyload_negative.fasta"/>
-            <param name="Fasta2" value="Amyload_positive.fasta"/>
+            <param name="Fasta1" value="positive.fasta"/>
+            <param name="Fasta2" value="negative.fasta"/>
             <param name="overlap_factor" value="5"  />
             <param name="windows_per_frame" value="5"  />
             <param name="xlabel" value="mean volume" />
             <param name="ylabel" value="mean hydropathy" />
-            <param name="pop1_label"  value="amyloids" />
-            <param name="pop2_label"  value="non amyloids" />
-            <output name="output2" value="report.html" />
+            <param name="pop1_label"  value="Anticancer" />
+            <param name="pop2_label"  value="anti-cancer" />
+            <output name="output2" value="report_dir/report.html" />
         </test>
     </tests>
 

@@ -6,7 +6,7 @@
       <requirement version="0.24.2" package="pandas" >pandas </requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
-        python $__tool_directory__/concate_data_frame.py '$input1' '$output1'
+        python $__tool_directory__/Merge_dataframes.py '$input1' '$output1'
     ]]></command>
     <inputs>
         <param type="data" name="input1" label="Input files" format="tabular" multiple="true" />

@@ -11,7 +11,7 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/modlamp_coredescriptor.py'  -I '$input1' -O '$output1'              
+        python '$__tool_directory__/Peptide_core_descriptors.py'  -I '$input1' -O '$output1'              
 
     ]]></command>
 

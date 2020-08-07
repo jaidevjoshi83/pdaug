@@ -11,7 +11,7 @@
     <command detect_errors="exit_code"><![CDATA[
 
 
-        python '$__tool_directory__/modlamp_librarygeneration.py'  '$SelLibGene.LibGene'
+        python '$__tool_directory__/Peptide_library_generation-2.py'  '$SelLibGene.LibGene'
 
                         #if $SelLibGene.LibGene == 'Random'
                             --seq_num '$SelLibGene.seq_num'
