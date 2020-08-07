@@ -27,10 +27,10 @@
     <test>
       <param name="input1" value="test.fasta"/>
       <output_collection name="output" type="list">
-        <element name="OuTData" file="DataFile/GLF.pdb"/>
-        <element name="OuTData" file="DataFile/HLL.pdb"/>
-        <element name="OuTData" file="DataFile/ILF.pdb"/>
-        <element name="OuTData" file="DataFile/ILL.pdb"/>
+        <element name="GLF.pdb" file="DataFile/GLF.pdb"/>
+        <element name="HLL.pdb" file="DataFile/HLL.pdb"/>
+        <element name="ILF.pdb" file="DataFile/ILF.pdb"/>
+        <element name="ILL.pdb" file="DataFile/ILL.pdb"/>
     </output_collection>
     </test>
   </tests>
