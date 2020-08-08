@@ -3,7 +3,7 @@
 
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
-    <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="4.2.1">modlamp</requirement> 
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
@@ -58,7 +58,7 @@
 
     <conditional name='SelPlot' >
 
-        <param name="Plot" type="select" label="LibGene" argument="">
+        <param name="Plot" type="select" label="Plotting method" argument="">
           <option value="HelWhl">Helical wheel</option>
           <option value="PltPde">Probability density estimations</option>
           <option value="PltVio">Violin</option>
@@ -66,24 +66,22 @@
         </param>
 
         <when value="HelWhl">
-            <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
-            <param name="colorcoding" type="text" value="rainbow" argument="--colorcoding" />
-            <param name="lineweights" type="boolean" value="true" argument="--lineweights" />
-            <param name="filename" type="text" value="out.png" argument="--filename" />
-            <param name="seq" type="boolean" value="true" argument="--seq" />
-            <param name="movment"  type="boolean" value="false" argument="--movment"/>
+            <param name="InFile" type="data" format="fasta" label="Input file" />
+            <param name="colorcoding" type="text" value="rainbow" label="Color Coding" help="The color coding to be used, available: rainbow, charge, polar, simple, amphipathic, none." />
+            <param name="lineweights" type="boolean" value="true" label="Line Weight" help="Defines whether connection lines decrease in thickness along the sequence." />
+            <param name="seq" type="boolean" value="true" label="Sequence" help="Whether the amino acid sequence should be plotted as a title."/>
+            <param name="movment"  type="boolean" value="false" label="Moment" help="Whether the Eisenberg hydrophobic moment should be calculated and plotted." />
         </when>
 
         <when value="PltPde">
-            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
-            <param name="ClmList" type="text"  argument="--ClmList" />
-            <param name="Title"  type="text" value="Plot" argument="--Title"/>
-            <param name="axlabels" type="text" argument="--axlabels" />
-            <param name="filename" type="text" argument="--filename" />
-            <param name="legendloc" type="integer" value="2" argument="--legendloc" />
-            <param name="x_max" type="integer" value="1" argument="--x_max" />
-            <param name="x_min" type="integer" value="0" argument="--x_min" />
-            <param name="alpha" type="float" value="0.2" argument="--alpha" /> 
+            <param name="InFile" type="data" label="Input file"  format="tabular" />
+            <param name="ClmList" type="text"  label="Column names" help="Enter the column name to be plotted"/>
+            <param name="Title"  type="text" value="Plot" label="Plot title" help="Plot title"/>
+            <param name="axlabels" type="text" label="X-label" help="List containing the axis labels for the plot" />
+            <param name="legendloc" type="integer" value="2" label="Legend location" help="Location of the figures legend. 1 = top right, 2 = top left …"/>
+            <param name="x_max" type="integer" value="1" label="x_max" help="x-axis maximum" />
+            <param name="x_min" type="integer" value="0"  label="x_min" help="x-axis minimum"/>
+            <param name="alpha" type="float" value="0.2" label="Alpha" help="Color alpha for filling pde curve" /> 
         </when>
 
         <when value="PltVio">
@@ -106,15 +104,31 @@
     </conditional>
   </inputs>
 
-
   <outputs>   
         <data name='output2' format='html' label="report.html" />
   </outputs>
+
   <tests>
     <test>
-      <param name="input" value="1.bed"/>
-      <param name="cond" value="c2"/>
-      <output name="out_file1" file="gsummary_out1.tabular"/>
+      <param name="Plot" value="PltPde"/>
+      <param name="InFile"  value="test1.tsv"/>
+      <param name="ClmList" value="a1,a2"/>
+      <param name="Title" value="Plot"/>
+      <param name="axlabels" value="fist_data_frame"/>
+      <param name="legendloc" value="2"/>
+      <param name="x_max" value="1"/>
+      <param name="x_min" value="0"/>
+      <param name="alpha" value="0.5" />
+      <output name="out_file1" file="test1/report_dir/report.html"/>
+    </test>
+    <test>
+      <param name="Plot" value="HelWhl"/>
+      <param name="InFile"  value="test2.fasta"/>
+      <param name="colorcoding" value="rainbow"/>
+      <param name="lineweights" value="false"/>
+      <param name="seq" value="false"/>
+      <param name="movment" value="false"/>
+      <output name="output2" file="test2/report_dir/report.html"/>
     </test>
   </tests>
   <help>
