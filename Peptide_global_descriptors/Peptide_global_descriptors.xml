@@ -5,37 +5,30 @@
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="4.2.1">modlamp</requirement> 
   </requirements>
-  <stdio>
-    <exit_code range="1" level="fatal" />
-  </stdio>
+
     <command detect_errors="exit_code"><![CDATA[
-
-        python '$__tool_directory__/Peptide_global_descriptors.py' --InFile '$InFile' --DesType '$GlocalDescriptor' -p '$ph' -a '$amide' -O '$output1'
-
-
-       
+        python '$__tool_directory__/Peptide_global_descriptors.py' --InFile '$InFile' --DesType '$GlocalDescriptor' --Amid '$amide' -O '$output1'
     ]]></command>
-
 
   <inputs>
 
-    <param name="GlocalDescriptor" type="select" label="GlobalDescriptor"  argument="" help="--DesType" >   
-                <option value="Length" selected="true" > Length </option>
-                <option value="Weight" > Weight </option>
-                <option value="Charge"> Charge </option>
-                <option vlaue="ChargeDensity"> ChargeDensity </option>
-                <option vlaue="IsoelectricPoint"> IsoelectricPoint </option>
-                <option vlaue="InstabilityIndex"> InstabilityIndex </option>
-                <option vlaue="Aromaticity"> Aromaticity </option>
-                <option vlaue="AliphaticIndex"> AliphaticIndex </option>
-                <option vlaue="BomanIndex"> BomanIndex </option>
-                <option vlaue="HydrophobicRatio"> HydrophobicRatio </option>
-                <option vlaue="All"> All </option>
-              </param> 
+    <param name="GlocalDescriptor" type="select" label="GlobalDescriptor"  argument="" help="--DesType" > 
+      <option value="Length"> Length </option>
+      <option value="Weight"> Weight </option>
+      <option value="Charge"> Charge </option>
+      <option value="ChargeDensity"> ChargeDensity </option>
+      <option value="IsoelectricPoint"> IsoelectricPoint </option>
+      <option value="InstabilityIndex"> InstabilityIndex </option>
+      <option value="Aromaticity"> Aromaticity </option>
+      <option value="AliphaticIndex"> AliphaticIndex </option>
+      <option value="BomanIndex"> BomanIndex </option>
+      <option value="HydrophobicRatio"> HydrophobicRatio </option>
+      <option value="All"> All </option>
+    </param> 
 
-    <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
-    <param name="ph" type="float" label="ph" value="7.0"  help="--ph" />
-    <param name="amide" type="boolean" label="amide" value="true" help="--Amide" />
+    <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
+    <param name="ph" type="float" label="ph" value="7.0"  help="--Ph" />
+    <param name="amide" type="boolean" label="amide" value="False" help="--Amide" />
   </inputs>
 
 
@@ -53,4 +46,3 @@
 
   </help>
 </tool>
-

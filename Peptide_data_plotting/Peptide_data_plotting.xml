@@ -35,18 +35,15 @@
             #if $SelPlot.Plot == 'PltVio'
               --InFile $InFile
               --ClmList $SelPlot.ClmList
-              --colors $SelPlot.colors
-              --bp $SelPlot.bp
               --title $SelPlot.title
               --axlabels $SelPlot.axlabels
-              --y_min $SelPlot.y_max
+              --y_min $SelPlot.y_min
               --y_max $SelPlot.y_max
             #end if 
 
 
             #if $SelPlot.Plot == 'PltAaDis'
               --InFile $InFile
-              --colors $SelPlot.colors
             #end if 
 
             --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
@@ -87,18 +84,14 @@
         <when value="PltVio">
             <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
             <param name="ClmList" type="text"  argument="--ClmList" />
-            <param name="colors" type="text"  value="None" argument="--colors" />
-            <param name="bp" type="boolean" value="false" argument="--bp" />
             <param name="title"  type="text" value="Plot" argument="--Title"/>
             <param name="axlabels" type="text" argument="--axlabels" />
-            <param name="filename" type="text" argument="--filename" />
             <param name="y_max" type="integer" value="1" argument="--y_max" />
             <param name="y_min" type="integer" value="0" argument="--y_min" /> 
         </when>
 
         <when value="PltAaDis">
             <param name="InFile"  type="data" formate="fasta" argument= "--seq_num"/>
-            <param name="colors" type="text" value="None" argument="--colors" />
         </when>
 
     </conditional>
@@ -135,6 +128,3 @@
 
   </help>
 </tool>
-
-
-

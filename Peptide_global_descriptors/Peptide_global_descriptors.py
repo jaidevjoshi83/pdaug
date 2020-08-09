@@ -14,7 +14,6 @@ def Descriptor_calcultor(DesType, inputfile, ph, amide,OutFile ):
         else:
             list_pep_name.append(line.strip('\n'))
 
-
     desc = GlobalDescriptor(list_pep_name)
 
     if DesType == "Length":
@@ -39,7 +38,7 @@ def Descriptor_calcultor(DesType, inputfile, ph, amide,OutFile ):
         dfN = desc.featurenames
 
     elif DesType == "IsoelectricPoint":
-        desc.isoelectric_point()
+        desc.isoelectric_point(amide=amide)
         df = desc.descriptor
         dfN = desc.featurenames
  
@@ -69,20 +68,19 @@ def Descriptor_calcultor(DesType, inputfile, ph, amide,OutFile ):
         dfN = desc.featurenames
 
     elif DesType == "All":
-        desc.calculate_all(amide=amide)
+        desc.calculate_all(ph=int(ph), amide=amide)
         df = desc.descriptor
         dfN = desc.featurenames
+    else:
+        pass
 
     df = desc.descriptor
     dfN = desc.featurenames
     dfOut = pd.DataFrame(df,columns=dfN)
 
     dfOut.to_csv(OutFile, index=True,sep='\t')
-    print (dfOut)
 
 if __name__=="__main__":
-
-
 
     import argparse
     

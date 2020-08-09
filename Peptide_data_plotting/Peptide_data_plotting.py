@@ -37,7 +37,7 @@ def HTML_Gen(html):
     </style>
     </head>
     <div class="jumbotron text-center">
-      <h1> Machine Learning Algorithm Assessment Report </h1>
+      <h1> Amino Acid Destribution </h1>
     </div>
     <div class="container">
       <div class="row">
@@ -98,7 +98,6 @@ PltVio.add_argument("-Wp","--Workdirpath", required=False, default=os.getcwd(), 
 
 PltAaDis = subparsers.add_parser('PltAaDis')
 PltAaDis.add_argument("-I","--InFile", required=True, default=None, help="Input data file")
-PltAaDis.add_argument("-C", "--colors", required=False, default='#83AF9B', help="color to be used (matplotlib style / hex)")
 PltAaDis.add_argument("-O","--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="HTML Out Dir")
 PltAaDis.add_argument("-Hf","--htmlFname", required=False, help="HTML out file", default="jai.html")
 PltAaDis.add_argument("-Wp","--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
@@ -157,14 +156,13 @@ elif sys.argv[1] == 'PltVio':
     F_Path  = os.path.join(args.Workdirpath, args.htmlOutDir, "out.png")
 
     df = pd.read_csv(args.InFile, sep="\t")
+
     data = df[args.ClmList.split(',')].as_matrix().T
 
-    if args.bp == 'true':
-      b = True
-    else:
-      b = False
+    c = ['#0B486B']*len(args.ClmList.split(','))
 
-    plot_violin(data, colors=args.colors, bp=b, filename=F_Path, title=args.title, axlabels=args.axlabels, y_min=int(args.y_min), y_max=int(args.y_max))
+    plot_violin(data, colors=c, bp=True, filename=F_Path, title=args.title, axlabels=args.axlabels, y_min=int(args.y_min), y_max=int(args.y_max))
+
     HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname))
 
 elif sys.argv[1] == 'PltAaDis':
@@ -177,8 +175,6 @@ elif sys.argv[1] == 'PltAaDis':
     f = open(args.InFile)
     lines = f.readlines()
 
-    print(lines)
-
     sequences = []
 
     for line in lines:
@@ -187,7 +183,7 @@ elif sys.argv[1] == 'PltAaDis':
         else:
             sequences.append(line.strip('\n'))
 
-    plot_aa_distr(sequences, color=args.colors, filename=F_Path)
+    plot_aa_distr(sequences, color='#0B486B', filename=F_Path) 
     HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname))
 
 
