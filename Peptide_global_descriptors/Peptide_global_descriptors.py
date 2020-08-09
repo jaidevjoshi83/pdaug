@@ -2,13 +2,19 @@ from modlamp.descriptors import *
 import os
 import pandas as pd
  
-def Descriptor_calcultor(DesType, inputfile, out_dir, ph, amide ):
+def Descriptor_calcultor(DesType, inputfile, ph, amide,OutFile ):
 
-    if not os.path.exists(out_dir):
-        os.makedirs(out_dir)
+    list_pep_name = []
+    f = open(inputfile)
+    lines = f.readlines()
+    
+    for line in lines:
+        if ">" in line:
+            pass
+        else:
+            list_pep_name.append(line.strip('\n'))
 
-    df = pd.read_csv(inputfile)
-    list_pep_name = df[df.columns.tolist()[0]].tolist()
+
     desc = GlobalDescriptor(list_pep_name)
 
     if DesType == "Length":
@@ -17,7 +23,8 @@ def Descriptor_calcultor(DesType, inputfile, out_dir, ph, amide ):
         dfN = desc.featurenames
 
     elif DesType == "Weight":
-        desc.calculate_MW(amide=amide)
+
+        desc.calculate_MW()
         df = desc.descriptor
         dfN = desc.featurenames
 
@@ -70,7 +77,8 @@ def Descriptor_calcultor(DesType, inputfile, out_dir, ph, amide ):
     dfN = desc.featurenames
     dfOut = pd.DataFrame(df,columns=dfN)
 
-    dfOut.to_csv(os.path.join(out_dir,'pep_des.tsv'), index=True,sep='\t')
+    dfOut.to_csv(OutFile, index=True,sep='\t')
+    print (dfOut)
 
 if __name__=="__main__":
 
@@ -100,11 +108,12 @@ if __name__=="__main__":
                         default="True",
                         help="True or False")   
 
-    parser.add_argument("-o", "--OutDir",
-                        required=None,
-                        default=os.path.join(os.getcwd(),'OutDir'),
-                        help="Path to out file")  
+    parser.add_argument("-O", "--OutFile",
+                        required=False,
+                        default="out.tsv",
+                        help="True or False") 
+
                           
     args = parser.parse_args()
 
-    Descriptor_calcultor(args.DesType, args.InFile, args.OutDir, args.Ph, args.Amide)
+    Descriptor_calcultor(args.DesType, args.InFile, args.Ph, args.Amide, args.OutFile)

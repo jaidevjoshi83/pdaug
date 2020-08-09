@@ -3,21 +3,22 @@
 
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
-    <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="4.2.1">modlamp</requirement> 
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
+        python '$__tool_directory__/Peptide_global_descriptors.py' --InFile '$InFile' --DesType '$GlocalDescriptor' -p '$ph' -a '$amide' -O '$output1'
 
-        python '$__tool_directory__/Peptide_global_descriptors.py' --DesType '$GlocalDescriptor' -I '$InFile' -p '$ph' -a '$amide'
 
-                  
+       
     ]]></command>
 
 
   <inputs>
+
     <param name="GlocalDescriptor" type="select" label="GlobalDescriptor"  argument="" help="--DesType" >   
                 <option value="Length" selected="true" > Length </option>
                 <option value="Weight" > Weight </option>
