@@ -37,7 +37,7 @@ def HTML_Gen(html):
     </style>
     </head>
     <div class="jumbotron text-center">
-      <h1> Amino Acid Destribution </h1>
+      <h1> Machine Learning Algorithm Assessment Report </h1>
     </div>
     <div class="container">
       <div class="row">

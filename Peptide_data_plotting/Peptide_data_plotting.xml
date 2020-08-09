@@ -123,6 +123,24 @@
       <param name="movment" value="false"/>
       <output name="output2" file="test2/report_dir/report.html"/>
     </test>
+
+    <test>
+      <param name="Plot" value="PltVio"/>
+      <param name="InFile"  value="test3.tsv"/>
+      <param name="ClmList" value="a1,a2,a3,a4,a5"/>
+      <param name="title" value="Plot"/>
+      <param name="axlabels" value="jai"/>
+      <param name="y_max" value="4"/>
+      <param name="y_min" value="-4" />
+      <output name="y_min" file="test3/report_dir/report.html"/>
+    </test>
+
+    <test>
+      <param name="Plot" value="PltAaDis"/>
+      <param name="InFile"  value="test4.fasta"/>
+      <output name="output2" file="test4/report_dir/report.html"/>
+    </test>
+
   </tests>
   <help>
 
