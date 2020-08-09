@@ -31,15 +31,17 @@
     <param name="amide" type="boolean" label="amide" value="False" help="--Amide" />
   </inputs>
 
-
   <outputs>
         <data name='output1' format='tabular' label="out.tsv" />    
   </outputs>
+  
   <tests>
     <test>
-      <param name="input" value="1.bed"/>
-      <param name="cond" value="c2"/>
-      <output name="out_file1" file="gsummary_out1.tabular"/>
+      <param name="InFile" value="test.fasta"/>
+      <param name="GlocalDescriptor" value="All" />
+      <param name="ph" value="7.0"/>
+      <param name="amide" file="False"/>
+      <output name="output1" file="out.tsv"/> 
     </test>
   </tests>
   <help>

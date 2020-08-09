@@ -78,7 +78,7 @@ def Descriptor_calcultor(DesType, inputfile, ph, amide,OutFile ):
     dfN = desc.featurenames
     dfOut = pd.DataFrame(df,columns=dfN)
 
-    dfOut.to_csv(OutFile, index=True,sep='\t')
+    dfOut.to_csv(OutFile, index=False, sep='\t')
 
 if __name__=="__main__":
 
