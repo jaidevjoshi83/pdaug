@@ -26,7 +26,7 @@
         <test>
             <param name="input1" value="test1.fasta"/>
             <param name="input2" value="test2.fasta"/>
-            <output name="output2" file="report.html"/>
+            <output name="output2" file="report_dir/report.html"/>
         </test>
     </tests>
 

@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
@@ -40,7 +42,7 @@ def HTML_Gen(html):
     </style>
     </head>
     <div class="jumbotron text-center">
-      <h1> Machine Learning Algorithm Assessment Report </h1>
+      <h1> Uversky plot </h1>
     </div>
     <div class="container">
       <div class="row">

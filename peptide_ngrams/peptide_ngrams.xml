@@ -24,7 +24,9 @@
  
     <tests>
         <test>
-            <output name="output2" file="report.html"/>
+            <param name="fasta1" value="test1.fasta"/>
+            <param name="fasta2" value="test2.fasta"/>
+            <output name="output2" file="report_dir/report.html"/>
         </test>
     </tests>
 
