@@ -26,7 +26,7 @@ def AutoCorrCal(InFile, window, ScaleName, OutFile):
 
     columns = ["CroAut_"+str(i) for i in range(len(df[0]))]
     df = pd.DataFrame(df, columns=columns)
-    df.to_csv(OutFile, index=True,sep='\t')
+    df.to_csv(OutFile, index=False,sep='\t')
 
 def CrossCorrCal(InFile, window, ScaleName, OutFile):
 
@@ -52,7 +52,7 @@ def CrossCorrCal(InFile, window, ScaleName, OutFile):
 
     columns = ["CroCor_"+str(i) for i in range(len(df[0]))]
     df = pd.DataFrame(df, columns=columns)
-    df.to_csv(OutFile, index=True,sep='\t')
+    df.to_csv(OutFile, index=False,sep='\t')
 
 def CalculateMovementCal(InFile, window, angle, modality, ScaleName, OutFile):
 
@@ -76,7 +76,7 @@ def CalculateMovementCal(InFile, window, angle, modality, ScaleName, OutFile):
     df = AMP.descriptor
 
     df = pd.DataFrame(df, columns=['Movement'])
-    df.to_csv(OutFile, index=True,sep='\t')
+    df.to_csv(OutFile, index=False,sep='\t')
 
 def CalculateGlobalCal(InFile, WindowSize, modality, ScaleName, OutFile):
 
@@ -100,7 +100,7 @@ def CalculateGlobalCal(InFile, WindowSize, modality, ScaleName, OutFile):
     df = AMP.descriptor
 
     df = pd.DataFrame(df, columns=['Global'])
-    df.to_csv(OutFile, index=True, sep='\t')
+    df.to_csv(OutFile, index=False, sep='\t')
 
 def CalculateProfileCal(InFile, prof_type, WindowSize, ScaleName, OutFile):
 
@@ -124,7 +124,7 @@ def CalculateProfileCal(InFile, prof_type, WindowSize, ScaleName, OutFile):
     df = AMP.descriptor
 
     df = pd.DataFrame(df, columns=['hyPhoPro','hyPhoMov'])
-    df.to_csv(OutFile, index=True, sep='\t')
+    df.to_csv(OutFile, index=False, sep='\t')
 
 def CalculateArcCal(InFile, modality, OutFile): 
 
@@ -148,7 +148,7 @@ def CalculateArcCal(InFile, modality, OutFile):
 
     columns = ["Arc_"+str(i) for i in range(len(df[0]))]
     df = pd.DataFrame(df, columns=columns)
-    df.to_csv(OutFile, index=True, sep='\t')
+    df.to_csv(OutFile, index=False, sep='\t')
 
 if __name__=="__main__":
 

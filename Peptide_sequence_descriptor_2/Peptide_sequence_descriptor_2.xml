@@ -3,7 +3,7 @@
 
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
-    <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="4.2.1">modlamp</requirement> 
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
@@ -113,9 +113,51 @@
   </outputs>
   <tests>
     <test>
-      <param name="input" value="1.bed"/>
-      <param name="cond" value="c2"/>
-      <output name="out_file1" file="gsummary_out1.tabular"/>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="AutoCorrCal"/>
+      <param name="WindowSize" value="7"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <output name="output1" file="out1.tsv"/>
+    </test>
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="CrossCorrCal"/>
+      <param name="WindowSize" value="7"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <output name="output1" file="out2.tsv"/>
+    </test>
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="CalculateMovement"/>
+      <param name="WindowSize" value="1000"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <param name="Angle" value="100"/>
+      <param name="Modality" value="max"/>
+      <output name="output1" file="out3.tsv"/>
+    </test>
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="GlobalCal"/>
+      <param name="WindowSize" value="1000"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <param name="Modality" value="max"/>
+      <output name="output1" file="out4.tsv"/>
+    </test>
+
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="ProfileCal"/>
+      <param name="WindowSize" value="7"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <param name="ProfType" value="uH"/>
+      <output name="output1" file="out5.tsv"/>
+    </test>
+
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="ArcCal"/>
+      <param name="Modality" value="max"/>
+      <output name="output1" file="out6.tsv"/>
     </test>
   </tests>
   <help>
