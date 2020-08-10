@@ -33,23 +33,29 @@
   </inputs>
 
   <outputs>
-    <data name='OutFile1' format='tabular' label="Positive.fasta" >  
+    <data name='OutFile1' format='fasta' label="Positive.fasta" >  
        <filter>Method == "WithClassLabel"</filter>
     </data>
 
-    <data name='OutFile2' format='tabular' label="Negative.fasta">   
+    <data name='OutFile2' format='fasta' label="Negative.fasta">   
        <filter>Method == "WithClassLabel"</filter>
     </data>
 
-    <data name='OutFile3' format='tabular' label="Out.fasta" >
+    <data name='OutFile3' format='fasta' label="Out.fasta" >
       <filter>Method == "NoClassLabel"</filter>
     </data>
   </outputs>
   <tests>
     <test>
-      <param name="input" value="1.bed"/>
-      <param name="cond" value="c2"/>
-      <output name="out_file1" file="gsummary_out1.tabular"/>
+      <param name="InFile" value="test1.tsv"/>
+      <param name="Method" value="WithClassLabel"/>
+      <output name="OutFile1" file="test1/Positive.fasta"/>
+      <output name="OutFile2" file="test1/Negative.fasta"/>
+    </test>
+    <test>
+      <param name="InFile" value="test2.tsv"/>
+      <param name="Method" value="NoClassLabel"/>
+      <output name="OutFile3" file="test2/Out.fasta"/>
     </test>
   </tests>
   <help>

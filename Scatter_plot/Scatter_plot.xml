@@ -2,9 +2,9 @@
 	<description>Analyze peptide descriptor data using scatter plot</description>
 
     <requirements>
-      <requirement type="package" version="3.1.2">matplotlib</requirement>
-      <requirement type="package" version="0.25.3">pandas</requirement>
-      <requirement type="package" version="0.9.0">seaborn</requirement> 
+      <requirement type="package" version="3.3.0">matplotlib</requirement>
+      <requirement type="package" version="0.10.0">seaborn</requirement> 
+      <requirement type="package" version="1.1.0">pandas</requirement>
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
@@ -30,19 +30,18 @@
     </outputs>
  
     <tests>
-        <test>
-            <param name="input1" value="test.tsv"/>
-            <param name="f1" value="a1"/>
-            <param name="f2" value="a2"/>
-            <param name="f3" value="a3"/>
-            <param name="Rx" value="30"/>
-            <param name="Ry" value="30"/>d
-            <param name="FigHight" value="10"/>
-            <param name="FigWidth" value="8"/>
-            <param name="Label" value="test"/>
-            <output name="output2" file="report_dir/report.html"/>
-
-        </test>
+      <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="f1" value="a1"/>
+        <param name="f2" value="a2"/>
+        <param name="f3" value="a3"/>
+        <param name="Rx" value="30"/>
+        <param name="Ry" value="30"/>d
+        <param name="FigHight" value="10"/>
+        <param name="FigWidth" value="8"/>
+        <param name="Label" value="test"/>
+        <output name="output2" file="report_dir/report.html"/>
+      </test>
     </tests>
 
     <help><![CDATA[

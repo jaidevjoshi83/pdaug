@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 import glob, os
 import pandas as pd 
 import numpy as np
@@ -37,7 +39,7 @@ def HTML_Gen(html):
     </style>
     </head>
     <div class="jumbotron text-center">
-      <h1> Machine Learning Algorithm Assessment Report </h1>
+      <h1> Scatter plot </h1>
     </div>
     <div class="container">
       <div class="row">
@@ -76,6 +78,7 @@ def BoxPlot(InFile, Feature1, Feature2, Feature3, Label, RotationX, RotationY, F
         fig = plt.figure(figsize=(6,6))
         ax = Axes3D(fig)
         g = ax.scatter(df[Feature1], df[Feature2], df[Feature3], c=df[Feature1], marker='o', depthshade=False, cmap='Paired')
+        #g = ax.scatter( df['a1'], df['a2'], c=df['a3'], marker='o', depthshade=False, cmap='Paired')
 
         ax.set_xlabel(Feature1)
         ax.set_ylabel(Feature2)

@@ -126,14 +126,9 @@ if sys.argv[1] == 'CalcAAFreq':
 
     Pep, Index = ReturnPeptide(args.InFile)
 
-    #print (len(Index))
-
-    #print (len(Pep))
-
-
     g = GlobalAnalysis(Pep)
 
-    g.calc_aa_freq(plot=True, color='#83AF9B', filename=os.path.join(args.Workdirpath, args.htmlOutDir, args.PlotFile))
+    g.calc_aa_freq(plot=True, color='#83AF9B', filename=os.path.join(args.Workdirpath, args.htmlOutDir, 'out.jpg'))
     df1 =  pd.DataFrame(g.aafreq[0], columns=['aa_freq'])
     df1.to_csv(os.path.join(args.Workdirpath, args.OutFile),  sep='\t', index=None)
     HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname))
