@@ -97,29 +97,25 @@
             <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
             <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
             <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
-            <param name="S_proba"  type="float" value="1.0" label="S_proba" argument="--S_proba" />
-           
+            <param name="S_proba"  type="float" value="1.0" label="S_proba" argument="--S_proba" />  
         </when>
 
         <when value="Helices">
             <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
             <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
             <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
-
         </when>
 
         <when value="Kinked">
             <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
             <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
             <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
-
         </when>
 
         <when value="Oblique">
             <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
             <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
             <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
-
         </when>
 
         <when value="Centrosymmetric">
@@ -161,20 +157,106 @@
     </conditional>
   </inputs>
 
-
   <outputs>
         <data name='output1' format='tabular' label="Out.fasta" />    
   </outputs>
+
   <tests>
     <test>
-      <param name="input" value="1.bed"/>
-      <param name="cond" value="c2"/>
-      <output name="out_file1" file="gsummary_out1.tabular"/>
+
+        <param name="LibGene" value="Random"/>
+        <param name="seq_num"  value="5"  />
+        <param name="lenmin_s" value="7" />
+        <param name="lenmax_s" value="21"  />
+        <param name="S_proba"  value="1.0" />
+        <output name='output1' file="Out1.fasta" lines_diff='20' /> 
+
     </test>
+
+    <test>
+   
+        <param name="LibGene" value="Helices"/>
+        <param name="seq_num" value="5" />
+        <param name="lenmin_s" value="7" />
+        <param name="lenmax_s" value="21" />
+        <output name='output1' file="Out2.fasta" lines_diff='20' /> 
+
+    </test>
+
+    <test>
+
+        <param name="LibGene" value="Kinked"/>
+        <param name="seq_num"  value="5" />
+        <param name="lenmin_s"  value="7" />
+        <param name="lenmax_s"  value="21" />
+        <output name='output1' file="Out3.fasta" lines_diff='20' /> 
+
+    </test>
+
+    <test>
+        <param name="LibGene" value="Oblique"/>
+        <param name="seq_num"  value="5" />
+        <param name="lenmin_s" value="7"  />
+        <param name="lenmax_s" value="21" />
+        <output name='output1' file="Out4.fasta"  lines_diff='20' /> 
+
+    </test>
+
+    <test>  
+
+        <param name="LibGene" value="Centrosymmetric"/>
+        <param name="seq_num"  value="5"  />
+        <param name="lenmin_s" value="7" />
+        <param name="lenmax_s" value="21" />
+        <param name="symmetry_s" value="asymmetric" />
+        <output name='output1' file="Out5.fasta" lines_diff='20' /> 
+
+    </test>
+
+    <test>
+        <param name="LibGene" value="HelicesACP"/>
+        <param name="seq_num"   value="5" />
+        <param name="lenmin_s"  value="7" />
+        <param name="lenmax_s" value="21" />
+        <output name='output1' file="Out6.fasta" lines_diff='20' /> 
+
+    </test>
+
+    <test>
+        <param name="LibGene" value="Hepahelices"/>
+        <param name="seq_num"   value="5" />
+        <param name="lenmin_s"  value="7" />
+        <param name="lenmax_s" value="21" />
+        <output name='output1' file="Out7.fasta"  lines_diff='20' /> 
+
+    </test>
+
+    <test>
+        <param name="LibGene" value="AMPngrams"/>
+        <param name="seq_num"   value="5" />
+        <param name="lenmin_s"  value="7" />
+        <param name="lenmax_s"  value="21" />
+        <output name='output1' file="Out8.fasta" lines_diff='20' /> 
+
+    </test>
+
+    <test>
+        <param name="LibGene" value="AmphipathicArc"/>
+        <param name="seq_num"   value="5" />
+        <param name="lenmin_s"  value="7" />
+        <param name="lenmax_s"  value="21" />
+        <param name="arcsize"  value="180" />
+        <param name="hydgra"  value="false" />
+        <output name='output1' file="Out9.fasta" lines_diff='20' /> 
+
+    </test>
+
   </tests>
+    
   <help>
 
   </help>
+
 </tool>
 
 

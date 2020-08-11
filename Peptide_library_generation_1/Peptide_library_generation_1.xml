@@ -70,7 +70,27 @@
   </outputs>
   <tests>
     <test>
+      <param name='Method' value="MutatedPeptides" />
+      <param name='input1' value="KLLKLLKKKLLK" />
+      <param name='mutation_site_list' value="2" />
+      <param name='AA_list' value="G,Y" />
+      <output name="output1" file="out1.fasta" />
+    </test>
 
+    <test>
+      <param name='Method' value="RandomPeptides" />
+      <param name='AA_list' value="G,L,F,D,I,V,K," />
+      <param name='pep_length' value="7" />
+      <param name='out_pep_length' value="7" />
+      <output name="output1" file="out2.fasta" lines_diff='28'/>
+    </test>
+
+    <test>
+      <param name='Method' value="SlidingWindowPeptide" />
+      <param name='input1' value="test1.fasta" />
+      <param name='WinSize' value="3" />
+      <param name='FragSize' value="7" />
+      <output name="output1" file="out3.fasta" />
     </test>
   </tests>
   <help>
