@@ -58,8 +58,8 @@
 
                         #if $SelLibGene.LibGene == 'AMPngrams'
                             --seq_num '$SelLibGene.seq_num'
-                            --lenmax_s '$SelLibGene.lenmax_s'
-                            --lenmin_s '$SelLibGene.lenmin_s'
+                            --n_min '$SelLibGene.n_max'
+                            --n_max '$SelLibGene.n_min'
                         #end if
 
                         #if $SelLibGene.LibGene == 'AmphipathicArc' 
@@ -142,8 +142,8 @@
 
         <when value="AMPngrams">
             <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
-            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+            <param name="n_min" type="integer" value="3" label="n_min" argument="--n_min_s" />
+            <param name="n_max" type="integer" value="1" label="n_max" argument="--n_max_s" />
         </when>
 
         <when value="AmphipathicArc">
@@ -158,7 +158,7 @@
   </inputs>
 
   <outputs>
-        <data name='output1' format='tabular' label="Out.fasta" />    
+        <data name='output1' format='fasta' label="Out.fasta" />    
   </outputs>
 
   <tests>

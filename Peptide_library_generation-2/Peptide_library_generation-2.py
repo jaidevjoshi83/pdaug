@@ -209,7 +209,7 @@ if __name__=='__main__':
     elif sys.argv[1] == 'Hepahelices':
         Hepahelices_seq(args.seq_num, args.lenmin_s, args.lenmax_s, args.OutFasta)
     elif sys.argv[1] == 'AMPngrams':
-        AMPngrams_seq(args.seq_num, args.lenmin_s, args.lenmax_s, args.OutFasta)
+        AMPngrams_seq(args.seq_num, args.n_min, args.n_max, args.OutFasta)
     elif sys.argv[1] == 'AmphipathicArc':
         AmphipathicArc_seq(int(args.seq_num), int(args.lenmin_s), int(args.lenmax_s), int(args.arcsize), args.hyd_gra, args.OutFasta)
     else:
