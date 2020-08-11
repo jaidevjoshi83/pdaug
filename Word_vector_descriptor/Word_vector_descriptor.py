@@ -11,7 +11,6 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("-M", "--ModelInput", required=True, default=None, help="Path to target tsv file")
 parser.add_argument("-R", "--row", required=True, default=None, help="Path to target tsv file")
-parser.add_argument("-C", "--column", required=True, default=200, help="Path to target tsv file")
 parser.add_argument("-I", "--InputFasta", required=True, default=6, help="Path to target tsv file")
 parser.add_argument("-O", "--OutFile", required=False, default='Out.tsv', help="Path to target tsv file")
 parser.add_argument("-P", "--positive", required=True, help="Path to target tsv file")
@@ -28,7 +27,7 @@ new_model = gensim.models.Word2Vec.load(args.ModelInput)
 import time
 t0 = time.time()
 
-temp_word = np.zeros(shape=(int(args.row), int(args.column)))
+temp_word = np.zeros(shape=(int(args.row), 200))
 
 for index, seqs in enumerate(SeqIO.parse(args.InputFasta, 'fasta')):
     seq_sum = 0

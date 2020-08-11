@@ -13,26 +13,26 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/Word2Vec.py' -I '$input' -M $meanCount' -S '$size' -W '$window' -O '$OutFile'
+        python '$__tool_directory__/Word2Vec.py' -I '$input' -M '$meanCount' -W '$window' -O '$OutFile'
         
     ]]></command>
 
   <inputs>
     <param name="input" type="data" label="Input fasta file" format="fasta" argument= "--Input"/>
     <param name="meanCount" type="integer" label="Ignores all words with total frequency lower than this" value="0" format="fasta" argument= "--min_count"/>
-    <param name="size" type="integer" label="Dimensionality of the word vectors" value="200" format="fasta" argument= "--size"/>
     <param name="window" type="integer" label="Maximum distance between the current and predicted word within a sentence" value="5" argument="--window" help="row"/>
   </inputs>
 
   <outputs>
-    <data name='OutFile' format='' label="output" />
+    <data name='OutFile' format='model' label="output.model" />
   </outputs>
 
   <tests>
     <test>
-      <param name="input" value="1.bed"/>
-      <param name="cond" value="c2"/>
-      <output name="out_file1" file="gsummary_out1.tabular"/>
+      <param name="input" value="test.fasta"/>
+      <param name="meanCount" value="0"/>
+      <param name="window" value="5"/>
+      <param name="OutFile" file="output.model" />
     </test>
   </tests>
   <help>

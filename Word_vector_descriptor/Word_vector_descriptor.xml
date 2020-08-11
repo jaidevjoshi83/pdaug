@@ -10,7 +10,7 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-       python '$__tool_directory__/Word_vector_descriptor.py' -I '$input' -M '$mincount' -S '$size' -W '$window' -g '$SG' -O '$output' 
+       python '$__tool_directory__/Word_vector_descriptor.py' -I '$Input' -M '$ModelInput' -R '$row' -P '$positive' -N '$negative' -O '$output' 
              
     ]]></command>
 
@@ -18,20 +18,22 @@
       <param name="ModelInput" type="data" label="Input model file" format="model" argument= "--ModelInput"/>
       <param name="Input" type="data" label="Training data" format="fasta" argument= "--InputFasta"/>
       <param name="row" type="integer" label="Number of traning samples" optional="true" argument= "--row"/>
-      <param name="column" type="integer" label="Number of descriptors" optional="true" argument= "--column"/>
       <param name="positive" type="integer" label="Positives samples" optional="true" argument= "--positive"/>
       <param name="negative" type="integer" label="Negative samples" optional="true" argument= "--negative"/>
     </inputs>
 
     <outputs>   
-        <data name='output2' format='html' label="report.html" />
+        <data name='output' format='tsv' label="out.tsv" />
     </outputs>
  
     <tests>
         <test>
-            <param name="input1" value="test1.fasta"/>
-            <param name="input2" value="test2.fasta"/>
-            <output name="output2" file="report.html"/>
+          <param name="ModelInput" type="data" format="model" file="output.model" />
+          <param name="Input" file="test.fasta"/>
+          <param name="row" value="276" />
+          <param name="positive" value="138" />
+          <param name="negative" value="138" />
+          <output name="output" file="Out.tsv"/>
         </test>
     </tests>
 

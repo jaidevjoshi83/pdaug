@@ -238,7 +238,7 @@ class CD:
         img_name = splitext(filename)[0] + '_M.pdf'
         #plt.savefig(join(self.directory, 'PDF', img_name), dpi=150)
 
-        print os.path.join(OutPath, "2.png")
+        #print os.path.join(OutPath, "2.png")
         plt.savefig(os.path.join(OutPath, "2.png"))
     
     def _plot_all(self, data, w, y_lim, OutPath):
