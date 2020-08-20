@@ -610,25 +610,83 @@
         <data name='output2' format='html' label="report.html" />
     </outputs>
  
+
     <tests>
-        <test>
-        	<param name="input1" value="test.tsv"/>
-            <output name="output1" value="out.tsv"/>
-            <output name="output2" file="report.html"/>
-         </test>
+      <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="SVMC" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test1/report_dir/out.tsv"/>
+        <output name="output2" file="test1/report_dir/report.html"/>
+       </test>
+      <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="SGDC" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test2/out.tsv" lines_diff='2'/>
+        <output name="output2" file="test2/report_dir/report.html"/>
+       </test>      
+      <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="DTC" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test3/out.tsv" lines_diff='2' />
+        <output name="output2" file="test3/report_dir/report.html"/>
+      </test> 
+      <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="GBC" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test4/out.tsv"  lines_diff='2' />
+        <output name="output2" file="test4/report_dir/report.html"/>
+       </test> 
+       <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="RFC" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test5/out.tsv" lines_diff='2' />
+        <output name="output2" file="test5/report_dir/report.html"/>
+       </test> 
+      <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="LRC" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test6/out.tsv" lines_diff='2' />
+        <output name="output2" file="test6/report_dir/report.html"/>
+    </test> 
+    <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="KNC" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test7/out.tsv" lines_diff='2'/>
+        <output name="output2" file="test7/report_dir/report.html"/>
+    </test> 
+    <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="GNBC" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test8/out.tsv"  lines_diff='2' />
+        <output name="output2" file="test8/report_dir/report.html"/>
+    </test> 
+
+    <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="MLP" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test9/out.tsv"  lines_diff='2' />
+        <output name="output2" file="test9/report_dir/report.html"/>
+    </test> 
     </tests>
+
+
 
     <help><![CDATA[
     usage: ML.py [-h] {SVMC,SGDC,DTC,GBC,RFC,LRC,KNC,GNBC,MLP}
-
     Deployment tool
-
     positional arguments:
       {SVMC,SGDC,DTC,GBC,RFC,LRC,KNC,GNBC,MLP}
-
     optional arguments:
-      -h, --help            show this help message and exit
-
+      -h, --help, show this help message and exit
     ]]></help>
     <citations>
         <citation type="bibtex">

@@ -1,0 +1,2 @@
+Algo	accuracy	presision	recall	f1	mean_auc
+KNC	0.859	0.861	0.858	0.858	0.921

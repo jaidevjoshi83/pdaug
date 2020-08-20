@@ -1,0 +1,2 @@
+Algo	accuracy	presision	recall	f1	mean_auc
+GNBC	0.638	0.673	0.638	0.608	0.77
