@@ -1,4 +1,5 @@
 
+"""
 import Levenshtein
 
 from Bio import Align
@@ -48,9 +49,8 @@ for x, i in enumerate(comb):
     outfile2.write(seq1+"\t"+seq2+"\t"+str(Levenshtein.ratio(seq1, seq2 ))+"\n")
         #print p, x, alignment.score
 outfile.close()
-
-
 """
+
 from Bio import Align
 
 
@@ -69,7 +69,7 @@ for line in lines:
         line = line.strip(' ')
         pep.append(line)
 
-print pep
+print (pep)
 
 
 
@@ -86,6 +86,7 @@ outfile = open("out1.csv", 'w')
 outfile.write("index,"+str(pep1)+'\n')
 
 aligner = Align.PairwiseAligner()
+"""
 for p in pep:
     outfile.write(p)
     for i, x in  enumerate(pep):
@@ -93,8 +94,11 @@ for p in pep:
         outfile.write(','+str(alignment.score))
     outfile.write('\n')
 outfile.close()
-
 """
+alignment = aligner.align("KKVADPE","KVNADPET")
+
+print(alignment.score)
+
 """
 import Levenshtein
 
@@ -118,9 +122,6 @@ for line in lines:
 pep1 = ",".join(pep)
 
 
-
-
-
 outfile = open("out1.tsv", 'w')
 outfile2 = open("lev.tsv", 'w')
 
@@ -137,4 +138,3 @@ for p in pep:
         #print p, x, alignment.score
 outfile.close()
 """
-
