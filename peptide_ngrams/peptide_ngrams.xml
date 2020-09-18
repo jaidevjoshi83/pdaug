@@ -14,8 +14,8 @@
     ]]></command>
 
     <inputs>
-      <param name="fasta1" type="data" format="fasta" argument= "--fasta1"/>
-      <param name="fasta2" type="data" format="fasta" argument= "--fasta2"/>
+      <param name="fasta1" type="data" format="fasta" label="First fasta file" argument= "--fasta1"/>
+      <param name="fasta2" type="data" format="fasta" label="Second fasta file" argument= "--fasta2"/>
     </inputs>
 
     <outputs>   
@@ -32,21 +32,19 @@
 
     <help><![CDATA[
 
+        usage: peptide_ngrams.py [-h] -f1 FASTA1 -f2 FASTA2 [--htmlOutDir HTMLOUTDIR] [--htmlFname HTMLFNAME] [--Workdirpath WORKDIRPATH]
+
+        optional arguments:
+
+        -h --help  show this help message and exit
+
+        -f1 FASTA1, --Fasta1 FASTA1 First fasta file
+        -f2 FASTA2, --Fasta2 FASTA2 Second fasta file
+        --htmlOutDir HTMLOUTDIR Path for HTML Out Dir
+        --htmlFname HTMLFNAME HTML out file
+        --Workdirpath WORKDIRPATH Working Directory Path
 
     ]]></help>
-    <citations>
-        <citation type="bibtex">
-
-@misc{githubseqtk,
-  author = {LastTODO, FirstTODO},
-  year = {TODO},
-  title = {seqtk},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  url = {https://github.com/lh3/seqtk},
-
-}</citation>
-    </citations>
 </tool>
 
 

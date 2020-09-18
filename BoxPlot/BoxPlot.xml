@@ -39,29 +39,32 @@
         </test>
     </tests>
 
-    <help><![CDATA[
-usage: Graph.py [-h] -I IN_FILE [-H FIGHIGHT] [-W FIGWIDTH] [-R ROTATION]
-                [--htmlOutDir HTMLOUTDIR] [--htmlFname HTMLFNAME]
-                [--Workdirpath WORKDIRPATH]
+    <help>
+      usage: BoxPlot.py [-h] -I INFILE [-Rx ROTATIONX] [-Ry ROTATIONY] [-H FIGHIGHT]
+                        [-W FIGWIDTH] -F FEATURES [-O HTMLOUTDIR] [-Hf HTMLFNAME]
+                        [-Wp WORKDIRPATH]
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -I IN_FILE, --in_file IN_FILE
-                        Path to target tsv file
-  -H FIGHIGHT, --FigHight FIGHIGHT
-                        Path to target tsv file
-  -W FIGWIDTH, --FigWidth FIGWIDTH
-                        Path to target tsv file
-  -R ROTATION, --Rotation ROTATION
-                        Path to target tsv file
-  --htmlOutDir HTMLOUTDIR
-                        HTML Out Dir
-  --htmlFname HTMLFNAME
-                        HTML out file
-  --Workdirpath WORKDIRPATH
-                        Working Directory Path
-
-    ]]></help>
+      optional arguments:
+        -h, --help            show this help message and exit
+        -I INFILE, --InFile INFILE
+                              Input file
+        -Rx ROTATIONX, --RotationX ROTATIONX
+                              Roatate xticks
+        -Ry ROTATIONY, --RotationY ROTATIONY
+                              Roatate yticks
+        -H FIGHIGHT, --FigHight FIGHIGHT
+                              Figure Hight
+        -W FIGWIDTH, --FigWidth FIGWIDTH
+                              Figure Width
+        -F FEATURES, --Features FEATURES
+                              Feature list
+        -O HTMLOUTDIR, --htmlOutDir HTMLOUTDIR
+                              Path to html dir
+        -Hf HTMLFNAME, --htmlFname HTMLFNAME
+                              HTML out file
+        -Wp WORKDIRPATH, --Workdirpath WORKDIRPATH
+                              Path to Working Directory
+    </help>
     <citations>
         <citation type="bibtex">
 

@@ -13,16 +13,16 @@
   <inputs>
 
     <param name="GlocalDescriptor" type="select" label="GlobalDescriptor"  argument="" help="--DesType" > 
-      <option value="Length"> Length </option>
-      <option value="Weight"> Weight </option>
-      <option value="Charge"> Charge </option>
-      <option value="ChargeDensity"> ChargeDensity </option>
-      <option value="IsoelectricPoint"> IsoelectricPoint </option>
-      <option value="InstabilityIndex"> InstabilityIndex </option>
+      <option value="Length"> Sequence Length </option>
+      <option value="Weight"> Molecular Weight </option>
+      <option value="Charge"> Sequence Charge </option>
+      <option value="ChargeDensity"> Charge Density </option>
+      <option value="IsoelectricPoint"> Isoelectric Point </option>
+      <option value="InstabilityIndex"> Instability Index </option>
       <option value="Aromaticity"> Aromaticity </option>
-      <option value="AliphaticIndex"> AliphaticIndex </option>
-      <option value="BomanIndex"> BomanIndex </option>
-      <option value="HydrophobicRatio"> HydrophobicRatio </option>
+      <option value="AliphaticIndex"> Aliphatic Index </option>
+      <option value="BomanIndex"> Boman Index </option>
+      <option value="HydrophobicRatio"> Hydrophobic Ratio </option>
       <option value="All"> All </option>
     </param> 
 

@@ -23,15 +23,5 @@
     <help><![CDATA[
         usage: Concate_data_frame.py Infile1.tsv,Infile_2.tsv,Infile_3.tsv Merged_out.tsv 
     ]]></help>
-    <citations>
-        <citation type="bibtex">
-@misc{githubseqtk,
-  author = {LastTODO, FirstTODO},
-  year = {TODO},
-  title = {seqtk},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  url = {https://github.com/lh3/seqtk},
-}</citation>
-    </citations>
+
 </tool>

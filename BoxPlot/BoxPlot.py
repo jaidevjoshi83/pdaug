@@ -3,9 +3,6 @@ matplotlib.use('Agg')
 import glob, os
 import pandas as pd 
 import seaborn as sns
-#import matplotlib.pyplot as plt;plt.interactive(True)
-#import matplotlib
-#matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 
@@ -85,10 +82,10 @@ if __name__=="__main__":
     parser.add_argument("-Ry", "--RotationY", required=False, default=0, help="Roatate yticks")
     parser.add_argument("-H", "--FigHight", required=False,  default=6,  help="Figure Hight")
     parser.add_argument("-W", "--FigWidth", required=False, default=4, help="Figure Width")
-    parser.add_argument("-F", "--Features", required=True, default=None, help="Feature list to plot")
-    parser.add_argument("-O", "--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="HTML Out Dir")
-    parser.add_argument("-Hf", "--htmlFname", required=False, help="HTML out file", default="jai.html")
-    parser.add_argument("-Wp", "--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
+    parser.add_argument("-F", "--Features", required=True, default=None, help="Feature list")
+    parser.add_argument("-O", "--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="Path to html dir")
+    parser.add_argument("-Hf", "--htmlFname", required=False, help="HTML out file", default="report.html")
+    parser.add_argument("-Wp", "--Workdirpath", required=False, default=os.getcwd(), help="Path to Working Directory")
     args = parser.parse_args()
 
 BoxPlot(args.InFile, args.Features, args.RotationX, args.RotationY, args.FigHight, args.FigWidth,  args.Workdirpath,  args.htmlOutDir, args.htmlFname)

@@ -115,22 +115,22 @@ if __name__=="__main__":
     parser.add_argument("-f1", "--Fasta1",
                         required=True,
                         default=None,
-                        help="pep file")
+                        help="First fasta file")
                         
     parser.add_argument("-f2", "--Fasta2",
                         required=True,
                         default=None,
-                        help="out put file name for str Descriptors")   
+                        help="Second fasta file")   
 
     parser.add_argument("--htmlOutDir", 
                         required=False, 
                         default=os.path.join(os.getcwd(),'report_dir'), 
-                        help="HTML Out Dir")
+                        help="Path for HTML Out Dir")
 
     parser.add_argument("--htmlFname", 
                         required=False, 
                         help="HTML out file", 
-                        default="jai.html")
+                        default="report.html")
 
     parser.add_argument("--Workdirpath", 
                         required=False, 

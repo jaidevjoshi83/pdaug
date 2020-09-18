@@ -14,19 +14,19 @@ mutateAA.add_argument("-P","--Prob", required=True, default=None, help="Probabil
 mutateAA.add_argument("-F","--FastOut", required=False, default='Out.fasta', help="Mutated output fasta")
 
 filterduplicates = subparsers.add_parser('filterduplicates')
-filterduplicates.add_argument("-I","--InFile", required=True, default=None, help="")
-filterduplicates.add_argument("-F","--FastOut", required=False, default='Out.fasta', help="")
+filterduplicates.add_argument("-I","--InFile", required=True, default=None, help="Input file")
+filterduplicates.add_argument("-F","--FastOut", required=False, default='Out.fasta', help="Output file")
 
 
 keepnaturalaa = subparsers.add_parser('keepnaturalaa')
-keepnaturalaa.add_argument("-I","--InFile", required=True, default=None, help="")
-keepnaturalaa.add_argument("-F","--FastOut", required=False, default='Out.fasta', help="")
+keepnaturalaa.add_argument("-I","--InFile", required=True, default=None, help="Inputt file")
+keepnaturalaa.add_argument("-F","--FastOut", required=False, default='Out.fasta', help="Output file")
 
 
 filteraa = subparsers.add_parser('filteraa')
-filteraa.add_argument("-I","--InFile", required=True, default=None, help="")
-filteraa.add_argument("-F","--FastOut", required=False, default='Out.fasta', help="")
-filteraa.add_argument("-A","--FilterAA", required=True, default=None, help="")
+filteraa.add_argument("-I","--InFile", required=True, default=None, help="Input file")
+filteraa.add_argument("-F","--FastOut", required=False, default='Out.fasta', help="Output file")
+filteraa.add_argument("-A","--FilterAA", required=True, default=None, help="Filter amino acide")
 
 args = parser.parse_args()
 

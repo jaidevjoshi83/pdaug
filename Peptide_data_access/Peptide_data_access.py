@@ -45,12 +45,12 @@ if __name__=="__main__":
     parser.add_argument("-d", "--DataBaseType",
                         required=True,
                         default=None,
-                        help="pep file")
+                        help="Name of the dataset ")
                         
     parser.add_argument("-o", "--OutFile",
                         required=False,
                         default='Out.tsv',
-                        help="out put file name for str Descriptors")   
+                        help="Out put file name for str descriptors")   
 
     args = parser.parse_args()
     DataGen(args.DataBaseType, args.OutFile)

@@ -28,10 +28,23 @@
         </test>
     </tests>
 
-    <help><![CDATA[
+    <help>
+      usage: Legnth_distribution.py [-h] -I INFILE [-O HTMLOUTDIR] [-Hf HTMLFNAME]
+                              [-Wp WORKDIRPATH]
+
+      optional arguments:
+        -h, --help            show this help message and exit
+        -I INFILE, --InFile INFILE
+                              Input file name
+        -O HTMLOUTDIR, --htmlOutDir HTMLOUTDIR
+                              Path to html output directory
+        -Hf HTMLFNAME, --htmlFname HTMLFNAME
+                              HTML out file
+        -Wp WORKDIRPATH, --Workdirpath WORKDIRPATH
+                              Path to Working directory
 
 
-    ]]></help>
+    </help>
     <citations>
         <citation type="bibtex">
 

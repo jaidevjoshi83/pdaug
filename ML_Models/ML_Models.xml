@@ -679,28 +679,14 @@
     </tests>
 
 
-
-    <help><![CDATA[
-    usage: ML.py [-h] {SVMC,SGDC,DTC,GBC,RFC,LRC,KNC,GNBC,MLP}
-    Deployment tool
-    positional arguments:
-      {SVMC,SGDC,DTC,GBC,RFC,LRC,KNC,GNBC,MLP}
-    optional arguments:
-      -h, --help, show this help message and exit
-    ]]></help>
-    <citations>
-        <citation type="bibtex">
-
-@misc{githubseqtk,
-  author = {LastTODO, FirstTODO},
-  year = {TODO},
-  title = {seqtk},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  url = {https://github.com/lh3/seqtk},
-
-}</citation>
-    </citations>
+    <help>
+      usage: ML.py [-h] {SVMC,SGDC,DTC,GBC,RFC,LRC,KNC,GNBC,MLP}
+      Deployment tool
+      positional arguments:
+        {SVMC,SGDC,DTC,GBC,RFC,LRC,KNC,GNBC,MLP}
+      optional arguments:
+        -h, --help, show this help message and exit
+    </help>
 </tool>
 
 

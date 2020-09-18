@@ -13,14 +13,14 @@
     ]]></command>
 
     <inputs>
-      <param name="Fasta1" type="data"  label="Fasta1" argument="--Fasta1" help="" />
-      <param name="Fasta2" type="data"  label="Fasta2" argument="--Fasta2" help="" />
-      <param name="overlap_factor" type="integer" value="5" label="overlap_factor" argument="--overlap_factor" help="" />
-      <param name="windows_per_frame" type="integer" value="5" label="windows_per_frame" argument="--windows_per_frame" help="" />
-      <param name="xlabel" type="text"  label="xlabel" value="mean volume" argument="--xlabel" help="" />
-      <param name="ylabel" type="text"  label="ylabel" value="mean hydropathy" argument="--ylabel" help="" />
-      <param name="pop1_label" type="text" label="--pop1_label" value="amyloids" argument="--pop1_label" help="" />
-      <param name="pop2_label" type="text" label="--pop2_label" value="non amyloids" argument="--pop2_label" help="" />
+      <param name="Fasta1" type="data"  label="First fasta file" argument="--Fasta1" help="" />
+      <param name="Fasta2" type="data"  label="Second fasta file" argument="--Fasta2" help="" />
+      <param name="overlap_factor" type="integer" value="5" label="Overlap factor" argument="--overlap_factor" help="" />
+      <param name="windows_per_frame" type="integer" value="5" label="Windows per frame" argument="--windows_per_frame" help="" />
+      <param name="xlabel" type="text"  label="X-label" value="mean volume" argument="--xlabel" help="" />
+      <param name="ylabel" type="text"  label="Y-label" value="mean hydropathy" argument="--ylabel" help="" />
+      <param name="pop1_label" type="text" label="Lebel for first population" value="amyloids" argument="--pop1_label" help="" />
+      <param name="pop2_label" type="text" label="Label for second population" value="non amyloids" argument="--pop2_label" help="" />
     </inputs>
 
     <outputs>   
@@ -43,11 +43,36 @@
 
 
 
-    <help><![CDATA[
+    <help>
 
+      usage: Fishers_Plot.py [-h] -f1 FASTA1 -f2 FASTA2 [-o OVERLAP_FACTOR] [-w WINDOWS_PER_FRAME] -x XLABEL -y YLABEL -p1 POP1_LABEL -p2 POP2_LABEL [--htmlOutDir HTMLOUTDIR] [--htmlFname HTMLFNAME] [--Workdirpath WORKDIRPATH]
 
+        optional arguments:
+          -h, --help            show this help message and exit
+          -f1 FASTA1, --Fasta1 FASTA1
+                                First fasta file
+          -f2 FASTA2, --Fasta2 FASTA2
+                                Second fasta file
+          -o OVERLAP_FACTOR, --overlap_factor OVERLAP_FACTOR
+                                Overlap factor
+          -w WINDOWS_PER_FRAME, --windows_per_frame WINDOWS_PER_FRAME
+                                Windows per frame
+          -x XLABEL, --xlabel XLABEL
+                                X label
+          -y YLABEL, --ylabel YLABEL
+                                Y label
+          -p1 POP1_LABEL, --pop1_label POP1_LABEL
+                                First population label
+          -p2 POP2_LABEL, --pop2_label POP2_LABEL
+                                Second population label
+          --htmlOutDir HTMLOUTDIR
+                                Path to html dir
+          --htmlFname HTMLFNAME
+                                html output file
+          --Workdirpath WORKDIRPATH
+                                Path to output Working Directory
 
-    ]]></help>
+    </help>
     <citations>
         <citation type="bibtex">
 

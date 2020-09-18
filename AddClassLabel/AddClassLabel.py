@@ -3,10 +3,10 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("-I", "--InFile", required=True, default=None, help=".fasta or .tsv")
-parser.add_argument("-C", "--ClassLabel", required=False, default=0, help="Path to target tsv file")
+parser.add_argument("-I", "--InFile", required=True, default=None, help="Input data file")
+parser.add_argument("-C", "--ClassLabel", required=False, default=0, help="Class Label 0 or 1")
 parser.add_argument("-t", "--ClassLabelTitle", required=False, default='Class_label', help="Title to use for class label column (Class_label)")
-parser.add_argument("-O", "--OutFile", required=False, default='OutFile.tsv', help="Path to target tsv file")
+parser.add_argument("-O", "--OutFile", required=False, default='OutFile.tsv', help="Output file name")
 
 args = parser.parse_args()
 

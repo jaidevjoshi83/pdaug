@@ -76,10 +76,10 @@ if __name__=="__main__":
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("-I", "--InFile", required=True, default=None, help="Path to target tsv file")
-    parser.add_argument("-O","--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="HTML Out Dir")
+    parser.add_argument("-I", "--InFile", required=True, default=None, help="Input file name")
+    parser.add_argument("-O","--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="Path to html output directory")
     parser.add_argument("-Hf","--htmlFname", required=False, help="HTML out file", default="report.html")
-    parser.add_argument("-Wp","--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
+    parser.add_argument("-Wp","--Workdirpath", required=False, default=os.getcwd(), help="Path to Working directory")
     args = parser.parse_args()
 
     LegnthDestribution(args.InFile, args.Workdirpath, args.htmlOutDir, args.htmlFname)

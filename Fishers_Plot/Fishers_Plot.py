@@ -407,58 +407,57 @@ if __name__=="__main__":
     parser.add_argument("-f1", "--Fasta1",
                         required=True,
                         default=None,
-                        help="pep file")
+                        help="First fasta file ")
                         
     parser.add_argument("-f2", "--Fasta2",
                         required=True,
                         default=None,
-                        help="out put file name for str Descriptors")   
+                        help="Second fasta file")   
 
     parser.add_argument("-o", "--overlap_factor",
                         required=False,
                         default=5,
-                        help="Path to out file")  
+                        help="Overlap factor")  
 
     parser.add_argument("-w", "--windows_per_frame",
                         required=False,
                         default=5,
-                        help="Path to out file")  
+                        help="Windows per frame")  
 
     parser.add_argument("-x", "--xlabel",
                         required=True,
                         default=None,
-                        help="Path to out file")  
+                        help="X label")  
 
     parser.add_argument("-y", "--ylabel",
                         required=True,
                         default=None,
-                        help="Path to out file")  
+                        help="Y label")  
 
     parser.add_argument("-p1", "--pop1_label",
                         required=True,
                         default=None,
-                        help="Path to out file")  
+                        help="First population label")  
 
     parser.add_argument("-p2", "--pop2_label",
                         required=True,
                         default=None,
-                        help="Path to out file") 
-
+                        help="Second population label") 
 
     parser.add_argument("--htmlOutDir", 
                         required=False, 
                         default=os.path.join(os.getcwd(),'report_dir'), 
-                        help="HTML Out Dir")
+                        help="Path to html dir")
 
     parser.add_argument("--htmlFname", 
                         required=False, 
-                        help="HTML out file", 
-                        default="jai.html")
+                        help="html output file", 
+                        default="report.html")
 
     parser.add_argument("--Workdirpath", 
                         required=False, 
                         default=os.getcwd(), 
-                        help="Working Directory Path")
+                        help="Path to output Working Directory")
                                                 
     args = parser.parse_args()
 

@@ -33,6 +33,20 @@
   </tests>
 
   <help>
+
+    usage: AddClassLabel.py [-h] -I INFILE [-C CLASSLABEL] [-t CLASSLABELTITLE]
+                        [-O OUTFILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -I INFILE, --InFile INFILE
+                        Input data file
+  -C CLASSLABEL, --ClassLabel CLASSLABEL
+                        Class Label 0 or 1
+  -t CLASSLABELTITLE, --ClassLabelTitle CLASSLABELTITLE
+                        Title to use for class label column (Class_label)
+  -O OUTFILE, --OutFile OUTFILE
+                        Output file name
   </help>
 </tool>
 

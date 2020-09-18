@@ -1,0 +1,59 @@
+<tool id="heat_map" name="Heat_Map" version="0.1.0" python_template_version="3.6">
+	<description> Plot a heatmap</description>
+    <requirements>
+      <requirement type="package" version="3.1.2">matplotlib</requirement>
+      <requirement type="package" version="0.25.3">pandas</requirement>
+      <requirement type="package" version="0.9.0">seaborn</requirement> 
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/heat_map.py'  --in_file '$input1' --FigHight '$input2' --FigWidth '$input3' --Rotation '$input4' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2' 
+             
+    ]]></command>
+
+    <inputs>
+      <param name="input1" type="data" label="Input data file" format="tabular" argument= "--TrainFile"/>
+      <param name="input2" type="integer" label="Figure width"  value="8"  help="(--FigWidth)" />
+      <param name="input3" type="integer" label="Figure hight" value="10"  help="(--FigHight)" /> 
+      <param name="input4" type="integer" label="Label rotation" value="20"  help="(--Rotation)" />
+    </inputs>
+
+    <outputs>   
+        <data name='output2' format='html' label="repot.html" />
+    </outputs>
+ 
+    <tests>
+        <test>
+            <param name="input1" value="test.tsv"/>
+            <output name="output2" file="report.html"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+usage: heat_map.py [-h] -I INFILE [-H FIGHIGHT] [-W FIGWIDTH] [-R ROTATION]
+                   [--htmlOutDir HTMLOUTDIR] [--htmlFname HTMLFNAME]
+                   [--Workdirpath WORKDIRPATH]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -I INFILE, --InFile INFILE
+                        Path to target tsv file
+  -H FIGHIGHT, --FigHight FIGHIGHT
+                        Figure hight
+  -W FIGWIDTH, --FigWidth FIGWIDTH
+                        Figure width
+  -R ROTATION, --Rotation ROTATION
+                        Rotation of the label
+  --htmlOutDir HTMLOUTDIR
+                        Path to html directory
+  --htmlFname HTMLFNAME
+                        HTML out file
+  --Workdirpath WORKDIRPATH
+                        Path to working directory
+
+    ]]></help>
+</tool>
+
+
+
