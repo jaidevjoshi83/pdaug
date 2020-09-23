@@ -162,6 +162,19 @@
   </tests>
   <help>
 
+
+    usage: Peptide_sequence_descriptor_2.py [-h]
+    
+    {AutoCorrCal,CrossCorrCal,CalculateMovement,GlobalCal,ProfileCal,ArcCal}
+                                    
+    Deployment tool
+
+    positional arguments:
+      {AutoCorrCal,CrossCorrCal,CalculateMovement,GlobalCal,ProfileCal,ArcCal}
+
+    optional arguments:
+      -h, --help            show this help message and exit
+
   </help>
 </tool>
 

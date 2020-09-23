@@ -30,6 +30,7 @@
           --Weight $SelectDiscriptor.Weight
         #end if
 
+
         -O '$output1'
                   
     ]]></command>
@@ -51,6 +52,7 @@
           <option value="QSO">QSO</option>
           <option value="SOCN">SOCN</option>
           <option value="TPComp">TPComp</option>
+          <option value="BinaryDescriptor">Binary Descriptor</option>
           <option value="All">All</option>  
         </param>
 
@@ -59,12 +61,12 @@
           <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
 
-        <when value="APAAC" >
+        <when value="PAAC" >
           <param name="Lamda" type="integer" value="5" argument= "--Lamda"/>
           <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
 
-        <when value="All" >
+        <when value="PAAC" >
           <param name="Lamda" type="integer" value="5" argument= "--Lamda"/>
           <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
@@ -83,6 +85,11 @@
       <param name="DesType" value="All"/>
       <param name="Lamda" value="5"/>
       <param name="Weight" value="0.5"/>
+      <output name="output1" file="out.tsv"/>
+    </test>
+    <test>
+      <param name="input1" value="test.fasta"/>
+      <param name="DesType" value="BinaryDescriptor"/>
       <output name="output1" file="out.tsv"/>
     </test>
   </tests>

@@ -7,8 +7,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("-I", "--InFile", required=True, default=None, help="Input file")
 parser.add_argument("-O", "--OutFile", required=True, default=None, help="Output file")
-#parser.add_argument("-M", "--Method", required=True, default=None, help="Path to target tsv file")
-#parser.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="Working Directory Path")
+parser.add_argument("-N", "--Ngrams", required=True, default=None, help="ngrams")
 
 args = parser.parse_args()
 
@@ -36,7 +35,7 @@ for i, l in enumerate(Pep):
     print (l)
 
     D = PeptideDescriptor(l)
-    D.count_ngrams([2])
+    D.count_ngrams([int(args.Ngrams)])
 
     df1 = pd.DataFrame(D.descriptor, index=["sequence"+str(i),])
     df = pd.concat([df, df1], axis=0)
