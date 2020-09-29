@@ -1,0 +1,27 @@
+<tool id="Merge_dataframes" name="Merge Dataframes" version="0.1.0" python_template_version="3.5">
+
+	<description>Merge two data frames</description>
+
+    <requirements>
+      <requirement version="0.24.2" package="pandas" >pandas </requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        python $__tool_directory__/Merge_Dataframes.py '$input1' '$output1'
+    ]]></command>
+    <inputs>
+        <param type="data" name="input1" label="Input files" format="tabular" multiple="true" />
+    </inputs>
+    <outputs>
+        <data name='output1' format='tabular' label="merged.tsv" multiple="false" />    
+    </outputs>
+    <tests>
+        <test>
+            <param name="input1" value="1.tsv,2.tsv,3.tsv,4.tsv,5.tsv,6.tsv"/>
+            <output name="output1" file="out.tsv" />
+        </test>
+    </tests>
+    <help><![CDATA[
+        usage: Concate_data_frame.py Infile1.tsv,Infile_2.tsv,Infile_3.tsv Merged_out.tsv 
+    ]]></help>
+
+</tool>

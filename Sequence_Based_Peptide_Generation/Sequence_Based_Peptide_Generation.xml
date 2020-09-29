@@ -1,4 +1,4 @@
-<tool id="Peptide_library_generation_1" name="Peptide library generation-1" version="1.1.2">
+<tool id="Sequence_Based_Peptide_Generation" name="Sequence Based Peptide Generation" version="1.1.2">
   <description>Generates peptide sequence library</description>
 
   <requirements>
@@ -10,7 +10,7 @@
     <command detect_errors="exit_code"><![CDATA[
 
 
-        python '$__tool_directory__/Peptide_library_generation_1.py' '$SelMethod.Method'
+        python '$__tool_directory__/Sequence_Based_Peptide_Generation.py' '$SelMethod.Method'
 
                         --outputFile '$output1'
 

@@ -1,4 +1,4 @@
-<tool id="Peptide_sequence_descriptors" name="Peptide Sequence Descriptors" version="1.1.2">
+<tool id="Sequence_Property_Based_Descriptors" name="Sequence Property Based Descriptors" version="1.1.2">
   <description>Calculates sequence-based descriptor of the peptide sequences</description>
 
   <requirements>
@@ -11,7 +11,7 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/Peptide_sequence_descriptors.py' --InFile $input1 
+        python '$__tool_directory__/Sequence_Property_Based_Descriptors.py' --InFile $input1 
 
         --DesType $SelectDiscriptor.DesType
 

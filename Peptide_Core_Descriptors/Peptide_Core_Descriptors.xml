@@ -1,0 +1,37 @@
+
+<tool id="Peptide_Core_Descriptors" name="Peptide Core Descriptors" version="1.1.2">
+  <description>Calculates core descriptors of peptide sequences</description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.2.1">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/Peptide_Core_Descriptors.py'  -I '$input1' -O '$output1'              
+
+    ]]></command>
+
+  <inputs>
+    <param name="input1" type="data" label="Input file" format="fasta" argument= "--InFile1"/>
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+  </outputs>
+  <tests>
+    <test>
+      <param name="input1" value="test.fasta"/>
+      <output name="output1" file="out.tsv"/>
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+

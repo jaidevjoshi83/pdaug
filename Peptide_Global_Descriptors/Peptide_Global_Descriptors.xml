@@ -1,0 +1,50 @@
+<tool id="Peptide_Global_Descriptors" name="Peptide Global Descriptors" version="1.1.2">
+  <description>Calculates global descriptors of the peptide sequence</description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.2.1">modlamp</requirement> 
+  </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__/Peptide_Global_Descriptors.py' --InFile '$InFile' --DesType '$GlocalDescriptor' --Amid '$amide' -O '$output1'
+    ]]></command>
+
+  <inputs>
+
+    <param name="GlocalDescriptor" type="select" label="GlobalDescriptor"  argument="" help="--DesType" > 
+      <option value="Length"> Sequence Length </option>
+      <option value="Weight"> Molecular Weight </option>
+      <option value="Charge"> Sequence Charge </option>
+      <option value="ChargeDensity"> Charge Density </option>
+      <option value="IsoelectricPoint"> Isoelectric Point </option>
+      <option value="InstabilityIndex"> Instability Index </option>
+      <option value="Aromaticity"> Aromaticity </option>
+      <option value="AliphaticIndex"> Aliphatic Index </option>
+      <option value="BomanIndex"> Boman Index </option>
+      <option value="HydrophobicRatio"> Hydrophobic Ratio </option>
+      <option value="All"> All </option>
+    </param> 
+
+    <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
+    <param name="ph" type="float" label="ph" value="7.0"  help="--Ph" />
+    <param name="amide" type="boolean" label="amide" value="False" help="--Amide" />
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+  </outputs>
+  
+  <tests>
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="GlocalDescriptor" value="All" />
+      <param name="ph" value="7.0"/>
+      <param name="amide" file="False"/>
+      <output name="output1" file="out.tsv"/> 
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>

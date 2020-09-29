@@ -1,4 +1,4 @@
-<tool id="Peptide_library_generation-2" name="Peptide library generation-2" version="1.1.2">
+<tool id="AA_Property_Based_Peptide_Generation" name="AA Property Based Peptide Generation" version="1.1.2">
   <description>Generates peptide sequence library </description>
 
   <requirements>
@@ -11,7 +11,7 @@
     <command detect_errors="exit_code"><![CDATA[
 
 
-        python '$__tool_directory__/Peptide_library_generation-2.py'  '$SelLibGene.LibGene'
+        python '$__tool_directory__/AA_Property_Based_Peptide_Generation.py'  '$SelLibGene.LibGene'
 
                         #if $SelLibGene.LibGene == 'Random'
                             --seq_num '$SelLibGene.seq_num'

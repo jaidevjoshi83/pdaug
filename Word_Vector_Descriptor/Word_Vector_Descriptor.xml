@@ -1,0 +1,57 @@
+<tool id="Word_Vector_Descriptor" name="Word Vector Descriptor" version="0.1.0" python_template_version="3.7">
+    <description>Uversky plot to analyze ordered and disordered proteins</description>
+    
+    <requirements>
+      <requirement type="package" version="3.5">nltk</requirement>
+      <requirement type="package" version="1.0.3">pandas</requirement>
+      <requirement type="package" version="1.76">biopython</requirement>
+      <requirement type="package" version="3.8.0">gensim</requirement>
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+
+       python '$__tool_directory__/Word_Vector_Descriptor.py' -I '$Input' -M '$ModelInput' -R '$row' -P '$positive' -N '$negative' -O '$output' 
+             
+    ]]></command>
+
+    <inputs>
+      <param name="ModelInput" type="data" label="Input model file" format="model" argument= "--ModelInput"/>
+      <param name="Input" type="data" label="Training data" format="fasta" argument= "--InputFasta"/>
+      <param name="row" type="integer" label="Number of traning samples" optional="true" argument= "--row"/>
+      <param name="positive" type="integer" label="Positives samples" optional="true" argument= "--positive"/>
+      <param name="negative" type="integer" label="Negative samples" optional="true" argument= "--negative"/>
+    </inputs>
+
+    <outputs>   
+        <data name='output' format='tabular' label="out.tsv" />
+    </outputs>
+ 
+    <tests>
+        <test>
+          <param name="ModelInput" type="data" format="model" file="output.model" />
+          <param name="Input" file="test.fasta"/>
+          <param name="row" value="276" />
+          <param name="positive" value="138" />
+          <param name="negative" value="138" />
+          <output name="output" file="Out.tsv"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+
+
+    ]]></help>
+    <citations>
+        <citation type="bibtex">
+
+@misc{githubseqtk,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {seqtk},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/lh3/seqtk},
+
+}</citation>
+    </citations>
+</tool>

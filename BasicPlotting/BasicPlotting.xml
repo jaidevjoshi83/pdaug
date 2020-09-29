@@ -1,4 +1,4 @@
-<tool id="Basic_Plot" name="Basic Plot" version="0.1.0" python_template_version="3.6">>
+<tool id="Basic_Plot" name="BasicPlotting" version="0.1.0" python_template_version="3.6">>
   <description>Basic Plot</description>
 
   <requirements>
@@ -52,8 +52,8 @@
 
                 #end if 
 
-                --htmlOutDir '$output2.extra_files_path'
-                --htmlFname '$output2'
+                --htmlOutDir '$output.extra_files_path'
+                --htmlFname '$output'
                       
     ]]></command>
 
@@ -106,7 +106,6 @@
               </when>
 
           </conditional>
-
           
           <param name="RotationX" type="integer"  optional="true"   argument= "--FigWidth"/>
           <param name="RotationY" type="integer"  optional="true"   argument= "--Features"/>
@@ -120,53 +119,58 @@
   </inputs>
 
   <outputs>
-      <data name='output2' format='html' label="report.html" > </data>
+      <data name='output' format='html' label="report.html" > </data>
   </outputs>
   
   <tests>
     <test>
-      <param name="Analysis" value="CalcAAFreq" />
-      <param name="input1" value="test1.fasta"/>
-      <output name="output1" file="test1/out1.tsv"/>
-      <output name="output2" file="test1/report_dir/report.html"/>
+      <param name="Plot" value="HeatMap" />
+      <param name="InFile" value="test1.tsv"/>
+      <param name="FigHight" value="10"/>
+      <param name="FigWidth" value="12"/>
+      <param name="Rotation" value="20" />
+      <output name="output" file="test1/report_dir/report.html"/>
     </test>
 
     <test>
-      <param name="Analysis" value="H" />
-      <param name="input1" value="test1.fasta"/>
-      <param name="scale" value="eisenberg"/>
-      <output name="output1" file="test2/out2.tsv"/>
+      <param name="Plot" value="BoxPlot" />
+      <param name="InFile" value="test2.tsv"/>
+      <param name="FigHight" value="10"/>
+      <param name="FigWidth" value="12"/>
+      <param name="RotationX" value="20" />
+      <param name="RotationY" value="20" />
+      <param namee="Features" value="a1,a2"/>
+      <output name="output" file="test2/report_dir/report.html"/>
     </test>
 
     <test>
-      <param name="Analysis" value="uH" />
-      <param name="input1" value="test1.fasta"/>
-      <param name="scale" value="eisenberg"/>
-      <param name="Window" value="1000"/>
-      <output name="output1" file="test3/out3.tsv"/>
+      <param name="Plot" value="ScatterPlot" />
+      <param name="SelectPlot" value="2D" />
+      <param name="InFile" value="test3.tsv"/>
+      <param name="FigHight" value="10"/>
+      <param name="FigWidth" value="12"/>
+      <param name="RotationX" value="20" />
+      <param name="RotationY" value="20" />
+      <param name="Label" value="class" />
+      <param namee="Features1" value="a1"/>
+      <param namee="Features2" value="a2"/>
+      <output name="output" file="test3/report_dir/report.html"/>
     </test>
 
     <test>
-      <param name="Analysis" value="PlotSummary" />
-      <param name="input1" value="test1.fasta"/>
-      <param name="input2" value="test2.fasta"/>
-      <output name="output2" file="test6/report_dir/report.html"/>
+      <param name="Plot" value="ScatterPlot" />
+      <param name="SelectPlot" value="3D" />
+      <param name="InFile" value="test4.tsv"/>
+      <param name="FigHight" value="10"/>
+      <param name="FigWidth" value="12"/>
+      <param name="RotationX" value="20" />
+      <param name="RotationY" value="20" />
+      <param name="Label" value="class" />
+      <param namee="Features1" value="a1"/>
+      <param namee="Features2" value="a2"/>
+      <param namee="Features3" value="a3"/>     
+      <output name="output" file="test4/report_dir/report.html"/>
     </test>
-
-    <test>
-      <param name="Analysis" value="Len" />
-      <param name="input1" value="test1.fasta"/>
-      <output name="output1" file="test5/out5.tsv"/>
-    </test>
-
-    <test>
-      <param name="Analysis" value="charge" />
-      <param name="input1" value="test1.fasta"/>
-      <param name="ph" value="7.0" />
-      <param name="amide" value="false" />
-      <output name="output1" file="test4/out4.tsv"/>
-    </test>
-
 
   </tests>
   <help>

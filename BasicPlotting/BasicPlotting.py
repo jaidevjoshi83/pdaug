@@ -38,12 +38,11 @@ def HTML_Gen(html):
     </style>
     </head>
     <div class="jumbotron text-center">
-      <h1> Machine Learning Algorithm Assessment Report </h1>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <img src="Out.png" alt="Smiley face" height="500" width="400">
+          <img src="Out.png" alt="Smiley face" height="500" width="500">
         </div>
 
       </div>
@@ -60,7 +59,6 @@ def HeatMapPlot(Infile,  FigHight, FigWidth, Rotation, Workdirpath, htmlOutDir, 
         os.makedirs(htmlOutDir)
 
     df  = pd.read_csv(Infile, sep="\t")
-    #print (df.columns[1:])
 
     plt.figure(figsize=(float(FigHight),float(FigWidth)))
 
@@ -88,16 +86,22 @@ def BoxPlot(InFile, Feature, RotationX, RotationY, FigHight, FigWidth,  Workdirp
     df  = pd.read_csv(InFile, sep="\t")
 
     f = Feature.split(',')
+
+    sns.set(font_scale = 3)
     plt.figure(figsize=(int(FigHight),int(FigWidth)))
-    sns.boxplot(data=df[f])
-    plt.xticks(rotation=int(RotationX))
-    plt.yticks(rotation=int(RotationY))
+
+    b = sns.boxplot( data=df[f])
+    b = sns.swarmplot( data=df[f], color=".25")
+    b.set_xlabel("Features",fontsize=30)
+
     plt.savefig(os.path.join(Workdirpath, htmlOutDir, "Out.png"), dpi=600)
 
     HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 
-def ScatterPlot(InFile, Feature1, Feature2, Feature3, Label, PlotType, RotationX, RotationY, FigHight, FigWidth,  Workdirpath, htmlOutDir, htmlFname):
 
+
+
+def ScatterPlot(InFile, Feature1, Feature2, Feature3, Label, PlotType, RotationX, RotationY, FigHight, FigWidth,  Workdirpath, htmlOutDir, htmlFname):
 
     Workdirpath = os.path.join(os.getcwd(),'report_dir')
 
@@ -105,9 +109,7 @@ def ScatterPlot(InFile, Feature1, Feature2, Feature3, Label, PlotType, RotationX
         os.makedirs(htmlOutDir)
 
     df  = pd.read_csv(InFile, sep="\t")
-
     fig = plt.figure(figsize=(int(FigHight),int(FigWidth)))
-
 
     if PlotType== "2D":
         sns.scatterplot(x=Feature1, y=Feature2, hue=Label, data=df)

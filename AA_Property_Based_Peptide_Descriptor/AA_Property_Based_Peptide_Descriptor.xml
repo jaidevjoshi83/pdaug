@@ -1,0 +1,182 @@
+<tool id="AA_Property_Based_Peptide_Descriptor" name="AA Property Based Peptide Descriptor" version="1.1.2">
+  <description>Calculates sequence based peptide descriptors</description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.2.1">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/AA_Property_Based_Peptide_Descriptor.py'  '$SelDescriptor.Descriptor'
+
+        				--InFile '$InFile'
+
+                        #if $SelDescriptor.Descriptor == 'AutoCorrCal'
+                            --WindowSize $SelDescriptor.WindowSize
+                            --ScaleName $SelDescriptor.ScaleName
+                        #end if 
+
+                        #if $SelDescriptor.Descriptor == 'CrossCorrCal'
+                            --WindowSize $SelDescriptor.WindowSize
+                            --ScaleName $SelDescriptor.ScaleName                        
+                        #end if 
+
+                        #if $SelDescriptor.Descriptor == 'CalculateMovement'
+                            --WindowSize $SelDescriptor.WindowSize
+                            --Angle $SelDescriptor.Angle
+                            --Modality $SelDescriptor.Modality
+                            --ScaleName $SelDescriptor.ScaleName
+                        #end if 
+
+                        #if $SelDescriptor.Descriptor == 'GlobalCal'
+                            --WindowSize $SelDescriptor.WindowSize
+                            --Modality $SelDescriptor.Modality
+                            --ScaleName $SelDescriptor.ScaleName
+                        #end if 
+
+                        #if $SelDescriptor.Descriptor == 'ProfileCal'
+                            --ProfType $SelDescriptor.ProfType 
+                            --WindowSize $SelDescriptor.WindowSize
+                            --ScaleName $SelDescriptor.ScaleName
+                        #end if 
+
+                        #if $SelDescriptor.Descriptor == 'ArcCal'
+                            --Modality $SelDescriptor.Modality
+                        #end if    
+
+                        --OutFile $output1
+
+    ]]></command>
+
+
+  <inputs>
+
+
+  	<param name="InFile" type="data" format="fasta" argument= "--InFile"/>
+
+
+    <conditional name='SelDescriptor' >
+
+        <param name="Descriptor" type="select" label="LibGene" argument="">
+          <option value="AutoCorrCal">AutoCorrCal</option>
+          <option value="CrossCorrCal">CrossCorrCal</option>
+          <option value="CalculateMovement">CalculateMovement</option>
+          <option value="GlobalCal">GlobalCal</option>
+          <option value="ProfileCal">ProfileCal</option>
+          <option value="ArcCal">ArcCal</option>
+        </param>
+
+        <when value="AutoCorrCal">          
+            <param name="WindowSize" type="integer" value="7" argument="--WindowSize" />
+            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+        </when>
+
+        <when value="CrossCorrCal">
+            <param name="WindowSize" type="integer" value="7" argument="--WindowSize" />
+            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+        </when>
+
+        <when value="CalculateMovement">
+            <param name="WindowSize" type="integer" value="1000" argument="--WindowSize" />
+            <param name="Angle" type="integer" value="100" argument="--Angle" />
+            <param name="Modality" type="text" value="max" argument="--Modality" />
+            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+        </when>
+
+        <when value="GlobalCal">
+            <param name="WindowSize" type="integer" value="1000" argument="--lenmin_s" />
+            <param name="Modality" type="text" value="max" argument="--Modality" />
+            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+
+        </when>
+
+        <when value="ProfileCal">
+            <param name="ProfType" type="text" value="uH" argument="--ProfType" />
+            <param name="WindowSize" type="integer" value="7" argument="--lenmin_s" />
+            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+        </when>
+
+        <when value="ArcCal">
+            <param name="Modality" type="text" value="max" argument="--Modality" />
+        </when>
+
+    </conditional>
+  </inputs>
+
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+  </outputs>
+  <tests>
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="AutoCorrCal"/>
+      <param name="WindowSize" value="7"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <output name="output1" file="out1.tsv"/>
+    </test>
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="CrossCorrCal"/>
+      <param name="WindowSize" value="7"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <output name="output1" file="out2.tsv"/>
+    </test>
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="CalculateMovement"/>
+      <param name="WindowSize" value="1000"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <param name="Angle" value="100"/>
+      <param name="Modality" value="max"/>
+      <output name="output1" file="out3.tsv"/>
+    </test>
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="GlobalCal"/>
+      <param name="WindowSize" value="1000"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <param name="Modality" value="max"/>
+      <output name="output1" file="out4.tsv"/>
+    </test>
+
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="ProfileCal"/>
+      <param name="WindowSize" value="7"/>
+      <param name="ScaleName" value="Eisenberg"/>
+      <param name="ProfType" value="uH"/>
+      <output name="output1" file="out5.tsv"/>
+    </test>
+
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="Descriptor" value="ArcCal"/>
+      <param name="Modality" value="max"/>
+      <output name="output1" file="out6.tsv"/>
+    </test>
+  </tests>
+  <help>
+
+
+    usage: Peptide_sequence_descriptor_2.py [-h]
+    
+    {AutoCorrCal,CrossCorrCal,CalculateMovement,GlobalCal,ProfileCal,ArcCal}
+                                    
+    Deployment tool
+
+    positional arguments:
+      {AutoCorrCal,CrossCorrCal,CalculateMovement,GlobalCal,ProfileCal,ArcCal}
+
+    optional arguments:
+      -h, --help            show this help message and exit
+
+  </help>
+</tool>
+
+
+

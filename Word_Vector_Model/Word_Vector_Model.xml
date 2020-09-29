@@ -1,0 +1,44 @@
+<tool id="Word_Vector_Model" name="Word Vector Model" python_template_version="3.7" version="1.1.2">
+  <description>The skip-gram model</description>
+  <requirements>
+    <requirement type="package" version="1.0.3">pandas</requirement>
+    <requirement type="package" version="1.76">biopython</requirement> 
+    <requirement type="package" version="3.5">nltk</requirement> 
+    <requirement type="package" version="3.8.0">gensim</requirement>
+    <requirement type="package" version="0.23.1">scikit-learn</requirement>
+    <requirement type="package" version="1.18.4">numpy</requirement>
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/Word_Vector_Model.py' -I '$input' -M '$meanCount' -W '$window' -O '$OutFile'
+        
+    ]]></command>
+
+  <inputs>
+    <param name="input" type="data" label="Input fasta file" format="fasta" argument= "--Input"/>
+    <param name="meanCount" type="integer" label="Ignores all words with total frequency lower than this" value="0" format="fasta" argument= "--min_count"/>
+    <param name="window" type="integer" label="Maximum distance between the current and predicted word within a sentence" value="5" argument="--window" help="row"/>
+  </inputs>
+
+  <outputs>
+    <data name='OutFile' format='model' label="output.model" />
+  </outputs>
+
+  <tests>
+    <test>
+      <param name="input" value="test.fasta"/>
+      <param name="meanCount" value="0"/>
+      <param name="window" value="5"/>
+      <param name="OutFile" file="output.model" />
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+

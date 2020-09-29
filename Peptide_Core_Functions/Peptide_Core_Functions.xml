@@ -1,0 +1,97 @@
+
+<tool id="Peptide_Core_Functions" name="Peptide Core Functions" version="1.1.2">
+  <description> Manipulation and preprocessing of peptide datasets</description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/Peptide_Core_Functions.py'  '$SelCoreFunction.CoreFunction'
+
+              --InFile '$InFile'
+
+              #if $SelCoreFunction.CoreFunction == 'mutateAA'
+                  --nr $SelCoreFunction.nr
+                  --Prob $SelCoreFunction.prob
+              #end if 
+
+              #if $SelCoreFunction.CoreFunction == 'filteraa'
+                  --FilterAA $SelCoreFunction.FilterAA
+              #end if 
+
+              --FastOut '$output1'
+
+    ]]></command>
+
+  <inputs>
+
+    <param name="InFile" type="data" format="fasta" label="Input file" argument= "--InFile"/>
+
+    <conditional name='SelCoreFunction' >
+
+        <param name="CoreFunction" type="select" label="Analysis options" argument="">
+          <option value="mutateAA">Mutate Amino Acid</option>
+          <option value="filterduplicates">Filter Duplicates</option>
+          <option value="keepnaturalaa">Keep Naturalaa</option>
+          <option value="filteraa">Filter Amino Acid</option>
+        </param>
+
+        <when value="mutateAA">
+            <param name="nr" type="integer" label="Number of mutations" value="3" help="--nr" />
+            <param name="prob" type="float" label="probability" value="1.0" help="--Prob" />
+        </when>
+
+        <when value="filterduplicates">
+        </when>
+
+        <when value="keepnaturalaa">
+        </when>
+
+        <when value="filteraa">
+            <param name="FilterAA" type="text" value="eisenberg" label="FilterAA" help="--FilterAA"/>
+        </when>
+
+    </conditional>
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.fasta" />    
+  </outputs>
+  <tests>
+    <test>
+      <param name="InFile" value="test1.fasta"/>
+      <param name="CoreFunction" value="mutateAA" />
+      <param name="nr" value="3"/>
+      <param name="prob" value="1.0"/>
+      <output name="output1" file="out1.fasta" lines_diff="2"/>
+    </test>
+    <test>
+      <param name="InFile" value="test2.fasta"/>
+      <param name="CoreFunction" value="filterduplicates" />
+      <output name="output1" file="out2.fasta" />
+    </test>
+    <test>
+      <param name="InFile" value="test3.fasta"/>
+      <param name="CoreFunction" value="keepnaturalaa" />
+      <output name="output1" file="out3.fasta" />
+    </test>
+    <test>
+      <param name="InFile" value="test4.fasta"/>
+      <param name="CoreFunction" value="filteraa" />
+      <param name="FilterAA" value="eisenberg" />
+      <output name="output1" file="out4.fasta" />
+    </test>
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+
