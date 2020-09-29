@@ -1,0 +1,182 @@
+<tool id="Basic_Plot" name="Basic Plot" version="0.1.0" python_template_version="3.6">>
+  <description>Basic Plot</description>
+
+  <requirements>
+      <requirement type="package" version="3.3.0">matplotlib</requirement>
+      <requirement type="package" version="0.25.3">pandas</requirement>
+      <requirement type="package" version="0.9.0">seaborn</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/BasicPlotting.py'  '$SelPlotting.Plot' 
+
+                #if $SelPlotting.Plot == 'HeatMap'
+                    --InFile '$SelPlotting.InFile'
+                    --FigHight '$SelPlotting.FigHight'
+                    --FigWidth '$SelPlotting.FigWidth'
+                    --Rotation '$SelPlotting.Rotation'
+                #end if 
+
+                #if $SelPlotting.Plot == 'BoxPlot'
+                    --InFile '$SelPlotting.InFile'
+                    --RotationX '$SelPlotting.RotationX' 
+                    --RotationY '$SelPlotting.RotationY'
+                    --FigHight '$SelPlotting.FigHight'
+                    --FigWidth '$SelPlotting.FigWidth'
+                    --Features '$SelPlotting.Features'             
+                #end if 
+
+                #if $SelPlotting.Plot == 'ScatterPlot'
+                  --PlotType '$SelPlotting.PlotType.SelectPlot'
+                    #if $SelPlotting.PlotType.SelectPlot == '2D'
+                      -F1 '$SelPlotting.PlotType.Features1'
+                      -F2 '$SelPlotting.PlotType.Features2'
+                    #end if
+
+                    #if $SelPlotting.PlotType.SelectPlot == '3D'
+                      -F1 '$SelPlotting.PlotType.Features1'
+                      -F2 '$SelPlotting.PlotType.Features2'
+                      -F3 '$SelPlotting.PlotType.Features3'
+                    #end if
+
+                    -I '$SelPlotting.InFile' 
+                    -Rx '$SelPlotting.RotationX'
+                    -Ry '$SelPlotting.RotationY'
+                    -H '$SelPlotting.FigHight'
+                    -W '$SelPlotting.FigWidth'
+                    -L '$SelPlotting.Label'
+
+                #end if 
+
+                --htmlOutDir '$output2.extra_files_path'
+                --htmlFname '$output2'
+                      
+    ]]></command>
+
+  <inputs>
+
+    <conditional name='SelPlotting' >
+
+        <param name="Plot" type="select" label="Analysis options" argument="">
+          <option value="HeatMap">HeatMap</option>
+          <option value="BoxPlot">BoxPlot</option>
+          <option value="ScatterPlot">ScatterPlot</option>
+        </param>
+
+        <when value="HeatMap">
+            <param name="InFile" type="data" format="tabular" label="Input file" argument= "--InFile"/>
+            <param name="FigHight" type="integer" optional="true"  label="Figure Hight" argument= "--FigWidth"/>
+            <param name="FigWidth" type="integer" optional="true"  label="Figure Width" argument= "--FigHight"/>
+            <param name="Rotation" type="integer" optional="true"  label="Rotation" argument= "--Rotation"/>
+        </when>
+
+        <when value="BoxPlot">
+            <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
+            <param name="RotationX" optional="true"  type="integer" argument= "--RotationX"/>
+            <param name="RotationY" optional="true"  type="integer" argument= "--RotationY"/>
+            <param name="FigHight" optional="true" type="integer"  argument= "--FigHight"/>
+            <param name="FigWidth" optional="true" type="integer"  argument= "--FigWidth"/>
+            <param name="Features" type="text" argument= "--Features"/>
+        </when>
+
+        <when value="ScatterPlot">
+
+          <param name="InFile"    type="data" format="fasta" argument= "--InFile"/>
+
+          <conditional name='PlotType' >
+
+              <param name="SelectPlot" type="select" label="Analysis options" argument="">
+                  <option value="2D">2D</option>
+                  <option value="3D">3D</option>
+              </param>
+              
+              <when value="2D">
+                <param name="Features1" type="text"    argument= "--RotationX"/>
+                <param name="Features2" type="text"    argument= "--RotationY"/>
+              </when>
+
+              <when value="3D">
+                <param name="Features1" type="text"    argument= "--RotationX"/>
+                <param name="Features2" type="text"    argument= "--RotationY"/>
+                <param name="Features3" type="text"    argument= "--FigHight"/>                 
+              </when>
+
+          </conditional>
+
+          
+          <param name="RotationX" type="integer"  optional="true"   argument= "--FigWidth"/>
+          <param name="RotationY" type="integer"  optional="true"   argument= "--Features"/>
+          <param name="FigHight"  type="integer"  optional="true"   argument= "--FigHight"/>
+          <param name="FigWidth"  type="integer"  optional="true"   argument= "--FigWidth"/>
+          <param name="Label"     type="text"                       argument="--label" />
+
+        </when>
+
+    </conditional>
+  </inputs>
+
+  <outputs>
+      <data name='output2' format='html' label="report.html" > </data>
+  </outputs>
+  
+  <tests>
+    <test>
+      <param name="Analysis" value="CalcAAFreq" />
+      <param name="input1" value="test1.fasta"/>
+      <output name="output1" file="test1/out1.tsv"/>
+      <output name="output2" file="test1/report_dir/report.html"/>
+    </test>
+
+    <test>
+      <param name="Analysis" value="H" />
+      <param name="input1" value="test1.fasta"/>
+      <param name="scale" value="eisenberg"/>
+      <output name="output1" file="test2/out2.tsv"/>
+    </test>
+
+    <test>
+      <param name="Analysis" value="uH" />
+      <param name="input1" value="test1.fasta"/>
+      <param name="scale" value="eisenberg"/>
+      <param name="Window" value="1000"/>
+      <output name="output1" file="test3/out3.tsv"/>
+    </test>
+
+    <test>
+      <param name="Analysis" value="PlotSummary" />
+      <param name="input1" value="test1.fasta"/>
+      <param name="input2" value="test2.fasta"/>
+      <output name="output2" file="test6/report_dir/report.html"/>
+    </test>
+
+    <test>
+      <param name="Analysis" value="Len" />
+      <param name="input1" value="test1.fasta"/>
+      <output name="output1" file="test5/out5.tsv"/>
+    </test>
+
+    <test>
+      <param name="Analysis" value="charge" />
+      <param name="input1" value="test1.fasta"/>
+      <param name="ph" value="7.0" />
+      <param name="amide" value="false" />
+      <output name="output1" file="test4/out4.tsv"/>
+    </test>
+
+
+  </tests>
+  <help>
+
+  </help>
+</tool>
+
+
+
+
+
+
+
