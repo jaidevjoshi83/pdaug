@@ -1,10 +1,9 @@
-<tool id="Basic_Plot" name="BasicPlotting" version="0.1.0" python_template_version="3.6">>
+<tool id="Basic_Plot" name="BasicPlotting" version="0.1.0" python_template_version="3.6">
   <description>Basic Plot</description>
 
   <requirements>
-      <requirement type="package" version="3.3.0">matplotlib</requirement>
       <requirement type="package" version="0.25.3">pandas</requirement>
-      <requirement type="package" version="0.9.0">seaborn</requirement> 
+      <requirement type="package" version="4.10.0">plotly</requirement> 
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
@@ -16,18 +15,15 @@
 
                 #if $SelPlotting.Plot == 'HeatMap'
                     --InFile '$SelPlotting.InFile'
-                    --FigHight '$SelPlotting.FigHight'
-                    --FigWidth '$SelPlotting.FigWidth'
-                    --Rotation '$SelPlotting.Rotation'
+                    --IndexColumn '$SelPlotting.IndexColumn'
+                    --x_label '$SelPlotting.x_label'
+                    --y_label '$SelPlotting.y_label'
                 #end if 
 
                 #if $SelPlotting.Plot == 'BoxPlot'
                     --InFile '$SelPlotting.InFile'
-                    --RotationX '$SelPlotting.RotationX' 
-                    --RotationY '$SelPlotting.RotationY'
-                    --FigHight '$SelPlotting.FigHight'
-                    --FigWidth '$SelPlotting.FigWidth'
-                    --Features '$SelPlotting.Features'             
+                    --Feature '$SelPlotting.Feature'  
+                    --Label '$SelPlotting.Label'           
                 #end if 
 
                 #if $SelPlotting.Plot == 'ScatterPlot'
@@ -44,10 +40,6 @@
                     #end if
 
                     -I '$SelPlotting.InFile' 
-                    -Rx '$SelPlotting.RotationX'
-                    -Ry '$SelPlotting.RotationY'
-                    -H '$SelPlotting.FigHight'
-                    -W '$SelPlotting.FigWidth'
                     -L '$SelPlotting.Label'
 
                 #end if 
@@ -69,18 +61,15 @@
 
         <when value="HeatMap">
             <param name="InFile" type="data" format="tabular" label="Input file" argument= "--InFile"/>
-            <param name="FigHight" type="integer" optional="true"  label="Figure Hight" argument= "--FigWidth"/>
-            <param name="FigWidth" type="integer" optional="true"  label="Figure Width" argument= "--FigHight"/>
-            <param name="Rotation" type="integer" optional="true"  label="Rotation" argument= "--Rotation"/>
+            <param name="IndexColumn" type="text" optional="true"  label="Index Column" argument= "--IndexColumn"/>
+            <param name="x_label" type="text" optional="true"  label="Label for x-axis" argument= "--x_label"/>
+            <param name="y_label" type="text" optional="true"  label="Label for y-axis" argument= "--y_label"/>
         </when>
 
         <when value="BoxPlot">
             <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
-            <param name="RotationX" optional="true"  type="integer" argument= "--RotationX"/>
-            <param name="RotationY" optional="true"  type="integer" argument= "--RotationY"/>
-            <param name="FigHight" optional="true" type="integer"  argument= "--FigHight"/>
-            <param name="FigWidth" optional="true" type="integer"  argument= "--FigWidth"/>
-            <param name="Features" type="text" argument= "--Features"/>
+            <param name="Feature" type="text" argument= "--Features"/>
+            <param name="Label" type="text" argument="--Label" />
         </when>
 
         <when value="ScatterPlot">
@@ -107,11 +96,7 @@
 
           </conditional>
           
-          <param name="RotationX" type="integer"  optional="true"   argument= "--FigWidth"/>
-          <param name="RotationY" type="integer"  optional="true"   argument= "--Features"/>
-          <param name="FigHight"  type="integer"  optional="true"   argument= "--FigHight"/>
-          <param name="FigWidth"  type="integer"  optional="true"   argument= "--FigWidth"/>
-          <param name="Label"     type="text"                       argument="--label" />
+          <param name="Label"     type="text"  argument="--label" />
 
         </when>
 
@@ -123,52 +108,23 @@
   </outputs>
   
   <tests>
+
     <test>
       <param name="Plot" value="HeatMap" />
-      <param name="InFile" value="test1.tsv"/>
-      <param name="FigHight" value="10"/>
-      <param name="FigWidth" value="12"/>
-      <param name="Rotation" value="20" />
+      <param name="InFile" value="test2.tsv"/>
+      <param name="IndexColumn" value="Algo" />
+      <param name="x_label" value="Performance" />
+      <param name="y_label" value="Algorithms" />
       <output name="output" file="test1/report_dir/report.html"/>
     </test>
-
-    <test>
-      <param name="Plot" value="BoxPlot" />
-      <param name="InFile" value="test2.tsv"/>
-      <param name="FigHight" value="10"/>
-      <param name="FigWidth" value="12"/>
-      <param name="RotationX" value="20" />
-      <param name="RotationY" value="20" />
-      <param namee="Features" value="a1,a2"/>
-      <output name="output" file="test2/report_dir/report.html"/>
-    </test>
-
-    <test>
-      <param name="Plot" value="ScatterPlot" />
-      <param name="SelectPlot" value="2D" />
-      <param name="InFile" value="test3.tsv"/>
-      <param name="FigHight" value="10"/>
-      <param name="FigWidth" value="12"/>
-      <param name="RotationX" value="20" />
-      <param name="RotationY" value="20" />
-      <param name="Label" value="class" />
-      <param namee="Features1" value="a1"/>
-      <param namee="Features2" value="a2"/>
-      <output name="output" file="test3/report_dir/report.html"/>
-    </test>
-
     <test>
       <param name="Plot" value="ScatterPlot" />
       <param name="SelectPlot" value="3D" />
-      <param name="InFile" value="test4.tsv"/>
-      <param name="FigHight" value="10"/>
-      <param name="FigWidth" value="12"/>
-      <param name="RotationX" value="20" />
-      <param name="RotationY" value="20" />
-      <param name="Label" value="class" />
-      <param namee="Features1" value="a1"/>
-      <param namee="Features2" value="a2"/>
-      <param namee="Features3" value="a3"/>     
+      <param name="InFile" value="test2.tsv"/>
+      <param name="Features1" value="a1"/>
+      <param name="Features2" value="a2"/>
+      <param name="Features3" value="a3"/>
+      <param name="Label" value="class"/>
       <output name="output" file="test4/report_dir/report.html"/>
     </test>
 
