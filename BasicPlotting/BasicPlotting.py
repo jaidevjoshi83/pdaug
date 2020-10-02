@@ -11,10 +11,7 @@ def HeatMapPlot(Infile,  IndexColumn, x_label, y_label,  Workdirpath, htmlOutDir
         os.makedirs(htmlOutDir)
 
     df  = pd.read_csv(Infile, sep="\t")
-
     y_ticks = list(df[IndexColumn])
-
-    print (df[df.columns.tolist()[1:]])
 
     fig = px.imshow(df[df.columns.tolist()[1:]], labels=dict(x=x_label, y=y_label), y=y_ticks)
     fig.update_xaxes(side="top")

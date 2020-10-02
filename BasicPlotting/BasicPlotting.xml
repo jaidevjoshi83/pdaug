@@ -111,27 +111,49 @@
 
     <test>
       <param name="Plot" value="HeatMap" />
-      <param name="InFile" value="test2.tsv"/>
-      <param name="IndexColumn" value="Algo" />
-      <param name="x_label" value="Performance" />
-      <param name="y_label" value="Algorithms" />
-      <output name="output" file="test1/report_dir/report.html"/>
-    </test>
-    <test>
-      <param name="Plot" value="ScatterPlot" />
-      <param name="SelectPlot" value="3D" />
-      <param name="InFile" value="test2.tsv"/>
-      <param name="Features1" value="a1"/>
-      <param name="Features2" value="a2"/>
-      <param name="Features3" value="a3"/>
-      <param name="Label" value="class"/>
-      <output name="output" file="test4/report_dir/report.html"/>
+      <param name="InFile" value="test1.tsv"/>
+      <param name="IndexColumn" value="Algo"/>
+      <param name="x_label" value="Performance"/>
+      <param name="y_label" value="Algorithms"/>
+      <output name="output" file="test1/report_dir/report.html.re" ftype="html" compare="re_match_multiline"/>
     </test>
 
+    <test>
+      <param name="Plot" value="BoxPlot" />
+      <param name="InFile" value="test2.tsv"/>
+      <param name="Feature" value="a1"/>
+      <param name="Label" value="class"/>
+      <output name="output" file="test2/report_dir/report.html.re" ftype="html" compare="re_match_multiline"/>
+    </test>
+
+    <test>
+      <param name="Plot" value="ScatterPlot" />
+      <param name="InFile" value="test2.tsv"/>
+      <param name="PlotType" value="2D" />
+      <param name="Features1" value="a1"/>
+      <param name="Features2" value="a2"/>
+      <param name="Label" value="class"/>
+      <output name="output" file="test3/report_dir/report.html.re" ftype="html" compare="re_match_multiline"/>
+    </test>
+
+    <test>
+      <param name="Plot" value="ScatterPlot" />
+      <param name="InFile" value="test2.tsv"/>
+      <param name="PlotType" value="2D" />
+      <param name="Features1" value="a1"/>
+      <param name="Features2" value="a2"/>
+      <param name="Features3" value="a2" />
+      <param name="Label" value="class"/>
+      <output name="output" file="test4/report_dir/report.html.re" ftype="html" compare="re_match_multiline"/>
+    </test>
+
+
   </tests>
+  
   <help>
 
   </help>
+
 </tool>
 
 
