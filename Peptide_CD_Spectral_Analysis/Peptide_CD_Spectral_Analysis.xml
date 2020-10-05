@@ -12,8 +12,8 @@
 
         #for $i, $inp in enumerate($input1):
             && ln -s '$inp' 'temp/${i}.csv'
-            && echo temp/${i}.csv
         #end for
+
 
         &&
 
@@ -26,7 +26,7 @@
                -Wx $SelMethods.Wx
                -A $SelMethods.Amide
                -P $SelMethods.Pathlen
-               -O $output1
+               -O $output2
             #end if 
 
             #if $SelMethods.Methods == 'PlotData'
@@ -125,24 +125,142 @@
 
   <outputs>
 
-    <collection type="list" label="OuTData">
+    <data name="output1" format="tsv" label="out.tsv" >
+      <filter> SelMethods['Methods'] == 'helicity' </filter>
+    </data>
+
+    <data name="output2" format="tsv" label="out.tsv" >
+      <filter> SelMethods['Methods'] == 'calc_ellipticity' </filter>
+    </data>
+
+   <collection name="pdfout" type="list" label="PDF">
       <discover_datasets pattern="__name_and_ext__" type='pdf' directory="temp/PDF" />
-      <filter>SelMethods['Methods'] == "PlotData"</filter>
-    </collection> 
+      <filter>   SelMethods['Methods'] == 'PlotData' </filter>
+   </collection>
 
-    <collection type="list" label="OuTData1">
-      <discover_datasets pattern="__name_and_ext__" type='csv' directory="temp/Dichro" />
-        <filter>SelMethods['Methods'] == "Dichroweb"</filter>
+
+    <collection name="dichroout" type="list" label="Dichro">
+      <discover_datasets pattern="__name_and_ext__" type='tsv' directory="temp/Dichro" />
+        <filter>  SelMethods['Methods'] == 'Dichroweb' </filter>
     </collection>
-
 
   </outputs>
 
   <tests>
+
     <test>
-      <param name="input1" value="1.tsv,2.tsv,3.tsv,4.tsv,5.tsv,6.tsv"/>
-      <output name="output1" file="out.tsv" />
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="calc_ellipticity"/>
+      <param name="ellipticity" value="calc_molar_ellipticity" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="true" />
+      <param name="Pathlen" value="1.0" />
+      <output name="output1" file="calc_molar_ellipticity.tsv" />
     </test>
+
+    <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="calc_ellipticity"/>
+      <param name="ellipticity" value="calc_meanres_ellipticity" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="true" />
+      <param name="Pathlen" value="1.0" />
+      <output name="output1" file="calc_meanres_ellipticity.tsv" />
+    </test>
+
+    <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="PlotData"/>
+      <param name="ellipticity" value="mean residue ellipticity" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="false" />
+      <param name="Pathlen" value="1.0" />
+     <collection name="pdfout" type="list" label="PDF">
+      <discover_datasets pattern="__name_and_ext__" type='pdf' directory="PDF1" />
+     </collection>
+    </test>
+
+    <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="PlotData"/>
+      <param name="ellipticity" value="molar ellipticity" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="false" />
+      <param name="Pathlen" value="1.0" />
+     <collection name="pdfout" type="list" label="PDF">
+      <discover_datasets pattern="__name_and_ext__" type='pdf' directory="PDF2" />
+     </collection>
+    </test>
+
+     <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="PlotData"/>
+      <param name="ellipticity" value="circular dichroism" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="false" />
+      <param name="Pathlen" value="1.0" />
+     <collection name="pdfout" type="list" label="PDF">
+      <discover_datasets pattern="__name_and_ext__" type='pdf' directory="PDF3" />
+     </collection>
+    </test>
+        <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="Dichroweb"/>
+      <param name="ellipticity" value="mean residue ellipticity" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="false" />
+      <param name="Pathlen" value="1.0" />
+    <collection name="dichroout" type="list" label="Dichro">
+      <discover_datasets pattern="__name_and_ext__" type='tsv' directory="Dichro1" />
+    </collection>
+    </test>
+
+    <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="Dichroweb"/>
+      <param name="ellipticity" value="molar ellipticity" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="false" />
+      <param name="Pathlen" value="1.0" />
+    <collection name="dichroout" type="list" label="Dichro">
+      <discover_datasets pattern="__name_and_ext__" type='tsv' directory="Dichro2" />
+    </collection>
+    </test>
+
+    <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="Dichroweb"/>
+      <param name="ellipticity" value="circular dichroism" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="false" />
+      <param name="Pathlen" value="1.0" />
+    <collection name="dichroout" type="list" label="Dichro">
+      <discover_datasets pattern="__name_and_ext__" type='tsv' directory="Dichro3" />
+    </collection>
+    </test>
+
+    <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="helicity"/>
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="false" />
+      <param name="Pathlen" value="1.0" />
+      <param name="T" value="24" />
+      <param name="K" value="3.5" />
+      <param name="Induction" value="false" />
+      <output name="output1" value="helicity.tsv" />
+
+    </test>
+
   </tests>
 
   <help><![CDATA[

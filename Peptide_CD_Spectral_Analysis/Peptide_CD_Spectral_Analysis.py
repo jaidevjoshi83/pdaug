@@ -16,7 +16,7 @@ calc_ellipticity.add_argument("-Wn","--WMin", required=True, default=None, help=
 calc_ellipticity.add_argument("-Wx","--Wmax", required=True, default=None, help="Probability of mutating a sequence")
 calc_ellipticity.add_argument("-A","--Amide", required=True, default=None, help="Mutated output fasta")
 calc_ellipticity.add_argument("-P","--Pathlen", required=True, default=None, help="Mutated output fasta")
-calc_ellipticity.add_argument("-O","--OutPut", required=False, default="OutFile.csv", help="Mutated output fasta")
+calc_ellipticity.add_argument("-O","--OutPut", required=False, default="OutFile.tsv", help="Mutated output fasta")
 
 PlotData = subparsers.add_parser('PlotData')
 
@@ -45,7 +45,7 @@ helicity.add_argument("-P","--Pathlen", required=True, default=None, help="Mutat
 helicity.add_argument("-t","--temperature", required=True, default=None, help="")
 helicity.add_argument("-k","--k", required=True, default=None, help="")
 helicity.add_argument("-I","--Induction", required=True, default=None, help="")
-helicity.add_argument("-O","--OutPut", required=False, default="result.csv", help="")
+helicity.add_argument("-O","--OutPut", required=False, default="result.tsv", help="")
 
 
 args = parser.parse_args()
@@ -58,18 +58,20 @@ if sys.argv[1] == "calc_ellipticity":
         cd.calc_molar_ellipticity()
         df = cd.molar_ellipticity
         df = pd.DataFrame(df[0])
-        df.to_csv(args.OutPut, index=None)
+        df.to_csv(args.OutPut, index=None, sep="\t")
 
     elif args.Type == "calc_meanres_ellipticity":
         cd = CD(args.DirPath, wmin=int(args.WMin), wmax=int(args.Wmax), amide=args.Amide, pathlen=float(args.Pathlen))
         cd.calc_meanres_ellipticity()
         df = cd.meanres_ellipticity
         df = pd.DataFrame(df[0])
-        df.to_csv(args.OutPut)
+        df.to_csv(args.OutPut, index=None, sep="\t")
     else:
         pass
 
 if sys.argv[1] == "PlotData":
+
+    os.system('ls temp')
 
     if args.Type == "mean residue ellipticity":
 
