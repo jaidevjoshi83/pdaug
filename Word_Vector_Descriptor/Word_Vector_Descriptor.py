@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-M", "--ModelInput", required=True, default=None, help="Path to target tsv file")
 parser.add_argument("-R", "--row", required=True, default=None, help="Path to target tsv file")
 parser.add_argument("-I", "--InputFasta", required=True, default=6, help="Path to target tsv file")
-parser.add_argument("-O", "--OutFile", required=False, default='final.model.model', help="Path to target tsv file")
+parser.add_argument("-O", "--OutFile", required=False, default='model.txt', help="Path to target tsv file")
 parser.add_argument("-P", "--positive", required=True, help="Path to target tsv file")
 parser.add_argument("-N", "--negative", required=True, help="Path to target tsv file")
 
@@ -21,16 +21,12 @@ args = parser.parse_args()
 seed = 42
 np.random.seed(seed)
 
-
-new_model = gensim.models.Word2Vec.load(args.ModelInput)
+new_model = gensim.models.KeyedVectors.load_word2vec_format(args.ModelInput, binary=False)
 
 import time
 t0 = time.time()
 
 temp_word = np.zeros(shape=(int(args.row), 200))
-
-print (SeqIO.parse(args.InputFasta, 'fasta'))
-
 
 for index, seqs in enumerate(SeqIO.parse(args.InputFasta, 'fasta')):
     seq_sum = 0
@@ -41,10 +37,7 @@ for index, seqs in enumerate(SeqIO.parse(args.InputFasta, 'fasta')):
             continue
         seq_sum = seq_sum + new_model[tri_str]
 
-        print (len(seq_sum))
-
     temp_word[index] = seq_sum
-
 
 t1 = time.time()
 

@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-I", "--Input", required=True, default=None, help="Path to target tsv file")
 parser.add_argument("-M", "--min_count", required=False, default=0, help="Path to target tsv file")
 parser.add_argument("-W", "--window", required=False, default=5, help="Path to target tsv file")
-parser.add_argument("-O", "--OutFile", required=False, default='word2vec_model', help="Path to target tsv file")
+parser.add_argument("-O", "--OutFile", required=False, default='model.txt', help="Path to target tsv file")
 
 args = parser.parse_args()
 
@@ -34,4 +34,5 @@ sg = 1
 
 sentences = ProteinSeq() 
 model = gensim.models.Word2Vec(sentences, min_count=int(args.min_count), size=size, window=int(args.window), sg = sg, workers = 10)
-model.save(args.OutFile+".model")
+model.wv.save_word2vec_format(args.OutFile, binary=False)
+

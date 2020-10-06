@@ -15,7 +15,7 @@
     ]]></command>
 
     <inputs>
-      <param name="ModelInput" type="data" label="Input model file" format="model" argument= "--ModelInput"/>
+      <param name="ModelInput" type="data" label="Input model file" value="model.txt" format="txt" argument= "--ModelInput"/>
       <param name="Input" type="data" label="Training data" format="fasta" argument= "--InputFasta"/>
       <param name="row" type="integer" label="Number of traning samples" optional="true" argument= "--row"/>
       <param name="positive" type="integer" label="Positives samples" optional="true" argument= "--positive"/>
@@ -27,14 +27,13 @@
     </outputs>
  
     <tests>
-        <test>
-          <param name="ModelInput" type="data" format="model" file="final.model.model" />
-          <param name="Input" file="test.fasta"/>
-          <param name="row" value="276" />
-          <param name="positive" value="138" />
-          <param name="negative" value="138" />
-          <output name="output" file="Out.tsv"/>
-        </test>
+      <test>
+        <param name="Input" value="test.fasta" />
+        <param name="ModelInput" value="model.txt" />
+        <param name="row" value="276" />
+        <param name="positive" value="138" />
+        <param name="negative" value="138" />
+      </test>
     </tests>
 
     <help><![CDATA[
