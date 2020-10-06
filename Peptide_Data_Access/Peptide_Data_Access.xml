@@ -10,7 +10,7 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/Peptide_Data_Access' -d '$DataBaseType' -o '$output1'
+        python '$__tool_directory__/Peptide_Data_Access.py' -d '$DataBaseType' -o '$output1'
                   
     ]]></command>
 

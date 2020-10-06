@@ -23,12 +23,12 @@
     </inputs>
 
     <outputs>   
-        <data name='output' format='tabular' label="out.tsv" />
+        <data name='output' format='tabular' label="Out.tsv" />
     </outputs>
  
     <tests>
         <test>
-          <param name="ModelInput" type="data" format="model" file="output.model" />
+          <param name="ModelInput" type="data" format="model" file="final.model.model" />
           <param name="Input" file="test.fasta"/>
           <param name="row" value="276" />
           <param name="positive" value="138" />

@@ -63,6 +63,7 @@ def Decriptor_generator(InFile, Lamda, Weight, DesType, Out_file):
 
         protein.ReadProteinSequence(seq)
 
+
         if DesType == 'PAAC':
             DS = protein.GetPAAC(lamda=int(Lamda), weight=float(Weight))
         elif DesType == 'APAAC':

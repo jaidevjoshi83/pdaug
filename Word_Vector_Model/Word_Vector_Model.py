@@ -28,10 +28,10 @@ class ProteinSeq(object):
                         Ngram_list.append(tri_pep)
                 yield Ngram_list
 #min_count = 0
-#size = 200
+size = 200
 #window = 5
 sg = 1
 
 sentences = ProteinSeq() 
-model = gensim.models.Word2Vec(sentences, min_count=int(args.min_count), window=int(args.window), sg = sg, workers = 10)
+model = gensim.models.Word2Vec(sentences, min_count=int(args.min_count), size=size, window=int(args.window), sg = sg, workers = 10)
 model.save(args.OutFile+".model")
