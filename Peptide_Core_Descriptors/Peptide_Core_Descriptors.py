@@ -17,7 +17,7 @@ lines = file.readlines()
 Index = []
 Pep = []
 
-print (lines)
+#print (lines)
 
 for line in lines:
     if '>' in line:
@@ -25,14 +25,14 @@ for line in lines:
     else:
         line = line.strip('\n')
         line = line.strip('\r')
-        print (line)
+        #print (line)
         Pep.append(line)
 
 df =    pd.DataFrame()
 
 for i, l in enumerate(Pep):
 
-    print (l)
+    #print (l)
 
     D = PeptideDescriptor(l)
     D.count_ngrams([int(args.Ngrams)])
