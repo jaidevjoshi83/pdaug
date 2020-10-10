@@ -1,4 +1,4 @@
-<tool id="Peptide_Data_Access" name="Peptide Aata Access" version="1.1.2">
+<tool id="Peptide_Data_Access" name="Peptide Data Access" version="1.1.2">
   <description>Fetch peptide data from inbuild datasets and public databases</description>
 
   <requirements>
@@ -35,9 +35,27 @@
     </test>
   </tests>
   
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-  </help>
+**What it does**
+
+This tool returns inbuld peptide data sets. 
+
+  * **AMPvsTM**  This option returns Antimicrobial peptides and trans-membrane sequences. 
+  * **AMPvsUniProt** This option returns AMPs from the APD3 and  other peptides from the UniProt database.
+  * **ACPvsTM**  This option returns anticancer peptides (CancerPPD) and helical transmembrane sequences.
+  * **ACPvsRandom**  This option returns anticancer peptides (CancerPPD) and random scrambled AMP sequences.
+
+-----
+
+**Inputs**
+    * **--DataBaseType** Takes dataset name as input. 
+
+-----
+
+**Outputs**
+    * Returns tabular file with peptide sequences and class labels.]]></help>
 </tool>
 
 

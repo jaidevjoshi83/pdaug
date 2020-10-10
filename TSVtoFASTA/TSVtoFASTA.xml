@@ -58,9 +58,22 @@
       <output name="OutFile3" file="test2/Out.fasta"/>
     </test>
   </tests>
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-  </help>
+**What it does**
+
+This tool converts tabular files into fasta file and split fasta file on the basis of the class label.
+
+-----
+
+**Inputs**
+    * **--InFile** Takes input as Tabular file with or without label.
+
+-----
+
+**Outputs**
+    * Returns fasta file.]]></help>
 </tool>
 
 

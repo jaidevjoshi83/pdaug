@@ -32,22 +32,24 @@
     </test>
   </tests>
 
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-    usage: AddClassLabel.py [-h] -I INFILE [-C CLASSLABEL] [-t CLASSLABELTITLE]
-                        [-O OUTFILE]
+**What it does**
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -I INFILE, --InFile INFILE
-                        Input data file
-  -C CLASSLABEL, --ClassLabel CLASSLABEL
-                        Class Label 0 or 1
-  -t CLASSLABELTITLE, --ClassLabelTitle CLASSLABELTITLE
-                        Title to use for class label column (Class_label)
-  -O OUTFILE, --OutFile OUTFILE
-                        Output file name
-  </help>
+This tool adds class labels to a dataframe.
+
+-----
+
+**Inputs**
+    * **--InFile** Takes input as Tabular data file.
+    * **--ClassLabel** Class label. 
+    * **--ClassLLabelTitle** Column name of class label. 
+
+-----
+
+**Outputs**
+    * **--OutFile** Returns output data file.]]></help>
 </tool>
 
 

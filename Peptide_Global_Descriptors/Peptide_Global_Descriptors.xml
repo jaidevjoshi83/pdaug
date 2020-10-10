@@ -44,7 +44,23 @@
       <output name="output1" file="out.tsv"/> 
     </test>
   </tests>
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-  </help>
+**What it does**
+
+This tool calculates 10 (Sequence Length, Molecular Weight, Sequence Charge, Charge Density, Isoelectric Point, Instability Index, Aromaticity, Aliphatic Index, Boman Index and Hydrophobic Ratio) different types of descriptors. These descriptors are non-amino acid scale dependant. 
+
+-----
+
+**Inputs**
+    * **--InFile** Input fasta file with peptide sequences. 
+    * **--DesType** Name of the descriptor that need to be calculaled
+    * **--Ph** pH at which to calculate peptide charge. 
+    * **--Amide** amide whether the sequences have an amidated C-terminus.
+
+-----
+
+**Outputs**
+    * Returns tabular file with descriptors.]]></help>
 </tool>

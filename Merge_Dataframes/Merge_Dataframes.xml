@@ -21,7 +21,24 @@
         </test>
     </tests>
     <help><![CDATA[
-        usage: Concate_data_frame.py Infile1.tsv,Infile_2.tsv,Infile_3.tsv Merged_out.tsv 
-    ]]></help>
+.. class:: infomark
+
+**What it does**
+
+This tool merges two data frames.
+
+-----
+
+**Inputs**
+    * Tabular data file (example input1.tsv and input2.tsv ).
+
+-----
+
+**Outputs**
+    * Merged abular data file.
+
+.. _fastp: https://github.com/OpenGene/fastp
+
+]]></help>
 
 </tool>

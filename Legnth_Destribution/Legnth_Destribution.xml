@@ -28,23 +28,22 @@
         </test>
     </tests>
 
-    <help>
-      usage: Legnth_distribution.py [-h] -I INFILE [-O HTMLOUTDIR] [-Hf HTMLFNAME]
-                              [-Wp WORKDIRPATH]
+    <help><![CDATA[
+.. class:: infomark
 
-      optional arguments:
-        -h, --help            show this help message and exit
-        -I INFILE, --InFile INFILE
-                              Input file name
-        -O HTMLOUTDIR, --htmlOutDir HTMLOUTDIR
-                              Path to html output directory
-        -Hf HTMLFNAME, --htmlFname HTMLFNAME
-                              HTML out file
-        -Wp WORKDIRPATH, --Workdirpath WORKDIRPATH
-                              Path to Working directory
+**What it does**
 
+This tool calculates and plot the length describution of peptide sequenes in a peptide dataset.  
 
-    </help>
+-----
+
+**Inputs**
+    * **--InFile** fasta file with peptide sequences. 
+ 
+-----
+
+**Outputs**
+    * Return html report file.]]></help>
     <citations>
         <citation type="bibtex">
 

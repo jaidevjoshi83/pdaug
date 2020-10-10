@@ -35,9 +35,26 @@
       <param name="OutFile" file="model.txt" />
     </test>
   </tests>
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-  </help>
+**What it does**
+
+This tool calculates the skip-gram model which is a neural network where the inputs and outputs of the network are one-hot vectors calculated based on training data that contains input word and output word. 
+
+-----
+
+**Inputs**
+    * **--Input** Fasta file with protein sequences.
+    * **--min_count** Ignores all words with total frequency lower than this 
+    * **--window** Maximum distance between the current and predicted word within a sentence, accepts integer value.
+
+-----
+
+**Outputs**
+    * **--OutFile** Return "model.txt" model file.
+
+]]></help>
 </tool>
 
 

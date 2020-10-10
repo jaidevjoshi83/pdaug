@@ -35,8 +35,6 @@
     ]]></command>
 
   <inputs>
-
-
     <conditional name='SelMethod' >
 
         <param name="Method" type="select" label="Methods to generate peptides " argument="">
@@ -93,9 +91,35 @@
       <output name="output1" file="out3.fasta" />
     </test>
   </tests>
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-  </help>
+**What it does**
+
+This tool generates peptide sequences based on three sequences based properties which includes Mutated Peptides, Random Peptides and Sliding Window Peptide.
+
+-----
+
+**Inputs**
+    **1**  MutatedPeptides    
+       * **--sequence**  Input peptide sequence 
+       * **--mutation_site_list** Sites to mutated AA as Integer values 
+       * **--AA_list** List of amino acides to replace
+       
+    **2** RandomPeptides
+       * **--AA_list** List of amino acides
+       * **--pep_length** Length of peptide sequences 
+       * **--out_pep_lenght** Number of ouput peptides
+
+    **3** SlidingWindowPeptide
+       * **--InFile** Input protein sequences fasta file 
+       * **--winSize** Sliding window size 
+       * **--FragSize** Output Peptide sequnce size
+
+-----
+
+**Outputs**
+    * **--outputFile** Returns fasta files with peptide sequences. ]]></help>
 </tool>
 
 

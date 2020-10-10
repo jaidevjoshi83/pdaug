@@ -63,7 +63,7 @@
 
         <param name="Descriptor" type="select" label="LibGene" argument="">
           <option value="AutoCorrCal">AutoCorrCal</option>
-          <option value="CrossCorrCal">CrossCorrCal</option>
+          <option value="CrossCorrCal">CrossCorCal</option>
           <option value="CalculateMovement">CalculateMovement</option>
           <option value="GlobalCal">GlobalCal</option>
           <option value="ProfileCal">ProfileCal</option>
@@ -160,22 +160,63 @@
       <output name="output1" file="out6.tsv"/>
     </test>
   </tests>
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
+**What it does**
 
-    usage: Peptide_sequence_descriptor_2.py [-h]
-    
-    {AutoCorrCal,CrossCorrCal,CalculateMovement,GlobalCal,ProfileCal,ArcCal}
-                                    
-    Deployment tool
+    This tool calculates 6 different type of peptide descriptors.
 
-    positional arguments:
-      {AutoCorrCal,CrossCorrCal,CalculateMovement,GlobalCal,ProfileCal,ArcCal}
+      * **AutoCorCal** This option calculate descriptor via auto-correlating the amino acid values for a given descriptor scale. 
+      * **CrosCorCal** This option calculate descriptor via cross-correlating the amino acid values for a given descriptor scale. 
+      * **CalculateMovement** This option calculates descriptor based on the maximum or mean moment of the amino acid values for a given descriptor scale and window.
+      * **GlobalCal** This option calculates descriptors via calculating a global / window averaging descriptor value of a given AA scale.
+      * **ProfileCal** This tool calculates descripto via calculating hydrophobicity or hydrophobic moment profiles for given sequences and fitting for slope and intercept.
+      * **ArcCal** This option calcuates descriptors via calculating property arcs as seen in the helical wheel plot. This methodo work for binary amino acid scales only.
 
-    optional arguments:
-      -h, --help            show this help message and exit
+-----
 
-  </help>
+**Inputs**
+    **1**  AutoCorrCal    
+       * **--Infile** Input fasta file with peptides. 
+       * **--WindowSize**  Correlation window for descriptor calculation in a sliding window approach.  
+       * **--ScaleName** Method to load amino acid values from a given scale.
+
+    **2** CrossCorrCal
+       * **--Infile** Input fasta file with peptides. 
+       * **--WindowSize**  Correlation window for descriptor calculation in a sliding window approach  
+       * **--ScaleName** Peptide minimum legnth. 
+
+    **3** CalculateMovement
+       * **--Infile** Input fasta file with peptides. 
+       * **--WindowSize**  Amino acid window in which to calculate the moment. If the sequence is shorter than the window, the length of the sequence is taken. So if the default window of 1000 is chosen, for all sequences shorter than 1000, the global hydrophobic moment will be calculated. Otherwise, the maximal hydrophiobic moment for the chosen window size found in the sequence will be returned.  
+       * **--ScaleName** Method to load amino acid values from a given scale.
+       * **--Angle** Angle in which to calculate the moment. 100 for alpha helices, 180 for beta sheets.
+       * **--Modality** Calculate respectively maximum or mean hydrophobic moment. If all, moments for all windows are returned.
+
+    **4** GlobalCal
+       * **--Infile** Input fasta file with peptides. 
+       * **--Modality** Calculate respectively maximum or mean hydrophobic moment.
+       * **--WindowSize** amino acid window in which to calculate the moment. If the sequence is shorter than the window, the length of the sequence is taken.  
+       * **--ScaleName** Method to load amino acid values from a given scale.
+
+    **5** ProfileCal
+       * **--Infile** Input fasta file with peptides. 
+       * **--Infile** Input fasta file with peptides.  
+       * **--ProfType** prof_type of profile, available: ‘H’ for hydrophobicity or ‘uH’ for hydrophobic moment
+       * **--WindowSize** {int} size of sliding window used (odd-numbered).
+
+    **6** ArcCal
+       * **--Modality**  Modality of the arc to calculate, to choose between “max” and “mean”.
+
+-----
+
+**Outputs**
+    * Return tabular file with the descriptors. 
+
+.. _fastp: https://github.com/OpenGene/fastp
+
+]]></help>
 </tool>
 
 

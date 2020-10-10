@@ -253,9 +253,80 @@
 
   </tests>
     
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-  </help>
+**What it does**
+
+This module incorporates different classes to generate peptide sequences with different characteristics from scratch. The following classes are available  Random, Helices, Kinked, Oblique, Centrosymmetric, AmphipathicArc, HelicesACP, MixedLibrary, Hepahelices and AMPngrams. 
+
+  * **Random**  Generates random sequences with a specified amino acid distribution.
+  * **Helices** Generates presumed amphipathic helical sequences with a hydrophobic moment.
+  * **Kinked**  Generates presumed amphipathic helices with a kink (Pro residue).
+  * **Oblique** Generates presumed oblique oriented sequences in presence of libid membranes.
+  * **Centrosymmetric** Generates centrosymmetric sequences with a symmetry axis.
+  * **AmphipathicArc**  Generates presumed amphipathic helices with controlled hydrophobic arc size.
+  * **HelicesACP**  Generates sequences with the amino acid probabiliy of helical ACPs.
+  * **MixedLibrary**  Generates a mixed library of sequences of most other classes.
+  * **Hepahelices** Generates presumed amphipathic helices with a heparin-binding-domain.
+  * **AMPngrams** Generates sequences from most frequent ngrams in the APD3.
+
+-----
+
+**Inputs**
+    **1**  Random    
+       * **--seq_num**  Number of sequence to be generated.  
+       * **--lenmin_s** Peptide minimum legnth. 
+       * **--lenmax_s** Peptide maximum legnth. 
+       * **--S_proba**  AA probability to be used to generate sequences. Available from str: AMP, AMPnoCM, rand, randnoCM. You can also provide your own list of porbabilities as a list (in AA order, length 20, sum to 1)
+       
+    **2** Helice
+       * **--seq_num**  Number of sequence to be generated.  
+       * **--lenmin_s** Peptide minimum legnth. 
+       * **--lenmax_s** Peptide maximum legnth. 
+
+    **3** Kinked
+       * **--seq_num**  Number of sequence to be generated.  
+       * **--lenmin_s** Peptide minimum legnth. 
+       * **--lenmax_s** Peptide maximum legnth. 
+
+    **4** Obliqu
+       * **--seq_num**  Number of sequence to be generated.  
+       * **--lenmin_s** Peptide minimum legnth. 
+       * **--lenmax_s** Peptide maximum legnth. 
+
+    **5** Centrosymmetric
+       * **--seq_num**  Number of sequence to be generated.  
+       * **--lenmin_s** Peptide minimum legnth. 
+       * **--lenmax_s** Peptide maximum legnth. 
+       * **--symmetry_s**   symmetry type of centrosymmetric sequences. symmetric: builds sequences out of only one block, asymmetric: builds sequences out of different blocks
+
+    **6** HelicesACP
+       * **--seq_num**  Number of sequence to be generated.  
+       * **--lenmin_s** Peptide minimum legnth. 
+       * **--lenmax_s** Peptide maximum legnth. 
+
+    **7** Hepahelices
+       * **--seq_num**  Number of sequence to be generated.  
+       * **--lenmin_s** Peptide minimum legnth. 
+       * **--lenmax_s** Peptide maximum legnth. 
+
+    **7** AMPngrams
+       * **--seq_num**  Number of sequence to be generated.  
+       * **--lenmin_s** Peptide minimum legnth. 
+       * **--lenmax_s** Peptide maximum legnth. 
+
+    **9** AmphipathicArc
+       * **--seq_num**  Number of sequence to be generated.  
+       * **--lenmin_s** Peptide minimum legnth. 
+       * **--lenmax_s** Peptide maximum legnth. 
+       * **--arcsize** Choose among 100, 140, 180, 220, 260, or choose mixed to generate a mixture
+
+-----
+
+
+**Outputs**
+    * Returns fasta files with peptide sequences.]]></help>
 
 </tool>
 

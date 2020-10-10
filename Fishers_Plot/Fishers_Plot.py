@@ -404,61 +404,17 @@ if __name__=="__main__":
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("-f1", "--Fasta1",
-                        required=True,
-                        default=None,
-                        help="First fasta file ")
-                        
-    parser.add_argument("-f2", "--Fasta2",
-                        required=True,
-                        default=None,
-                        help="Second fasta file")   
-
-    parser.add_argument("-o", "--overlap_factor",
-                        required=False,
-                        default=5,
-                        help="Overlap factor")  
-
-    parser.add_argument("-w", "--windows_per_frame",
-                        required=False,
-                        default=5,
-                        help="Windows per frame")  
-
-    parser.add_argument("-x", "--xlabel",
-                        required=True,
-                        default=None,
-                        help="X label")  
-
-    parser.add_argument("-y", "--ylabel",
-                        required=True,
-                        default=None,
-                        help="Y label")  
-
-    parser.add_argument("-p1", "--pop1_label",
-                        required=True,
-                        default=None,
-                        help="First population label")  
-
-    parser.add_argument("-p2", "--pop2_label",
-                        required=True,
-                        default=None,
-                        help="Second population label") 
-
-    parser.add_argument("--htmlOutDir", 
-                        required=False, 
-                        default=os.path.join(os.getcwd(),'report_dir'), 
-                        help="Path to html dir")
-
-    parser.add_argument("--htmlFname", 
-                        required=False, 
-                        help="html output file", 
-                        default="report.html")
-
-    parser.add_argument("--Workdirpath", 
-                        required=False, 
-                        default=os.getcwd(), 
-                        help="Path to output Working Directory")
-                                                
+    parser.add_argument("-f1", "--Fasta1", required=True, default=None, help="First fasta file ")                
+    parser.add_argument("-f2", "--Fasta2", required=True, default=None, help="Second fasta file")   
+    parser.add_argument("-o", "--overlap_factor", required=False, default=5, help="Overlap factor")  
+    parser.add_argument("-w", "--windows_per_frame", required=False, default=5, help="Windows per frame")  
+    parser.add_argument("-x", "--xlabel", required=True, default=None, help="X label")  
+    parser.add_argument("-y", "--ylabel", required=True, default=None, help="Y label")  
+    parser.add_argument("-p1", "--pop1_label", required=True, default=None, help="First population label")  
+    parser.add_argument("-p2", "--pop2_label", required=True, default=None, help="Second population label") 
+    parser.add_argument("--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="Path to html dir")
+    parser.add_argument("--htmlFname",  required=False, help="html output file", default="report.html")
+    parser.add_argument("--Workdirpath", required=False, default=os.getcwd(), help="Path to output Working Directory")                          
     args = parser.parse_args()
 
     run(args.Fasta1, args.Fasta2, args.windows_per_frame, args.overlap_factor, args.xlabel, args.ylabel, args.pop1_label, args.pop2_label, args.htmlOutDir, args.htmlFname, args.Workdirpath)

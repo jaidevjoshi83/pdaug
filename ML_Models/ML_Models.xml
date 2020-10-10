@@ -679,14 +679,39 @@
     </tests>
 
 
-    <help>
-      usage: ML.py [-h] {SVMC,SGDC,DTC,GBC,RFC,LRC,KNC,GNBC,MLP}
-      Deployment tool
-      positional arguments:
-        {SVMC,SGDC,DTC,GBC,RFC,LRC,KNC,GNBC,MLP}
-      optional arguments:
-        -h, --help, show this help message and exit
-    </help>
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool builds a machine learning model from the given descriptor set based on the binary class label. There are 8 different machine learning algorithms that have been implemented up to 10 fold cross-validation. We have also implemented  standard scaler and MinMaxScaler normalization.  
+     
+     * **Support Vector Machine Classifier** 
+     * **Stochastic gradient descent Classifier**
+     * **Decision tree**
+     * **Gradient boosting Classifier**
+     * **Random forest Classifier**
+     * **Logistic regression Classifier**
+     * **k-nearest neighbors Classifier**
+     * **Gaussian naive bayes Classifier**
+     * **Multilayer perceptron Classifier**
+
+A detail Description about all the algorithms can be found at sklearn (https://scikit-learn.org/stable/)
+
+-----
+
+**Inputs**
+    * **Training File**  Tabulalr files with labeled peptide descriptor data.  
+    * **Select Machine Learning algorithms** Select algorithm. 
+    * **Select Advance Perameters** Select the advance parameter details of each of the parameters that can be found on sklearn website. 
+    * **Seleect the test method** (predict or internal test)
+    * **Cross Validation** Up to 10 fold cross validation. 
+    * **Method to Scale the data** MinMaxScaler and  standard scaler. 
+
+-----
+
+**Outputs**
+    * Tabular file with the various performance scores (accurrecy, precision, recall, f1-score and AUC score). ]]></help>
 </tool>
 
 

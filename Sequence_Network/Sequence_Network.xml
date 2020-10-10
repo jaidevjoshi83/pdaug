@@ -25,33 +25,25 @@
         <test>
             <param name="input1" value="positive.fasta"/>
             <output name="output2" file="report_dir/report.html"/>
-
         </test>
     </tests>
 
     <help><![CDATA[
-usage: Graph.py [-h] -I IN_FILE [-H FIGHIGHT] [-W FIGWIDTH] [-R ROTATION]
-                [--htmlOutDir HTMLOUTDIR] [--htmlFname HTMLFNAME]
-                [--Workdirpath WORKDIRPATH]
+.. class:: infomark
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -I IN_FILE, --in_file IN_FILE
-                        Path to target tsv file
-  -H FIGHIGHT, --FigHight FIGHIGHT
-                        Path to target tsv file
-  -W FIGWIDTH, --FigWidth FIGWIDTH
-                        Path to target tsv file
-  -R ROTATION, --Rotation ROTATION
-                        Path to target tsv file
-  --htmlOutDir HTMLOUTDIR
-                        HTML Out Dir
-  --htmlFname HTMLFNAME
-                        HTML out file
-  --Workdirpath WORKDIRPATH
-                        Working Directory Path
+**What it does**
 
-    ]]></help>
+This tool calculates Levenshtein distance between peptide sequences and plots the data in the form of a sequence similarity network.
+
+-----
+
+**Inputs**
+    * **--InFile** Takes peptide sequences as fasta file. 
+
+-----
+
+**Outputs**
+    * Return html report file.]]></help>
     <citations>
         <citation type="bibtex">
 

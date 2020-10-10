@@ -57,17 +57,17 @@
         </param>
 
         <when value="PAAC" >
-          <param name="Lamda" type="integer" value="5" argument= "--Lamda"/>
+          <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
           <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
 
         <when value="PAAC" >
-          <param name="Lamda" type="integer" value="5" argument= "--Lamda"/>
+          <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
           <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
 
         <when value="All" >
-          <param name="Lamda" type="integer" value="5" argument= "--Lamda"/>
+          <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
           <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
 
@@ -96,9 +96,42 @@
     </test>
 
   </tests>
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-  </help>
+**What it does**
+
+This tool calculates sequence property based descriptor for a peptide descriptor. 
+
+  * **AAC** This option calculates amino acid composition descriptors (20).
+  * **DPComp** This option calculates dipeptide composition descriptors (400).
+  * **TPComp** This option calculates tri-peptide composition descriptors (8000).
+  * **MoreauBrotoAuto** This option calculates Normalized Moreau-Broto autocorrelation descriptors (depend on the given properties, the default is 240). 
+  * **MoranAuto** This option calculates Moran autocorrelation descriptors (depend on the given properties, the default is 240).
+  * **GearyAuto** This option calculatesGeary autocorrelation descriptors (depend on the given properties, the default is 240).
+  * **CTD** This option calculatesComposition, Transition, Distribution descriptors(200). 
+  * **SOCN** This option calculatessequence order coupling numbers (depend on the choice of maxlag, the default is 60).
+  * **QSO** This option calculatesquasi-sequence order descriptors (depend on the choice of maxlag, the default is 100).
+  * **PAAC** This option calculatespseudo amino acid composition descriptors (depend on the choice of lamda, the default is 50).
+  * **APAAC** This option calculatesamphiphilic pseudo amino acid composition descriptors, (depend on the choice of lamda, the default is 50). 
+  * **BinaryDescriptor** This option calculates binary descriptor of peptide sequences (All the peptides should be same length). 
+  * **All** This optino calculates all the descriptor except the binarydesriptor. 
+
+-----
+
+**Inputs**
+    * **--InFile** A fasta file with peptide sequences.
+    * **--Lamda** PAAC & APAAC descriptors (depend on the choice of lamda, the default is 50).
+    * **--Weight** PAAC & APAAC descriptors (depend on the choice of lamda, the default is 0.5).
+    * **--DesType** Select the descriptor type.  
+
+
+-----
+
+**Outputs**
+    * Returns tabular file with descriptors.
+
+]]></help>
 </tool>
 
 

@@ -32,8 +32,6 @@ df =    pd.DataFrame()
 
 for i, l in enumerate(Pep):
 
-    #print (l)
-
     D = PeptideDescriptor(l)
     D.count_ngrams([int(args.Ngrams)])
 

@@ -30,9 +30,23 @@
       <output name="output1" file="Out.tsv"/>
     </test>
   </tests>
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-  </help>
+**What it does**
+
+Calculates frequency of ngrames in peptide sequences.
+
+-----
+
+**Inputs**
+    * **--InFile** Fasta file with peptide sequences as Input File.
+    * **--Ngrams** Integer value of Ngrams frequency to be calculated.  
+    
+-----
+
+**Outputs**
+    * **--OutFile** Returns tabular datafile. ]]></help>
 </tool>
 
 

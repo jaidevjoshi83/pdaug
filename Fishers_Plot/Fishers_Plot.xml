@@ -17,8 +17,8 @@
       <param name="Fasta2" type="data"  label="Second fasta file" argument="--Fasta2" help="" />
       <param name="overlap_factor" type="integer" value="5" label="Overlap factor" argument="--overlap_factor" help="" />
       <param name="windows_per_frame" type="integer" value="5" label="Windows per frame" argument="--windows_per_frame" help="" />
-      <param name="xlabel" type="text"  label="X-label" value="mean volume" argument="--xlabel" help="" />
-      <param name="ylabel" type="text"  label="Y-label" value="mean hydropathy" argument="--ylabel" help="" />
+      <param name="xlabel" type="text"  label="X-label" value="Mean volume" argument="--xlabel" help="" />
+      <param name="ylabel" type="text"  label="Y-label" value="Mean hydropathy" argument="--ylabel" help="" />
       <param name="pop1_label" type="text" label="Lebel for first population" value="amyloids" argument="--pop1_label" help="" />
       <param name="pop2_label" type="text" label="Label for second population" value="non amyloids" argument="--pop2_label" help="" />
     </inputs>
@@ -43,38 +43,31 @@
 
 
 
-    <help>
+    <help><![CDATA[
+.. class:: infomark
 
-      usage: Fishers_Plot.py [-h] -f1 FASTA1 -f2 FASTA2 [-o OVERLAP_FACTOR] [-w WINDOWS_PER_FRAME] -x XLABEL -y YLABEL -p1 POP1_LABEL -p2 POP2_LABEL [--htmlOutDir HTMLOUTDIR] [--htmlFname HTMLFNAME] [--Workdirpath WORKDIRPATH]
+**What it does**
 
-        optional arguments:
-          -h, --help            show this help message and exit
-          -f1 FASTA1, --Fasta1 FASTA1
-                                First fasta file
-          -f2 FASTA2, --Fasta2 FASTA2
-                                Second fasta file
-          -o OVERLAP_FACTOR, --overlap_factor OVERLAP_FACTOR
-                                Overlap factor
-          -w WINDOWS_PER_FRAME, --windows_per_frame WINDOWS_PER_FRAME
-                                Windows per frame
-          -x XLABEL, --xlabel XLABEL
-                                X label
-          -y YLABEL, --ylabel YLABEL
-                                Y label
-          -p1 POP1_LABEL, --pop1_label POP1_LABEL
-                                First population label
-          -p2 POP2_LABEL, --pop2_label POP2_LABEL
-                                Second population label
-          --htmlOutDir HTMLOUTDIR
-                                Path to html dir
-          --htmlFname HTMLFNAME
-                                html output file
-          --Workdirpath WORKDIRPATH
-                                Path to output Working Directory
+This tool merges two data frames.
 
-    </help>
-    <citations>
-        <citation type="bibtex">
+-----
+
+**Inputs**
+  * **--Fasta1** First fasta file. 
+  * **--Fasta2** First fasta file.
+  * **--overlap_factor** Overlapping factor.
+  * **--windows_per_frame** Windows per frame.
+  * **--xlabel** X label for the plot.
+  * **--ylabel** Y label for the plot.
+  * **--pop1_label** Label for first set of sequences. 
+  * **--pop2_label** Label for second set of sequences. 
+
+-----
+
+**Outputs**
+    * Returrns html report file.]]></help>
+<citations>
+  <citation type="bibtex">
 
 @misc{githubseqtk,
   author = {LastTODO, FirstTODO},

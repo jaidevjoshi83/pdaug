@@ -88,9 +88,40 @@
       <output name="output1" file="out4.fasta" />
     </test>
   </tests>
-  <help>
+    <help><![CDATA[
+.. class:: infomark
 
-  </help>
+**What it does**
+
+This tool performs some core functions on the peptide sequences and equipped with various options
+
+  * **Mutated Amino Acide** Method to mutate with prob probability a nr of positions per sequence randomly.
+  * **Filter Duplicates** Method to filter duplicates in the sequences from the class attribute sequences.
+  * **Keep Naturalaa** Method to filter out sequences that do not contain natural amino acids. If the sequence contains a character.
+  * **Filter Amino Acid** Method to filter out corresponding names and descriptor values of sequences with given amino acids in the argument list aminoacids.
+
+-----
+
+**Inputs**
+    
+    1 **Mutate Amino Acid**
+        * **--InFile** takes Fasta file with peptide sequences.  
+        * **--nr**  Number of mutationis. 
+        * **--probability** Probability of mutating a sequence.
+
+    2 **Filter Duplicates***
+        * **--InFile** takes Fasta file with peptide sequences. 
+
+    3 **Keep Naturalaa**
+        * **--InFile** takes Fasta file with peptide sequences. 
+
+    4 **Filter Amino Acid**
+        * **--InFile** takes Fasta file with peptide sequences. 
+
+-----
+
+**Outputs**
+    * Returns a fasta file.]]></help>
 </tool>
 
 

@@ -31,9 +31,22 @@
     </tests>
 
     <help><![CDATA[
+.. class:: infomark
 
+**What it does**
 
-    ]]></help>
+This plot divides analyze peptide sequences on globular and IDP subsets based on their mean net charge versus mean hydropathy. The line represents the permeable boundary between both subsets.
+
+-----
+
+**Inputs**
+    * **--Fasta1** First fasta file.
+    * **--Fasta2** First fasta file.
+
+-----
+
+**Outputs**
+    * Return html file.]]></help>
     <citations>
         <citation type="bibtex">
 

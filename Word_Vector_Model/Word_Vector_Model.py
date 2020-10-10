@@ -7,7 +7,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("-I", "--Input", required=True, default=None, help="Path to target tsv file")
+parser.add_argument("-I", "--Input", required=True, default=None, help="Path to target fasta file")
 parser.add_argument("-M", "--min_count", required=False, default=0, help="Path to target tsv file")
 parser.add_argument("-W", "--window", required=False, default=5, help="Path to target tsv file")
 parser.add_argument("-O", "--OutFile", required=False, default='model.txt', help="Path to target tsv file")

@@ -127,7 +127,7 @@ if __name__=="__main__":
 
     parser.add_argument("-l", "--Lamda",
                         required=False,
-                        default=5,
+                        default=50,
                         help="pep file")
 
     parser.add_argument("-w", "--Weight",

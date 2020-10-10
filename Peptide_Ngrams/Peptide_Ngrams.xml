@@ -31,20 +31,21 @@
     </tests>
 
     <help><![CDATA[
+.. class:: infomark
 
-        usage: peptide_ngrams.py [-h] -f1 FASTA1 -f2 FASTA2 [--htmlOutDir HTMLOUTDIR] [--htmlFname HTMLFNAME] [--Workdirpath WORKDIRPATH]
+**What it does**
 
-        optional arguments:
+This tool counts n-grams in the entire  peptide sequence set and fitting their distribution with the power-law distribution (Zipf’s law) and plot the results.
 
-        -h --help  show this help message and exit
+-----
 
-        -f1 FASTA1, --Fasta1 FASTA1 First fasta file
-        -f2 FASTA2, --Fasta2 FASTA2 Second fasta file
-        --htmlOutDir HTMLOUTDIR Path for HTML Out Dir
-        --htmlFname HTMLFNAME HTML out file
-        --Workdirpath WORKDIRPATH Working Directory Path
+**Inputs**
+    * **--InFile** Takes fasta file as input with peptide sequences. 
 
-    ]]></help>
+-----
+
+**Outputs**
+    * Returns html report file.]]></help>
 </tool>
 
 
