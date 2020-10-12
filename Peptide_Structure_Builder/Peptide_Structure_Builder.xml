@@ -47,4 +47,25 @@ This tool generates 3D structures of peptide sequences up to three amino acids t
 
 **Outputs**
     * Return collection of peptides with 3D structure.]]></help>
+<citations>
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, 
+    }
+</citation>
+
+<citation type="bibtex">
+    @article{christensen_hamelryck_jensen_2013, 
+      title={FragBuilder: An efficient Python library to setup quantum chemistry calculations on peptides models}, DOI={10.7287/peerj.preprints.169v2}, 
+      author={Christensen, Anders Steen and Hamelryck, Thomas and Jensen, Jan H}, 
+      year={2013}}
+        }
+  </citation>
+</citations>
 </tool>

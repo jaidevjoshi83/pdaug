@@ -40,5 +40,18 @@ This tool merges two data frames.
 .. _fastp: https://github.com/OpenGene/fastp
 
 ]]></help>
+<citations>
+  <citation type="bibtex">
+
+@misc{githubseqtk,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {seqtk},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/lh3/seqtk},
+
+}</citation>
+</citations>
 
 </tool>

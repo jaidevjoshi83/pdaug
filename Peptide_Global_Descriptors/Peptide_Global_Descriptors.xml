@@ -63,4 +63,30 @@ This tool calculates 10 (Sequence Length, Molecular Weight, Sequence Charge, Cha
 
 **Outputs**
     * Returns tabular file with descriptors.]]></help>
+<citations>
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, 
+    }
+</citation>
+
+  <citation type="bibtex">
+    @article{müller_gabernet_hiss_schneider_2017, 
+      title={modlAMP: Python for antimicrobial peptides}, 
+      volume={33}, 
+      DOI={10.1093/bioinformatics/btx285}, 
+      number={17}, 
+      journal={Bioinformatics}, 
+      author={Müller, Alex T and Gabernet, Gisela and Hiss, Jan A and Schneider, Gisbert}, 
+      year={2017}, 
+      pages={2753–2755}
+    }
+  </citation>
+</citations>
 </tool>

@@ -213,6 +213,22 @@ This tool generates four different types of plots.
 **Outputs**
     * Return report html file with the respective graph]]></help>
 
+<citations>
+  <citation type="bibtex">
+
+
+    @article{joshi_j_2020,
+        title = {PDAUG - a Galaxy based toolset for peptide library analysis, visualization, and machine learning modeling},
+        publisher = {GitHub}, 
+        journal = {GitHub repository},
+        url = {https://github.com/jaidevjoshi83/Peptide},
+        author = {Joshi J. and Blankenberg D.},
+        year = {2020},
+    }
+
+  </citation>
+
+</citations>
 </tool>
 
 

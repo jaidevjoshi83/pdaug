@@ -47,19 +47,29 @@ This plot divides analyze peptide sequences on globular and IDP subsets based on
 
 **Outputs**
     * Return html file.]]></help>
-    <citations>
-        <citation type="bibtex">
-
-@misc{githubseqtk,
-  author = {LastTODO, FirstTODO},
-  year = {TODO},
-  title = {seqtk},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  url = {https://github.com/lh3/seqtk},
-
-}</citation>
-    </citations>
+<citations>
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, }
+  </citation>
+  <citation type="bibtex">
+    @article{konopka_marciniak_dyrka_2017,
+       title={Quantiprot - a Python package for quantitative analysis of protein sequences}, 
+       volume={18},
+       DOI={10.1186/s12859-017-1751-4}, 
+       number={1}, 
+       journal={BMC Bioinformatics},
+       author={Konopka, Bogumił M. and Marciniak, Marta and Dyrka, Witold}, 
+       year={2017}
+     }
+  </citation>
+</citations>
 </tool>
 
 

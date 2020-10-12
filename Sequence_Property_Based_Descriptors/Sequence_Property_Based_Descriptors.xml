@@ -132,6 +132,30 @@ This tool calculates sequence property based descriptor for a peptide descripto
     * Returns tabular file with descriptors.
 
 ]]></help>
+
+<citations>
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, 
+      }
+  </citation>
+  <citation type="bibtex">
+    @article{cao_liang_yan_tan_xu_liu_2013, 
+      title={PyDPI: Freely Available Python Package for Chemoinformatics, Bioinformatics, and Chemogenomics Studies}, 
+      volume={53}, DOI={10.1021/ci400127q}, 
+      number={11}, 
+      journal={Journal of Chemical Information and Modeling}, 
+      author={Cao, Dong-Sheng and Liang, Yi-Zeng and Yan, Jun and Tan, Gui-Shan and Xu, Qing-Song and Liu, Shao}, 
+      year={2013}, 
+      pages={3086–3096}}
+  </citation>
+</citations>
 </tool>
 
 

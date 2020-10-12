@@ -45,18 +45,17 @@ This tool calculates Levenshtein distance between peptide sequences and plots th
 **Outputs**
     * Return html report file.]]></help>
     <citations>
-        <citation type="bibtex">
-
-@misc{githubseqtk,
-  author = {LastTODO, FirstTODO},
-  year = {TODO},
-  title = {seqtk},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  url = {https://github.com/lh3/seqtk},
-
-}</citation>
-    </citations>
+<citation type="bibtex">
+  @misc{PDAUGGITHUB, 
+    author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+    year = {2020}, 
+    title ={PDAUG}, 
+    publisher = {GitHub}, 
+    journal = {GitHub repository}, 
+    url =
+    {https://github.com/jaidevjoshi83/Peptide}, }
+</citation>
+</citations>
 </tool>
 
 

@@ -712,6 +712,18 @@ A detail Description of all the algorithms can be found at sklearn (https://scik
 
 **Outputs**
     * Tabular file with the various performance scores (accurracy, precision, recall, f1-score, and AUC score). ]]></help>
+
+<citations>
+  <citation type="bibtex">
+@misc{githubseqtk,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {seqtk},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/lh3/seqtk},
+}</citation>
+</citations>
 </tool>
 
 

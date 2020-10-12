@@ -50,7 +50,21 @@ This tool adds class labels to a dataframe.
 
 **Outputs**
     * **--OutFile** Returns a tabular file with the class labels.]]></help>
+
+
+<citations>
+  <citation type="bibtex">
+
+@misc{githubseqtk,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {seqtk},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/lh3/seqtk},
+
+}</citation>
+</citations>
+
 </tool>
-
-
 

@@ -1,0 +1,907 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fra",
+				"FragSize"
+			],
+			[
+				"F",
+				"FragSize"
+			],
+			[
+				"Fra",
+				"FragReturn"
+			],
+			[
+				"outp",
+				"output1"
+			],
+			[
+				"v",
+				"value"
+			],
+			[
+				"Fea",
+				"Features1"
+			],
+			[
+				"Plot",
+				"PlotType"
+			],
+			[
+				"y",
+				"y_ticks"
+			],
+			[
+				"f",
+				"feature2"
+			],
+			[
+				"out",
+				"out_df\tstatement"
+			],
+			[
+				"Out",
+				"Outfile"
+			],
+			[
+				"N",
+				"Ngrams"
+			],
+			[
+				"p",
+				"population"
+			],
+			[
+				"hel",
+				"helicity"
+			],
+			[
+				"T",
+				"True\tinstance"
+			],
+			[
+				"ar",
+				"args\tstatement"
+			],
+			[
+				"li",
+				"line\tstatement"
+			],
+			[
+				"descr",
+				"descriptor"
+			],
+			[
+				"seq",
+				"sequence"
+			],
+			[
+				"lin",
+				"list_pep_name"
+			],
+			[
+				"t",
+				"target\tstatement"
+			],
+			[
+				"input",
+				"inputPeptide\tstatement"
+			],
+			[
+				"mar",
+				"margin\tproperty"
+			],
+			[
+				"margin",
+				"margin-right\tproperty"
+			],
+			[
+				"marg",
+				"margin-left\tproperty"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"glob",
+				"GlobalAnalysis"
+			],
+			[
+				"rtu",
+				"return_seq\tfunction"
+			],
+			[
+				"return",
+				"return_seq\tfunction"
+			],
+			[
+				"w",
+				"write"
+			],
+			[
+				"co",
+				"column\tstatement"
+			],
+			[
+				"get",
+				"getcwd\tfunction"
+			],
+			[
+				"Di",
+				"Dichro"
+			],
+			[
+				"en",
+				"environ\tstatement"
+			],
+			[
+				"fil",
+				"filenames"
+			],
+			[
+				"D",
+				"Dichro"
+			],
+			[
+				"html",
+				"htmlOutDir\tparam"
+			],
+			[
+				"W",
+				"Workdirpath\tparam"
+			],
+			[
+				"h",
+				"htmlOutDir\tparam"
+			],
+			[
+				"modl",
+				"modlamp_wetlab_I\tmodule"
+			],
+			[
+				"Tar",
+				"Target\tstatement"
+			],
+			[
+				"Ta",
+				"Target\tstatement"
+			],
+			[
+				"Ou",
+				"OutPep\tstatement"
+			],
+			[
+				"list",
+				"list_pep_name\tstatement"
+			],
+			[
+				"pe",
+				"pep_seq\tparam"
+			],
+			[
+				"am",
+				"amyload_neg_seq\tstatement"
+			],
+			[
+				"Wo",
+				"Workdirpath"
+			],
+			[
+				"re",
+				"replacements"
+			],
+			[
+				"inde",
+				"index_list\tstatement"
+			],
+			[
+				"Fi",
+				"Fisher_Test"
+			],
+			[
+				"IO",
+				"IO_1"
+			],
+			[
+				"pop",
+				"pop2_label\tparam"
+			],
+			[
+				"x",
+				"xlabel\tparam"
+			],
+			[
+				"POP",
+				"pop2_label"
+			],
+			[
+				"X",
+				"xlabel"
+			],
+			[
+				"fa",
+				"Fasta2"
+			],
+			[
+				"fast",
+				"Fasta1"
+			],
+			[
+				"mean",
+				"mean_volume\tstatement"
+			],
+			[
+				"a",
+				"append\tfunction"
+			],
+			[
+				"sy",
+				"sys\tmodule"
+			],
+			[
+				"to",
+				"tolist"
+			],
+			[
+				"add",
+				"add_argument"
+			],
+			[
+				"line",
+				"lineweights"
+			],
+			[
+				"col",
+				"colorcoding"
+			],
+			[
+				"Pl",
+				"PltVio\tstatement"
+			],
+			[
+				"def",
+				"default"
+			],
+			[
+				"Seq",
+				"sequence"
+			],
+			[
+				"Fe",
+				"Feature3\tparam"
+			],
+			[
+				"Feat",
+				"Feature1"
+			],
+			[
+				"ht",
+				"htmlFname\tparam"
+			],
+			[
+				"htm",
+				"htmlOutDir\tparam"
+			],
+			[
+				"Cl",
+				"ClassLable\tparam"
+			],
+			[
+				"I",
+				"ImageName\tparam"
+			],
+			[
+				"R",
+				"RotationY\tparam"
+			],
+			[
+				"In",
+				"InFile\tparam"
+			],
+			[
+				"des",
+				"descriptor"
+			],
+			[
+				"merge",
+				"merge_data_frame"
+			],
+			[
+				"Mu",
+				"MultiClassPrediction"
+			],
+			[
+				"max",
+				"max_fun"
+			],
+			[
+				"n",
+				"n_iter_no_change"
+			],
+			[
+				"bet",
+				"beta_2"
+			],
+			[
+				"po",
+				"power_t"
+			],
+			[
+				"learn",
+				"learning_rate_init"
+			],
+			[
+				"al",
+				"alpha"
+			],
+			[
+				"inte",
+				"integer"
+			],
+			[
+				"sel",
+				"select"
+			],
+			[
+				"se",
+				"select"
+			],
+			[
+				"sele",
+				"selected"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"for",
+				"format"
+			],
+			[
+				"x_train",
+				"X_train_data"
+			],
+			[
+				"var",
+				"var_smoothing\tparam"
+			],
+			[
+				"metr",
+				"metric_params\tparam"
+			],
+			[
+				"war",
+				"warm_start"
+			],
+			[
+				"miul",
+				"multi_class"
+			],
+			[
+				"class",
+				"class_weight\tparam"
+			],
+			[
+				"min",
+				"min_samples_split\tparam"
+			],
+			[
+				"min_sa",
+				"min_samples_split\tparam"
+			],
+			[
+				"por",
+				"property\tclass"
+			],
+			[
+				"cl",
+				"class_weight\tparam"
+			],
+			[
+				"min_s",
+				"min_samples_split\tparam"
+			],
+			[
+				"cla",
+				"class_weight"
+			],
+			[
+				"fit",
+				"fit_intercept"
+			],
+			[
+				"sys",
+				"SystemExit\tclass"
+			],
+			[
+				"feq",
+				"freq_sum\tstatement"
+			],
+			[
+				"freq",
+				"freq_sum\tstatement"
+			],
+			[
+				"all",
+				"all_freq\tfunction"
+			],
+			[
+				"s",
+				"step4"
+			],
+			[
+				"step",
+				"step1"
+			],
+			[
+				"ra",
+				"Rain_fall_Data"
+			],
+			[
+				"flo",
+				"flood_report_file"
+			],
+			[
+				"ste",
+				"step4"
+			],
+			[
+				"con",
+				"conda"
+			],
+			[
+				"s2",
+				"s2_i"
+			],
+			[
+				"s1",
+				"s1_o"
+			],
+			[
+				"i_",
+				"i_1"
+			],
+			[
+				"st",
+				"step1"
+			],
+			[
+				"data",
+				"data_line\tstatement"
+			],
+			[
+				"sum",
+				"sum_val\tstatement"
+			],
+			[
+				"pro",
+				"process"
+			],
+			[
+				"Sys",
+				"SystemExit\tclass"
+			],
+			[
+				"cal",
+				"cal_val\tstatement"
+			],
+			[
+				"in",
+				"initial_list\tstatement"
+			],
+			[
+				"k",
+				"k_sets\tstatement"
+			],
+			[
+				"Subsys_",
+				"subsys_db"
+			],
+			[
+				"read",
+				"readlines\tfunction"
+			],
+			[
+				"in_",
+				"in_r"
+			],
+			[
+				"url",
+				"urls"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "AA_Property_Based_Peptide_Descriptor/AA_Property_Based_Peptide_Descriptor.xml",
+			"settings":
+			{
+				"buffer_size": 10065,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\n<citation type=\"bibtex\">\n@article{müller_gabernet_hiss_schneider_2017, \n\ttitle={modlAMP: Python for antimicrobial peptides}, \n\tvolume={33}, DOI={10.1093/bioinformatics/btx285}, \n\tnumber={17}, \n\tjournal={Bioinformatics}, \n\tauthor={Müller, Alex T and Gabernet, Gisela and Hiss, Jan A and Schneider, Gisbert}, \n\tyear={2017}, \n\tpages={2753–2755}}\n</citation>\n\n<citation type=\"bibtex\">\n@article{cao_liang_yan_tan_xu_liu_2013, \n\ttitle={PyDPI: Freely Available Python Package for Chemoinformatics, Bioinformatics, and Chemogenomics Studies}, \n\tvolume={53}, DOI={10.1021/ci400127q}, \n\tnumber={11}, \n\tjournal={Journal of Chemical Information and Modeling}, \n\tauthor={Cao, Dong-Sheng and Liang, Yi-Zeng and Yan, Jun and Tan, Gui-Shan and Xu, Qing-Song and Liu, Shao}, \n\tyear={2013}, \n\tpages={3086–3096}}\n</citation>\n\n<citation type=\"bibtex\">\n@article{cao_liang_yan_tan_xu_liu_2013, \n\ttitle={PyDPI: Freely Available Python Package for Chemoinformatics, Bioinformatics, and Chemogenomics Studies}, \n\tvolume={53}, DOI={10.1021/ci400127q}, \n\tnumber={11}, \n\tjournal={Journal of Chemical Information and Modeling}, \n\tauthor={Cao, Dong-Sheng and Liang, Yi-Zeng and Yan, Jun and Tan, Gui-Shan and Xu, Qing-Song and Liu, Shao}, \n\tyear={2013}, \n\tpages={3086–3096}}\n</citation>\n\n<citation type=\"bibtex\">\n@article{christensen_hamelryck_jensen_2013, \n\ttitle={FragBuilder: An efficient Python library to setup quantum chemistry calculations on peptides models}, DOI={10.7287/peerj.preprints.169v2}, \n\tauthor={Christensen, Anders Steen and Hamelryck, Thomas and Jensen, Jan H}, \n\tyear={2013}}\n</citation>\n\n<citation type=\"bibtex\">\n@misc{githubnanoplot, \n\tauthor = {De Coster, Wouter}, \n\tyear = {2018}, title =\n\t{NanoPlot}, \n\tpublisher = {GitHub}, \n\tjournal = {GitHub repository}, \n\turl =\n\t{https://github.com/wdecoster/NanoPlot}, }\n</citation>",
+			"settings":
+			{
+				"buffer_size": 1819,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pckage",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:an",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/BasicPlotting/BasicPlotting.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Fishers_Plot/Fishers_Plot.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Legnth_Destribution/Legnth_Destribution.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Merge_Dataframes/Merge_Dataframes.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/ML_Models/ML_Models.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_CD_Spectral_Analysis/Peptide_CD_Spectral_Analysis.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_Core_Descriptors/Peptide_Core_Descriptors.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_Core_Functions/Peptide_Core_Functions.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_Data_Access/Peptide_Data_Access.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_Data_Plotting/Peptide_Data_Plotting.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_Global_Descriptors/Peptide_Global_Descriptors.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_Ngrams/Peptide_Ngrams.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_Sequence_Analysis/Peptide_Sequence_Analysis.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_Structure_Builder/Peptide_Structure_Builder.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Sequence_Based_Peptide_Generation/Sequence_Based_Peptide_Generation.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Sequence_Network/Sequence_Network.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Sequence_Property_Based_Descriptors/Sequence_Property_Based_Descriptors.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/TSVtoFASTA/TSVtoFASTA.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Uversky_Plot/Uversky_Plot.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Word_Vector_Descriptor/Word_Vector_Descriptor.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Word_Vector_Model/Word_Vector_Model.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/AddClassLabel/AddClassLabel.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/AA_Property_Based_Peptide_Generation/AA_Property_Based_Peptide_Generation.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/AA_Property_Based_Peptide_Descriptor/AA_Property_Based_Peptide_Descriptor.xml",
+		"/Users/joshij/PepGalaxy/galaxy/config/tool_conf.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#9/README.md",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#24/Peptide_Core_Descriptors.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#8/Sequence_Based_Peptide_Generation.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#6/Word_Vector_Descriptor.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#5/Word_Vector_Model.py",
+		"/Users/joshij/Desktop/GenPtrn/nbtools/setup.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#34/Sequence_Based_Peptide_Generation.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#2/Word_Vector_Descriptor.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#0/Merge_Dataframes.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#79/Word_Vector_Descriptor.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#15/Peptide_Data_Access.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#13/Peptide_Core_Descriptors.py",
+		"/Users/joshij/Desktop/WorldCloud/WordCloud.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#48/Peptide_CD_Spectral_Analysis.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#39/Peptide_CD_Spectral_Analysis.xml",
+		"/Users/joshij/Desktop/diff/log_diff.txt",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#194/report.html.re",
+		"/Users/joshij/Desktop/diff/log.txt",
+		"/Users/joshij/Desktop/diff/report_html.html",
+		"/Users/joshij/Desktop/diff/report.html",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#169/BasicPlotting.xml",
+		"/Users/joshij/Desktop/Bookeh/box.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#146/BasicPlotting.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#53/BasicPlotting.xml",
+		"/Users/joshij/Desktop/acpred/traning/Lenth_Analysis/long.fasta",
+		"/Users/joshij/Downloads/Vijay/Tep.py",
+		"/Users/joshij/DesktopActivity/GitRepos/OPCN3API/OPCN3/templates/OPCN3/base.html",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#5/Sequence_Property_Based_Descriptors.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#4/Sequence_Property_Based_Descriptors.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_AA_Based_descriptor/Peptide_sequence_descriptor_2.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_AA_Based_descriptor/Peptide_sequence_descriptor_2.py",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_descriptor/Peptide_sequence_descriptor_2.py",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_global_descriptors/Peptide_global_descriptors.py",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_core_descriptors/Peptide_core_descriptors.py",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Fishers_Plot/Fishers_Plot.py",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/BoxPlot/BoxPlot.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#25/tutorial.md",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/heat_map/heat_map.py",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/heat_map/heat_map.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/BoxPlot/BoxPlot.py",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_ngrams/peptide_ngrams.py",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Peptide_ngrams/peptide_ngrams.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#19/tutorial.md",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#18/tutorial.md",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#16/Makefile",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#11/tutorial.md",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#3/tool_conf.xml",
+		"/Users/joshij/DesktopActivity/OLD_projects/pep_web/protocol/forms.py",
+		"/Users/joshij/Desktop/Test/test.xml",
+		"/Users/joshij/Desktop/Test/test_2.py",
+		"/Users/joshij/Desktop/ReshmaRani/1i10/furan2/Out/renk.py",
+		"/Users/joshij/DesktopActivity/OLD_projects/pep_web/protocol/views.py",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/Scatter_plot/Scatter_plot.xml",
+		"/Users/joshij/DesktopActivity/OLD_projects/pep_web/protocol/templates/protocol/help.html",
+		"/Users/joshij/Desktop/CleanData.py",
+		"/Users/joshij/Desktop/DataBaseApp/PeptideDB/DataBase/CleanData.py",
+		"/Users/joshij/Desktop/DataBaseApp/PeptideDB/DataBase/views.py",
+		"/Users/joshij/Desktop/Test/logo.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#224/SequenceNetwork.xml",
+		"/Users/joshij/DesktopActivity/GitRepos/Peptide/SequenceNetwork/SequenceNetwork.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#222/report.html",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#220/Legnth_distribution.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#219/Legnth_distribution.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#204/align.py",
+		"/Users/joshij/Desktop/Test/align.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#187/align.py",
+		"/Users/joshij/Desktop/OPC-N3_python-master/AQ/rpiWebServer/interface.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#154/Word_vector_descriptor.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#96/Peptide_library_generation_1.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#95/TSVtoFASTA.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#94/TSVtoFASTA.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#93/TSVtoFASTA.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#92/Scatter_plot.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#91/report.html",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#89/Scatter_plot.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#88/Scatter_plot.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#87/Scatter_plot.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#79/Scatter_plot.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#72/Scatter_plot.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#71/Scatter_plot.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#65/Scatter_plot.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#63/Peptide_sequence_analysis.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#60/Peptide_sequence_analysis.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#33/Peptide_sequence_analysis.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#24/Peptide_sequence_analysis.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#20/Peptide_sequence_analysis.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#19/Peptide_sequence_analysis.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#17/Peptide_sequence_descriptor_2.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#15/Peptide_sequence_descriptor_2.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#14/Peptide_sequence_descriptor_2.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#13/Peptide_sequence_descriptor_2.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#11/Peptide_sequence_descriptor_2.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#10/peptide_ngrams.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#9/Uversky_plot.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#6/peptide_ngrams.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#4/peptide_ngrams.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#3/peptide_ngrams.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#2/peptide_ngrams.py",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#1/tool_conf.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#0/tool_conf.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#192/object_store_conf.xml.sample",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#191/peptide_ngrams.xml",
+		"/Users/joshij/Library/Caches/com.binarynights.ForkLift2/#189/Uversky_plot.xml"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 205.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "AA_Property_Based_Peptide_Descriptor/AA_Property_Based_Peptide_Descriptor.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9166,
+								9166
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4435.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1819,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1819,
+								1819
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"default_dir": "/Users/joshij/DesktopActivity/GitRepos/Peptide/AA_Property_Based_Peptide_Descriptor",
+							"git_gutter_is_enabled": false,
+							"incomplete_sync": null,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 71.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 132.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Desktop/Test/old_data/Copy_2.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 307.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
