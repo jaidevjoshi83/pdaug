@@ -690,28 +690,28 @@ This tool builds a machine learning model from the given descriptor set based on
      * **Stochastic gradient descent Classifier**
      * **Decision tree**
      * **Gradient boosting Classifier**
-     * **Random forest Classifier**
+     * **Random Forest Classifier**
      * **Logistic regression Classifier**
      * **k-nearest neighbors Classifier**
-     * **Gaussian naive bayes Classifier**
+     * **Gaussian naive Bayes Classifier**
      * **Multilayer perceptron Classifier**
 
-A detail Description about all the algorithms can be found at sklearn (https://scikit-learn.org/stable/)
+A detail Description of all the algorithms can be found at sklearn (https://scikit-learn.org/stable/)
 
 -----
 
 **Inputs**
     * **Training File**  Tabulalr files with labeled peptide descriptor data.  
     * **Select Machine Learning algorithms** Select algorithm. 
-    * **Select Advance Perameters** Select the advance parameter details of each of the parameters that can be found on sklearn website. 
-    * **Seleect the test method** (predict or internal test)
-    * **Cross Validation** Up to 10 fold cross validation. 
+    * **Select Advanced Parameters** Select the advance parameter details of each of the parameters that can be found on sklearn website. 
+    * **Select the test method** (predict or internal test)
+    * **Cross Validation** Up to 10 fold cross-validation. 
     * **Method to Scale the data** MinMaxScaler and  standard scaler. 
 
 -----
 
 **Outputs**
-    * Tabular file with the various performance scores (accurrecy, precision, recall, f1-score and AUC score). ]]></help>
+    * Tabular file with the various performance scores (accurracy, precision, recall, f1-score, and AUC score). ]]></help>
 </tool>
 
 

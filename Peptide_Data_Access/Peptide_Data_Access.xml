@@ -40,9 +40,9 @@
 
 **What it does**
 
-This tool returns inbuld peptide data sets. 
+This tool returns inbuild peptide data sets. 
 
-  * **AMPvsTM**  This option returns Antimicrobial peptides and trans-membrane sequences. 
+  * **AMPvsTM**  This option returns Antimicrobial peptides and transmembrane sequences. 
   * **AMPvsUniProt** This option returns AMPs from the APD3 and  other peptides from the UniProt database.
   * **ACPvsTM**  This option returns anticancer peptides (CancerPPD) and helical transmembrane sequences.
   * **ACPvsRandom**  This option returns anticancer peptides (CancerPPD) and random scrambled AMP sequences.
@@ -55,7 +55,7 @@ This tool returns inbuld peptide data sets.
 -----
 
 **Outputs**
-    * Returns tabular file with peptide sequences and class labels.]]></help>
+    * Returns a tabular file with peptide sequences and class labels.]]></help>
 </tool>
 
 

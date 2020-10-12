@@ -41,25 +41,21 @@
 
 **What it does**
 
-Calculates word vector based descriptors derived from Skip-gram model.  
+Calculates word vector based descriptors derived from the Skip-gram model.  
 
 -----
 
 **Inputs**
     * **--InputFasta** A fasta file with negative and positive samples. 
     * **--ModelInput** Skip-gram model as ".txt" file generated from "Word_Vector_Model".
-    * **--row** Number of traning samples. 
+    * **--row** Number of training samples. 
     * **--positive** Positive samples. 
     * **--negative** Negative samples.
 
 -----
 
 **Outputs**
-    * **--OutFile** Tabular file with descriptor data. 
-
-.. _fastp: https://github.com/OpenGene/fastp
-
-]]></help>
+    * **--OutFile** Tabular file with descriptor data.]]></help>
     <citations>
         <citation type="bibtex">
 

@@ -175,29 +175,29 @@
 
 **What it does**
 
-This tool generates four different type of plots. 
+This tool generates four different types of plots. 
 
-   * **HeatMap** Takes a dataframe as input and returns heatmap. 
-   * **BoxPlot** Takes a descriptor dataframe as input and returns a box plot based on class label. 
-   * **ScatterPlot** Takes a descriptor dataframe with the class label as input and compare the scatteredness based on 2D or 3D scatter plot. 
-   * **WordCloud** Calculates the ngrams from peptide data set and plot a word cloud for ngrams to assess frrequency of ngrams visually. 
+   * **HeatMap** Takes a data frame as input and returns heatmap. 
+   * **BoxPlot** Takes a descriptor data frame as input and returns a box plot based on the class label. 
+   * **ScatterPlot** Takes a descriptor data frame with the class label as input and compares the scatteredness based on 2D or 3D scatter plot. 
+   * **WordCloud** Calculates the ngrams from the peptide data set and plot a word cloud for ngrams to assess frequency of ngrams visually. 
 
 -----
 
 **Inputs**
     **1**  HeatMap    
-       * **--Infile** Input data frame as tabular file.
+       * **--Infile** Input data frame as a tabular file.
        * **--IndexColumn**  Number of sequence to be generated.  
-       * **--x_label** Peptide minimum legnth. 
-       * **--y_label_s** Peptide maximum legnth. 
+       * **--x_label** Peptide minimum length. 
+       * **--y_label_s** Peptide maximum length. 
 
     **2** BoxPlot
-       * **--Infile** Input data frame as tabular file. 
+       * **--Infile** Input data frame as a tabular file. 
        * **--Feature** Feature(column name) to be assessed. 
        * **--Label** Class label column name. 
 
     **3** ScatterPlot
-       * **--Infile** Input data frame as tabular file.  
+       * **--Infile** Input data frame as a tabular file.  
        * **--PlotType** 2D or 3D scatter plot. 
        * **--Feature1** First feature column name. 
        * **--Feature2** Second feature column name.

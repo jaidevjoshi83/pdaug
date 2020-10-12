@@ -19,7 +19,7 @@
 
   <inputs>
     <param name="input" type="data" label="Input fasta file" format="fasta" argument= "--Input"/>
-    <param name="meanCount" type="integer" label="Ignores all words with total frequency lower than this" value="0" format="fasta" argument= "--min_count"/>
+    <param name="meanCount" type="integer" label="Ignores a all words with total frequency lower than this" value="0" format="fasta" argument= "--min_count"/>
     <param name="window" type="integer" label="Maximum distance between the current and predicted word within a sentence" value="5" argument="--window" help="row"/>
   </inputs>
 

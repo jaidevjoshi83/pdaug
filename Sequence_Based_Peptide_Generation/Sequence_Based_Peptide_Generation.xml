@@ -96,7 +96,7 @@
 
 **What it does**
 
-This tool generates peptide sequences based on three sequences based properties which includes Mutated Peptides, Random Peptides and Sliding Window Peptide.
+This tool generates peptide sequences based on three sequences based properties which includes Mutated Peptides, Random Peptides, and Sliding Window Peptide.
 
 -----
 
@@ -104,17 +104,17 @@ This tool generates peptide sequences based on three sequences based properties
     **1**  MutatedPeptides    
        * **--sequence**  Input peptide sequence 
        * **--mutation_site_list** Sites to mutated AA as Integer values 
-       * **--AA_list** List of amino acides to replace
+       * **--AA_list** List of amino acids to replace
        
     **2** RandomPeptides
-       * **--AA_list** List of amino acides
+       * **--AA_list** List of amino acids
        * **--pep_length** Length of peptide sequences 
-       * **--out_pep_lenght** Number of ouput peptides
+       * **--out_pep_lenght** Number of output peptides
 
     **3** SlidingWindowPeptide
        * **--InFile** Input protein sequences fasta file 
        * **--winSize** Sliding window size 
-       * **--FragSize** Output Peptide sequnce size
+       * **--FragSize** Output Peptide sequence size
 
 -----
 

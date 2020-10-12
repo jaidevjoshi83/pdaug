@@ -35,7 +35,7 @@
 
 **What it does**
 
-Calculates frequency of ngrames in peptide sequences.
+Calculates the frequency of ngrames in peptide sequences.
 
 -----
 
@@ -46,7 +46,7 @@ Calculates frequency of ngrames in peptide sequences.
 -----
 
 **Outputs**
-    * **--OutFile** Returns tabular datafile. ]]></help>
+    * **--OutFile** Returns tabular data file. ]]></help>
 </tool>
 
 

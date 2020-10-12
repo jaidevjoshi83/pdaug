@@ -49,7 +49,7 @@ This tool adds class labels to a dataframe.
 -----
 
 **Outputs**
-    * **--OutFile** Returns output data file.]]></help>
+    * **--OutFile** Returns a tabular file with the class labels.]]></help>
 </tool>
 
 

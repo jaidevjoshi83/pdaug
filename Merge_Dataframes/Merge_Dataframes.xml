@@ -35,7 +35,7 @@ This tool merges two data frames.
 -----
 
 **Outputs**
-    * Merged abular data file.
+    * Returns merged tabular data file.
 
 .. _fastp: https://github.com/OpenGene/fastp
 

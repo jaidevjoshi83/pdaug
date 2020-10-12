@@ -59,7 +59,7 @@
           <option value="HelWhl">Helical wheel</option>
           <option value="PltPde">Probability density estimations</option>
           <option value="PltVio">Violin</option>
-          <option value="PltAaDis">Amino acide distribution</option>
+          <option value="PltAaDis">Amino acid distribution</option>
         </param>
 
         <when value="HelWhl">
@@ -152,7 +152,7 @@ This tool provided with some advance plotting functions for peptide data.
   * **Helical wheel** Generates a helical wheel projection plot of a given sequence.
   * **Probability density estimations** Generates a probability density estimation plot of given data arrays.
   * **Violin** Generates a violin plot for given classes and corresponding distributions.
-  * **Amino acide distribution**  Generates an amino acid frequency plot for all 20 natural amino acids.
+  * **Amino acid distribution**  Generates an amino acid frequency plot for all 20 natural amino acids.
 
 
 -----
@@ -177,9 +177,9 @@ This tool provided with some advance plotting functions for peptide data.
 
     **3** PltVio
       * **--InFile** Input fasta file with peptide sequences. 
-      * **--ClmList** Listt of dataframe columns to be plotted. 
-      * **--colors**  Face color of the violin plots, can also be list of colors with same dimension as x
-      * **--bp** Print a box blot inside violin.
+      * **--ClmList** List of data frame columns to be plotted. 
+      * **--colors**  Face color of the violin plots, can also be a list of colors with the same dimension as x
+      * **--bp** Print a box blot inside the violin.
       * **--title** Title of the plot.
       * **--axlabels** List containing the axis labels for the plot.
       * **--y_max** y-axis minimum.
@@ -192,7 +192,7 @@ This tool provided with some advance plotting functions for peptide data.
 
 **Outputs**
     * **Helical wheel** Returns a helical wheel projection plot of the given sequence.
-    * **Probability density estimations** Returns probability density estimations plot of given data vectors 
-    * **Violin** Returns violin plots out of given data array.
-    * **Amino acide distribution**  Returns amino acid distribution plot of a given list of sequences.]]></help>
+    * **Probability density estimations** Return probability density estimations plot of given data vectors 
+    * **Violin** Returns violin plots out of the given data array.
+    * **Amino acid distribution**  Returns amino acid distribution plot of a given list of sequences.]]></help>
 </tool>

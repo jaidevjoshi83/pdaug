@@ -95,7 +95,7 @@
 
 This tool performs some core functions on the peptide sequences and equipped with various options
 
-  * **Mutated Amino Acide** Method to mutate with prob probability a nr of positions per sequence randomly.
+  * **Mutated Amino Acid** Method to mutate with prob probability an nr of positions per sequence randomly.
   * **Filter Duplicates** Method to filter duplicates in the sequences from the class attribute sequences.
   * **Keep Naturalaa** Method to filter out sequences that do not contain natural amino acids. If the sequence contains a character.
   * **Filter Amino Acid** Method to filter out corresponding names and descriptor values of sequences with given amino acids in the argument list aminoacids.
@@ -106,7 +106,7 @@ This tool performs some core functions on the peptide sequences and equipped wit
     
     1 **Mutate Amino Acid**
         * **--InFile** takes Fasta file with peptide sequences.  
-        * **--nr**  Number of mutationis. 
+        * **--nr**  Number of mutations. 
         * **--probability** Probability of mutating a sequence.
 
     2 **Filter Duplicates***

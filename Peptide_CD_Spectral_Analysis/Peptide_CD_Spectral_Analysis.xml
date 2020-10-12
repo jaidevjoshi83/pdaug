@@ -268,12 +268,12 @@
 
 **What it does**
 
-This tool handle circular dichroism data files and calculate several ellipticity and helicity values. The class can handle data files of the Applied Photophysics type. For explanations of different units used in CD spectroscopy, visit https://www.photophysics.com/resources/7-cd-units-conversions. Provided with foour different options. 
+This tool handles circular dichroism data files and calculates several ellipticity and helicity values. The class can handle data files of the Applied Photophysics type. For explanations of different units used in CD spectroscopy, visit https://www.photophysics.com/resources/7-cd-units-conversions. Provided with four different options. 
 
   * **Calculate Ellipticity** Calculates molar and mean residue ellipticity.  
   * **Plot Data** Generates circular_dichroism plots for all read data in the initial directory.
   * **Save data in DichroWeb readable format** Method to save the calculated CD data into DichroWeb readable format (semi-colon separated). The produced files can then directly be uploaded to the DichroWeb analysis tool.
-  * **Calculate the percentage of helicity** Method to calculate the percentage of helicity out of the mean residue ellipticity data. The calculation is based on the fromula by Fairlie and co-workers.
+  * **Calculate the percentage of helicity** Method to calculate the percentage of helicity out of the mean residue ellipticity data. The calculation is based on the formula by Fairlie and co-workers.
 
 -----
 
@@ -281,43 +281,43 @@ This tool handle circular dichroism data files and calculate several ellipticity
 
   **1** calc_ellipticity
      * **--Type**
-     * **--Wmin** smalles wavelength measured
+     * **--Wmin** smallest wavelength measured
      * **--Wmax** highest wavelength measured
      * **--Amide** specifies whether the sequences have amidated C-termini
      * **--Pathlen** cuvette path length in mm
 
   **2** PlotData
      * **--Type**
-     * **--Wmin** smalles wavelength measured
+     * **--Wmin** smallest wavelength measured
      * **--Wmax** highest wavelength measured
      * **--Amide** specifies whether the sequences have amidated C-termini
      * **--Pathlen**  cuvette path length in mm
 
   **3** Dicroweb
      * **--Type**
-     * **--Wmin** smalles wavelength measured
+     * **--Wmin** smallest wavelength measured
      * **--Wmax** highest wavelength measured
      * **--Amide** specifies whether the sequences have amidated C-termini
      * **--Pathlen**  cuvette path length in mm
 
   **4** helicity 
      * **--Type**
-     * **--Wmin** smalles wavelength measured
+     * **--Wmin** smallest wavelength measured
      * **--Wmax** highest wavelength measured
      * **--Amide** specifies whether the sequences have amidated C-termini
      * **--Pathlen**  cuvette path length in mm
      * **--temperature** experiment temperature in °C
      * **--k** {float, 2.4 - 4.5} finite length correction factor. Can be adapted to the helicity of a known peptide.
-     * **--Induction** wether the helical induction upon changing from one solvent to another should be calculated.
+     * **--Induction** whether the helical induction upon changing from one solvent to another should be calculated.
 
 
 -----
 
 **Outputs**
-  * **Calculate Ellipticity** Return molar or mean residue eliptiicity as tabular file.  
+  * **Calculate Ellipticity** Return molar or mean residue ellipticity as a tabular file.  
   * **Plot Data** Returns PDF files.
   * **Save data in DichroWeb readable format** Returns tabular files.
-  * **Calculate the percentage of helicity** Returns approximate helicity for every sequence as tabular file.]]></help>
+  * **Calculate the percentage of helicity** Returns approximate helicity for every sequence as a tabular file.]]></help>
     <citations>
         <citation type="bibtex">
 @misc{githubseqtk,

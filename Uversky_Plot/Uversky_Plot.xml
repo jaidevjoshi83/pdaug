@@ -40,8 +40,8 @@ This plot divides analyze peptide sequences on globular and IDP subsets based on
 -----
 
 **Inputs**
-    * **--Fasta1** First fasta file.
-    * **--Fasta2** First fasta file.
+    * **--Fasta1** The first fasta file.
+    * **--Fasta2** The second fasta file.
 
 -----
 

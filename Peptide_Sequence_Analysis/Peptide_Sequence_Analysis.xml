@@ -62,11 +62,11 @@
     <conditional name='SelAnalysis' >
 
         <param name="Analysis" type="select" label="Analysis options" argument="">
-          <option value="CalcAAFreq">Calculate amino acide frequency</option>
-          <option value="H">Calculate global hydrophobicity</option>
+          <option value="CalcAAFreq">Calculate the amino acid frequency</option>
+          <option value="H">Calculate the global hydrophobicity</option>
           <option value="uH">Calculating hydrophobic moments</option>
           <option value="charge">Calculate the total molecular charge</option>
-          <option value="Len">Calculate sequence length</option>
+          <option value="Len">Calculate the sequence length</option>
           <option value="PlotSummary">Plot Summary</option>
         </param>
 
@@ -176,23 +176,23 @@
 
 **What it does**
 
-This module can be used for diverse analysis of given peptide libraries and equiped with 6 different options.
+This module can be used for the diverse analysis of given peptide libraries and equiped with 6 different options.
 
-  * **Calculate amino acide frequency** Method to get the frequency of every amino acid in the library. If the library consists of sub-libraries, the frequencies of these are calculated independently.
-  * **Calculate global hydrophobicity** Method for calculating global hydrophobicity (Eisenberg scale) of all sequences in the library.
+  * **Calculate the amino acid frequency** Method to get the frequency of every amino acid in the library. If the library consists of sub-libraries, the frequencies of these are calculated independently.
+  * **Calculate the global hydrophobicity** Method for calculating global hydrophobicity (Eisenberg scale) of all sequences in the library.
   * **Calculating hydrophobic moments** Method for calculating hydrophobic moments (Eisenberg scale) for all sequences in the library.
   * **Calculate the total molecular charge** Method to calculate the total molecular charge at a given pH for all sequences in the library.
-  * **Calculate sequence length** Method to get the sequence length of all sequences in the library.
+  * **Calculate the sequence length** Method to get the sequence length of all sequences in the library.
   * **Plot Summary** Method to generate a visual summary of different characteristics of the given library. The class methods are used with their standard options.
 
 
 -----
 
 **Inputs**
-    **1** Calculate amino acide frequency
+    **1** Calculate the amino acid frequency
        * **--InFile** Input fasta file with peptide sequences.
 
-    **2** Calculate global hydrophobicity    
+    **2** Calculate the global hydrophobicity    
        * **--InFile** Input fasta file with peptide sequences.
        * **--Scale** Hydrophobicity scale to use. For available scales, see modlamp.descriptors.PeptideDescriptor. 
 
@@ -208,7 +208,7 @@ This module can be used for diverse analysis of given peptide libraries and equi
        * **--ph** Input fasta file with peptide sequences. 
        * **--Amide** Whether the sequences have an amidated C-terminus (-> charge += 1). 
 
-    **5** Calculate sequence length
+    **5** Calculate the sequence length
        * **--Infile** Input fasta file with peptides.  
 
     **6** Plot Summary
@@ -218,11 +218,11 @@ This module can be used for diverse analysis of given peptide libraries and equi
 -----
 
 **Outputs**
-  * **Calculate amino acide frequency** Returns tabular file with html report file. 
-  * **Calculate global hydrophobicity** Returns tabular file.
+  * **Calculate the amino acid frequency** Returns tabular file with html report file. 
+  * **Calculate the global hydrophobicity** Returns tabular file.
   * **Calculating hydrophobic moments** Returns tabular file.
   * **Calculate the total molecular charge** Returns tabular file.
-  * **Calculate sequence length** Returns tabular file.
+  * **Calculate the sequence length** Returns tabular file.
   * **Plot Summary** Return html report file.
 
 ]]></help>

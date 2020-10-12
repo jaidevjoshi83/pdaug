@@ -101,21 +101,21 @@
 
 **What it does**
 
-This tool calculates sequence property based descriptor for a peptide descriptor. 
+This tool calculates sequence property based descriptor for a peptide descriptor.  
 
-  * **AAC** This option calculates amino acid composition descriptors (20).
-  * **DPComp** This option calculates dipeptide composition descriptors (400).
-  * **TPComp** This option calculates tri-peptide composition descriptors (8000).
-  * **MoreauBrotoAuto** This option calculates Normalized Moreau-Broto autocorrelation descriptors (depend on the given properties, the default is 240). 
-  * **MoranAuto** This option calculates Moran autocorrelation descriptors (depend on the given properties, the default is 240).
-  * **GearyAuto** This option calculatesGeary autocorrelation descriptors (depend on the given properties, the default is 240).
-  * **CTD** This option calculatesComposition, Transition, Distribution descriptors(200). 
-  * **SOCN** This option calculatessequence order coupling numbers (depend on the choice of maxlag, the default is 60).
-  * **QSO** This option calculatesquasi-sequence order descriptors (depend on the choice of maxlag, the default is 100).
-  * **PAAC** This option calculatespseudo amino acid composition descriptors (depend on the choice of lamda, the default is 50).
-  * **APAAC** This option calculatesamphiphilic pseudo amino acid composition descriptors, (depend on the choice of lamda, the default is 50). 
-  * **BinaryDescriptor** This option calculates binary descriptor of peptide sequences (All the peptides should be same length). 
-  * **All** This optino calculates all the descriptor except the binarydesriptor. 
+    * **AAC** This option calculates amino acid composition descriptors (20).
+    * **DPComp** This option calculates dipeptide composition descriptors (400).
+    * **TPComp** This option calculates tri-peptide composition descriptors (8000).
+    * **MoreauBrotoAuto** This option calculates Normalized Moreau-Broto autocorrelation descriptors (depend on the given properties, the default is 240). 
+    * **MoranAuto** This option calculates Moran autocorrelation descriptors (depend on the given properties, the default is 240).
+    * **GearyAuto** This option calculates Geary autocorrelation descriptors (depend on the given properties, the default is 240).
+    * **CTD** This option calculates Composition, Transition, Distribution descriptors(200). 
+    * **SOCN** This option calculates sequence order coupling numbers (depend on the choice of maxlag, the default is 60).
+    * **QSO** This option calculates quasi-sequence order descriptors (depend on the choice of maxlag, the default is 100).
+    * **PAAC** This option calculates pseudo amino acid composition descriptors (depend on the choice of lamda, the default is 50).
+    * **APAAC** This option calculates amphiphilic pseudo amino acid composition descriptors, (depend on the choice of lamda, the default is 50). 
+    * **BinaryDescriptor** This option calculates the binary descriptor of peptide sequences (All the peptides should be the same length). 
+    * **All** This option calculates all the descriptors except the binary descriptor.
 
 -----
 

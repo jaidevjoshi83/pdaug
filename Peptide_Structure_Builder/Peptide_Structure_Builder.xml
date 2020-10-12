@@ -36,12 +36,12 @@
 
 **What it does**
 
-This tool generates 3D structures of peptides sequences up to three amino acid that can be utilize for peptide docking with macromolecules with tools such as Autodock Vina. 
+This tool generates 3D structures of peptide sequences up to three amino acids that can be utilized for peptide docking with macromolecules with tools such as Autodock Vina. 
 
 -----
 
 **Inputs**
-    * **--InFile** Input files contains peptide sequences.
+    * **--InFile** A fasta file witth the peptide sequences.
 
 -----
 
