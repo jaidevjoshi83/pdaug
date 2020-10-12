@@ -13,8 +13,8 @@
     ]]></command>
 
     <inputs>
-      <param name="Fasta1" type="data"  label="First fasta file" argument="--Fasta1" help="" />
-      <param name="Fasta2" type="data"  label="Second fasta file" argument="--Fasta2" help="" />
+      <param name="Fasta1" type="data"  formate="fasta" label="First fasta file" argument="--Fasta1" help="" />
+      <param name="Fasta2" type="data"  formate="fasta" label="Second fasta file" argument="--Fasta2" help="" />
       <param name="overlap_factor" type="integer" value="5" label="Overlap factor" argument="--overlap_factor" help="" />
       <param name="windows_per_frame" type="integer" value="5" label="Windows per frame" argument="--windows_per_frame" help="" />
       <param name="xlabel" type="text"  label="X-label" value="Mean volume" argument="--xlabel" help="" />
