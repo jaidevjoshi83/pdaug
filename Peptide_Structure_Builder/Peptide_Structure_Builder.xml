@@ -19,7 +19,7 @@
 
   <outputs>
     <collection name="output" type="list" label="OuTData">
-        <discover_datasets pattern="__name_and_ext__" type='pdb' directory="DataFile" />
+        <discover_datasets pattern="__name_and_ext__" format='pdb' directory="DataFile" />
     </collection>
   </outputs>  
 

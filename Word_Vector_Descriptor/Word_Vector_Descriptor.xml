@@ -33,6 +33,7 @@
         <param name="row" value="276" />
         <param name="positive" value="138" />
         <param name="negative" value="138" />
+        <output name="output" value="Out.tsv" />
       </test>
     </tests>
 

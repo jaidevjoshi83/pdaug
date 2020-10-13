@@ -3,8 +3,10 @@
 	<description>Merge two data frames</description>
 
     <requirements>
-      <requirement version="0.24.2" package="pandas" >pandas </requirement>
+      <requirement version="0.24.2" type="package" >pandas </requirement>
     </requirements>
+
+
     <command detect_errors="exit_code"><![CDATA[
         python $__tool_directory__/Merge_Dataframes.py '$input1' '$output1'
     ]]></command>
@@ -12,7 +14,7 @@
         <param type="data" name="input1" label="Input files" format="tabular" multiple="true" />
     </inputs>
     <outputs>
-        <data name='output1' format='tabular' label="merged.tsv" multiple="false" />    
+        <data name='output1' format='tabular' label="merged.tsv"  />    
     </outputs>
     <tests>
         <test>

@@ -91,7 +91,7 @@
         </when>
 
         <when value="PltAaDis">
-            <param name="InFile"  type="data" formate="fasta" argument= "--seq_num"/>
+            <param name="InFile"  type="data" format="fasta" argument= "--seq_num"/>
         </when>
 
     </conditional>
@@ -112,7 +112,7 @@
       <param name="x_max" value="1"/>
       <param name="x_min" value="0"/>
       <param name="alpha" value="0.5" />
-      <output name="out_file1" file="test1/report_dir/report.html"/>
+      <output name="output2" file="test1/report_dir/report.html"/>
     </test>
     <test>
       <param name="Plot" value="HelWhl"/>
@@ -132,7 +132,7 @@
       <param name="axlabels" value="jai"/>
       <param name="y_max" value="4"/>
       <param name="y_min" value="-4" />
-      <output name="y_min" file="test3/report_dir/report.html"/>
+      <output name="output2" file="test3/report_dir/report.html"/>
     </test>
 
     <test>

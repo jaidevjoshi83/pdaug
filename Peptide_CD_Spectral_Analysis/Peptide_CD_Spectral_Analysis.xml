@@ -3,8 +3,8 @@
   <description>Merge two data frames</description>
 
     <requirements>
-      <requirement version="0.24.2" package="pandas" >pandas </requirement>
-      <requirement version="4.2.1" package="modlamp" >modlamp </requirement>
+      <requirement version="0.24.2" type="package" >pandas </requirement>
+      <requirement version="4.2.1" type="package" >modlamp </requirement>
     </requirements>
     <command detect_errors="exit_code"><![CDATA[
 
@@ -134,13 +134,13 @@
     </data>
 
    <collection name="pdfout" type="list" label="PDF">
-      <discover_datasets pattern="__name_and_ext__" type='pdf' directory="temp/PDF" />
+      <discover_datasets pattern="__name_and_ext__"  format='pdf' directory="temp/PDF" />
       <filter>   SelMethods['Methods'] == 'PlotData' </filter>
    </collection>
 
 
     <collection name="dichroout" type="list" label="Dichro">
-      <discover_datasets pattern="__name_and_ext__" type='tsv' directory="temp/Dichro" />
+      <discover_datasets pattern="__name_and_ext__" format='tsv' directory="temp/Dichro" />
         <filter>  SelMethods['Methods'] == 'Dichroweb' </filter>
     </collection>
 
@@ -178,9 +178,46 @@
       <param name="Wx" value="260" />
       <param name="Amide" value="false" />
       <param name="Pathlen" value="1.0" />
-     <collection name="pdfout" type="list" label="PDF">
-      <discover_datasets pattern="__name_and_ext__" type='pdf' directory="PDF1" />
-     </collection>
+
+      <output_collection name="pdfout" count="3"  >
+      </output_collection>
+
+  </test>
+
+   <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="calc_ellipticity"/>
+      <param name="ellipticity" value="calc_molar_ellipticity" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="true" />
+      <param name="Pathlen" value="1.0" />
+      <output name="output1" file="calc_molar_ellipticity.tsv" />
+    </test>
+
+    <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="calc_ellipticity"/>
+      <param name="ellipticity" value="calc_meanres_ellipticity" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="true" />
+      <param name="Pathlen" value="1.0" />
+      <output name="output1" file="calc_meanres_ellipticity.tsv" />
+    </test>
+
+
+
+    <test>
+      <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
+      <param name="Methods" value="PlotData"/>
+      <param name="ellipticity" value="mean residue ellipticity" />
+      <param name="Wn" value="180" />
+      <param name="Wx" value="260" />
+      <param name="Amide" value="false" />
+      <param name="Pathlen" value="1.0" />
+     <output_collection name="pdfout" type="pdf" >
+     </output_collection>
     </test>
 
     <test>
@@ -191,9 +228,8 @@
       <param name="Wx" value="260" />
       <param name="Amide" value="false" />
       <param name="Pathlen" value="1.0" />
-     <collection name="pdfout" type="list" label="PDF">
-      <discover_datasets pattern="__name_and_ext__" type='pdf' directory="PDF2" />
-     </collection>
+     <output_collection name="pdfout" type="pdf" >
+     </output_collection>
     </test>
 
      <test>
@@ -204,9 +240,8 @@
       <param name="Wx" value="260" />
       <param name="Amide" value="false" />
       <param name="Pathlen" value="1.0" />
-     <collection name="pdfout" type="list" label="PDF">
-      <discover_datasets pattern="__name_and_ext__" type='pdf' directory="PDF3" />
-     </collection>
+     <output_collection name="pdfout" type="pdf" >
+     </output_collection>
     </test>
         <test>
       <param name="input1" value="Peptide1_T.csv,Peptide2_W.csv" />
@@ -216,9 +251,8 @@
       <param name="Wx" value="260" />
       <param name="Amide" value="false" />
       <param name="Pathlen" value="1.0" />
-    <collection name="dichroout" type="list" label="Dichro">
-      <discover_datasets pattern="__name_and_ext__" type='tsv' directory="Dichro1" />
-    </collection>
+    <output_collection name="dichroout" type="tabular">
+    </output_collection>
     </test>
 
     <test>
@@ -229,9 +263,8 @@
       <param name="Wx" value="260" />
       <param name="Amide" value="false" />
       <param name="Pathlen" value="1.0" />
-    <collection name="dichroout" type="list" label="Dichro">
-      <discover_datasets pattern="__name_and_ext__" type='tsv' directory="Dichro2" />
-    </collection>
+    <output_collection name="dichroout" type="tabular" >
+    </output_collection>
     </test>
 
     <test>
@@ -242,9 +275,8 @@
       <param name="Wx" value="260" />
       <param name="Amide" value="false" />
       <param name="Pathlen" value="1.0" />
-    <collection name="dichroout" type="list" label="Dichro">
-      <discover_datasets pattern="__name_and_ext__" type='tsv' directory="Dichro3" />
-    </collection>
+    <output_collection name="dichroout" type="tabular">
+    </output_collection>
     </test>
 
     <test>

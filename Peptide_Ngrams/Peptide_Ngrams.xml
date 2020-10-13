@@ -1,4 +1,4 @@
-<tool id="Peptide_Ngrams" name="Peptide Ngrams" version="0.1.0" python_template_version="2.7.18">
+<tool id="Peptide_Ngrams" name="Peptide Ngrams" version="0.1.0" python_template_version="2.7">
 	<description>plot ngrams</description>
   
     <requirements>

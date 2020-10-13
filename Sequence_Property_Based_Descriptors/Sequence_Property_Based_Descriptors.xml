@@ -61,7 +61,7 @@
           <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
 
-        <when value="PAAC" >
+        <when value="APAAC" >
           <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
           <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
@@ -71,12 +71,40 @@
           <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
         </when>
 
+        <when value="DPComp" >
+        </when>
+
+        <when value="GearyAuto" >
+        </when>
+
+        <when value="MoranAuto" >
+        </when>
+
+        <when value="MoreauBrotoAuto" >
+        </when>
+
+        <when value="QSO" >
+        </when>
+
+        <when value="SOCN" >
+        </when>
+
+        <when value="CTD" >
+        </when>
+
+        <when value="TPComp" >
+        </when>
+
+        <when value="BinaryDescriptor" >
+        </when>
+
+
       </conditional>
 
   </inputs>
 
     <outputs>
-        <data name='output1' format='tabular' label="Out.tsv" multiple="false" />  
+        <data name='output1' format='tabular' label="Out.tsv" />  
     </outputs>
 
   <tests>
@@ -85,14 +113,14 @@
       <param name="DesType" value="All"/>
       <param name="Lamda" value="5"/>
       <param name="Weight" value="0.5"/>
-      <output name="output1" file="Out.tsv"/>
+      <output name="output1" value="Out.tsv"/>
     </test>
 
     
     <test>
       <param name="input1" value="positive.fasta"/>
       <param name="DesType" value="BinaryDescriptor"/>
-      <output name="output1" file="Out1.tsv"/>
+      <output name="output1" value="Out1.tsv"/>
     </test>
 
   </tests>

@@ -32,7 +32,7 @@
       <param name="input" value="test.fasta"/>
       <param name="meanCount" value="0"/>
       <param name="window" value="5"/>
-      <param name="OutFile" file="model.txt" />
+      <output name="OutFile" value="model.txt" lines_diff="2268" />
     </test>
   </tests>
     <help><![CDATA[

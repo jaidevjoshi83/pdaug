@@ -40,8 +40,8 @@
       <param name="InFile" value="test.fasta"/>
       <param name="GlocalDescriptor" value="All" />
       <param name="ph" value="7.0"/>
-      <param name="amide" file="False"/>
-      <output name="output1" file="out.tsv"/> 
+      <param name="amide" value="False"/>
+      <output name="output1" value="out.tsv"/> 
     </test>
   </tests>
     <help><![CDATA[

@@ -20,8 +20,8 @@
                 <option value="AMPvsTM" selected="true" > AMPvsTM </option>
                 <option value="AMPvsUniProt" > AMPvsUniProt </option>
                 <option value="ACPvsTM"> ACPvsTM </option>
-                <option vlaue="ACPvsRandom"> ACPvsRandom </option>
-              </param> 
+                <option value="ACPvsRandom"> ACPvsRandom </option>
+   </param> 
   </inputs>
 
   <outputs>
