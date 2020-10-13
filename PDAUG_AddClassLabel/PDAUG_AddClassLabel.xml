@@ -1,0 +1,70 @@
+<tool id="PDAUG_AddClassLabel" name="PDAUG Add Class Label" version="0.1.0">
+  <description> Add class label to training data set</description>
+
+  <requirements>
+    <requirement type="package" version="2.7.18">python</requirement>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+  </requirements>
+
+
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__/PDAUG AddClassLabel.py' -I '$input1' -C '$ClassLabel' -O '$OutFile1' -t '$ClassLabelTitle'
+    ]]></command>
+
+  <inputs>
+    <param name="input1" type="data" label="Input file" format="tabular"  multiple="true" argument= "--InFile"/>
+    <param name="ClassLabel" type='text' label="Class Label" value="0" argument="--ClassLabel" />
+    <param name="ClassLabelTitle" label="Class Label Title"  type='text' value="Class_label" argument="--ClassLabelTitle" />
+  </inputs>
+
+  <outputs>
+    <data name='OutFile1' format='tabular' label="Out.tsv" /> 
+  </outputs>
+
+  <tests>
+    <test>
+      <param name="input1" value="new.tsv"/>
+      <output name="OutFile1" file="out.tsv"/>
+    </test>
+  </tests>
+
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool adds class labels to a dataframe.
+
+-----
+
+**Inputs**
+    * **--InFile** Takes input as Tabular data file.
+    * **--ClassLabel** Class label. 
+    * **--ClassLLabelTitle** Column name of class label. 
+
+-----
+
+**Outputs**
+    * **--OutFile** Returns a tabular file with the class labels.]]></help>
+
+
+<citations>
+  <citation type="bibtex">
+
+@misc{githubseqtk,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {seqtk},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/lh3/seqtk},
+
+}</citation>
+</citations>
+
+</tool>
+

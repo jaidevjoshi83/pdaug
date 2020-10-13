@@ -1,0 +1,92 @@
+<tool id="PDAUG_Fishers_Plot" name="PDAUG Fisher's Plot" version="0.1.0" >
+	<description>Analyze peptide sequence data based on feature spaces </description>
+    <requirements>
+      <requirement type="package" version="2.7.18">python</requirement>
+      <requirement type="package" version="1.4.6">powerlaw</requirement>
+      <requirement type="package" version="0.2.4">quantiprot</requirement>
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/PDAUG_Fishers_Plot.py'  --Fasta1 '$Fasta1' --Fasta2 '$Fasta2' --overlap_factor '$overlap_factor' --windows_per_frame '$windows_per_frame' --xlabel '$xlabel' --ylabel '$ylabel' --pop1_label '$pop1_label' --pop2_label '$pop2_label' --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'
+             
+    ]]></command>
+
+    <inputs>
+      <param name="Fasta1" type="data"  format="fasta" label="First fasta file" argument="--Fasta1" help="" />
+      <param name="Fasta2" type="data"  format="fasta" label="Second fasta file" argument="--Fasta2" help="" />
+      <param name="overlap_factor" type="integer" value="5" label="Overlap factor" argument="--overlap_factor" help="" />
+      <param name="windows_per_frame" type="integer" value="5" label="Windows per frame" argument="--windows_per_frame" help="" />
+      <param name="xlabel" type="text"  label="X-label" value="Mean volume" argument="--xlabel" help="" />
+      <param name="ylabel" type="text"  label="Y-label" value="Mean hydropathy" argument="--ylabel" help="" />
+      <param name="pop1_label" type="text" label="Lebel for first population" value="amyloids" argument="--pop1_label" help="" />
+      <param name="pop2_label" type="text" label="Label for second population" value="non amyloids" argument="--pop2_label" help="" />
+    </inputs>
+
+    <outputs>   
+        <data name='output2' format='html' label="report.html" />
+    </outputs>
+ 
+    <tests>
+        <test>
+            <param name="Fasta1" value="positive.fasta"/>
+            <param name="Fasta2" value="negative.fasta"/>
+            <param name="overlap_factor" value="5"  />
+            <param name="windows_per_frame" value="5"  />
+            <param name="xlabel" value="mean volume" />
+            <param name="ylabel" value="mean hydropathy" />
+            <param name="pop1_label"  value="Anticancer" />
+            <param name="pop2_label"  value="anti-cancer" />
+            <output name="output2" value="report_dir/report.html" />
+        </test>
+    </tests>
+
+
+
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool compares two peptide sequence data sets in a 2D space represented by quantitative features of peptides. The tool calculates a local ratio of the number of sequences from each peptide set in the part of the feature space and compares it to the global ratio in the entire feature space by Fisher’s exact test.
+
+-----
+
+**Inputs**
+  * **--Fasta1** The First fasta file. 
+  * **--Fasta2** The Second fasta file.
+  * **--overlap_factor** Overlapping factor.
+  * **--windows_per_frame** Windows per frame.
+  * **--xlabel** X label for the plot.
+  * **--ylabel** Y label for the plot.
+  * **--pop1_label** Label for the first set of sequences. 
+  * **--pop2_label** Label for the second set of sequences. 
+
+-----
+
+**Outputs**
+    * Returrns html report file.]]></help>
+<citations>
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, }
+  </citation>
+  <citation type="bibtex">
+    @article{konopka_marciniak_dyrka_2017,
+       title={Quantiprot - a Python package for quantitative analysis of protein sequences}, 
+       volume={18},
+       DOI={10.1186/s12859-017-1751-4}, 
+       number={1}, 
+       journal={BMC Bioinformatics},
+       author={Konopka, Bogumił M. and Marciniak, Marta and Dyrka, Witold}, 
+       year={2017}
+     }
+  </citation>
+</citations>
+</tool>

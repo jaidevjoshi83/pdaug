@@ -1,0 +1,140 @@
+<tool id="PDAUG_Sequence_Based_Peptide_Generation" name="PDAUG Sequence Based Peptide Generation" version="0.1.0">
+  <description>Generates peptide sequence library</description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+
+        python '$__tool_directory__/PDAUG_Sequence_Based_Peptide_Generation.py' '$SelMethod.Method'
+
+                        --outputFile '$output1'
+
+                        #if $SelMethod.Method == 'MutatedPeptides'
+                          --sequence '$SelMethod.input1'
+                          --mutation_site_list '$SelMethod.mutation_site_list'
+                          --AA_list '$SelMethod.AA_list'
+                        #end if 
+
+                        #if $SelMethod.Method == 'RandomPeptides'
+                          --AA_list '$SelMethod.AA_list'
+                          --pep_length '$SelMethod.pep_length'
+                          --out_pep_lenght '$SelMethod.out_pep_length'
+                        #end if 
+
+                        #if $SelMethod.Method == 'SlidingWindowPeptide'
+                          --InFile '$SelMethod.input1'
+                          --winSize '$SelMethod.WinSize'
+                          --FragSize '$SelMethod.FragSize'
+                        #end if     
+
+    ]]></command>
+
+  <inputs>
+    <conditional name='SelMethod' >
+
+        <param name="Method" type="select" label="Methods to generate peptides " argument="">
+          <option value="MutatedPeptides">MutatedPeptides</option>
+          <option value="RandomPeptides">RandomPeptides</option>
+          <option value="SlidingWindowPeptide">SlidingWindowPeptide</option>
+        </param>
+
+        <when value="MutatedPeptides">
+            <param name="input1" type="text" label="Peptide sequence" argument= "--sequence" />
+            <param name="mutation_site_list" label="Mutation Site" type="text" argument="--mutation_site_list" />
+            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" />
+        </when>
+
+        <when value="RandomPeptides">
+            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" />
+            <param name="pep_length" type="integer" label="Peptide Legnth" value="7" argument="--pep_length" />
+            <param name="out_pep_length" type="integer" label="Nomber of peptides" value="7" argument="--out_pep_length" />
+        </when>
+
+        <when value="SlidingWindowPeptide">
+            <param name="input1" type="data" label="Input Sequence" format="fasta" argument= "--InFile"/>
+            <param name="WinSize" type="integer" label="Window Size" value="3" help="--winSize" />
+            <param name="FragSize" type="integer" label="Fragment Size" value="7" help="--FragSize" />
+        </when>
+    </conditional>
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='fasta' label="out.fasta" />    
+  </outputs>
+  <tests>
+    <test>
+      <param name='Method' value="MutatedPeptides" />
+      <param name='input1' value="KLLKLLKKKLLK" />
+      <param name='mutation_site_list' value="2" />
+      <param name='AA_list' value="G,Y" />
+      <output name="output1" file="out1.fasta" />
+    </test>
+
+    <test>
+      <param name='Method' value="RandomPeptides" />
+      <param name='AA_list' value="G,L,F,D,I,V,K," />
+      <param name='pep_length' value="7" />
+      <param name='out_pep_length' value="7" />
+      <output name="output1" file="out2.fasta" lines_diff='28'/>
+    </test>
+
+    <test>
+      <param name='Method' value="SlidingWindowPeptide" />
+      <param name='input1' value="test1.fasta" />
+      <param name='WinSize' value="3" />
+      <param name='FragSize' value="7" />
+      <output name="output1" file="out3.fasta" />
+    </test>
+  </tests>
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool generates peptide sequences based on three sequences based properties which includes Mutated Peptides, Random Peptides, and Sliding Window Peptide.
+
+-----
+
+**Inputs**
+    **1**  MutatedPeptides    
+       * **--sequence**  Input peptide sequence 
+       * **--mutation_site_list** Sites to mutated AA as Integer values 
+       * **--AA_list** List of amino acids to replace
+       
+    **2** RandomPeptides
+       * **--AA_list** List of amino acids
+       * **--pep_length** Length of peptide sequences 
+       * **--out_pep_lenght** Number of output peptides
+
+    **3** SlidingWindowPeptide
+       * **--InFile** Input protein sequences fasta file 
+       * **--winSize** Sliding window size 
+       * **--FragSize** Output Peptide sequence size
+
+-----
+
+**Outputs**
+    * **--outputFile** Returns fasta files with peptide sequences. ]]></help>
+<citations>
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, 
+      }
+</citation>
+
+</citations>
+</tool>
+
+
+

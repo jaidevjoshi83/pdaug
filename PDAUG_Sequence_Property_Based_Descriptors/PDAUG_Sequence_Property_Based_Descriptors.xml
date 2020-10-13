@@ -1,0 +1,190 @@
+<tool id="PDAUG_Sequence_Property_Based_Descriptors" name="PDAUG Sequence Property Based Descriptors" version="0.1.0">
+  <description>Calculates sequence-based descriptor of the peptide sequences</description>
+
+  <requirements>
+    <requirement type="package" version="2.7.18">python</requirement>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="1.0">pydpi</requirement>
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/PDAUG_Sequence_Property_Based_Descriptors.py' --InFile '$input1' 
+
+        --DesType '$SelectDiscriptor.DesType'
+
+        #if '$SelectDiscriptor.DesType' == 'PAAC'
+          --Lamda '$SelectDiscriptor.Lamda'
+          --Weight '$SelectDiscriptor.Weight'
+        #end if 
+
+        #if $SelectDiscriptor.DesType == 'APAAC'
+          --Lamda '$SelectDiscriptor.Lamda'
+          --Weight '$SelectDiscriptor.Weight'
+        #end if
+
+        #if $SelectDiscriptor.DesType == 'All'
+          --Lamda '$SelectDiscriptor.Lamda'
+          --Weight '$SelectDiscriptor.Weight'
+        #end if
+
+
+        -O '$output1'
+                  
+    ]]></command>
+
+  <inputs>
+
+      <param name="input1" type="data" format="fasta" />
+
+      <conditional name="SelectDiscriptor">
+
+        <param name="DesType" type="select" label="DesType" argument="">
+          <option value="PAAC">PAAC</option>
+          <option value="APAAC">APAAC</option>
+          <option value="CTD" selected="true">CTD</option>
+          <option value="DPComp">DPComp</option>
+          <option value="GearyAuto">GearyAuto</option>
+          <option value="MoranAuto">MoranAuto</option>
+          <option value="MoreauBrotoAuto">MoreauBrotoAuto</option>
+          <option value="QSO">QSO</option>
+          <option value="SOCN">SOCN</option>
+          <option value="TPComp">TPComp</option>
+          <option value="BinaryDescriptor">Binary Descriptor</option>
+          <option value="All">All</option>  
+        </param>
+
+        <when value="PAAC" >
+          <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
+          <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
+        </when>
+
+        <when value="APAAC" >
+          <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
+          <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
+        </when>
+
+        <when value="All" >
+          <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
+          <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
+        </when>
+
+        <when value="DPComp" >
+        </when>
+
+        <when value="GearyAuto" >
+        </when>
+
+        <when value="MoranAuto" >
+        </when>
+
+        <when value="MoreauBrotoAuto" >
+        </when>
+
+        <when value="QSO" >
+        </when>
+
+        <when value="SOCN" >
+        </when>
+
+        <when value="CTD" >
+        </when>
+
+        <when value="TPComp" >
+        </when>
+
+        <when value="BinaryDescriptor" >
+        </when>
+
+
+      </conditional>
+
+  </inputs>
+
+    <outputs>
+        <data name='output1' format='tabular' label="Out.tsv" />  
+    </outputs>
+
+  <tests>
+    <test>
+      <param name="input1" value="positive.fasta"/>
+      <param name="DesType" value="All"/>
+      <param name="Lamda" value="5"/>
+      <param name="Weight" value="0.5"/>
+      <output name="output1" value="Out.tsv"/>
+    </test>
+
+    
+    <test>
+      <param name="input1" value="positive.fasta"/>
+      <param name="DesType" value="BinaryDescriptor"/>
+      <output name="output1" value="Out1.tsv"/>
+    </test>
+
+  </tests>
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool calculates sequence property based descriptor for a peptide descriptor.  
+
+    * **AAC** This option calculates amino acid composition descriptors (20).
+    * **DPComp** This option calculates dipeptide composition descriptors (400).
+    * **TPComp** This option calculates tri-peptide composition descriptors (8000).
+    * **MoreauBrotoAuto** This option calculates Normalized Moreau-Broto autocorrelation descriptors (depend on the given properties, the default is 240). 
+    * **MoranAuto** This option calculates Moran autocorrelation descriptors (depend on the given properties, the default is 240).
+    * **GearyAuto** This option calculates Geary autocorrelation descriptors (depend on the given properties, the default is 240).
+    * **CTD** This option calculates Composition, Transition, Distribution descriptors(200). 
+    * **SOCN** This option calculates sequence order coupling numbers (depend on the choice of maxlag, the default is 60).
+    * **QSO** This option calculates quasi-sequence order descriptors (depend on the choice of maxlag, the default is 100).
+    * **PAAC** This option calculates pseudo amino acid composition descriptors (depend on the choice of lamda, the default is 50).
+    * **APAAC** This option calculates amphiphilic pseudo amino acid composition descriptors, (depend on the choice of lamda, the default is 50). 
+    * **BinaryDescriptor** This option calculates the binary descriptor of peptide sequences (All the peptides should be the same length). 
+    * **All** This option calculates all the descriptors except the binary descriptor.
+
+-----
+
+**Inputs**
+    * **--InFile** A fasta file with peptide sequences.
+    * **--Lamda** PAAC & APAAC descriptors (depend on the choice of lamda, the default is 50).
+    * **--Weight** PAAC & APAAC descriptors (depend on the choice of lamda, the default is 0.5).
+    * **--DesType** Select the descriptor type.  
+
+
+-----
+
+**Outputs**
+    * Returns tabular file with descriptors.
+
+]]></help>
+
+<citations>
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, 
+      }
+  </citation>
+  <citation type="bibtex">
+    @article{cao_liang_yan_tan_xu_liu_2013, 
+      title={PyDPI: Freely Available Python Package for Chemoinformatics, Bioinformatics, and Chemogenomics Studies}, 
+      volume={53}, DOI={10.1021/ci400127q}, 
+      number={11}, 
+      journal={Journal of Chemical Information and Modeling}, 
+      author={Cao, Dong-Sheng and Liang, Yi-Zeng and Yan, Jun and Tan, Gui-Shan and Xu, Qing-Song and Liu, Shao}, 
+      year={2013}, 
+      pages={3086–3096}}
+  </citation>
+</citations>
+</tool>
+
+
+

@@ -1,0 +1,62 @@
+<tool id="PDAUG_Sequence_Similarity_Network" name="PDAUG Sequence Similarity Network" version="0.1.0" python_template_version="3.6">
+	<description>Analyze peptide descriptor data using scatter plot</description>
+
+    <requirements>
+      <requirement type="package" version="0.12.0">python-Levenshtein</requirement>
+      <requirement type="package" version="3.2.2">matplotlib</requirement> 
+      <requirement type="package" version="2.5">networkx</requirement>
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/PDAUG_Sequence_Network.py' --InFile '$input1'  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'              
+    ]]></command>
+
+    <inputs>
+      <param name="input1" type="data" format="fasta" argument= "--InFile"/>
+
+    </inputs>
+
+    <outputs>   
+        <data name='output2' format='html' label="report.html" />
+    </outputs>
+ 
+    <tests>
+        <test>
+            <param name="input1" value="positive.fasta"/>
+            <output name="output2" file="report_dir/report.html"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool calculates Levenshtein distance between peptide sequences and plots the data in the form of a sequence similarity network.
+
+-----
+
+**Inputs**
+    * **--InFile** Takes peptide sequences as fasta file. 
+
+-----
+
+**Outputs**
+    * Return html report file.]]></help>
+    <citations>
+<citation type="bibtex">
+  @misc{PDAUGGITHUB, 
+    author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+    year = {2020}, 
+    title ={PDAUG}, 
+    publisher = {GitHub}, 
+    journal = {GitHub repository}, 
+    url =
+    {https://github.com/jaidevjoshi83/Peptide}, }
+</citation>
+</citations>
+</tool>
+
+
+

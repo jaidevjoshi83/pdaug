@@ -1,0 +1,93 @@
+<tool id="PDAUG_TSVtoFASTA" name="PDAUG TSVtoFASTA" version="0.1.0">
+
+  <description>Converts tabular peptide sequence data into fasta formates </description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.1.2">modlamp</requirement> 
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+            python '$__tool_directory__/PDAUG_TSVtoFASTA.py'  -I '$InFile' -M '$Method' 
+
+            #if $Method == 'WithClassLabel'
+              -P '$OutFile1' 
+              -N '$OutFile2' 
+            #end if
+
+          #if $Method == 'NoClassLabel'
+              -O '$OutFile3'
+          #end if 
+   
+    ]]></command>
+
+  <inputs>
+    <param name="InFile" type="data" label="Input file" format="tabular" argument= "--InFile1"/>
+    <param name="Method" type="select" label="Split file if class labels are present"  argument="" help="--Method" >   
+      <option value="WithClassLabel"> WithClassLabel </option>
+      <option value="NoClassLabel" selected="true" > NoClassLabel </option>
+    </param> 
+  </inputs>
+
+  <outputs>
+    <data name='OutFile1' format='fasta' label="Positive.fasta" >  
+       <filter>Method == "WithClassLabel"</filter>
+    </data>
+
+    <data name='OutFile2' format='fasta' label="Negative.fasta">   
+       <filter>Method == "WithClassLabel"</filter>
+    </data>
+
+    <data name='OutFile3' format='fasta' label="Out.fasta" >
+      <filter>Method == "NoClassLabel"</filter>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <param name="InFile" value="test1.tsv"/>
+      <param name="Method" value="WithClassLabel"/>
+      <output name="OutFile1" file="test1/Positive.fasta"/>
+      <output name="OutFile2" file="test1/Negative.fasta"/>
+    </test>
+    <test>
+      <param name="InFile" value="test2.tsv"/>
+      <param name="Method" value="NoClassLabel"/>
+      <output name="OutFile3" file="test2/Out.fasta"/>
+    </test>
+  </tests>
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool converts tabular files into fasta file and split fasta file on the basis of the class label.
+
+-----
+
+**Inputs**
+    * **--InFile** Takes input as Tabular file with or without label.
+
+-----
+
+**Outputs**
+    * Returns fasta file.]]></help>
+<citations>
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, 
+      }
+  </citation>
+</citations>
+</tool>
+
+
+

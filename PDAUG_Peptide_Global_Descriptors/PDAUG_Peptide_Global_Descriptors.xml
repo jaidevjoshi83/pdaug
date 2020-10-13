@@ -1,0 +1,92 @@
+<tool id="PDAUG_Peptide_Global_Descriptors" name="PDAUG_Peptide Global Descriptors" version="0.1.0">
+  <description>Calculates global descriptors of the peptide sequence</description>
+
+  <requirements>
+    <requirement type="package" version="0.24.2">pandas</requirement>
+    <requirement type="package" version="4.2.1">modlamp</requirement> 
+  </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+        python '$__tool_directory__/PDAUG_Peptide_Global_Descriptors.py' --InFile '$InFile' --DesType '$GlocalDescriptor' --Amid '$amide' -O '$output1'
+    ]]></command>
+
+  <inputs>
+
+    <param name="GlocalDescriptor" type="select" label="GlobalDescriptor"  argument="" help="--DesType" > 
+      <option value="Length"> Sequence Length </option>
+      <option value="Weight"> Molecular Weight </option>
+      <option value="Charge"> Sequence Charge </option>
+      <option value="ChargeDensity"> Charge Density </option>
+      <option value="IsoelectricPoint"> Isoelectric Point </option>
+      <option value="InstabilityIndex"> Instability Index </option>
+      <option value="Aromaticity"> Aromaticity </option>
+      <option value="AliphaticIndex"> Aliphatic Index </option>
+      <option value="BomanIndex"> Boman Index </option>
+      <option value="HydrophobicRatio"> Hydrophobic Ratio </option>
+      <option value="All"> All </option>
+    </param> 
+
+    <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
+    <param name="ph" type="float" label="ph" value="7.0"  help="--Ph" />
+    <param name="amide" type="boolean" label="amide" value="False" help="--Amide" />
+  </inputs>
+
+  <outputs>
+        <data name='output1' format='tabular' label="out.tsv" />    
+  </outputs>
+  
+  <tests>
+    <test>
+      <param name="InFile" value="test.fasta"/>
+      <param name="GlocalDescriptor" value="All" />
+      <param name="ph" value="7.0"/>
+      <param name="amide" value="False"/>
+      <output name="output1" value="out.tsv"/> 
+    </test>
+  </tests>
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool calculates 10 (Sequence Length, Molecular Weight, Sequence Charge, Charge Density, Isoelectric Point, Instability Index, Aromaticity, Aliphatic Index, Boman Index and Hydrophobic Ratio) different types of descriptors. These descriptors are non-amino acid scale dependant. 
+
+-----
+
+**Inputs**
+    * **--InFile** Input fasta file with peptide sequences. 
+    * **--DesType** Name of the descriptor that need to be calculaled
+    * **--Ph** pH at which to calculate peptide charge. 
+    * **--Amide** amide whether the sequences have an amidated C-terminus.
+
+-----
+
+**Outputs**
+    * Returns tabular file with descriptors.]]></help>
+<citations>
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, 
+    }
+</citation>
+
+  <citation type="bibtex">
+    @article{müller_gabernet_hiss_schneider_2017, 
+      title={modlAMP: Python for antimicrobial peptides}, 
+      volume={33}, 
+      DOI={10.1093/bioinformatics/btx285}, 
+      number={17}, 
+      journal={Bioinformatics}, 
+      author={Müller, Alex T and Gabernet, Gisela and Hiss, Jan A and Schneider, Gisbert}, 
+      year={2017}, 
+      pages={2753–2755}
+    }
+  </citation>
+</citations>
+</tool>

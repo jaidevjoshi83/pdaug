@@ -1,7 +1,12 @@
-categories:
-- Proteomics
-description: PDAUG - toolset for peptide library analysis, visualization, and machine learning modeling.
-homepage_url: https://github.com/jaidevjoshi83/pdaug
 name: pdaug
-owner: jaidevjoshi83
+owner: jay
+description: "PDAUG - toolset for peptide library analysis, visualization, and machine learning modeling."
+homepage_url: http://github.com/jaidevjoshi83/pdaug
 remote_repository_url: https://github.com/jaidevjoshi83/pdaug
+type: unrestricted
+auto_tool_repositories:
+  name_template: "{{ tool_id }}"
+  description_template: "Wrapper for the pdaug tool suite: {{ tool_name }}"
+suite:
+  name: "suite_pdaug"
+  description: "PDAUG -toolsett for peptide library analysis, visualization, and machine learning modeling."

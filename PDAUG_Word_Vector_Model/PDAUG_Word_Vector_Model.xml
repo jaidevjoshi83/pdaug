@@ -1,0 +1,106 @@
+<tool id="PDAUG_Word_Vector_Model" name="PDAUG Word Vector Model" python_template_version="3.7" version="0.1.0">
+  <description>The skip-gram model</description>
+  <requirements>
+    <requirement type="package" version="1.0.3">pandas</requirement>
+    <requirement type="package" version="1.76">biopython</requirement> 
+    <requirement type="package" version="3.5">nltk</requirement> 
+    <requirement type="package" version="3.8.0">gensim</requirement>
+    <requirement type="package" version="0.23.1">scikit-learn</requirement>
+    <requirement type="package" version="1.18.4">numpy</requirement>
+  </requirements>
+  <stdio>
+    <exit_code range="1" level="fatal" />
+  </stdio>
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/PDAUG_Word_Vector_Model.py' -I '$input' -M '$meanCount' -W '$window' -O '$OutFile'
+        
+    ]]></command>
+
+  <inputs>
+    <param name="input" type="data" label="Input fasta file" format="fasta" argument= "--Input"/>
+    <param name="meanCount" type="integer" label="Ignores a all words with total frequency lower than this" value="0" format="fasta" argument= "--min_count"/>
+    <param name="window" type="integer" label="Maximum distance between the current and predicted word within a sentence" value="5" argument="--window" help="row"/>
+  </inputs>
+
+  <outputs>
+    <data name='OutFile' format='txt' label="model.txt" />
+  </outputs>
+
+  <tests>
+    <test>
+      <param name="input" value="test.fasta"/>
+      <param name="meanCount" value="0"/>
+      <param name="window" value="5"/>
+      <output name="OutFile" value="model.txt" lines_diff="2268" />
+    </test>
+  </tests>
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool calculates the skip-gram model which is a neural network where the inputs and outputs of the network are one-hot vectors calculated based on training data that contains input word and output word. 
+
+-----
+
+**Inputs**
+    * **--Input** Fasta file with protein sequences.
+    * **--min_count** Ignores all words with total frequency lower than this 
+    * **--window** Maximum distance between the current and predicted word within a sentence, accepts integer value.
+
+-----
+
+**Outputs**
+    * **--OutFile** Return "model.txt" model file.
+
+]]></help>
+
+<citations>
+
+  <citation type="bibtex">
+    @misc{PDAUGGITHUB, 
+      author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+      year = {2020}, 
+      title ={PDAUG}, 
+      publisher = {GitHub}, 
+      journal = {GitHub repository}, 
+      url =
+      {https://github.com/jaidevjoshi83/Peptide}, }
+  </citation>
+
+  <citation type="bibtex">
+  @inproceedings{rehurek_lrec,
+      title = {{Software Framework for Topic Modelling with Large Corpora}},
+      author = {Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka},
+      booktitle = {{Proceedings of the LREC 2010 Workshop on New
+           Challenges for NLP Frameworks}},
+      pages = {45--50},
+      year = 2010,
+      month = May,
+      day = 22,
+      publisher = {ELRA},
+      address = {Valletta, Malta},
+      url={http://is.muni.cz/publication/884893/en},
+      language={English}
+    }
+  </citation>
+
+  <citation type="bibtex">
+    @article{Md_Nafiz, 
+      title= {Identifying antimicrobial peptides using word embedding with deep recurrent neural networks},
+      volume={35},
+      DOI={https://doi.org/10.1093/bioinformatics/bty937},
+      issue={12},
+      year={2018},
+      pages={2009-2016},
+      journal={Europe PMC}, 
+      author={Hamid, Md-Nafiz and  Friedberg,  Iddo}
+    }
+
+  </citation>
+</citations>
+</tool>
+
+
+

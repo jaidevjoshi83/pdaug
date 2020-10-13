@@ -1,0 +1,63 @@
+<tool id="PDAUG_Peptiide_Legnth_Distribution" name="PDAUG Peptide Legnth Distribution" version="0.1.0" python_template_version="3.6">
+	<description>Analyze peptides legnth distribution of a dataset</description>
+
+    <requirements>
+      <requirement type="package" version="3.2.2">matplotlib</requirement>
+      <requirement type="package" version="1.76" >biopython</requirement>                       
+
+    </requirements>
+
+    <command detect_errors="exit_code"><![CDATA[
+
+        python '$__tool_directory__/PDAUG_Legnth_Destribution.py' --InFile '$input1'  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'              
+    ]]></command>
+
+    <inputs>
+      <param name="input1" type="data" format="fasta" argument= "--InFile"/>
+
+    </inputs>
+
+    <outputs>   
+        <data name='output2' format='html' label="report.html" />
+    </outputs>
+ 
+    <tests>
+        <test>
+            <param name="input1" value="positive.fasta"/>
+            <output name="output2" file="report_dir/report.html"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+.. class:: infomark
+
+**What it does**
+
+This tool calculates and plots the length distribution of peptide sequences in a peptide dataset. 
+
+-----
+
+**Inputs**
+    * **--InFile** fasta file with peptide sequences. 
+ 
+-----
+
+**Outputs**
+    * Return html report file.]]></help>
+    <citations>
+        <citation type="bibtex">
+
+@misc{githubseqtk,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {seqtk},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/lh3/seqtk},
+
+}</citation>
+</citations>
+</tool>
+
+
+
