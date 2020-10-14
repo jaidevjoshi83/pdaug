@@ -12,7 +12,7 @@
   </stdio>
 
     <command detect_errors="exit_code"><![CDATA[
-        python '$__tool_directory__/PDAUG AddClassLabel.py' -I '$input1' -C '$ClassLabel' -O '$OutFile1' -t '$ClassLabelTitle'
+        python '$__tool_directory__/PDAUG_AddClassLabel.py' -I '$input1' -C '$ClassLabel' -O '$OutFile1' -t '$ClassLabelTitle'
     ]]></command>
 
   <inputs>
