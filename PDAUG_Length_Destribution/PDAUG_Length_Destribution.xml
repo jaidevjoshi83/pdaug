@@ -1,5 +1,5 @@
-<tool id="PDAUG_Peptiide_Legnth_Distribution" name="PDAUG Peptide Legnth Distribution" version="0.1.0" python_template_version="3.6">
-	<description>Analyze peptides legnth distribution of a dataset</description>
+<tool id="PDAUG_Peptiide_Length_Distribution" name="PDAUG Peptide Length Distribution" version="0.1.0" python_template_version="3.6">
+	<description>Analyze peptides length distribution of a dataset</description>
 
     <requirements>
       <requirement type="package" version="3.2.2">matplotlib</requirement>
@@ -9,7 +9,7 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/PDAUG_Legnth_Destribution.py' --InFile '$input1'  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'              
+        python '$__tool_directory__/PDAUG_Length_Destribution.py' --InFile '$input1'  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'              
     ]]></command>
 
     <inputs>
