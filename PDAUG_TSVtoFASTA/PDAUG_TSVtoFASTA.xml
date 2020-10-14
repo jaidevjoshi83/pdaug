@@ -1,6 +1,6 @@
 <tool id="PDAUG_TSVtoFASTA" name="PDAUG TSVtoFASTA" version="0.1.0">
 
-  <description>Converts tabular peptide sequence data into fasta formates </description>
+  <description>Converts tabular peptide sequence data into fasta format</description>
 
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
