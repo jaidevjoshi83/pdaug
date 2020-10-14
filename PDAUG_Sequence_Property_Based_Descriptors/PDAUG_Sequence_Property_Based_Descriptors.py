@@ -60,30 +60,38 @@ def Decriptor_generator(InFile, Lamda, Weight, DesType, Out_file):
     for seq in list_pep_name:
 
         protein = PyPro()
-
         protein.ReadProteinSequence(seq)
-
 
         if DesType == 'PAAC':
             DS = protein.GetPAAC(lamda=int(Lamda), weight=float(Weight))
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'APAAC':
             DS = protein.GetAPAAC(lamda=int(Lamda), weight=float(Weight))
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'CTD':
             DS = protein.GetCTD()
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'DPComp':
             DS = protein.GetDPComp()
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'GearyAuto':
             DS = protein.GetGearyAuto()
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'MoranAuto':
             DS = protein.GetMoranAuto()
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'MoreauBrotoAuto':
             DS = protein.GetMoreauBrotoAuto()
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'QSO':
             DS = protein.GetQSO()
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'SOCN':
             DS = protein.GetSOCN()
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'TPComp':
             DS = protein.GetTPComp()
+            df  = pd.DataFrame(DS, index=[0])
         elif DesType == 'All':
             DS_1 = protein.GetPAAC(lamda=int(Lamda), weight=float(Weight))
             DS_2 = protein.GetAPAAC(lamda=int(Lamda), weight=float(Weight))
@@ -102,13 +110,12 @@ def Decriptor_generator(InFile, Lamda, Weight, DesType, Out_file):
                 DS.update(D)
 
             df  = pd.DataFrame(DS, index=[0])
+
+        if DesType == 'BinaryDescriptor':
+            out_df = BinaryDescriptor(list_pep_name)
+        else:
             out_df = pd.concat([out_df, df], axis=0)
 
-        else:
-            pass
-
-    if DesType == 'BinaryDescriptor':
-        out_df = BinaryDescriptor(list_pep_name)
 
     out_df.to_csv(Out_file, index=False, sep='\t')
 
