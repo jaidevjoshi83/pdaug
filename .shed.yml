@@ -9,4 +9,4 @@ auto_tool_repositories:
   description_template: "Wrapper for the pdaug tool suite: {{ tool_name }}"
 suite:
   name: "suite_pdaug"
-  description: "PDAUG -toolsett for peptide library analysis, visualization, and machine learning modeling."
+  description: "PDAUG -toolset for peptide library analysis, visualization, and machine learning modeling."
