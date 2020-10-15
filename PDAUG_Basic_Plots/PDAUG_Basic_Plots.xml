@@ -75,14 +75,14 @@
         </when>
 
         <when value="BoxPlot">
-            <param name="InFile" type="data" label="Input file" format="fasta" argument= "--InFile" help="Tabular data file"/>
+            <param name="InFile" type="data" label="Input file" format="tabular" argument= "--InFile" help="Tabular data file"/>
             <param name="Feature" type="text" label="Feature name" argument= "--Features" help="Name of the feature (column name)"/>
             <param name="Label" type="text" label="Class label column" argument="--Label" help="Name of the column that contains class label" />
         </when>
 
         <when value="ScatterPlot">
 
-          <param name="InFile"    label="Input file" type="data" format="fasta" argument= "--InFile" help="Tabular data file"/>
+          <param name="InFile"    label="Input file" type="data" format="tabular" argument= "--InFile" help="Tabular data file"/>
 
           <conditional name='PlotType' >
 
