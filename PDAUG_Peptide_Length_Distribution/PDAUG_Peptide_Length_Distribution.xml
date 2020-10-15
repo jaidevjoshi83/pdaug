@@ -1,4 +1,4 @@
-<tool id="PDAUG_Peptiide_Length_Distribution" name="PDAUG Peptide Length Distribution" version="0.1.0" python_template_version="3.6">
+<tool id="PDAUG_Peptide_Length_Distribution" name="PDAUG Peptide Length Distribution" version="0.1.0" python_template_version="3.6">
 	<description>Analyze peptides length distribution of a dataset</description>
 
     <requirements>
@@ -13,8 +13,7 @@
     ]]></command>
 
     <inputs>
-      <param name="input1" type="data" format="fasta" argument= "--InFile"/>
-
+      <param name="input1" type="data" format="fasta" label="Input file" argument= "--InFile" help="fasta file with peptides"/>
     </inputs>
 
     <outputs>   

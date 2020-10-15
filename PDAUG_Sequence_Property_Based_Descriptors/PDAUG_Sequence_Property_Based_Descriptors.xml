@@ -1,5 +1,5 @@
 <tool id="PDAUG_Sequence_Property_Based_Descriptors" name="PDAUG Sequence Property Based Descriptors" version="0.1.0">
-  <description>Calculates sequence-based descriptor of the peptide sequences</description>
+  <description>Calculates sequence-based descriptors of the peptide sequences</description>
 
   <requirements>
     <requirement type="package" version="2.7.18">python</requirement>
@@ -37,11 +37,11 @@
 
   <inputs>
 
-      <param name="input1" type="data" format="fasta" />
+      <param name="input1" type="data" format="fasta" label="Input fasta file" help="Input fasta file with peptides"/>
 
       <conditional name="SelectDiscriptor">
 
-        <param name="DesType" type="select" label="DesType" argument="">
+        <param name="DesType" type="select" label="Descriptor Type" argument="">
           <option value="PAAC">PAAC</option>
           <option value="APAAC">APAAC</option>
           <option value="CTD" selected="true">CTD</option>
@@ -57,18 +57,18 @@
         </param>
 
         <when value="PAAC" >
-          <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
-          <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
+          <param name="Lamda" type="integer" label="Lamda" value="50" argument="--Lamda" help="Lamda"/>
+          <param name="Weight" type="float" label="Weight" value="0.5" argument="--Weight" help="Weight"/>
         </when>
 
         <when value="APAAC" >
-          <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
-          <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
+          <param name="Lamda" type="integer" value="50" argument="--Lamda" help="Lamda"/>
+          <param name="Weight" type="float" value="0.5" argument="--Weight" help="Weight"/>
         </when>
 
         <when value="All" >
-          <param name="Lamda" type="integer" value="50" argument= "--Lamda"/>
-          <param name="Weight" type="float" value="0.5" argument= "--Weight"/>
+          <param name="Lamda" type="integer" value="50" label="Lamda" argument="--Lamda" help="Lamda"/>
+          <param name="Weight" type="float" value="0.5" argument="--Weight" help="Weight"/>
         </when>
 
         <when value="DPComp" >

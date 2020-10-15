@@ -14,7 +14,7 @@
     ]]></command>
 
   <inputs>
-    <param name="input1" type="data" format="fasta" argument= "--pep"/>
+    <param name="input1" type="data" format="fasta" argument= "--pep" label="Input file" help="Input fasta file with peptides"/>
   </inputs>
 
   <outputs>

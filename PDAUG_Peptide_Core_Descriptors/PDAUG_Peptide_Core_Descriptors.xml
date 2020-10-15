@@ -16,8 +16,8 @@
     ]]></command>
 
   <inputs>
-    <param name="input1" type="data" label="Input file" format="fasta" argument= "--InFile1"/>
-    <param name="ngrams"  type="integer" value="3" />
+    <param name="input1" type="data" label="Input file" format="fasta" argument= "--InFile1" help="Input fasta file with peptides"/>
+    <param name="ngrams"  type="integer" label="ngram size" value="3" help="ngram size"/>
   </inputs>
 
   <outputs>

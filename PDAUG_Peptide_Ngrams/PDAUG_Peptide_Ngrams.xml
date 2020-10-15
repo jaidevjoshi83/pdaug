@@ -14,8 +14,8 @@
     ]]></command>
 
     <inputs>
-      <param name="fasta1" type="data" format="fasta" label="First fasta file" argument= "--fasta1"/>
-      <param name="fasta2" type="data" format="fasta" label="Second fasta file" argument= "--fasta2"/>
+      <param name="fasta1" type="data" format="fasta" label="First fasta file" argument= "--fasta1" help="First fasta file"/>
+      <param name="fasta2" type="data" format="fasta" label="Second fasta file" argument= "--fasta2" help="First fasta file"/>
     </inputs>
 
     <outputs>   

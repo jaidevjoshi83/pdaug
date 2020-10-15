@@ -56,12 +56,11 @@
   <inputs>
 
 
-  	<param name="InFile" type="data" format="fasta" argument= "--InFile"/>
-
+  	<param name="InFile" type="data" label="Input fasta file" format="fasta" argument= "--InFile" help="Input fasta file with peptide sequence"/>
 
     <conditional name='SelDescriptor' >
 
-        <param name="Descriptor" type="select" label="LibGene" argument="">
+        <param name="Descriptor" type="select" label="Descriptor type" argument="">
           <option value="AutoCorrCal">AutoCorrCal</option>
           <option value="CrossCorrCal">CrossCorCal</option>
           <option value="CalculateMovement">CalculateMovement</option>
@@ -71,39 +70,52 @@
         </param>
 
         <when value="AutoCorrCal">          
-            <param name="WindowSize" type="integer" value="7" argument="--WindowSize" />
-            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+            <param name="WindowSize" type="integer" label="Correlation window" value="7" argument="--WindowSize" help="Correlation window for descriptor calculation in a sliding window approach" />
+            <param name="ScaleName"  type="text" label="AA Scale Name" value="Eisenberg" argument="--ScaleName" help="Name of the amino acid scale to be loaded."/>
         </when>
 
         <when value="CrossCorrCal">
-            <param name="WindowSize" type="integer" value="7" argument="--WindowSize" />
-            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+            <param name="WindowSize" type="integer" label="Correlation window" value="7" argument="--WindowSize" help="correlation window for descriptor calculation in a sliding window approach" />
+            <param name="ScaleName"  type="text" value="Eisenberg" label="AA Scale Name" argument="--ScaleName" help="Name of the amino acid scale to be loaded."/>
         </when>
 
         <when value="CalculateMovement">
-            <param name="WindowSize" type="integer" value="1000" argument="--WindowSize" />
-            <param name="Angle" type="integer" value="100" argument="--Angle" />
-            <param name="Modality" type="text" value="max" argument="--Modality" />
-            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+            <param name="WindowSize" type="integer" label="AA window" value="1000" argument="--WindowSize" help="Amino acid (AA) window in which to calculate the moment."/>
+            <param name="Angle" type="integer" label="Angle" value="100" argument="--Angle" help=" Angle in which to calculate the moment. 100 for alpha helices, 180 for beta sheets."/>
+            <param name="Modality" type="select" argument="--Modality" label="Modality" help="Calculate respectively maximum or mean hydrophobic moment. If all, moments for all windows are returned.">
+               <option value="all"> All</option>
+               <option value="max" selected="true">Max</option>
+               <option value="mean">Mean</option>
+            </param>
+            <param name="ScaleName"  type="text" value="Eisenberg" label = "AA scale name" argument="--ScaleName" help="Name of the amino acid scale to be loaded."/>
         </when>
 
         <when value="GlobalCal">
-            <param name="WindowSize" type="integer" value="1000" argument="--lenmin_s" />
-            <param name="Modality" type="text" value="max" argument="--Modality" />
-            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+            <param name="WindowSize" type="integer" value="1000" argument="--lenmin_s" label="AA window " help="Amino acid(AA) window in which to calculate the moment. If the sequence is shorter than the window, the length of the sequence is taken"/>
+            <param name="Modality" type="select" argument="--Modality" label="Modality" help="Calculate respectively maximum or mean hydrophobic moment.">
+               <option value="max" selected="true">Max</option>
+               <option value="mean">Mean</option>
+              </param>
+            <param name="ScaleName"  type="text" value="Eisenberg" label = "AA scale name" argument="--ScaleName" help="Name of the amino acid scale to be loaded."/>
 
         </when>
 
         <when value="ProfileCal">
-            <param name="ProfType" type="text" value="uH" argument="--ProfType" />
-            <param name="WindowSize" type="integer" value="7" argument="--lenmin_s" />
-            <param name="ScaleName"  type="text" value="Eisenberg" argument="--ScaleName"/>
+            <param name="ProfType" type="select" argument="--ProfType" label="Profile type" help="Profile type of profile, available: ‘H’ for hydrophobicity or ‘uH’ for hydrophobic moment" >
+               <option value="max" selected="true">Max</option>
+               <option value="mean">Mean</option>
+              </param>
+
+            <param name="WindowSize" type="integer" value="7" argument="--lenmin_s" label="Window Size" help="Size of sliding window used"/>
+            <param name="ScaleName"  value="Eisenberg"  type="text" label = "AA scale name" argument="--ScaleName" help="Name of the amino acid scale to be loaded."/>
         </when>
 
         <when value="ArcCal">
-            <param name="Modality" type="text" value="max" argument="--Modality" />
+          <param name="Modality" type="select" argument="--Modality" label="Modality" help="modality of the arc to calculate, to choose between max and mean.">
+             <option value="max" selected="true">Max</option>
+             <option value="mean">Mean</option>
+          </param>
         </when>
-
     </conditional>
   </inputs>
 

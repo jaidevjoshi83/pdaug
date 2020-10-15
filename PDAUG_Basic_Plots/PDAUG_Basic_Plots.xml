@@ -60,57 +60,57 @@
 
     <conditional name='SelPlotting' >
 
-        <param name="Plot" type="select" label="Analysis options" argument="">
-          <option value="HeatMap">HeatMap</option>
-          <option value="BoxPlot">BoxPlot</option>
-          <option value="ScatterPlot">ScatterPlot</option>
-          <option value="WordCloud">WordCloud</option>
+        <param name="Plot" type="select" label="Data plotting method" argument="" help="Data plotting method">
+          <option value="HeatMap">Heat Map</option>
+          <option value="BoxPlot">Box Plot</option>
+          <option value="ScatterPlot">Scatter Plot</option>
+          <option value="WordCloud">Word Cloud</option>
         </param>
 
         <when value="HeatMap">
-            <param name="InFile" type="data" format="tabular" label="Input file" argument= "--InFile"/>
-            <param name="IndexColumn" type="text" optional="true"  label="Index Column" argument= "--IndexColumn"/>
-            <param name="x_label" type="text" optional="true"  label="Label for x-axis" argument= "--x_label"/>
-            <param name="y_label" type="text" optional="true"  label="Label for y-axis" argument= "--y_label"/>
+            <param name="InFile" type="data" format="tabular" label="Input file" argument= "--InFile" help="Tabular data file"/>
+            <param name="IndexColumn" type="text" optional="true"  label="Index Column" argument= "--IndexColumn" help="Column name that contains index as row/sample names "/>
+            <param name="x_label" type="text" optional="true"  label="Label for x-axis" argument= "--x_label" help="A label that describes x axis"/>
+            <param name="y_label" type="text" optional="true"  label="Label for y-axis" argument= "--y_label" help="A label that describes y axis"/>
         </when>
 
         <when value="BoxPlot">
-            <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
-            <param name="Feature" type="text" argument= "--Features"/>
-            <param name="Label" type="text" argument="--Label" />
+            <param name="InFile" type="data" label="Input file" format="fasta" argument= "--InFile" help="Tabular data file"/>
+            <param name="Feature" type="text" label="Feature name" argument= "--Features" help="Name of the feature (column name)"/>
+            <param name="Label" type="text" label="Class label column" argument="--Label" help="Name of the column that contains class label" />
         </when>
 
         <when value="ScatterPlot">
 
-          <param name="InFile"    type="data" format="fasta" argument= "--InFile"/>
+          <param name="InFile"    label="Input file" type="data" format="fasta" argument= "--InFile" help="Tabular data file"/>
 
           <conditional name='PlotType' >
 
-              <param name="SelectPlot" type="select" label="Analysis options" argument="">
+              <param name="SelectPlot" type="select" label="Scatter Plot type" argument="" help="Scatter Plot type 2D or 3D.">
                   <option value="2D">2D</option>
                   <option value="3D">3D</option>
               </param>
               
               <when value="2D">
-                <param name="Features1" type="text"    argument= "--RotationX"/>
-                <param name="Features2" type="text"    argument= "--RotationY"/>
+                <param name="Features1" type="text"   label="First feature" argument= "--RotationX" help="Feature column name"/>
+                <param name="Features2" type="text"   label="Second feature"   argument= "--RotationY" help="Feature column name"/>
               </when>
 
               <when value="3D">
-                <param name="Features1" type="text"    argument= "--RotationX"/>
-                <param name="Features2" type="text"    argument= "--RotationY"/>
-                <param name="Features3" type="text"    argument= "--FigHight"/>                 
+                <param name="Features1" type="text"  label="First feature"   argument= "--RotationX" help="Feature column name"/>
+                <param name="Features2" type="text"  label="Second feature"   argument= "--RotationY" help="Feature column name"/>
+                <param name="Features3" type="text"  label="Third feature"   argument= "--FigHight" help="Feature column name"/>                 
               </when>
 
         </conditional>
           
-          <param name="Label" type="text"  argument="--label" />
+          <param name="Label" type="text"  label="Class label column" argument="--Label" help="Name of the column that contains class label" />
 
         </when>
 
         <when value="WordCloud" >
-          <param name="InFile"  type="data" format="fasta" argument= "--InFile"/>
-          <param name="d"  type="integer" value="4" argument= "--FragSize"/>
+          <param name="InFile"  type="data" format="fasta" label="Input file" argument= "--InFile" help="Fasta file with peptides"/>
+          <param name="d"  type="integer" value="4" argument= "--FragSize" label="Size of ngrams" help="Size of ngrams"/>
         </when>
 
     </conditional>

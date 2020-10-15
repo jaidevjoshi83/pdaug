@@ -12,7 +12,7 @@
 
   <inputs>
 
-    <param name="GlocalDescriptor" type="select" label="GlobalDescriptor"  argument="" help="--DesType" > 
+    <param name="GlocalDescriptor" type="select" label="Global descriptor type" help="" > 
       <option value="Length"> Sequence Length </option>
       <option value="Weight"> Molecular Weight </option>
       <option value="Charge"> Sequence Charge </option>
@@ -26,9 +26,9 @@
       <option value="All"> All </option>
     </param> 
 
-    <param name="InFile" type="data" format="fasta" argument= "--InFile"/>
-    <param name="ph" type="float" label="ph" value="7.0"  help="--Ph" />
-    <param name="amide" type="boolean" label="amide" value="False" help="--Amide" />
+    <param name="InFile" type="data" format="fasta" label="Input file"  help="Input fasta file with peptides"/>
+    <param name="ph" type="float" label="ph" value="7.0"  help="At which to calculate peptide descriptor." />
+    <param name="amide" type="boolean" label="Amide" value="False" help="Whether the sequences have an amidated C-terminus." />
   </inputs>
 
   <outputs>

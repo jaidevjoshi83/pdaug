@@ -71,20 +71,20 @@
         </param>
 
         <when value="CalcAAFreq">
-            <param name="input1" type="data" format="fasta" label="Input file" argument= "--InFile"/>
+            <param name="input1" type="data" format="fasta" label="Input file" argument= "--InFile" help="Input fasta file with Peptides"/>
         </when>
 
         <when value="H">
-            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
-            <param name="scale" type="text" value="eisenberg" label="hydrophobicity scale" help="See syntax below"/>
+            <param name="input1" type="data" format="fasta" argument= "--InFile" label="Input file" help="Input fasta file with Peptides"/>
+            <param name="scale" type="text" value="eisenberg" label="Hydrophobicity scale" help="Hydrophobicity scale"/>
         </when>
 
         <when value="uH">
-            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
-            <param name="Scale" type="text" value="eisenberg" label="hydrophobicity scale" help="See syntax below"/>
-            <param name="Window" type="integer" label="Window" value="1000" help="--Window" />
-            <param name="Angle" type="integer" label="Angle" value="100" help="--Angle" />
-            <param name="Modality" type="select"  label="hydrophobicity scale" help="--Modality">
+            <param name="input1" type="data" format="fasta" argument= "--InFile" label="Input file" help="Input fasta file with Peptides"/>
+            <param name="Scale" type="text" value="eisenberg" label="hydrophobicity scale" argument="--Scale" help="Hydrophobicity scale"/>
+            <param name="Window" type="integer" label="Window" value="1000" argument="--Window" help="Amino acid window in which to calculate the moment" />
+            <param name="Angle" type="integer" label="Angle" value="100" argument="--Angle" help="Angle in which to calculate the moment. 100 for alpha helices, 180 for beta sheets."/>
+            <param name="Modality" type="select"  label="hydrophobicity scale" argument="--modality" help="Calculate respectively maximum or mean hydrophobic moment.">
                 <option value="max" >Max</option> 
                 <option value="mean">Mean</option> 
             </param>
@@ -92,18 +92,18 @@
         </when>
 
         <when value="charge">
-            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
+            <param name="input1" type="data" format="fasta" label="Input " argument= "--InFile" help="Input fasta file with Peptides"/>
             <param name="ph" type="float" label="ph" value="7.0"  help="--ph" />
             <param name="amide" type="boolean" label="amide" value="true" help="--Amide" />
         </when>
 
         <when value="Len">
-            <param name="input1" type="data" format="fasta" argument= "--InFile"/>
+            <param name="input1" type="data" format="fasta" argument= "--InFile" label="Input file" help="Input fasta file with Peptides"/>
         </when>
 
         <when value="PlotSummary">
-            <param name="input1" type="data" format="fasta" argument= "--InFile1"/>
-            <param name="input2" type="data" format="fasta" argument= "--InFile2"/>
+            <param name="input1" type="data" format="fasta"  argument= "--InFile1" label="First input file" help="Input fasta file with Peptides"/>
+            <param name="input2" type="data" format="fasta" argument= "--InFile2" label="Second input file" help="Input fasta file with Peptides"/>
         </when>
     </conditional>
   </inputs>

@@ -44,21 +44,21 @@
         </param>
 
         <when value="MutatedPeptides">
-            <param name="input1" type="text" label="Peptide sequence" argument= "--sequence" />
-            <param name="mutation_site_list" label="Mutation Site" type="text" argument="--mutation_site_list" />
-            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" />
+            <param name="input1" type="text" label="Peptide sequence" argument= "--sequence" help="Peptide sequence"/>
+            <param name="mutation_site_list" label="Mutation Site" type="text" argument="--mutation_site_list" help="List of integer to introduce mutation"/>
+            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" help="List of amino acids to be replaced"/>
         </when>
 
         <when value="RandomPeptides">
-            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" />
-            <param name="pep_length" type="integer" label="Peptide Legnth" value="7" argument="--pep_length" />
-            <param name="out_pep_length" type="integer" label="Nomber of peptides" value="7" argument="--out_pep_length" />
+            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" help="List of amino acids" />
+            <param name="pep_length" type="integer" label="Peptide Legnth" value="7" argument="--pep_length" help="Length of output peptide"/>
+            <param name="out_pep_length" type="integer" label="Nomber of peptides" value="7" argument="--out_pep_length" help="Number of peptides to be generated"/>
         </when>
 
         <when value="SlidingWindowPeptide">
-            <param name="input1" type="data" label="Input Sequence" format="fasta" argument= "--InFile"/>
-            <param name="WinSize" type="integer" label="Window Size" value="3" help="--winSize" />
-            <param name="FragSize" type="integer" label="Fragment Size" value="7" help="--FragSize" />
+            <param name="input1" type="data" label="Input Sequence" format="fasta" argument= "--InFile" help="Input protein sequence"/>
+            <param name="WinSize" type="integer" label="Window Size" value="3" argument="--winSize" help="Sliding window size" />
+            <param name="FragSize" type="integer" label="Fragment Size" value="7" argument="--FragSize" help="Size of the peptides" />
         </when>
     </conditional>
   </inputs>

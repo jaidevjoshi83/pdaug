@@ -224,7 +224,7 @@
 
       <conditional name='SelMLAlgo' >
 
-        <param name="MLAlgo" type="select" label="Select Machine Learning algorithms" argument="">
+        <param name="MLAlgo" type="select" label="Machine learning algorithms" argument="">
           <option value="SVMC">SVMC</option>
           <option value="SGDC">SGDC</option>
           <option value="DTC">DTC</option>
@@ -247,28 +247,28 @@
               </when>
 
               <when value="advanced">
-                <param name="C" type="float" label="C" value="1.0"  help="(--C)" />
-                <param name="kernel" type="select" label="kernel" argument="">
+                <param name="C" type="float"  label="Regularization parameter" value="1.0"  help="Regularization parameter. For details(https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)"  argument="--C"/>
+                <param name="kernel" type="select" label="Kernel" argument="" help="Specifies the kernel type to be used in the algorithm.">
                       <option value="rbf">rbf</option>  
                       <option value="poly">poly</option>
                       <option value="linear">linear</option>
                       <option value="sigmoid">sigmoid </option>
                 </param>
-                <param name="degree" type="integer" label="degree" value="3"  help="(--degree)" />
-                <param name="gamma" type="text" label="gamma" value="scale"  help="(--gamma)" />
-                <param name="coef0" type="float" label="coef0" value="0.0"  help="(--coef0)" />
-                <param name="shrinking" type="boolean" label="shrinking"  value="true" help="(--shrinking)" />
-                <param name="probability" type="boolean" label="probability"  value="true" help="(--probability)" />
-                <param name="tol" type="float" label="tol" value="1e-3"  help="(--tol)" />
-                <param name="verbose" type="boolean" label="verbose" value="false"  help="(--verbose)" />
-                <param name="max_iter" type="integer" label="max_iter" value="-1"  help="(--max_iter)" />   
-                <param  name="decision_function_shape" type="select" label="decision_function_shape"  argument="" help="--decision_function_shape">
+                <param name="degree" type="integer" label="degree" value="3"  help="degree" />
+                <param name="gamma" type="text" label="gamma" value="scale"  help="gamma" />
+                <param name="coef0" type="float" label="coef0" value="0.0"  help="coef0" />
+                <param name="shrinking" type="boolean" label="shrinking"  value="true" help="shrinking" />
+                <param name="probability" type="boolean" label="probability"  value="true" help="probability" />
+                <param name="tol" type="float" label="tol" value="1e-3"  help="tol" />
+                <param name="verbose" type="boolean" label="verbose" value="false"  help="verbose" />
+                <param name="max_iter" type="integer" label="max_iter" value="-1"  help="max_iter" />   
+                <param  name="decision_function_shape" type="select" label="decision_function_shape"  argument="" help="Decision Function Shape">
                       <option value="ovo">ovo</option>  
                       <option value="ovr">ovr</option>
                 </param>  
-                <param name="randomState" type="integer" label="randomState" value="100"  help="(--randomState)" />
-                <param name="breakties" type="boolean" label="breakties" value="false"  help="(--breakties)" />
-                <param name="cache_size" type="float" label="cache_size" value="100"  help="(--cache_size)" />
+                <param name="randomState" type="integer" label="randomState" value="100"  help="Random State)" />
+                <param name="breakties" type="boolean" label="breakties" value="false"  help="Break ties" />
+                <param name="cache_size" type="float" label="cache_size" value="100"  help="Cache size" />
               </when>
           </conditional>
         </when>
@@ -582,27 +582,27 @@
       </conditional>
 
       <conditional name='TestMethods'>
-        <param name="SelTestMethods" type="select" label="Choose the Test method" argument="--TestMethod">
+        <param name="SelTestMethods" type="select" label="Choose the Test method" argument="--TestMethod" help="Data testing method">
           <option value="Internal">Internal</option>
           <option value="TestSplit">TestSplit</option>
           <option value="External">External</option>
           <option value="Predict">Predict</option>
         </param>
         <when value="Internal">
-          <param name="nFolds" type="integer" label="Cross validation" value="5" min="5" max="10" help="(--nfold)" />
+          <param name="nFolds" type="integer" label="Cross validation" value="5" min="5" max="10" argument="--nfold" help="Cross validation"/>
         </when>
         <when value="TestSplit">
-          <param name="TestSplit" type="float" label="TestMethod" value="0.2" min="0.0" max="1.0" help="(-X)" />
+          <param name="TestSplit" type="float" label="Split Training data" value="0.2" min="0.0" max="1.0" argument="-X" help="Split Training data"/>
         </when>
         <when value="External">
-          <param name="input2" type="data" format="tabular"  argument="--TestFile"/>
+          <param name="input2" type="data" label="Test data file" format="tabular"  argument="--TestFile" help="Tabular file with text data"/>
         </when>
         <when value="Predict">
-          <param name="input2" type="data" format="tabular" argument="--TestFile"/>
+          <param name="input2" type="data" format="Unlabeled data file" argument="--TestFile" help="Unlabeled data for predict"/>
         </when>
       </conditional>
 
-      <param name="scalling" type="select" label="Method to scale the data" argument="--SelectScaler">
+      <param name="scalling" type="select" label="Data scalling options" argument="--SelectScaler" help="Data scalling options">
         <option value="Min_Max"> Min_Max </option>
         <option value="Standard_Scaler"> Standard_Scaler </option>
         <option value="No_Scaler"> No_Scaler </option>

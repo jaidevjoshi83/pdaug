@@ -80,7 +80,7 @@
 
     <conditional name='SelLibGene' >
 
-        <param name="LibGene" type="select" label="LibGene" argument="">
+        <param name="LibGene" type="select" label="Methods to generate peptide sequence" argument="">
           <option value="Random">Random sequences</option>
           <option value="Helices">Presumed amphipathic helical sequences with a hydrophobic moment</option>
           <option value="Kinked">Presumed amphipathic helices with a kink (Pro residue)</option>
@@ -94,64 +94,64 @@
         </param>
 
         <when value="Random">
-            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
-            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
-            <param name="S_proba"  type="float" value="1.0" label="S_proba" argument="--S_proba" />  
+            <param name="seq_num"  type="integer" value="5" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="lenmin_s" type="integer" value="7" label="Minimum length" argument="--lenmin_s" help="Minimum length of generated peptides."/>
+            <param name="lenmax_s" type="integer" value="21" label="Maximum length" argument="--lenmax_s" help="Maximum length of generated peptides."/>
+            <param name="S_proba"  type="float" value="1.0" label="Probability" argument="--S_proba" help="AA probability to be used to generate sequences." />  
         </when>
 
         <when value="Helices">
-            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
-            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+            <param name="seq_num"  type="integer" value="5" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="lenmin_s" type="integer" value="7" label="Minimum length" argument="--lenmin_s" help="Minimum length of generated peptides."/>
+            <param name="lenmax_s" type="integer" value="21" label="Maximum length" argument="--lenmax_s" help="Maximum length of generated peptides."/>
         </when>
 
         <when value="Kinked">
-            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
-            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+            <param name="seq_num"  type="integer" value="5" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="lenmin_s" type="integer" value="7" label="Minimum length" argument="--lenmin_s" help="Minimum length of generated peptides."/>
+            <param name="lenmax_s" type="integer" value="21" label="Maximum length" argument="--lenmax_s" help="Maximum length of generated peptides."/>
         </when>
 
         <when value="Oblique">
-            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
-            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+            <param name="seq_num"  type="integer" value="5" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="lenmin_s" type="integer" value="7" label="Minimum length" argument="--lenmin_s" help="Minimum length of generated peptides."/>
+            <param name="lenmax_s" type="integer" value="21" label="Maximum length" argument="--lenmax_s" help="Maximum length of generated peptides."/>
         </when>
 
         <when value="Centrosymmetric">
-            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
-            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
-            <param name="symmetry_s" type="select" label="symmetry_s" argument="--symmetry_s">
+            <param name="seq_num"  type="integer" value="5" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="lenmin_s" type="integer" value="7" label="Minimum length" argument="--lenmin_s" help="Minimum length of generated peptides."/>
+            <param name="lenmax_s" type="integer" value="21" label="Maximum length" argument="--lenmax_s" help="Maximum length of generated peptides."/>
+            <param name="symmetry_s" type="select" label="Symmetry" argument="--symmetry_s" help="Type of centrosymmetric sequences. symmetric: builds sequences out of only one block, asymmetric: builds sequences out of different blocks.">
               <option value="asymmetric">asymmetric</option>
               <option value="symmetric" >symmetric</option>
             </param>
         </when>
 
         <when value="HelicesACP">
-            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
-            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+            <param name="seq_num"  type="integer" value="5" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="lenmin_s" type="integer" value="7" label="Minimum length" argument="--lenmin_s" help="Minimum length of generated peptides."/>
+            <param name="lenmax_s" type="integer" value="21" label="Maximum length" argument="--lenmax_s" help="Maximum length of generated peptides."/>
         </when>
 
         <when value="Hepahelices">
-            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
-            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
+            <param name="seq_num"  type="integer" value="5" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="lenmin_s" type="integer" value="7" label="Minimum length" argument="--lenmin_s" help="Minimum length of generated peptides."/>
+            <param name="lenmax_s" type="integer" value="21" label="Maximum length" argument="--lenmax_s" help="Maximum length of generated peptides."/>
         </when>
 
         <when value="AMPngrams">
-            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="n_min" type="integer" value="3" label="n_min" argument="--n_min_s" />
-            <param name="n_max" type="integer" value="1" label="n_max" argument="--n_max_s" />
+            <param name="seq_num"  type="integer" value="5" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="n_min" type="integer" value="3" label="Minimum length" argument="--n_min_s" help="Minimum length of generated peptides." />
+            <param name="n_max" type="integer" value="1" label="Maximum length" argument="--n_max_s" help="Maximum length of generated peptides."/>
         </when>
 
         <when value="AmphipathicArc">
-            <param name="seq_num"  type="integer" value="5" label="seq_num" argument= "--seq_num"/>
-            <param name="lenmin_s" type="integer" value="7" label="lenmin_s" argument="--lenmin_s" />
-            <param name="lenmax_s" type="integer" value="21" label="lenmax_s" argument="--lenmax_s" />
-            <param name="arcsize" type="integer" value="180" argument="--arcsize" />
-            <param name="hydgra" type="boolean"  value="false" argument="--hyd_gra" />
+            <param name="seq_num"  type="integer" value="5" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="lenmin_s" type="integer" value="7" label="Minimum length" argument="--lenmin_s" help="Minimum length of generated peptides."/>
+            <param name="lenmax_s" type="integer" value="21" label="Maximum length" argument="--lenmax_s" help="Maximum length of generated peptides."/>
+            <param name="arcsize" type="integer" value="180" label="Arc size" argument="--arcsize" help="Arc size to choose among 100, 140, 180, 220, 260, or choose mixed to generate a mixture."/>
+            <param name="hydgra" type="boolean"  value="false" argument="--hyd_gra" label="Hydrophobic gradient" help="Method to mutate the generated sequences to have a hydrophobic gradient by substituting the last third of the sequence amino acids to hydrophobic."/>
         </when>
 
     </conditional>

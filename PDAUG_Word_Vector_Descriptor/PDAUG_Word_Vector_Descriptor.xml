@@ -1,5 +1,5 @@
 <tool id="PDAUG_Word_Vector_Descriptor" name="PDAUG Word Vector Descriptor" version="0.1.0" python_template_version="3.7">
-    <description>Uversky plot to analyze ordered and disordered proteins</description>
+    <description>Calculates word vector descriptor</description>
     
     <requirements>
       <requirement type="package" version="3.5">nltk</requirement>
@@ -15,11 +15,11 @@
     ]]></command>
 
     <inputs>
-      <param name="ModelInput" type="data" label="Input model file" value="model.txt" format="txt" argument= "--ModelInput"/>
-      <param name="Input" type="data" label="Training data" format="fasta" argument= "--InputFasta"/>
-      <param name="row" type="integer" label="Number of traning samples" optional="true" argument= "--row"/>
-      <param name="positive" type="integer" label="Positives samples" optional="true" argument= "--positive"/>
-      <param name="negative" type="integer" label="Negative samples" optional="true" argument= "--negative"/>
+      <param name="ModelInput" type="data" label="Input model file" value="model.txt" format="txt" argument= "--ModelInput" help="Input word Vector model file"/>
+      <param name="Input" type="data" label="Training data" format="fasta" argument= "--InputFasta" help="Input tabular data file "/>
+      <param name="row" type="integer" label="Number of traning samples" optional="true" argument= "--row" help="Number of positive and negative samples"/>
+      <param name="positive" type="integer" label="Positives samples" optional="true" argument= "--positive" help="Number of positive samples"/>
+      <param name="negative" type="integer" label="Negative samples" optional="true" argument= "--negative" help="Number of ngative samples"/>
     </inputs>
 
     <outputs>   

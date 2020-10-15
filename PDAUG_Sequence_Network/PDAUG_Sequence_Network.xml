@@ -1,5 +1,5 @@
 <tool id="PDAUG_Sequence_Similarity_Network" name="PDAUG Sequence Similarity Network" version="0.1.0" python_template_version="3.6">
-	<description>Analyze peptide descriptor data using scatter plot</description>
+	<description>Generates sequence similarity network</description>
 
     <requirements>
       <requirement type="package" version="0.12.0">python-Levenshtein</requirement>
@@ -13,7 +13,7 @@
     ]]></command>
 
     <inputs>
-      <param name="input1" type="data" format="fasta" argument= "--InFile"/>
+      <param name="input1" type="data" format="fasta"  label="Input fasta file" argument= "--InFile" help="Input fasta file with peptides"/>
 
     </inputs>
 

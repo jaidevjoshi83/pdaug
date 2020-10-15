@@ -14,8 +14,8 @@
     ]]></command>
 
     <inputs>
-      <param name="input1" type="data" format="fasta" argument= "--Fasta1" help="--Fasta1"/>
-      <param name="input2" type="data" format="fasta" argument="--Fasta2"  help="--Fasta2"/>
+      <param name="input1" type="data" format="fasta" label="First fasta file" argument= "--Fasta1" help="First fasta file with Peptides"/>
+      <param name="input2" type="data" format="fasta" label="Second fasta file" argument="--Fasta2"  help="Second fasta file with Peptides"/>
     </inputs>
 
     <outputs>   

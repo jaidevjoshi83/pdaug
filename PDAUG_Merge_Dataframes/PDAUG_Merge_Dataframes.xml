@@ -11,7 +11,7 @@
         python $__tool_directory__/PDAUG_Merge_Dataframes.py '$input1' '$output1'
     ]]></command>
     <inputs>
-        <param type="data" name="input1" label="Input files" format="tabular" multiple="true" />
+        <param type="data" name="input1" label="Input files" format="tabular" multiple="true" help="Input tabular data files"/>
     </inputs>
     <outputs>
         <data name='output1' format='tabular' label="merged.tsv"  />    

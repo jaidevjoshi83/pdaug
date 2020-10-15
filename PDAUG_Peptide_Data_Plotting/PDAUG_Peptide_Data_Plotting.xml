@@ -63,7 +63,7 @@
         </param>
 
         <when value="HelWhl">
-            <param name="InFile" type="data" format="fasta" label="Input file" />
+            <param name="InFile" type="data" format="fasta" label="Input fasta file" help="Input fasta file with peptide sequences"/>
             <param name="colorcoding" type="text" value="rainbow" label="Color Coding" help="The color coding to be used, available: rainbow, charge, polar, simple, amphipathic, none." />
             <param name="lineweights" type="boolean" value="true" label="Line Weight" help="Defines whether connection lines decrease in thickness along the sequence." />
             <param name="seq" type="boolean" value="true" label="Sequence" help="Whether the amino acid sequence should be plotted as a title."/>
@@ -71,7 +71,7 @@
         </when>
 
         <when value="PltPde">
-            <param name="InFile" type="data" label="Input file"  format="tabular" />
+            <param name="InFile" type="data" label="Input tabular file"  format="tabular" help="Input descriptor data as tabular file."/>
             <param name="ClmList" type="text"  label="Column names" help="Enter the column name to be plotted"/>
             <param name="Title"  type="text" value="Plot" label="Plot title" help="Plot title"/>
             <param name="axlabels" type="text" label="X-label" help="List containing the axis labels for the plot" />
@@ -82,16 +82,16 @@
         </when>
 
         <when value="PltVio">
-            <param name="InFile" type="data" format="tabular" argument= "--InFile"/>
-            <param name="ClmList" type="text"  argument="--ClmList" />
-            <param name="title"  type="text" value="Plot" argument="--Title"/>
-            <param name="axlabels" type="text" argument="--axlabels" />
-            <param name="y_max" type="integer" value="1" argument="--y_max" />
-            <param name="y_min" type="integer" value="0" argument="--y_min" /> 
+            <param name="InFile" type="data" format="tabular" label="Input tabular file" help="Input descriptor data as tabular file."/>
+            <param name="ClmList" type="text"  label="Colum list" help="List of columns to be plotted"/>
+            <param name="title"  type="text" value="Plot" label="Title"  help="Title"/>
+            <param name="axlabels" type="text" label="X-label"  help="X-axis labels"/>
+            <param name="y_max" type="integer" value="1"  label="y-axis scale minimum  value"/>
+            <param name="y_min" type="integer" value="0"  label="y-axis scale maximum  value" /> 
         </when>
 
         <when value="PltAaDis">
-            <param name="InFile"  type="data" format="fasta" argument= "--seq_num"/>
+            <param name="InFile"  type="data" format="fasta" label="Input fasta file" argument= "--seq_num" help="Input fasta file with peptide sequences"/>
         </when>
 
     </conditional>
@@ -166,7 +166,7 @@ This tool provided with some advance plotting functions for peptide data.
       * **--movment** whether the Eisenberg hydrophobic moment should be calculated and plotted
 
     **2** PltPde
-      * **--InFile**
+      * **--InFile** Input descriptor data as tabular file.
       * **--ClmList** Listt of dataframe columns to be plotted. 
       * **--Title** Plot title.
       * **--axlabels** list containing the axis labels for the plot.

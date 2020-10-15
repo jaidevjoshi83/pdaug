@@ -25,8 +25,8 @@
     ]]></command>
 
   <inputs>
-    <param name="InFile" type="data" label="Input file" format="tabular" argument= "--InFile1"/>
-    <param name="Method" type="select" label="Split file if class labels are present"  argument="" help="--Method" >   
+    <param name="InFile" type="data" label="Input file" format="tabular" argument= "--InFile1" help="Input tabular file"/>
+    <param name="Method" type="select" label="Data conversion"  argument="--Method" help="Split file if class labels are present" >   
       <option value="WithClassLabel"> WithClassLabel </option>
       <option value="NoClassLabel" selected="true" > NoClassLabel </option>
     </param> 

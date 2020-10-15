@@ -16,7 +16,7 @@
 
 
   <inputs>
-    <param name="DataBaseType" type="select" label="Inbuild datasets"  argument="" help="--DataBaseType" >   
+    <param name="DataBaseType" type="select" label="Datasets"   argument="--DataBaseType" help="Name of the data set.">   
                 <option value="AMPvsTM" selected="true" > AMPvsTM </option>
                 <option value="AMPvsUniProt" > AMPvsUniProt </option>
                 <option value="ACPvsTM"> ACPvsTM </option>
