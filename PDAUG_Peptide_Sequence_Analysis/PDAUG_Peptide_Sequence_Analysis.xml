@@ -15,7 +15,7 @@
 
                         #if $SelAnalysis.Analysis == 'CalcAAFreq'
                             --InFile $SelAnalysis.input1
-                            --ImageFile '$output2'
+                            --PlotFile '$output2'
                             --OutFile '$output1'
                         #end if 
 
@@ -50,7 +50,7 @@
                         #if $SelAnalysis.Analysis == 'PlotSummary'
                             --InFile1 $SelAnalysis.input1
                             --InFile2 $SelAnalysis.input2
-                            --ImageFile '$output2'
+                            --PlotFile '$output2'
                         #end if                       
     ]]></command>
 
