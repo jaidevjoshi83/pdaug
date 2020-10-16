@@ -1,4 +1,4 @@
-<tool id="PDAUG_Sequence_Similarity_Network" name="PDAUG Sequence Similarity Network" version="0.1.0" python_template_version="3.6">
+<tool id="pdaug_sequence_similarity_network" name="PDAUG Sequence Similarity Network" version="0.1.0" python_template_version="3.6">
 	<description>Generates sequence similarity network</description>
 
     <requirements>

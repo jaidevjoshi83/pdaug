@@ -1,4 +1,4 @@
-<tool id="PDAUG_Peptide_CD_Spectral_Analysis" name="PDAUG Peptide CD Spectral Analysis" version="0.1.0" python_template_version="3.5">
+<tool id="pdaug_peptide_cd_spectral_analysis" name="PDAUG Peptide CD Spectral Analysis" version="0.1.0" python_template_version="3.5">
 
   <description>Circular dichroism data analysis</description>
 

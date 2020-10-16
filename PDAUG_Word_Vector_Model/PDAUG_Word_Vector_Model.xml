@@ -1,4 +1,4 @@
-<tool id="PDAUG_Word_Vector_Model" name="PDAUG Word Vector Model" python_template_version="3.7" version="0.1.0">
+<tool id="pdaug_word_vector_model" name="PDAUG Word Vector Model" python_template_version="3.7" version="0.1.0">
   <description>The skip-gram model</description>
   <requirements>
     <requirement type="package" version="1.0.3">pandas</requirement>

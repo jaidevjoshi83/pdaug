@@ -1,4 +1,4 @@
-<tool id="PDAUG_Uversky_Plot" name="PDAUG Uversky Plot" version="0.1.0" python_template_version="3.6">
+<tool id="pdaug_uversky_plot" name="PDAUG Uversky Plot" version="0.1.0" python_template_version="3.6">
     <description>Uversky plot to analyze ordered and disordered proteins</description>
     
     <requirements>

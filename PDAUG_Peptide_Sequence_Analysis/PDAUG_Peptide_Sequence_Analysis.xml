@@ -1,4 +1,4 @@
-<tool id="PDAUG_Peptide_Sequence_Analysis" name="PDAUG Peptide Sequence Analysis" version="0.1.0">
+<tool id="padaug_peptide_sequence_analysis" name="PDAUG Peptide Sequence Analysis" version="0.1.0">
   <description>Peptide sequence analysis</description>
 
   <requirements>
@@ -15,8 +15,7 @@
 
                         #if $SelAnalysis.Analysis == 'CalcAAFreq'
                             --InFile $SelAnalysis.input1
-                            --htmlOutDir '$output2.extra_files_path'
-                            --htmlFname '$output2'
+                            --ImageFile '$output2'
                             --OutFile '$output1'
                         #end if 
 
@@ -51,8 +50,7 @@
                         #if $SelAnalysis.Analysis == 'PlotSummary'
                             --InFile1 $SelAnalysis.input1
                             --InFile2 $SelAnalysis.input2
-                            --htmlOutDir '$output2.extra_files_path'
-                            --htmlFname '$output2'
+                            --ImageFile '$output2'
                         #end if                       
     ]]></command>
 
@@ -115,7 +113,7 @@
         </data>
 
 
-        <data name='output2' format='html' label="report.html" >
+         <data name='output2' format='png' label="out.png" from_work_dir="out.png">
              <filter>SelAnalysis['Analysis'] != "H"</filter>
              <filter>SelAnalysis['Analysis'] != "uH"</filter>
              <filter>SelAnalysis['Analysis'] != "charge"</filter>

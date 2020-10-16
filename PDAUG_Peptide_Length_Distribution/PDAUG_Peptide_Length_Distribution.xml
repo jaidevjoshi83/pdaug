@@ -1,4 +1,4 @@
-<tool id="PDAUG_Peptide_Length_Distribution" name="PDAUG Peptide Length Distribution" version="0.1.0" python_template_version="3.6">
+<tool id="pdaug_peptide_length_distribution" name="PDAUG Peptide Length Distribution" version="0.1.0" python_template_version="3.6">
 	<description>Analyze peptides length distribution of a dataset</description>
 
     <requirements>

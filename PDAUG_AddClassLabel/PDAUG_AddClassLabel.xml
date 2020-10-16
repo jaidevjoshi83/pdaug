@@ -1,4 +1,4 @@
-<tool id="PDAUG_AddClassLabel" name="PDAUG Add Class Label" version="0.1.0">
+<tool id="pdaug_addclasslabel" name="PDAUG Add Class Label" version="0.1.0">
   <description> Add class label to training data set</description>
 
   <requirements>

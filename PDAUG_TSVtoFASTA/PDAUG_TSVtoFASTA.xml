@@ -1,4 +1,4 @@
-<tool id="PDAUG_TSVtoFASTA" name="PDAUG TSVtoFASTA" version="0.1.0">
+<tool id="pdaug_tsvtofasta" name="PDAUG TSVtoFASTA" version="0.1.0">
 
   <description>Converts tabular peptide sequence data into fasta format</description>
 

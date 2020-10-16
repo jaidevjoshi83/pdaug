@@ -1,4 +1,4 @@
-<tool id="PDAUG_Peptide_Data_Access" name="PDAUG Peptide Data Access" version="0.1.0">
+<tool id="pdaug_peptide_data_access" name="PDAUG Peptide Data Access" version="0.1.0">
   <description>Fetch peptide data from inbuild datasets and public databases</description>
 
   <requirements>

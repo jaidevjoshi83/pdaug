@@ -1,4 +1,4 @@
-<tool id="PDAUG_Peptide_Data_Plotting" name="PDAUG Peptide Data Plotting" version="0.1.0">
+<tool id="pdaug_peptide_data_plotting" name="PDAUG Peptide Data Plotting" version="0.1.0">
   <description>Creates various plots to analyze peptide data</description>
 
   <requirements>

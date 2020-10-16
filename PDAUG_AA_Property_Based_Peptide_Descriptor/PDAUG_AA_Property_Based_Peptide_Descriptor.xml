@@ -1,4 +1,4 @@
-<tool id="PDAUG_AA_Property_Based_Peptide_Descriptor" name="PDAUG AA Property Based Peptide Descriptor" version="0.1.0">
+<tool id="pdaug_aa_property_based_peptide_descriptor" name="pdaug aa property based peptide descriptor" version="0.1.0">
   <description>Calculates sequence based peptide descriptors</description>
 
   <requirements>

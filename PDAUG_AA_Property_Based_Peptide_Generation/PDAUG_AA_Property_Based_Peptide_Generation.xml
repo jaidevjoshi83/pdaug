@@ -1,4 +1,4 @@
-<tool id="PDAUG_AA_Property_Based_Peptide_Generation" name="PDAUG AA Property Based Peptide Generation" version="0.1.0">
+<tool id="pdaug_aa_property_based_peptide_generation" name="PDAUG AA Property Based Peptide Generation" version="0.1.0">
   <description>Generates peptide sequence library </description>
 
   <requirements>

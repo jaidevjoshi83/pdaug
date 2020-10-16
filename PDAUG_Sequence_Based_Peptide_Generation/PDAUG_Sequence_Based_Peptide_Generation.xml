@@ -1,4 +1,4 @@
-<tool id="PDAUG_Sequence_Based_Peptide_Generation" name="PDAUG Sequence Based Peptide Generation" version="0.1.0">
+<tool id="pdaug_sequence_based_peptide_generation" name="PDAUG Sequence Based Peptide Generation" version="0.1.0">
   <description>Generates peptide sequence library</description>
 
   <requirements>

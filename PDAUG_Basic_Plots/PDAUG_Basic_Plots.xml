@@ -1,4 +1,4 @@
-<tool id="PDAUG_Basic_Plots" name="PDAUG Basic Plots" version="0.1.0" python_template_version="3.6">
+<tool id="pdaug_basic_plots" name="PDAUG Basic Plots" version="0.1.0" python_template_version="3.6">
   <description>Basic Plots</description>
 
   <requirements>

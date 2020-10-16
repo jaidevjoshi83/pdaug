@@ -1,4 +1,4 @@
-<tool id="PDAUG_Merge_dataframes" name="PDAUG Merge Dataframes" version="0.1.0" python_template_version="3.5">
+<tool id="pdaug_merge_dataframes" name="PDAUG Merge Dataframes" version="0.1.0" python_template_version="3.5">
 
 	<description>Merge two data frames</description>
 

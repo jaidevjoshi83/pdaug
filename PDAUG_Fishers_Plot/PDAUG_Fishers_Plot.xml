@@ -1,4 +1,4 @@
-<tool id="PDAUG_Fishers_Plot" name="PDAUG Fisher's Plot" version="0.1.0" >
+<tool id="pdaug_fishers_plot" name="PDAUG Fisher's Plot" version="0.1.0" >
 	<description>Analyze peptide sequence data based on feature spaces </description>
     <requirements>
       <requirement type="package" version="2.7.18">python</requirement>

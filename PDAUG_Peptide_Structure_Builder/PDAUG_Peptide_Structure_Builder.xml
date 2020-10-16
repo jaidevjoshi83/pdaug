@@ -1,4 +1,4 @@
-<tool id="PDAUG_Peptide_Structure_Builder" name="PDAUG Peptide Structure Builder" version="0.1.0">
+<tool id="pdaug_peptide_structure_builder" name="PDAUG Peptide Structure Builder" version="0.1.0">
   <description>Builds 3D structures of peptide sequences up to 3 amino acid </description>
 
   <requirements>
