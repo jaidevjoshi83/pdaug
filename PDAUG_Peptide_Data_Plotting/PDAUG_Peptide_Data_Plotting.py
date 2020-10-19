@@ -8,51 +8,6 @@ import sys, os
 
 
 
-def HTML_Gen(html):
-
-    out_html = open(html,'w')             
-    part_1 =  """
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <title>Bootstrap Example</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <body>
-    <style>
-    div.container_1 {
-      width:600px;
-      margin: auto;
-     padding-right: 10; 
-    }
-    div.table {
-      width:600px;
-      margin: auto;
-     padding-right: 10; 
-    }
-    </style>
-    </head>
-    <div class="jumbotron text-center">
-      <h1> Machine Learning Algorithm Assessment Report </h1>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <img src="out.png" alt="Smiley face" height="600" width="600">
-        </div>
-
-      </div>
-    </div>
-    </body>
-    </html>
-    """ 
-    out_html.write(part_1)
-    out_html.close()
-
 parser = argparse.ArgumentParser(description='Deployment tool')
 subparsers = parser.add_subparsers()
 
@@ -64,24 +19,14 @@ HelWhl.add_argument("-L","--lineweights", required=False, default=True, help="(b
 HelWhl.add_argument("-F","--filename", required=False, default="out.png", help="")
 HelWhl.add_argument("-s","--seq", required=False, default=False, help="")
 HelWhl.add_argument("-M","--movment", required=False, default=False, help="")
-HelWhl.add_argument("-O","--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="HTML Out Dir")
-HelWhl.add_argument("-Hf","--htmlFname", required=False, help="Path to html out file", default="jai.html")
-HelWhl.add_argument("-Wp","--Workdirpath", required=False, default=os.getcwd(), help="Path to Working directory")
+HelWhl.add_argument("-O", "--OutFile", required=False, default="out.png", help="OutFile")
+
 
 PltPde = subparsers.add_parser('PltPde')
 PltPde.add_argument("-I","--InFile", required=True, default=None, help="Input data file")
 PltPde.add_argument("-l", "--ClmList", required=True, default=None, help="")
-PltPde.add_argument("-T","--Title", required=False, default='rbf', help="(str) plot title")
-PltPde.add_argument("-A","--axlabels", required=False, default=None, help="(list of str) list containing the axis labels for the plot")
 PltPde.add_argument("-F","--filename", required=False, default="out.png", help="filename where to safe the plot. default = None > show the plot")
-PltPde.add_argument("-L","--legendloc", required=False, default=2, help="location of the figures legend. 1 = top right, 2 = top left")
-PltPde.add_argument("-M","--x_max", required=False, default=1, help="x-axis minimum")
-PltPde.add_argument("-m","--x_min", required=False, default=0, help="x-axis maximum")
-#PltPde.add_argument("-c","--Colors", required=False, default=None, help="list of colors (readable by matplotlib, e.g. hex) to be used to plot different data classes")
-PltPde.add_argument("-a","--alpha", required=False, default=0.2, help="color alpha for filling pde curve")
-PltPde.add_argument("-O","--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="HTML Out Dir")
-PltPde.add_argument("-Hf","--htmlFname", required=False, help="Path to html file", default="jai.html")
-PltPde.add_argument("-Wp","--Workdirpath", required=False, default=os.getcwd(), help="Path to Working directory")
+PltPde.add_argument("-O", "--OutFile", required=False, default="out.png", help="OutFile")
 
 PltVio = subparsers.add_parser('PltVio')
 PltVio.add_argument("-I","--InFile", required=True, default=None, help="Input data file")
@@ -92,30 +37,21 @@ PltVio.add_argument("-T","--title", required=False, default=None, help="Title of
 PltVio.add_argument("-a","--axlabels", required=False, default=None, help="list containing the axis labels for the plot")
 PltVio.add_argument("-M","--y_max", required=False, default=1, help='y-axis maximum.')
 PltVio.add_argument("-m","--y_min", required=False, default=0, help="y-axis minimum.")
-PltVio.add_argument("-O","--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="Path to html out directory")
-PltVio.add_argument("-Hf","--htmlFname", required=False, help="HTML out file", default="jai.html")
-PltVio.add_argument("-Wp","--Workdirpath", required=False, default=os.getcwd(), help="Path to working directory")
+PltVio.add_argument("-O", "--OutFile", required=False, default="out.png", help="OutFile")
+
 
 PltAaDis = subparsers.add_parser('PltAaDis')
 PltAaDis.add_argument("-I","--InFile", required=True, default=None, help="Input data file")
-PltAaDis.add_argument("-O","--htmlOutDir", required=False, default=os.path.join(os.getcwd(),'report_dir'),  help="Path to html directory")
-PltAaDis.add_argument("-Hf","--htmlFname", required=False, help="HTML out file", default="report.html")
-PltAaDis.add_argument("-Wp","--Workdirpath", required=False, default=os.getcwd(), help="Path to Working directory")
+PltAaDis.add_argument("-O", "--OutFile", required=False, default="out.png", help="OutFile")
 
 args = parser.parse_args()
 
 
 if sys.argv[1] == 'HelWhl':
 
-    if not os.path.exists(args.htmlOutDir):
-        os.makedirs(args.htmlOutDir)
-
-    F_Path  = os.path.join(args.Workdirpath, args.htmlOutDir, "out.png")
-
     f = open(args.InFile)
     lines = f.readlines()
     sequence = lines[1].strip('\n')
-
 
     if args.movment == 'true':
         mvt = True
@@ -132,28 +68,18 @@ if sys.argv[1] == 'HelWhl':
     else:
       lw = False
 
-    helical_wheel(sequence, colorcoding=args.colorcoding, lineweights=args.lineweights, filename=F_Path, seq=args.seq, moment=mvt)
-    HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname))
+    helical_wheel(sequence, colorcoding=args.colorcoding, lineweights=args.lineweights, filename=args.OutFile, seq=args.seq, moment=mvt)
+
 
 elif sys.argv[1] == 'PltPde':
 
-    if not os.path.exists(args.htmlOutDir):
-        os.makedirs(args.htmlOutDir)
-
-    F_Path  = os.path.join(args.Workdirpath, args.htmlOutDir, "out.png")
-
     df = pd.read_csv(args.InFile, sep="\t")
+
     data = df[args.ClmList.split(',')].as_matrix().T
-  
-    plot_pde(data, title=args.Title, axlabels=args.axlabels, filename=F_Path, legendloc=int(args.legendloc), x_min=int(args.x_min), x_max=int(args.x_max),  alpha=float(args.alpha))
-    HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname))
+
+    plot_pde(data, filename=args.OutFile)
 
 elif sys.argv[1] == 'PltVio':
-
-    if not os.path.exists(args.htmlOutDir):
-        os.makedirs(args.htmlOutDir)
-
-    F_Path  = os.path.join(args.Workdirpath, args.htmlOutDir, "out.png")
 
     df = pd.read_csv(args.InFile, sep="\t")
 
@@ -161,16 +87,10 @@ elif sys.argv[1] == 'PltVio':
 
     c = ['#0B486B']*len(args.ClmList.split(','))
 
-    plot_violin(data, colors=c, bp=True, filename=F_Path, title=args.title, axlabels=args.axlabels, y_min=int(args.y_min), y_max=int(args.y_max))
+    plot_violin(data, colors=c, bp=True, filename=args.OutFile)
 
-    HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname))
 
 elif sys.argv[1] == 'PltAaDis':
-
-    if not os.path.exists(args.htmlOutDir):
-        os.makedirs(args.htmlOutDir)
-
-    F_Path  = os.path.join(args.Workdirpath, args.htmlOutDir, "out.png")
 
     f = open(args.InFile)
     lines = f.readlines()
@@ -183,8 +103,8 @@ elif sys.argv[1] == 'PltAaDis':
         else:
             sequences.append(line.strip('\n'))
 
-    plot_aa_distr(sequences, color='#0B486B', filename=F_Path) 
-    HTML_Gen(os.path.join(args.Workdirpath, args.htmlOutDir, args.htmlFname))
+    plot_aa_distr(sequences, color='#0B486B', filename=args.OutFile) 
+
 
 
 

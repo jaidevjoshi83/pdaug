@@ -9,7 +9,7 @@
 
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/PDAUG_Sequence_Network.py' --InFile '$input1'  --htmlOutDir '$output2.extra_files_path'  --htmlFname '$output2'              
+        python '$__tool_directory__/PDAUG_Sequence_Network.py' --InFile '$input1'  --OutFile 'out.png'            
     ]]></command>
 
     <inputs>
@@ -18,13 +18,13 @@
     </inputs>
 
     <outputs>   
-        <data name='output2' format='html' label="report.html" />
+        <data name='output2' format='png' label="out.png" from_work_dir="out.png"/>
     </outputs>
  
     <tests>
         <test>
             <param name="input1" value="positive.fasta"/>
-            <output name="output2" file="report_dir/report.html"/>
+            <output name="output2" file="out.png"/>
         </test>
     </tests>
 

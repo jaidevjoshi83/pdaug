@@ -44,8 +44,6 @@ def CrossCorrCal(InFile, window, ScaleName, OutFile):
     
     list_pep_name = Peptides
 
-    print (list_pep_name, ScaleName)
-
     AMP = PeptideDescriptor(list_pep_name, ScaleName)
     AMP.calculate_crosscorr(int(window))
     df = AMP.descriptor

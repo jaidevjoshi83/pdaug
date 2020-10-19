@@ -2,8 +2,8 @@
   <description>Peptide sequence analysis</description>
 
   <requirements>
-    <requirement type="package" version="1.0.5">pandas</requirement>
     <requirement type="package" version="4.2.1">modlamp</requirement> 
+    <requirement type="package" version="1.0.5">pandas</requirement>
     <requirement type="package" version="4.10.0">plotly</requirement> 
   </requirements>
   <stdio>
@@ -51,12 +51,13 @@
                         #if $SelAnalysis.Analysis == 'PlotSummary'
                             --InFile1 $SelAnalysis.input1
                             --InFile2 $SelAnalysis.input2
-                            --First_lib_name 'Pep1name'
-                            --Second_lib_name 'Pep2name'
+                            --First_lib_name '$SelAnalysis.Pep1name'
+                            --Second_lib_name '$SelAnalysis.Pep2name'
+                            --htmlOutDir '$output2.extra_files_path'
+                            --htmlFname '$output2' 
                         #end if  
 
-                        --htmlOutDir '$output2.extra_files_path'
-                        --htmlFname '$output2'                     
+                    
     ]]></command>
 
 
@@ -107,8 +108,8 @@
         <when value="PlotSummary">
             <param name="input1" type="data" format="fasta"  argument= "--InFile1" label="First input file" help="Input fasta file with Peptides"/>
             <param name="input2" type="data" format="fasta" argument= "--InFile2" label="Second input file" help="Input fasta file with Peptides"/>
-            <param name="Pep1name" type="text" argument= "--InFile2" label="Second input file" help="Input fasta file with Peptides"/>
-            <param name="Pep2name" type="text"  argument= "--InFile2" label="Second input file" help="Input fasta file with Peptides"/>
+            <param name="Pep1name" type="text" label="Second input file" help="Input fasta file with Peptides"/>
+            <param name="Pep2name" type="text"  label="Second input file" help="Input fasta file with Peptides"/>
         </when>
     </conditional>
   </inputs>
@@ -130,11 +131,12 @@
   </outputs>
   
   <tests>
+
+
     <test>
       <param name="Analysis" value="CalcAAFreq" />
       <param name="input1" value="test1.fasta"/>
-      <output name="output1" file="test1/out1.tsv"/>
-      <output name="output2" file="test1/report_dir/report.html"/>
+      <output name="output1" file="test1/out.tsv"/>
     </test>
 
     <test>
@@ -152,12 +154,6 @@
       <output name="output1" file="test3/out3.tsv"/>
     </test>
 
-    <test>
-      <param name="Analysis" value="PlotSummary" />
-      <param name="input1" value="test1.fasta"/>
-      <param name="input2" value="test2.fasta"/>
-      <output name="output2" file="test6/report_dir/report.html"/>
-    </test>
 
     <test>
       <param name="Analysis" value="Len" />
@@ -171,9 +167,17 @@
       <param name="input1" value="test1.fasta"/>
       <param name="ph" value="7.0" />
       <param name="amide" value="false" />
-      <output name="output1" file="test4/out4.tsv"/>
+      <output name="output1" file="test6/out.tsv"/>
     </test>
 
+    <test>
+      <param name="Analysis" value="PlotSummary" />
+      <param name="input1" value="non_ACPs.fasta"/>
+      <param name="input2" value="ACPs.fasta"/>
+      <param name="Pep1name" value="Non_ACP"/>
+      <param name="Pep2name" value="ACP" />
+      <output name="output2" file="test4/report_dir/report.html.re" ftype="html" compare="re_match_multiline" />
+    </test>
 
   </tests>
     <help><![CDATA[

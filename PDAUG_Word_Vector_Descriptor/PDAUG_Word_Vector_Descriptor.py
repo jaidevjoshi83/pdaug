@@ -41,8 +41,6 @@ for index, seqs in enumerate(SeqIO.parse(args.InputFasta, 'fasta')):
 
 t1 = time.time()
 
-#temp_scaler = preprocessing.StandardScaler().fit(temp_word)
-#temp_word = temp_scaler.transform(temp_word)
 
 temp_word = temp_word
 

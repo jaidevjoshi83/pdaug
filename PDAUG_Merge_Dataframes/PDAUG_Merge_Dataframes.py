@@ -16,8 +16,6 @@ for file in files.split(',')[1:]:
 
 final_DF = data_frame.fillna(0)
 
-print (final_DF)
-
 final_DF.to_csv(out_file,sep="\t", index=False)
 
 

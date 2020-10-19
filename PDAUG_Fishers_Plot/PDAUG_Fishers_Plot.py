@@ -9,8 +9,7 @@ from quantiprot.utils.io import load_fasta_file
 from quantiprot.utils.feature import Feature, FeatureSet
 from quantiprot.metrics.aaindex import get_aa2volume, get_aa2hydropathy
 from quantiprot.metrics.basic import average
-# Local Fisher-test related imports:
-#from quantiprot.analysis.fisher import local_fisher_2d, _plot_local_fisher_2d
+
 from matplotlib import pyplot as plt
 
 
@@ -389,7 +388,7 @@ def run(Fasta1, Fasta2, windows_per_frame, overlap_factor, xlabel, ylabel, pop1_
                                   ylabel=ylabel,
                                   pop1_label=pop1_label,
                                   pop2_label=pop2_label,
-                                  out_file_path =os.path.join(Workdirpath, htmlOutDir, "1.png") 
+                                  out_file_path =os.path.join(os.getcwd(), "out.png") 
                                   )
 
     

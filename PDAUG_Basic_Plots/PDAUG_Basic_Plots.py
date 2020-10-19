@@ -7,50 +7,6 @@ import plotly.express as px
 from wordcloud import WordCloud, STOPWORDS 
 import matplotlib.pyplot as plt 
 
-def HTML_Gen(html):
-
-    out_html = open(html,'w')             
-    part_1 =  """
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <title>Bootstrap Example</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <body>
-    <style>
-    div.container_1 {
-      width:600px;
-      margin: auto;
-     padding-right: 10; 
-    }
-    div.table {
-      width:600px;
-      margin: auto;
-     padding-right: 10; 
-    }
-    </style>
-    </head>
-    <div class="jumbotron text-center">
-      <h1> Word Cloud </h1>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <img src="Out.png" alt="Smiley face" height="1000" width="800">
-        </div>
-
-      </div>
-    </div>
-    </body>
-    </html>
-    """ 
-    out_html.write(part_1)
-    out_html.close()
 
 def ReturnPeptide(Infile):
 
@@ -72,36 +28,11 @@ def ReturnPeptide(Infile):
     return Pep, Index
 
 
-
-"""
-
-def FragReturn(Seq):
-
-    tokens = []
-    for seq in Seq: 
-        D = [2,3,4,5]
-        for d in  D:
-            for l in range(d):
-                if l < d:
-                    for x in range(int(len(seq)/d)):
-                        s = (x*d)+l
-                        e = s+d
-                        if len(seq[s:e]) == d:
-                            tokens.append(seq[s:e])
-                            #print (seq[s:e])
-                        else:
-                            pass
-                else:
-                    pass
-    return tokens
-"""
-
 def FragReturn(Seq, d):
 
     tokens = []
     for seq in Seq: 
-        #D = [2,3,4,5]
-        #for d in  D:
+
         for l in range(d):
             if l < d:
                 for x in range(int(len(seq)/d)):
@@ -109,7 +40,7 @@ def FragReturn(Seq, d):
                     e = s+d
                     if len(seq[s:e]) == d:
                         tokens.append(seq[s:e])
-                        #print (seq[s:e])
+          
                     else:
                         pass
             else:
@@ -126,16 +57,12 @@ def PlotWordCloud(TokenList, OutFile):
                     background_color ='white', 
                     stopwords = stopwords, 
                     min_font_size = 10).generate(comment_words) 
-      
-    # plot the WordCloud image                        
+                       
     plt.figure(figsize = (8, 8), facecolor = None) 
     plt.imshow(wordcloud) 
     plt.axis("off") 
     plt.tight_layout(pad = 0) 
     plt.savefig(OutFile,dpi=600)
-
-###################################
-
 
 
 def HeatMapPlot(Infile,  IndexColumn, x_label, y_label,  Workdirpath, htmlOutDir, htmlFname):

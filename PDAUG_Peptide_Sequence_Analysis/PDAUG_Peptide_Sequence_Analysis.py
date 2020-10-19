@@ -178,10 +178,9 @@ if sys.argv[1] == 'CalcAAFreq':
 
     Pep, Index = ReturnPeptide(args.InFile)
     g = GlobalAnalysis(Pep)
-    g.calc_aa_freq(plot=True, color='#83AF9B', filename='out.pdf')
+    g.calc_aa_freq(plot=False, color='#83AF9B')
     df1 =  pd.DataFrame(g.aafreq[0], columns=['aa_freq'])
     df1.to_csv(args.OutFile,  sep='\t', index=None)
-    os.system('ls')
 
 elif sys.argv[1] == 'H':
 
@@ -203,9 +202,6 @@ elif sys.argv[1] == 'uH':
 elif sys.argv[1] == 'charge':
 
     Pep, _ = ReturnPeptide(args.InFile)
-
-    for p in Pep:
-        print (p)
 
     g = GlobalAnalysis(Pep)
 

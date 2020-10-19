@@ -37,34 +37,22 @@ def structure_gen(pep_seq, out_dir):
 
     for seq in pep_seq:
 
-        print seq
-
         pep = peptide.Peptide(seq, nterm = "charged", cterm = "neutral")
         pep.regularize()
         pep.write_pdb(os.path.join(out_dir, 'DataFile', seq+".pdb"))
-        #pep.write_pdb( seq+".pdb")
 
         obConversion = openbabel.OBConversion()
         obConversion.SetInAndOutFormats("pdb", "sdf")
         mol = openbabel.OBMol()
         obConversion.ReadFile(mol,  os.path.join(out_dir, 'DataFile', seq+".pdb")) 
-        #obConversion.ReadFile(mol,  seq+".pdb")
 
         mol.AddHydrogens()       
-        #obConversion.WriteFile(mol, os.path.join(out_dir, 'DataFile', seq+".sdf"))
-        #obConversion.ReadFile(mol,   seq+".pdb")
-    
 
     
 def main_process(str_pep_file, out_dir):
       
     my_pep = read_pep_file(str_pep_file) 
     structure_gen(my_pep, out_dir)
-    #os.environ['outdir'] = os.path.join(out_dir, 'DataFile')
-
-
-    #os.system('rm -r $outdir/')
-
     
     
 if __name__=="__main__":

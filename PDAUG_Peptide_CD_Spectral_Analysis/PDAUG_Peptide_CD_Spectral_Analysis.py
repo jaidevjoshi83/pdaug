@@ -75,8 +75,6 @@ if sys.argv[1] == "PlotData":
 
     if args.Type == "mean residue ellipticity":
 
-        print("mean residue ellipticity")
-
         cd = CD(args.DirPath, wmin=int(args.WMin), wmax=int(args.Wmax), amide=args.Amide, pathlen=float(args.Pathlen))
         cd.calc_meanres_ellipticity()
         cd.plot(data="mean residue ellipticity", combine='solvent')

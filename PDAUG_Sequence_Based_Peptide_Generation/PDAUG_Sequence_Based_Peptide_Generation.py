@@ -34,7 +34,6 @@ def MutatedPeptides(input_file, index_list, AA, outputFile):
 
     for i, f in enumerate(out_put):
 
-        print (f)
 
         w.write(">sequence_"+str(i)+'\n')
         w.write(f+'\n')

@@ -215,7 +215,6 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.png"))
         #pl.show()
         HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
-        print ("Internal")
 
     elif Test_Method == 'External':
 
@@ -281,11 +280,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         #pl.show()
         HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 
-        print ("External")
-
     elif Test_Method == "TestSplit":
-
-        print (TestSize)
 
         X_train,y_train,_,_ = ReturnData(TrainData, Test_Method)
         X_train, X_test, y_train, y_test = train_test_split(X_train, y_train, test_size=float(TestSize), random_state=0)
@@ -347,7 +342,6 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.png"))
         #pl.show()
         HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
-        print ("TestSplit")
 
     elif Test_Method == "Predict":
 
@@ -372,7 +366,6 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
 
         predicted = model.fit(x_train, y_train).predict(x_test)
 
-        print ("TestSplit")
 
         return predicted
 
@@ -408,7 +401,6 @@ def SVM_Classifier(C, kernel, degree, gamma, coef0, shrinking, probability, tol,
         breakties = False
 
 
-    print (probability)
 
 
     pera={ 
@@ -432,15 +424,11 @@ def SVM_Classifier(C, kernel, degree, gamma, coef0, shrinking, probability, tol,
 
     model = SVC(**pera )
 
-    #print Fit_Model
-    
-    #Fit_Model('GBC.tsv', 'Internal', model, 'Min_Max',  os.getcwd(),  os.path.join(os.getcwd(),'report_dir'), 'out.tsv', 'out.html', NoOfFolds=3)
     Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, Workdirpath=Workdirpath, htmlOutDir=htmlOutDir, OutFile=OutFile, htmlFname=htmlFname,  NoOfFolds=int(NFolds), TestData=TestFile)
 
  
 def SGD_Classifier( loss, penalty, alpha, l1_ratio, fit_intercept, max_iter, tol, shuffle, verbose, epsilon, n_jobs, random_state, learning_rate, eta0, power_t, early_stopping, validation_fraction, n_iter_no_change,  warm_start, average, TrainFile, TestMethod, SelectedSclaer, NFolds, TestFile, OutFile, htmlOutDir, htmlFname, Workdirpath):
 
-    print (type(random_state), n_jobs)
     if n_jobs == 'none':
         n_jobs =None
     else:
@@ -497,11 +485,8 @@ def SGD_Classifier( loss, penalty, alpha, l1_ratio, fit_intercept, max_iter, tol
     "warm_start":warm_start, 
     "average":average}
 
-    print (pera)
-
     model =  SGDClassifier(**pera)
 
-    #Fit_Model('GBC.tsv', 'Internal', model, 'Min_Max',  os.getcwd(),  os.path.join(os.getcwd(),'report_dir'), 'out.tsv', 'out.html', NoOfFolds=3)
     Fit_Model(TrainData=TrainFile, Test_Method=TestMethod, Algo=model, Selected_Sclaer=SelectedSclaer, Workdirpath=Workdirpath, htmlOutDir=htmlOutDir, OutFile=OutFile, htmlFname=htmlFname,  NoOfFolds=int(NFolds), TestData=TestFile)
 
 
@@ -633,7 +618,6 @@ def GB_Classifier(loss, learning_rate, n_estimators, subsample, criterion, min_s
     "tol":float(tol),#default 1e-4
     "ccp_alpha":float(ccpalpha)} #non-negative float, optional (default=0.0)
 
-    print (n_iter_no_change)
 
     model =  GradientBoostingClassifier(**pera)
 
@@ -704,8 +688,6 @@ def RF_Classifier( n_estimators, criterion, max_depth, min_samples_split, min_sa
         else:
             max_samples = int(max_samples)
 
-
-    print(type(min_samples_leaf))
 
     pera = {
     "n_estimators":int(n_estimators), #integer, optional (default=100)
@@ -780,7 +762,6 @@ def LR_Classifier(penalty, dual, tol, C, fit_intercept, intercept_scaling,  rand
     "warm_start":warm_start,#False
     "n_jobs":n_jobs, #None
     "l1_ratio":l1_ratio} #None
-    print (pera)
 
     model = LogisticRegression(**pera)
 

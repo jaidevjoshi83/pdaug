@@ -17,7 +17,6 @@ lines = file.readlines()
 Index = []
 Pep = []
 
-#print (lines)
 
 for line in lines:
     if '>' in line:
@@ -25,7 +24,6 @@ for line in lines:
     else:
         line = line.strip('\n')
         line = line.strip('\r')
-        #print (line)
         Pep.append(line)
 
 df =    pd.DataFrame()
