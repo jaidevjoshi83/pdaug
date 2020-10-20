@@ -1,5 +1,5 @@
-<tool id="pdaug_aa_property_based_peptide_descriptor" name="pdaug aa property based peptide descriptor" version="0.1.0">
-  <description>Calculates sequence based peptide descriptors</description>
+<tool id="pdaug_aa_property_based_peptide_descriptor" name="PDAUG AA Property Based Peptide Descriptor" version="0.1.0">
+  <description>Calculates amino acid property based peptide descriptors</description>
 
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
@@ -102,8 +102,8 @@
 
         <when value="ProfileCal">
             <param name="ProfType" type="select" argument="--ProfType" label="Profile type" help="Profile type of profile, available: ‘H’ for hydrophobicity or ‘uH’ for hydrophobic moment" >
-               <option value="max" selected="true">Max</option>
-               <option value="mean">Mean</option>
+               <option value="H" selected="true">H</option>
+               <option value="uH">uH</option>
               </param>
 
             <param name="WindowSize" type="integer" value="7" argument="--lenmin_s" label="Window Size" help="Size of sliding window used"/>
@@ -161,7 +161,7 @@
       <param name="Descriptor" value="ProfileCal"/>
       <param name="WindowSize" value="7"/>
       <param name="ScaleName" value="Eisenberg"/>
-      <param name="ProfType" value="uH"/>
+      <param name="ProfType" value="H"/>
       <output name="output1" file="out5.tsv"/>
     </test>
 

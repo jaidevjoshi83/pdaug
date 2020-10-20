@@ -119,8 +119,8 @@ def WordCloudPlot(InFile, d, Workdirpath, htmlOutDir, htmlFname):
     Peps,_ = ReturnPeptide(InFile)
     Frags = FragReturn(Peps, int(d))
 
-    PlotWordCloud(Frags, (os.path.join(Workdirpath, htmlOutDir, "Out.png")))
-    HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
+    PlotWordCloud(Frags, "out.png")
+    #HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
 
 
 if __name__=="__main__":
