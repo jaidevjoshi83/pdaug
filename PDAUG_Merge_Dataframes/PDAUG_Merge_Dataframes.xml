@@ -14,7 +14,7 @@
         <param type="data" name="input1" label="Input files" format="tabular" multiple="true" help="Input tabular data files"/>
     </inputs>
     <outputs>
-        <data name='output1' format='tabular' label="merged.tsv"  />    
+        <data name='output1' format='tabular' />
     </outputs>
     <tests>
         <test>
@@ -39,7 +39,6 @@ This tool merges two data frames.
 **Outputs**
     * Returns merged tabular data file.
 
-.. _fastp: https://github.com/OpenGene/fastp
 
 ]]></help>
 <citations>
