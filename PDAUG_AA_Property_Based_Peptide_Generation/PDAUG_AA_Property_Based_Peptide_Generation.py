@@ -12,7 +12,7 @@ def Random_seq(seq_num, lenmin_s, lenmax_s, S_proba, OutFasta):
     OutFasta = open(OutFasta, 'w')
 
     for i,O in enumerate(OutPep):
-        OutFasta.write("sequence_"+str(i)+'\n')
+        OutFasta.write(">sequence_"+str(i)+'\n')
         OutFasta.write(O+'\n')
 
 def Helices_seq(seq_num, lenmin_s, lenmax_s, OutFasta):
@@ -24,7 +24,7 @@ def Helices_seq(seq_num, lenmin_s, lenmax_s, OutFasta):
     OutFasta = open(OutFasta, 'w')
 
     for i,O in enumerate(OutPep):
-        OutFasta.write("sequence_"+str(i)+'\n')
+        OutFasta.write(">sequence_"+str(i)+'\n')
         OutFasta.write(O+'\n')
 
  
@@ -37,7 +37,7 @@ def Kinked_seq(seq_num, lenmin_s, lenmax_s, OutFasta):
     OutFasta = open(OutFasta, 'w')
 
     for i,O in enumerate(OutPep):
-        OutFasta.write("sequence_"+str(i)+'\n')
+        OutFasta.write(">sequence_"+str(i)+'\n')
         OutFasta.write(O+'\n')
 
 
@@ -51,7 +51,7 @@ def Oblique_seq(seq_num, lenmin_s, lenmax_s, OutFasta):
     OutFasta = open(OutFasta, 'w')
 
     for i,O in enumerate(OutPep):
-        OutFasta.write("sequence_"+str(i)+'\n')
+        OutFasta.write(">sequence_"+str(i)+'\n')
         OutFasta.write(O+'\n')
 
 
@@ -64,7 +64,7 @@ def Centrosymmetric_seq(seq_num, lenmin_s, lenmax_s, symmetry_s, OutFasta):
     OutFasta = open(OutFasta, 'w')
 
     for i,O in enumerate(OutPep):
-        OutFasta.write("sequence_"+str(i)+'\n')
+        OutFasta.write(">sequence_"+str(i)+'\n')
         OutFasta.write(O+'\n')
 
 
@@ -77,7 +77,7 @@ def HelicesACP_seq(seq_num, lenmin_s, lenmax_s, OutFasta):
     OutFasta = open(OutFasta, 'w')
 
     for i,O in enumerate(OutPep):
-        OutFasta.write("sequence_"+str(i)+'\n')
+        OutFasta.write(">sequence_"+str(i)+'\n')
         OutFasta.write(O+'\n')
 
 
@@ -90,7 +90,7 @@ def Hepahelices_seq(seq_num, lenmin_s, lenmax_s, OutFasta):
     OutFasta = open(OutFasta, 'w')
 
     for i,O in enumerate(OutPep):
-        OutFasta.write("sequence_"+str(i)+'\n')
+        OutFasta.write(">sequence_"+str(i)+'\n')
         OutFasta.write(O+'\n')
 
 
@@ -103,7 +103,7 @@ def AMPngrams_seq(seq_num, lenmin_s, lenmax_s, OutFasta):
     OutFasta = open(OutFasta, 'w')
 
     for i,O in enumerate(OutPep):
-        OutFasta.write("sequence_"+str(i)+'\n')
+        OutFasta.write(">sequence_"+str(i)+'\n')
         OutFasta.write(O+'\n')
 
 def AmphipathicArc_seq(seq_num, lenmin_s, lenmax_s, gen_seq, hyd_gra, OutFasta):
@@ -118,7 +118,7 @@ def AmphipathicArc_seq(seq_num, lenmin_s, lenmax_s, gen_seq, hyd_gra, OutFasta):
         OutPep = amphi_hel.sequences
                 
         for i,O in enumerate(OutPep):
-            OutFasta.write("sequence_"+str(i)+'\n')
+            OutFasta.write(">sequence_"+str(i)+'\n')
             OutFasta.write(O+'\n')
 
     elif hyd_gra == 'false':
@@ -126,7 +126,7 @@ def AmphipathicArc_seq(seq_num, lenmin_s, lenmax_s, gen_seq, hyd_gra, OutFasta):
         OutPep = amphi_hel.sequences
         
         for i,O in enumerate(OutPep):
-            OutFasta.write("sequence_"+str(i)+'\n')
+            OutFasta.write(">sequence_"+str(i)+'\n')
             OutFasta.write(O+'\n')
 
 if __name__=='__main__':
