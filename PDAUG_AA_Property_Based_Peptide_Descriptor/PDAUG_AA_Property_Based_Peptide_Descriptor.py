@@ -2,10 +2,10 @@ from modlamp.descriptors import *
 import pandas as pd
 import os
 
-def AutoCorrCal(InFile, window, ScaleName, OutFile):
 
 
-    file = open(args.InFile)
+def PepFasta(InFile):
+    file = open(InFile)
     lines = file.readlines()
 
     Index = []
@@ -17,8 +17,12 @@ def AutoCorrCal(InFile, window, ScaleName, OutFile):
         else:
             Peptides.append(line.strip('\n'))
     
-    list_pep_name = Peptides
+    return Peptides, Index
 
+
+def AutoCorrCal(InFile, window, ScaleName, OutFile):
+
+    list_pep_name,_ = PepFasta(InFile)
 
     AMP = PeptideDescriptor(list_pep_name, ScaleName)
     AMP.calculate_autocorr(int(window))
@@ -30,19 +34,7 @@ def AutoCorrCal(InFile, window, ScaleName, OutFile):
 
 def CrossCorrCal(InFile, window, ScaleName, OutFile):
 
-    file = open(args.InFile)
-    lines = file.readlines()
-
-    Index = []
-    Peptides = []
-
-    for line in lines:
-        if '>' in line:
-            Index.append(line.strip('\n'))
-        else:
-            Peptides.append(line.strip('\n'))
-    
-    list_pep_name = Peptides
+    list_pep_name,_ = PepFasta(InFile)
 
     AMP = PeptideDescriptor(list_pep_name, ScaleName)
     AMP.calculate_crosscorr(int(window))
@@ -55,19 +47,7 @@ def CrossCorrCal(InFile, window, ScaleName, OutFile):
 def CalculateMovementCal(InFile, window, angle, modality, ScaleName, OutFile):
 
 
-    file = open(args.InFile)
-    lines = file.readlines()
-
-    Index = []
-    Peptides = []
-
-    for line in lines:
-        if '>' in line:
-            Index.append(line.strip('\n'))
-        else:
-            Peptides.append(line.strip('\n'))
-    
-    list_pep_name = Peptides
+    list_pep_name,_ = PepFasta(InFile)
 
     AMP = PeptideDescriptor(list_pep_name, ScaleName)
     AMP.calculate_moment(int(window), int(angle), modality)
@@ -78,20 +58,7 @@ def CalculateMovementCal(InFile, window, angle, modality, ScaleName, OutFile):
 
 def CalculateGlobalCal(InFile, WindowSize, modality, ScaleName, OutFile):
 
-
-    file = open(args.InFile)
-    lines = file.readlines()
-
-    Index = []
-    Peptides = []
-
-    for line in lines:
-        if '>' in line:
-            Index.append(line.strip('\n'))
-        else:
-            Peptides.append(line.strip('\n'))
-    
-    list_pep_name = Peptides
+    list_pep_name,_ = PepFasta(InFile)
 
     AMP = PeptideDescriptor(list_pep_name, ScaleName)
     AMP.calculate_global(int(WindowSize), modality)
@@ -102,20 +69,7 @@ def CalculateGlobalCal(InFile, WindowSize, modality, ScaleName, OutFile):
 
 def CalculateProfileCal(InFile, prof_type, WindowSize, ScaleName, OutFile):
 
-
-    file = open(args.InFile)
-    lines = file.readlines()
-
-    Index = []
-    Peptides = []
-
-    for line in lines:
-        if '>' in line:
-            Index.append(line.strip('\n'))
-        else:
-            Peptides.append(line.strip('\n'))
-    
-    list_pep_name = Peptides
+    list_pep_name,_ = PepFasta(InFile)
 
     AMP = PeptideDescriptor(list_pep_name, ScaleName)
     AMP.calculate_profile(prof_type, int(WindowSize))
@@ -126,19 +80,7 @@ def CalculateProfileCal(InFile, prof_type, WindowSize, ScaleName, OutFile):
 
 def CalculateArcCal(InFile, modality, OutFile): 
 
-    file = open(args.InFile)
-    lines = file.readlines()
-
-    Index = []
-    Peptides = []
-
-    for line in lines:
-        if '>' in line:
-            Index.append(line.strip('\n'))
-        else:
-            Peptides.append(line.strip('\n'))
-    
-    list_pep_name = Peptides
+    list_pep_name,_ = PepFasta(InFile)
 
     AMP = PeptideDescriptor(list_pep_name, scalename="peparc")
     AMP.calculate_arc(modality)

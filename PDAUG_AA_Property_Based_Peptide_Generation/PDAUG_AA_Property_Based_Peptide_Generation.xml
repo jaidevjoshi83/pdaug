@@ -158,7 +158,7 @@
   </inputs>
 
   <outputs>
-        <data name='output1' format='fasta' label="${tool.name} - ${SelLibGene.LibGene}" />
+        <data name='output1' format='fasta' label="${tool.name} on $on_string - ${SelLibGene.LibGene} (fasta)" />
   </outputs>
 
   <tests>

@@ -116,16 +116,18 @@
 
 
   <outputs>
-        <data name='output1' format='tabular' label="out.tsv" > 
+        <data name='output1' format='tabular' label="${tool.name} on $on_string - ${SelAnalysis.Analysis} (tabular)" > 
+
             <filter>SelAnalysis['Analysis'] != "PlotSummary"</filter>
         </data>
 
 
-         <data name='output2' format='html' label="report.html" > 
+         <data name='output2' format='html' label="${tool.name} on $on_string - ${SelAnalysis.Analysis} (webpage)" > 
              <filter>SelAnalysis['Analysis'] != "H"</filter>
              <filter>SelAnalysis['Analysis'] != "uH"</filter>
              <filter>SelAnalysis['Analysis'] != "charge"</filter>
              <filter>SelAnalysis['Analysis'] != "Len"</filter>
+             <filter>SelAnalysis['Analysis'] != "CalcAAFreq"</filter>
         </data>
 
   </outputs>

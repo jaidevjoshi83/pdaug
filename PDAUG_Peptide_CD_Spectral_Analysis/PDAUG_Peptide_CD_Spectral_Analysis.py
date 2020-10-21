@@ -42,9 +42,9 @@ helicity.add_argument("-Wn","--WMin", required=True, default=None, help="Number 
 helicity.add_argument("-Wx","--Wmax", required=True, default=None, help="Probability of mutating a sequence")
 helicity.add_argument("-A","--Amide", required=True, default=None, help="Mutated output fasta")
 helicity.add_argument("-P","--Pathlen", required=True, default=None, help="Mutated output fasta")
-helicity.add_argument("-t","--temperature", required=True, default=None, help="")
-helicity.add_argument("-k","--k", required=True, default=None, help="")
-helicity.add_argument("-I","--Induction", required=True, default=None, help="")
+helicity.add_argument("-t","--temperature", required=False, default=24.0, help="")
+helicity.add_argument("-k","--k", required=True, default=2.4, help="")
+helicity.add_argument("-I","--Induction", required=False, default=True, help="")
 helicity.add_argument("-O","--OutPut", required=False, default="result.tsv", help="")
 
 

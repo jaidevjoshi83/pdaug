@@ -115,8 +115,8 @@
         <param name="Wx" type="integer" optional="true" label="Highest wavelength"   argument="-Wx" help="Highest wavelength measured" />
         <param name="Amide" type="boolean" label="Amide" value="true"  argument="-A" help="Specifies whether the sequences have amidated C-termini" />
         <param name="Pathlen" type="float" label="Pathlen"  value="1.0" argument="--P"  help="Cuvette path length in mm"/>
-        <param name="T" type="float" label="Temperature"  optional="true" help="Experiment temperature in C"  argument="-T"/>
-        <param name="K" type="float" label="Finite length correction factor" optional="true" help="Finite length correction factor" argument="-k" />
+        <param name="T" type="float" label="Temperature"  value="24.0" help="Experiment temperature in C"  argument="-T"/>
+        <param name="K" type="float" label="Finite length correction factor" value ="2.4" help="Finite length correction factor" argument="-k" />
         <param name="Induction" type="boolean" label="Induction"  value="true" help="Wether the helical induction upon changing from one solvent to another should be calculated" />
       </when>
 

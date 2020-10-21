@@ -22,7 +22,7 @@
   </inputs>
 
   <outputs>
-    <data name='OutFile1' format='tabular' label="${tool.name} on $on_string - ${ClassLabel}, ${ClassLabelTitle}" />
+    <data name='OutFile1' format='tabular' label="${tool.name} on $on_string - (tabular)" />
   </outputs>
 
   <tests>

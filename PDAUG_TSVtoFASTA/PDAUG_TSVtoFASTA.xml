@@ -33,15 +33,15 @@
   </inputs>
 
   <outputs>
-    <data name='OutFile1' format='fasta' label="Positive.fasta" >  
+    <data name='OutFile1' format='fasta' label="${tool.name} on $on_string - ${Method} (tabular)" >  
        <filter>Method == "WithClassLabel"</filter>
     </data>
 
-    <data name='OutFile2' format='fasta' label="Negative.fasta">   
+    <data name='OutFile2' format='fasta' label="${tool.name} on $on_string - ${Method} (tabular)">   
        <filter>Method == "WithClassLabel"</filter>
     </data>
 
-    <data name='OutFile3' format='fasta' label="Out.fasta" >
+    <data name='OutFile3' format='fasta' label="${tool.name} on $on_string - ${Method} (tabular)" >
       <filter>Method == "NoClassLabel"</filter>
     </data>
   </outputs>
