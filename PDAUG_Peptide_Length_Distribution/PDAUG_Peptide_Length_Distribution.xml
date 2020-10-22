@@ -46,13 +46,14 @@ This tool calculates and plots the length distribution of peptide sequences in a
     <citations>
         <citation type="bibtex">
 
-@misc{githubseqtk,
-  author = {LastTODO, FirstTODO},
-  year = {TODO},
-  title = {seqtk},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  url = {https://github.com/lh3/seqtk},
+  @misc{PDAUGGITHUB, 
+    author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
+    year = {2020}, 
+    title ={PDAUG}, 
+    publisher = {GitHub}, 
+    journal = {GitHub repository}, 
+    url =
+    {https://github.com/jaidevjoshi83/Peptide}, 
 
 }</citation>
 </citations>
