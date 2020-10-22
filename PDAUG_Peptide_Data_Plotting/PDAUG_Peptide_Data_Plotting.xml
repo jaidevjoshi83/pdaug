@@ -83,7 +83,6 @@
 
   <tests>
 
-
     <test>
       <param name="Plot" value="HelWhl"/>
       <param name="InFile"  value="test2.fasta"/>
@@ -91,28 +90,27 @@
       <param name="lineweights" value="false"/>
       <param name="seq" value="false"/>
       <param name="movment" value="false"/>
-      <output name="output2" file="out1.png"/>
+      <output name="output2" file="out1.png" compare="sim_size" delta="10000"/>
     </test>
     
     <test>
       <param name="Plot" value="PltPde"/>
       <param name="InFile"  value="test1.tsv" />
       <param name="ClmList" value="a1,a2"/>
-      <output name="output2" file="out2.png"/>
+      <output name="output2" file="out2.png" compare="sim_size" delta="10000"/>
     </test>
-
 
     <test>
       <param name="Plot" value="PltVio"/>
       <param name="InFile"  value="test3.tsv"/>
       <param name="ClmList" value="a1,a2,a3,a4,a5"/>
-      <output name="output2" file="out3.png"/>
+      <output name="output2" file="out3.png" compare="sim_size" delta="10000"/>
     </test>
 
     <test>
       <param name="Plot" value="PltAaDis"/>
       <param name="InFile"  value="test4.fasta"/>
-      <output name="output2" file="out4.png"/>
+      <output name="output2" file="out4.png" compare="sim_size" delta="10000"/>
     </test>
 
   </tests>

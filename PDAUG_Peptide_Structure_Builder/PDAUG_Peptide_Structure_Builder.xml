@@ -27,7 +27,7 @@
     <test>
       <param name="input1" value="test.fasta"/>
       <output_collection name="output" type="list"  >
-        <element name="GLF" file="DataFile/GLF.pdb" lines_diff="6" />
+        <element name="GLF" file="DataFile/GLF.pdb" lines_diff="102" />
       </output_collection>
     </test>
   </tests>
