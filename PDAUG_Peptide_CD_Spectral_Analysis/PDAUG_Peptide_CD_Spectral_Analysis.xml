@@ -80,8 +80,8 @@
           <option value="calc_molar_ellipticity">Calculate Molar Ellipticity</option>  
           <option value="calc_meanres_ellipticity">Calculate Mean Residue Ellipticity</option>
         </param>
-        <param name="Wn" type="integer" optional="true" label="Smallest wavelength" argument="-Wn" help="Smallest wavelength measured" />
-        <param name="Wx" type="integer" optional="true" label="Highest wavelength"   argument="-Wx" help="Highest wavelength measured" />
+        <param name="Wn" type="integer" value="180" label="Smallest wavelength" argument="-Wn" help="Smallest wavelength measured" />
+        <param name="Wx" type="integer" value="260" label="Highest wavelength"   argument="-Wx" help="Highest wavelength measured" />
         <param name="Amide" type="boolean" label="Amide" value="true"  argument="-A" help="Specifies whether the sequences have amidated C-termini" />
         <param name="Pathlen" type="float" label="Pathlen"  value="1.0" argument="--P"  help="Cuvette path length in mm"/>
       </when>
@@ -92,8 +92,8 @@
           <option value="molar ellipticity">Molar Ellipticity</option>
           <option value="circular dichroism">Circular Dichroism</option>          
         </param>
-        <param name="Wn" type="integer" optional="true" label="Smallest wavelength" argument="-Wn" help="Smallest wavelength measured" />
-        <param name="Wx" type="integer" optional="true" label="Highest wavelength"   argument="-Wx" help="Highest wavelength measured" />
+        <param name="Wn" type="integer" value="180" label="Smallest wavelength" argument="-Wn" help="Smallest wavelength measured" />
+        <param name="Wx" type="integer" value="260" label="Highest wavelength"   argument="-Wx" help="Highest wavelength measured" />
         <param name="Amide" type="boolean" label="Amide" value="true"  argument="-A" help="Specifies whether the sequences have amidated C-termini" />
         <param name="Pathlen" type="float" label="Pathlen"  value="1.0" argument="--P"  help="Cuvette path length in mm"/>
       </when>
@@ -104,15 +104,15 @@
           <option value="molar ellipticity">Molar Ellipticity</option>
           <option value="circular dichroism">Circular Dichroism</option>          
         </param>
-        <param name="Wn" type="integer" optional="true" label="Smallest wavelength" argument="-Wn" help="Smallest wavelength measured" />
-        <param name="Wx" type="integer" optional="true" label="Highest wavelength"   argument="-Wx" help="Highest wavelength measured" />
+        <param name="Wn" type="integer" value="260" label="Smallest wavelength" argument="-Wn" help="Smallest wavelength measured" />
+        <param name="Wx" type="integer" value="260" label="Highest wavelength"   argument="-Wx" help="Highest wavelength measured" />
         <param name="Amide" type="boolean" label="Amide" value="true"  argument="-A" help="Specifies whether the sequences have amidated C-termini" />
         <param name="Pathlen" type="float" label="Pathlen"  value="1.0" argument="--P"  help="Cuvette path length in mm"/>
       </when>
 
       <when value="helicity">
-        <param name="Wn" type="integer" optional="true" label="Smallest wavelength" argument="-Wn" help="Smallest wavelength measured" />
-        <param name="Wx" type="integer" optional="true" label="Highest wavelength"   argument="-Wx" help="Highest wavelength measured" />
+        <param name="Wn" type="integer" value="260" label="Smallest wavelength" argument="-Wn" help="Smallest wavelength measured" />
+        <param name="Wx" type="integer" value="260" label="Highest wavelength"   argument="-Wx" help="Highest wavelength measured" />
         <param name="Amide" type="boolean" label="Amide" value="true"  argument="-A" help="Specifies whether the sequences have amidated C-termini" />
         <param name="Pathlen" type="float" label="Pathlen"  value="1.0" argument="--P"  help="Cuvette path length in mm"/>
         <param name="T" type="float" label="Temperature"  value="24.0" help="Experiment temperature in C"  argument="-T"/>
@@ -355,11 +355,11 @@ This tool handles circular dichroism data files and calculates several elliptici
     @misc{PDAUGGITHUB, 
       author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
       year = {2020}, 
-      title ={PDAUG}, 
+      title ={PDAUG - a Galaxy based toolset for peptide library analysis, visualization, and machine learning modeling}, 
       publisher = {GitHub}, 
       journal = {GitHub repository}, 
       url =
-      {https://github.com/jaidevjoshi83/Peptide}, 
+      {https://github.com/jaidevjoshi83/pdaug.git}, 
     }
 </citation>
 

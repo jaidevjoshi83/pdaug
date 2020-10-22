@@ -44,21 +44,21 @@
         </param>
 
         <when value="MutatedPeptides">
-            <param name="input1" type="text" label="Peptide sequence" argument= "--sequence" help="Peptide sequence"/>
-            <param name="mutation_site_list" label="Mutation Site" type="text" argument="--mutation_site_list" help="List of integer to introduce mutation"/>
-            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" help="List of amino acids to be replaced"/>
+            <param name="input1" type="text" label="Peptide sequence" value="KLLKLLKKKLLK" argument= "--sequence" help="Peptide sequence"/>
+            <param name="mutation_site_list" label="Mutation Site" value="2" type="text" argument="--mutation_site_list" help="List of integer to introduce mutation"/>
+            <param name="AA_list" type="text" label="Amino Acide List"  value="I,H" argument="-AA_list" help="List of amino acids to be replaced"/>
         </when>
 
         <when value="RandomPeptides">
-            <param name="AA_list" type="text" label="Amino Acide List" argument="-AA_list" help="List of amino acids" />
-            <param name="pep_length" type="integer" label="Peptide Legnth" value="7" argument="--pep_length" help="Length of output peptide"/>
-            <param name="out_pep_length" type="integer" label="Nomber of peptides" value="7" argument="--out_pep_length" help="Number of peptides to be generated"/>
+            <param name="AA_list" type="text" label="Amino Acide List" value="G,L,F,D,I,V,K" argument="-AA_list" help="List of amino acids" />
+            <param name="pep_length" type="integer" optional="false" label="Peptide Legnth" value="7" argument="--pep_length" help="Length of output peptide"/>
+            <param name="out_pep_length" type="integer" optional="false" label="Nomber of peptides" value="7" argument="--out_pep_length" help="Number of peptides to be generated"/>
         </when>
 
         <when value="SlidingWindowPeptide">
             <param name="input1" type="data" label="Input Sequence" format="fasta" argument= "--InFile" help="Input protein sequence"/>
-            <param name="WinSize" type="integer" label="Window Size" value="3" argument="--winSize" help="Sliding window size" />
-            <param name="FragSize" type="integer" label="Fragment Size" value="7" argument="--FragSize" help="Size of the peptides" />
+            <param name="WinSize" type="integer" label="Window Size"  value="3" argument="--winSize" help="Sliding window size" />
+            <param name="FragSize" type="integer" label="Fragment Size"  value="7" argument="--FragSize" help="Size of the peptides" />
         </when>
     </conditional>
   </inputs>
@@ -125,11 +125,11 @@ This tool generates peptide sequences based on three sequences based properties
     @misc{PDAUGGITHUB, 
       author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
       year = {2020}, 
-      title ={PDAUG}, 
+      title ={PDAUG - a Galaxy based toolset for peptide library analysis, visualization, and machine learning modeling}, 
       publisher = {GitHub}, 
       journal = {GitHub repository}, 
       url =
-      {https://github.com/jaidevjoshi83/Peptide}, 
+      {https://github.com/jaidevjoshi83/pdaug.git}, 
       }
 </citation>
 

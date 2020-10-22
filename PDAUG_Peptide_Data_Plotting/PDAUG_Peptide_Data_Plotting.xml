@@ -62,12 +62,12 @@
 
         <when value="PltPde">
             <param name="InFile" type="data" label="Input tabular file"  format="tabular" help="Input descriptor data as tabular file."/>
-            <param name="ClmList" type="text"  label="Column names" help="Enter the column name to be plotted"/>
+            <param name="ClmList" type="text"  value="clm1,clm2" label="Column names" help="Enter the column name to be plotted"/>
         </when>
 
         <when value="PltVio">
             <param name="InFile" type="data" format="tabular" label="Input tabular file" help="Input descriptor data as tabular file."/>
-            <param name="ClmList" type="text"  label="Colum list" help="List of columns to be plotted"/>
+            <param name="ClmList" type="text"  value="clm1,clm2"  label="Colum list" help="List of columns to be plotted"/>
         </when>
 
         <when value="PltAaDis">
@@ -174,11 +174,11 @@ This tool provided with some advance plotting functions for peptide data.
     @misc{PDAUGGITHUB, 
       author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
       year = {2020}, 
-      title ={PDAUG}, 
+      title ={PDAUG - a Galaxy based toolset for peptide library analysis, visualization, and machine learning modeling}, 
       publisher = {GitHub}, 
       journal = {GitHub repository}, 
       url =
-      {https://github.com/jaidevjoshi83/Peptide}, 
+      {https://github.com/jaidevjoshi83/pdaug.git}, 
     }
 </citation>
 

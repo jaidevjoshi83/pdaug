@@ -71,11 +71,11 @@ This tool compares two peptide sequence data sets in a 2D space represented by 
     @misc{PDAUGGITHUB, 
       author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
       year = {2020}, 
-      title ={PDAUG}, 
+      title ={PDAUG - a Galaxy based toolset for peptide library analysis, visualization, and machine learning modeling}, 
       publisher = {GitHub}, 
       journal = {GitHub repository}, 
       url =
-      {https://github.com/jaidevjoshi83/Peptide}, }
+      {https://github.com/jaidevjoshi83/pdaug.git}, }
   </citation>
   <citation type="bibtex">
     @article{konopka_marciniak_dyrka_2017,
@@ -85,7 +85,7 @@ This tool compares two peptide sequence data sets in a 2D space represented by 
        number={1}, 
        journal={BMC Bioinformatics},
        author={Konopka, Bogumił M. and Marciniak, Marta and Dyrka, Witold}, 
-       year={2017}
+       year={2017},
      }
   </citation>
 </citations>

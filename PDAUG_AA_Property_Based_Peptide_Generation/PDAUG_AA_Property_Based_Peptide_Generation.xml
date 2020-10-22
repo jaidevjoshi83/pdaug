@@ -335,11 +335,11 @@ This module incorporates different classes to generate peptide sequences with di
     @misc{PDAUGGITHUB, 
       author = {Joshi, Jayadev  and Blankenberg, Daniel}, 
       year = {2020}, 
-      title ={PDAUG}, 
+      title ={PDAUG - a Galaxy based toolset for peptide library analysis, visualization, and machine learning modeling}, 
       publisher = {GitHub}, 
       journal = {GitHub repository}, 
       url =
-      {https://github.com/jaidevjoshi83/Peptide}, 
+      {https://github.com/jaidevjoshi83/pdaug.git}, 
     }
 </citation>
 

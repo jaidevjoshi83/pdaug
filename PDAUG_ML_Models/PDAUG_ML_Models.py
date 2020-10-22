@@ -128,7 +128,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
 
         specificity_list = []
         sensitivity_list = []
-        presison_list = []
+        precison_list = []
         mcc_list =  []
         f1_list = []
         
@@ -198,11 +198,11 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.ylim([0.0, 1.05])
         pl.xlabel('False Positive Rate')
         pl.ylabel('True Positive Rate')
-        pl.title('ROC Cureve for All the classifier')
+        pl.title('ROC Cureve')
         pl.legend(loc="lower right")
 
         ########################################################################################################################################
-        V_header = ["Algo","accuracy","presision","recall","f1","mean_auc"]                                                                           #
+        V_header = ["Algo","accuracy","precision","recall","f1","mean_auc"]                                                                           #
         v_values = [sys.argv[1], round(accuracy_score_mean, 3), round(precision_mean, 3), round(recall_mean, 3),round(f_score_mean, 3), round(mean_auc, 3)]                                        # 
         ########################################################################################################################################
 
@@ -267,7 +267,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.ylim([0.0, 1.05])
         pl.xlabel('False Positive Rate')
         pl.ylabel('True Positive Rate')
-        pl.title('ROC Cureve for All the classifier')
+        pl.title('ROC Cureve')
         pl.legend(loc="lower right")
 
         df = pd.DataFrame([v_values], columns=V_header)
@@ -320,7 +320,7 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         pl.ylim([0.0, 1.05])
         pl.xlabel('False Positive Rate')
         pl.ylabel('True Positive Rate')
-        pl.title('ROC Cureve for All the classifier')
+        pl.title('ROC Cureve')
         pl.legend(loc="lower right")
         pl.savefig(os.path.join(Workdirpath, htmlOutDir, "out.png")) 
         pl.plot(fpr, tpr, '--', lw=2)

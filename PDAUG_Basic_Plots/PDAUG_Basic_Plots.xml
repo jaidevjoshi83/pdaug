@@ -69,15 +69,15 @@
 
         <when value="HeatMap">
             <param name="InFile" type="data" format="tabular" label="Input file" argument= "--InFile" help="Tabular data file"/>
-            <param name="IndexColumn" type="text" optional="true"  label="Index Column" argument= "--IndexColumn" help="Column name that contains index as row/sample names "/>
-            <param name="x_label" type="text" optional="true"  label="Label for x-axis" argument= "--x_label" help="A label that describes x axis"/>
-            <param name="y_label" type="text" optional="true"  label="Label for y-axis" argument= "--y_label" help="A label that describes y axis"/>
+            <param name="IndexColumn" type="text" value="Index"  label="Index Column" argument= "--IndexColumn" help="Column name that contains index as row/sample names "/>
+            <param name="x_label" type="text" value="x-axis" label="Label for x-axis" argument= "--x_label" help="A label that describes x axis"/>
+            <param name="y_label" type="text" value="y-axis" label="Label for y-axis" argument= "--y_label" help="A label that describes y axis"/>
         </when>
 
         <when value="BoxPlot">
             <param name="InFile" type="data" label="Input file" format="tabular" argument= "--InFile" help="Tabular data file"/>
-            <param name="Feature" type="text" label="Feature name" argument= "--Features" help="Name of the feature (column name)"/>
-            <param name="Label" type="text" label="Class label column" argument="--Label" help="Name of the column that contains class label" />
+            <param name="Feature" type="text" value="Feature" label="Feature name" argument= "--Features" help="Name of the feature (column name)"/>
+            <param name="Label" type="text" value="class label" label="Class label column" argument="--Label" help="Name of the column that contains class label" />
         </when>
 
         <when value="ScatterPlot">
@@ -92,19 +92,19 @@
               </param>
               
               <when value="2D">
-                <param name="Features1" type="text"   label="First feature" argument= "--RotationX" help="Feature column name"/>
-                <param name="Features2" type="text"   label="Second feature"   argument= "--RotationY" help="Feature column name"/>
+                <param name="Features1" type="text"   value="feature1" label="First feature" argument= "--RotationX" help="Feature column name"/>
+                <param name="Features2" type="text"  value="feature2" label="Second feature"   argument= "--RotationY" help="Feature column name"/>
               </when>
 
               <when value="3D">
-                <param name="Features1" type="text"  label="First feature"   argument= "--RotationX" help="Feature column name"/>
-                <param name="Features2" type="text"  label="Second feature"   argument= "--RotationY" help="Feature column name"/>
-                <param name="Features3" type="text"  label="Third feature"   argument= "--FigHight" help="Feature column name"/>                 
+                <param name="Features1" type="text" value="feature1"  label="First feature"   argument= "--RotationX" help="Feature column name"/>
+                <param name="Features2" type="text"  value="feature2" label="Second feature"   argument= "--RotationY" help="Feature column name"/>
+                <param name="Features3" type="text"  value="feature3" label="Third feature"   argument= "--FigHight" help="Feature column name"/>                 
               </when>
 
         </conditional>
           
-          <param name="Label" type="text"  label="Class label column" argument="--Label" help="Name of the column that contains class label" />
+          <param name="Label" type="text" value="class label" label="Class label column" argument="--Label" help="Name of the column that contains class label" />
 
         </when>
 
@@ -230,7 +230,7 @@ This tool generates four different types of plots.
         title = {PDAUG - a Galaxy based toolset for peptide library analysis, visualization, and machine learning modeling},
         publisher = {GitHub}, 
         journal = {GitHub repository},
-        url = {https://github.com/jaidevjoshi83/Peptide},
+        url = {https://github.com/jaidevjoshi83/pdaug.git},
         author = {Joshi J. and Blankenberg D.},
         year = {2020},
     }
