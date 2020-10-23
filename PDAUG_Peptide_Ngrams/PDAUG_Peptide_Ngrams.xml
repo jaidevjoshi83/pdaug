@@ -1,5 +1,5 @@
 <tool id="pdaug_peptide_ngrams" name="PDAUG Peptide Ngrams" version="0.1.0" python_template_version="2.7">
-	<description>plot ngrams</description>
+	<description>Counts n-grams in the entire sequence set and fitting their distribution with the power-law distribution (Zipf’s law)</description>
   
     <requirements>
       <requirement type="package" version="2.7.18">python</requirement>

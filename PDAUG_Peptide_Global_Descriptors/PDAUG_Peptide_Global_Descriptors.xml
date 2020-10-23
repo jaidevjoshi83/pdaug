@@ -1,4 +1,4 @@
-<tool id="pdaug_peptide_global_descriptors" name="PDAUG_Peptide Global Descriptors" version="0.1.0">
+<tool id="pdaug_peptide_global_descriptors" name="PDAUG Peptide Global Descriptors" version="0.1.0">
   <description>Calculates global descriptors of the peptide sequence</description>
 
   <requirements>
