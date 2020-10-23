@@ -2,10 +2,12 @@
 	<description> Machne learning modeling </description>
 
     <requirements>
-      <requirement type="package" version="3.1.2">matplotlib</requirement>
+
+      <requirement type="package" version="4.10.0">plotly</requirement>
       <requirement type="package" version="3.6">python</requirement>
       <requirement type="package" version="0.25.3">pandas</requirement>
       <requirement type="package" version="0.22.1">scikit-learn</requirement>
+       <requirement type="package" version="1.5.2">scipy</requirement>
     </requirements>
 
     <command detect_errors="exit_code"><![CDATA[
@@ -616,71 +618,81 @@
  
 
     <tests>
+
       <test>
         <param name="input1" value="test.tsv"/>
         <param name="MLAlgo" value="SVMC" />
         <param name="scalling" value="Min_Max"/>
-        <output name="output1" file="test1/report_dir/out.tsv"/>
-        <output name="output2" file="test1/report_dir/report.html"/>
-       </test>
+        <output name="output1" file="test1/report_dir/SVMC.tsv" lines_diff="2"/>
+        <output name="output2" file="test1/report_dir/SVMC.html" lines_diff="2" />
+       </test> 
+
+       <test>
+        <param name="input1" value="test.tsv"/>
+        <param name="MLAlgo" value="GNBC" />
+        <param name="scalling" value="Min_Max"/>
+        <output name="output1" file="test2/GNBC.tsv" lines_diff='2'/>
+        <output name="output2" file="test2/report_dir/GNBC.html" lines_diff='2'/>
+       </test>   
+
       <test>
         <param name="input1" value="test.tsv"/>
         <param name="MLAlgo" value="SGDC" />
         <param name="scalling" value="Min_Max"/>
-        <output name="output1" file="test2/out.tsv" lines_diff='2'/>
-        <output name="output2" file="test2/report_dir/report.html"/>
-       </test>      
+        <output name="output1" file="test3/SGDC.tsv" lines_diff='2'/>
+        <output name="output2" file="test3/report_dir/SGDC.html" lines_diff='2'/>
+       </test>  
+
       <test>
         <param name="input1" value="test.tsv"/>
         <param name="MLAlgo" value="DTC" />
         <param name="scalling" value="Min_Max"/>
-        <output name="output1" file="test3/out.tsv" lines_diff='2' />
-        <output name="output2" file="test3/report_dir/report.html"/>
+        <output name="output1" file="test4/DTC.tsv" lines_diff='2' />
+        <output name="output2" file="test4/report_dir/DTC.html" lines_diff='2'/>
       </test> 
+
       <test>
         <param name="input1" value="test.tsv"/>
         <param name="MLAlgo" value="GBC" />
         <param name="scalling" value="Min_Max"/>
-        <output name="output1" file="test4/out.tsv"  lines_diff='2' />
-        <output name="output2" file="test4/report_dir/report.html"/>
+        <output name="output1" file="test5/GBC.tsv"  lines_diff='2' />
+        <output name="output2" file="test5/report_dir/GBC.html" lines_diff='2'/>
        </test> 
+
        <test>
         <param name="input1" value="test.tsv"/>
         <param name="MLAlgo" value="RFC" />
         <param name="scalling" value="Min_Max"/>
-        <output name="output1" file="test5/out.tsv" lines_diff='2' />
-        <output name="output2" file="test5/report_dir/report.html"/>
+        <output name="output1" file="test6/RFC.tsv" lines_diff='2' />
+        <output name="output2" file="test6/report_dir/RFC.html" lines_diff='2'/>
        </test> 
+
       <test>
         <param name="input1" value="test.tsv"/>
         <param name="MLAlgo" value="LRC" />
         <param name="scalling" value="Min_Max"/>
-        <output name="output1" file="test6/out.tsv" lines_diff='2' />
-        <output name="output2" file="test6/report_dir/report.html"/>
+        <output name="output1" file="test7/LRC.tsv" lines_diff='2' />
+        <output name="output2" file="test7/report_dir/LRC.html" lines_diff='2'/>
     </test> 
+    
     <test>
         <param name="input1" value="test.tsv"/>
         <param name="MLAlgo" value="KNC" />
         <param name="scalling" value="Min_Max"/>
-        <output name="output1" file="test7/out.tsv" lines_diff='2'/>
-        <output name="output2" file="test7/report_dir/report.html"/>
-    </test> 
-    <test>
-        <param name="input1" value="test.tsv"/>
-        <param name="MLAlgo" value="GNBC" />
-        <param name="scalling" value="Min_Max"/>
-        <output name="output1" file="test8/out.tsv"  lines_diff='2' />
-        <output name="output2" file="test8/report_dir/report.html"/>
+        <output name="output1" file="test8/KNC.tsv" lines_diff='2'/>
+        <output name="output2" file="test8/report_dir/KNC.html" lines_diff='2'/>
     </test> 
 
     <test>
         <param name="input1" value="test.tsv"/>
         <param name="MLAlgo" value="MLP" />
         <param name="scalling" value="Min_Max"/>
-        <output name="output1" file="test9/out.tsv"  lines_diff='2' />
-        <output name="output2" file="test9/report_dir/report.html"/>
-    </test> 
-    </tests>
+        <output name="output1" file="test9/MLP.tsv" lines_diff='2'/>
+        <output name="output2" file="test9/report_dir/MLP.html" lines_diff='2'/>
+    </test>
+
+    </tests>  
+
 
 
     <help><![CDATA[

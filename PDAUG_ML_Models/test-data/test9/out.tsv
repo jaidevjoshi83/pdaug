@@ -1,2 +1,0 @@
-Algo	accuracy	presision	recall	f1	mean_auc
-MLP	0.862	0.866	0.863	0.862	0.927

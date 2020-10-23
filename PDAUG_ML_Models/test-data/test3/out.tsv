@@ -1,2 +1,0 @@
-Algo	accuracy	presision	recall	f1	mean_auc
-DTC	0.757	0.764	0.757	0.755	0.76

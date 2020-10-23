@@ -1,0 +1,2 @@
+Algo	accuracy	precision	recall	f1	mean_auc
+SGDC	0.697	0.826	0.697	0.628	0.9

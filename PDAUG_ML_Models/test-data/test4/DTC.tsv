@@ -1,0 +1,2 @@
+Algo	accuracy	precision	recall	f1	mean_auc
+DTC	0.997	0.997	0.997	0.997	0.993

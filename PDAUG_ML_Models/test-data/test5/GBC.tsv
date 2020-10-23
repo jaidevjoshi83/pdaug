@@ -1,0 +1,2 @@
+Algo	accuracy	precision	recall	f1	mean_auc
+GBC	0.998	0.998	0.998	0.998	0.995

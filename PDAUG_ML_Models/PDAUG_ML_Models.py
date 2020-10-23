@@ -1,9 +1,7 @@
-import matplotlib
-matplotlib.use('Agg')
+
 import numpy as np
 import sys,os
 from scipy import interp
-import pylab as pl
 import pandas as pd
 
 ###############################################################
@@ -27,57 +25,10 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.neural_network import MLPClassifier
 ###############################################################
 from itertools import cycle
-import matplotlib.image as mpimg
 ################################################################
 from sklearn.model_selection import train_test_split
 
-def HTML_Gen(html):
 
-    out_html = open(html,'w')             
-    part_1 =  """
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <title>Bootstrap Example</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <body>
-    <style>
-    div.container_1 {
-      width:600px;
-      margin: auto;
-     padding-right: 10; 
-    }
-    div.table {
-      width:600px;
-      margin: auto;
-     padding-right: 10; 
-    }
-    </style>
-    </head>
-    <div class="jumbotron text-center">
-      <h1> Machine Learning Algorithm Assessment Report </h1>
-    </div>
-    <div class="container">
-      <h2> ROC curve and result summary Graph </h2>
-      <div class="row">
-        <div class="col-sm-4">
-          <img src="2.png" alt="Smiley face" height="350" width="350">
-        </div>
-        <div class="col-sm-4">
-          <img src="out.png" alt="Smiley face" height="350" width="350">
-        </div>
-      </div>
-    </div>
-    </body>
-    </html>
-    """ 
-    out_html.write(part_1)
-    out_html.close()
 
 def ReturnData(TrainFile,  TestMethod, TestFile=None):
     
@@ -186,20 +137,10 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
         recall_mean = round(float(sum(recall_l)/float(len(recall_l))),3)
         f_score_mean = round(float(sum(f_score_l )/float(len(f_score_l ))),3)
 
-        pl.figure()
 
         mean_tpr /= folds.get_n_splits(X, y)
         mean_tpr[-1] = 1.0
         mean_auc = auc(mean_fpr, mean_tpr)
-
-        pl.plot(mean_fpr, mean_tpr, '-', color='red',label='AUC = %0.2f' % mean_auc, lw=2)
-
-        pl.xlim([0.0, 1.0])
-        pl.ylim([0.0, 1.05])
-        pl.xlabel('False Positive Rate')
-        pl.ylabel('True Positive Rate')
-        pl.title('ROC Cureve')
-        pl.legend(loc="lower right")
 
         ########################################################################################################################################
         V_header = ["Algo","accuracy","precision","recall","f1","mean_auc"]                                                                           #
@@ -208,13 +149,30 @@ def Fit_Model(TrainData, Test_Method, Algo, Selected_Sclaer,  Workdirpath,  html
 
         df = pd.DataFrame([v_values], columns=V_header)
         df.to_csv(os.path.join(Workdirpath, OutFile), columns=V_header, sep='\t', index=None)
-        pl.savefig(os.path.join(Workdirpath, htmlOutDir, "out.png"))
-        pl.figure()
-        pl.bar(V_header[1:], v_values[1:], color=(0.2, 0.4, 0.6, 0.6))
-        pl.xlabel('Accuracy Perameters', fontweight='bold', color = 'orange', fontsize='17', horizontalalignment='center')
-        pl.savefig(os.path.join(Workdirpath, htmlOutDir, "2.png"))
-        #pl.show()
-        HTML_Gen(os.path.join(Workdirpath, htmlOutDir, htmlFname))
+
+        ############################################################
+        from plotly.subplots import make_subplots
+        import plotly.graph_objects as go
+
+        fig = make_subplots(
+            rows=1, cols=2,
+            specs=[[{"type": "xy"}, {"type": "scatter"}],], subplot_titles=("Algorithm performance", " ROC curve (AUC Score = %0.2f" % mean_auc+')'), 
+
+        )
+
+        fig.add_trace( go.Bar(x=V_header[1:], y=v_values[1:],marker_color=['#F58518','#109618','#E45756','#1F77B4','#19D3F3']), row=1, col=1)
+
+        print (mean_fpr, mean_tpr)
+
+        fig.add_trace(go.Scatter(x=mean_fpr, y=mean_tpr), row=1, col=2)
+        fig.update_yaxes(title_text="True Positive Rate", range=[0, 1], row=1, col=2)
+        fig.update_xaxes(title_text="False Positive Rate", range=[0, 1], row=1, col=2)
+        fig.update_yaxes(title_text="Score", range=[0, 1], row=1, col=1)
+        fig.update_xaxes(title_text="Performance measures",row=1, col=1)
+        fig.update_layout(height=700, showlegend=False, title="Machine ")
+        fig.write_html(os.path.join(Workdirpath, htmlOutDir, htmlFname))
+
+        ############################################################
 
     elif Test_Method == 'External':
 

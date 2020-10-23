@@ -1,0 +1,2 @@
+Algo	accuracy	precision	recall	f1	mean_auc
+RFC	0.5	0.25	0.5	0.333	0.5

@@ -1,0 +1,2 @@
+Algo	accuracy	precision	recall	f1	mean_auc
+MLP	0.999	0.999	0.999	0.999	0.995
