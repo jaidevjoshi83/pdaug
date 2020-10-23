@@ -1,5 +1,5 @@
 <tool id="pdaug_ml_models" name="PDAUG ML Models" version="0.1.0" python_template_version="3.6">
-	<description> Machne learning modeling </description>
+	<description> Machine learning modeling </description>
 
     <requirements>
 

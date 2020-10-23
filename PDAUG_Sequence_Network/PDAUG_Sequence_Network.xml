@@ -1,5 +1,5 @@
 <tool id="pdaug_sequence_similarity_network" name="PDAUG Sequence Similarity Network" version="0.1.0" python_template_version="3.6">
-	<description>Generates sequence similarity network</description>
+	<description>Generates a sequence similarity network</description>
 
     <requirements>
       <requirement type="package" version="0.12.0">python-Levenshtein</requirement>

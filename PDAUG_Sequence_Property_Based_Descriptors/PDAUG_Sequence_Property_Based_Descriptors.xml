@@ -1,5 +1,5 @@
 <tool id="pdaug_sequence_property_based_descriptors" name="PDAUG Sequence Property Based Descriptors" version="0.1.0">
-  <description>Calculates sequence-based descriptors of the peptide sequences</description>
+  <description>Calculates sequence based descriptors of the peptide sequences</description>
 
   <requirements>
     <requirement type="package" version="2.7.18">python</requirement>
