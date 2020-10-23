@@ -38,7 +38,7 @@
   <tests>
     <test>
       <param name="InFile" value="test.fasta"/>
-      <param name="GlocalDescriptor" value="All" />
+      <param name="GlobalDescriptor" value="All" />
       <param name="ph" value="7.0"/>
       <param name="amide" value="False"/>
       <output name="output1" value="out.tsv"/> 
