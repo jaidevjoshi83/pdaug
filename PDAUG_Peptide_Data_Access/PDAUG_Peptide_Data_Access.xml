@@ -4,28 +4,56 @@
   <requirements>
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="8.0.21">mysql-connector-python</requirement>
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/PDAUG_Peptide_Data_Access.py' -d '$DataBaseType' -o '$output1'
+        python '$__tool_directory__/PDAUG_Peptide_Data_Access.py' -d '$SelectDatasets.DataBaseType' -o '$output1'
+
+            #if $SelectDatasets.DataBaseType == "query_apd"
+                -L $SelectDatasets.list1 
+            #end if
+
+            #if $SelectDatasets.DataBaseType == "query_camp"
+                -L $SelectDatasets.list2 
+            #end if            
                   
     ]]></command>
 
 
   <inputs>
-    <param name="DataBaseType" type="select" label="Datasets"   argument="--DataBaseType" help="Name of the data set.">   
-                <option value="AMPvsTM" selected="true" > AMPvsTM </option>
-                <option value="AMPvsUniProt" > AMPvsUniProt </option>
-                <option value="ACPvsTM"> ACPvsTM </option>
-                <option value="ACPvsRandom"> ACPvsRandom </option>
-   </param> 
+
+    <conditional name="SelectDatasets">
+
+      <param name="DataBaseType" type="select" label="Datasets"   argument="--DataBaseType" help="Name of the data set.">   
+          <option value="AMPvsTM" selected="true" > AMPvsTM </option>
+          <option value="AMPvsUniProt" > AMPvsUniProt </option>
+          <option value="ACPvsTM"> ACPvsTM </option>
+          <option value="ACPvsRandom"> ACPvsRandom </option>
+          <option value="query_apd"> Query APD Database</option>
+          <option value="query_camp" > Query CAMP Database </option>
+      </param> 
+
+
+
+       <when value="query_apd">
+          <param name="list1" type='text' argument="-List" label="List of integers as IDs" help="List of integers as IDs" />
+       </when>
+
+       <when value="query_camp">
+          <param name="list2" type='text' argument="-List" label="List of integers as IDs" help="List of integers as IDs" />
+        </when>
+
+      </conditional>
+
+
   </inputs>
 
   <outputs>
-        <data name='output1' format='tabular' label="${tool.name} $on_string - ${DataBaseType} (tabular)" />    
+        <data name='output1' format='tabular' label="${tool.name} $on_string - ${SelectDatasets.DataBaseType} (tabular)" />    
   </outputs>
 
   <tests>
@@ -33,6 +61,20 @@
       <param name="DataBaseType" value="AMPvsTM"/>
       <output name="output1" file="out.tsv"/>
     </test>
+
+    <test>
+      <param name="DataBaseType" value="query_apd"/>
+      <param name="list1" value="4,5,6" />
+      <output name="output1" file="apd.tsv"/>
+    </test>
+
+    <test>
+      <param name="DataBaseType" value="query_camp"/>
+       <param name="list2" value="3,4,5,9" />
+      <output name="output1" file="camp.tsv"/>
+    </test>
+
+
   </tests>
   
     <help><![CDATA[
