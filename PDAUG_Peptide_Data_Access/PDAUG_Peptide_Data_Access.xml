@@ -65,13 +65,13 @@
     <test>
       <param name="DataBaseType" value="query_apd"/>
       <param name="list1" value="4,5,6" />
-      <output name="output1" file="apd.tsv"/>
+      <output name="output1" file="apd.tsv" lines_diff="8"/>
     </test>
 
     <test>
       <param name="DataBaseType" value="query_camp"/>
        <param name="list2" value="3,4,5,9" />
-      <output name="output1" file="camp.tsv"/>
+      <output name="output1" file="camp.tsv" lines_diff="10"/>
     </test>
 
 
