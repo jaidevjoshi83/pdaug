@@ -108,8 +108,8 @@
         <when value="PlotSummary">
             <param name="input1" type="data" format="fasta"  argument= "--InFile1" label="First input file" help="Input fasta file with Peptides"/>
             <param name="input2" type="data" format="fasta" argument= "--InFile2" label="Second input file" help="Input fasta file with Peptides"/>
-            <param name="Pep1name" type="text" value="First data set" label="Second input file" help="Input fasta file with Peptides"/>
-            <param name="Pep2name" type="text" value="Second data set"  label="Second input file" help="Input fasta file with Peptides"/>
+            <param name="Pep1name" type="text" value="First data set" label="Name of the first dataset" help="Input fasta file with Peptides"/>
+            <param name="Pep2name" type="text" value="Second data set"  label="Name of the second dataset" help="Input fasta file with Peptides"/>
         </when>
     </conditional>
   </inputs>

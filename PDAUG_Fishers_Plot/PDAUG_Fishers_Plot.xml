@@ -19,8 +19,8 @@
       <param name="windows_per_frame" type="integer" value="5" label="Windows per frame" argument="--windows_per_frame" help="" />
       <param name="xlabel" type="text"  label="X-label" value="Mean volume" argument="--xlabel" help="Description of x label" />
       <param name="ylabel" type="text"  label="Y-label" value="Mean hydropathy" argument="--ylabel" help="Description of y label" />
-      <param name="pop1_label" type="text" label="Lebel for first population" value="amyloids" argument="--pop1_label" help="Lebel for first set of peptide sequences" />
-      <param name="pop2_label" type="text" label="Label for second population" value="non amyloids" argument="--pop2_label" help="Lebel for second set of peptide sequences" />
+      <param name="pop1_label" type="text" label="Label for first population" value="amyloids" argument="--pop1_label" help="Label for first set of peptide sequences" />
+      <param name="pop2_label" type="text" label="Label for second population" value="non amyloids" argument="--pop2_label" help="Label for second set of peptide sequences" />
     </inputs>
 
     <outputs>   
