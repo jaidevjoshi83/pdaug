@@ -1,4 +1,4 @@
-<tool id="padaug_peptide_sequence_analysis" name="PDAUG Peptide Sequence Analysis" version="0.1.0">
+<tool id="pdaug_peptide_sequence_analysis" name="PDAUG Peptide Sequence Analysis" version="0.1.0">
   <description>Peptide sequence analysis</description>
 
   <requirements>
