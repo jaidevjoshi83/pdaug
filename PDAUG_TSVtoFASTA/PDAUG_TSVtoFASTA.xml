@@ -33,11 +33,11 @@
   </inputs>
 
   <outputs>
-    <data name='OutFile1' format='fasta' label="${tool.name} on $on_string - first data file (fasta)" >  
+    <data name='OutFile1' format='fasta' label="${tool.name} on $on_string - first (fasta)" >  
        <filter>Method == "WithClassLabel"</filter>
     </data>
 
-    <data name='OutFile2' format='fasta' label="${tool.name} on $on_string - second data file (fasta)">   
+    <data name='OutFile2' format='fasta' label="${tool.name} on $on_string - second (fasta)">   
        <filter>Method == "WithClassLabel"</filter>
     </data>
 
