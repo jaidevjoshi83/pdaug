@@ -16,12 +16,12 @@
               --InFile '$InFile'
 
               #if $SelCoreFunction.CoreFunction == 'mutateAA'
-                  --nr $SelCoreFunction.nr
-                  --Prob $SelCoreFunction.prob
+                  --nr '$SelCoreFunction.nr'
+                  --Prob '$SelCoreFunction.prob'
               #end if 
 
               #if $SelCoreFunction.CoreFunction == 'filteraa'
-                  --FilterAA $SelCoreFunction.FilterAA
+                  --FilterAA '$SelCoreFunction.FilterAA'
               #end if 
 
               --FastOut '$output1'

@@ -20,27 +20,27 @@
         python $__tool_directory__/PDAUG_Peptide_CD_Spectral_Analysis.py  '$SelMethods.Methods' 
 
             #if $SelMethods.Methods == 'calc_ellipticity'
-               -T $SelMethods.ellipticity
-               -H temp
-               -Wn $SelMethods.Wn
-               -Wx $SelMethods.Wx
-               -A $SelMethods.Amide
-               -P $SelMethods.Pathlen
-               -O $output2
+               -T '$SelMethods.ellipticity'
+               -H 'temp'
+               -Wn '$SelMethods.Wn'
+               -Wx '$SelMethods.Wx'
+               -A '$SelMethods.Amide'
+               -P '$SelMethods.Pathlen'
+               -O '$output2'
             #end if 
 
             #if $SelMethods.Methods == 'PlotData'
                -T '$SelMethods.ellipticity'
-               -H temp
-               -Wn $SelMethods.Wn
-               -Wx $SelMethods.Wx
-               -A $SelMethods.Amide
-               -P $SelMethods.Pathlen
+               -H 'temp'
+               -Wn '$SelMethods.Wn'
+               -Wx '$SelMethods.Wx'
+               -A '$SelMethods.Amide'
+               -P '$SelMethods.Pathlen'
             #end if 
 
             #if $SelMethods.Methods == 'Dichroweb'
                -T '$SelMethods.ellipticity'
-               -H temp
+               -H 'temp'
                -Wn '$SelMethods.Wn'
                -Wx '$SelMethods.Wx'
                -A '$SelMethods.Amide'
@@ -48,7 +48,7 @@
             #end if
 
             #if $SelMethods.Methods == 'helicity'
-               -H temp
+               -H 'temp'
                -Wn '$SelMethods.Wn'
                -Wx '$SelMethods.Wx'
                -A '$SelMethods.Amide'

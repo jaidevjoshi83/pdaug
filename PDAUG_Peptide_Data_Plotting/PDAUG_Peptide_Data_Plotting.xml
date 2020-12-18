@@ -14,25 +14,25 @@
         python '$__tool_directory__/PDAUG_Peptide_Data_Plotting.py'  '$SelPlot.Plot'
 
             #if $SelPlot.Plot == 'HelWhl'
-              --InFile $InFile
-              --colorcoding $SelPlot.colorcoding
-              --lineweights $SelPlot.lineweights
-              --seq $SelPlot.seq
-              --movment $SelPlot.movment 
+              --InFile '$InFile'
+              --colorcoding '$SelPlot.colorcoding'
+              --lineweights '$SelPlot.lineweights'
+              --seq '$SelPlot.seq'
+              --movment '$SelPlot.movment'
             #end if 
 
             #if $SelPlot.Plot == 'PltPde'
-              --InFile $InFile
-              --ClmList $SelPlot.ClmList
+              --InFile '$InFile'
+              --ClmList '$SelPlot.ClmList'
             #end if 
 
             #if $SelPlot.Plot == 'PltVio'
-              --InFile $InFile
-              --ClmList $SelPlot.ClmList
+              --InFile '$InFile'
+              --ClmList '$SelPlot.ClmList'
             #end if 
 
             #if $SelPlot.Plot == 'PltAaDis'
-              --InFile $InFile
+              --InFile '$InFile'
             #end if 
 
             --OutFile 'out.png'
