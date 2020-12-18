@@ -7,7 +7,7 @@ Peptide Design and Analysis Under Galaxy (PDAUG) package, a Galaxy based python 
 
 # Prebuild Docker Image 
 
-A prebuild build docker image can be obtained by the link bellow for a quick installation. 
+A prebuild build docker image based on the recent galaxy release can be obtained by the link below for a quick installation. 
 
  - [Docker Image](https://github.com/jaidevjoshi83/docker_pdaug)
 
