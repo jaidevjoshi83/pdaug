@@ -16,8 +16,8 @@
 
                         #if $SelMLAlgo.MLAlgo == 'SVMC'
                             #if $SelMLAlgo.settings.advanced == "advanced"
-                                --cache_size $SelMLAlgo.settings.cache_size
-                                --C $SelMLAlgo.settings.C
+                                --cache_size '$SelMLAlgo.settings.cache_size'
+                                --C '$SelMLAlgo.settings.C'
                                 --kernel '$SelMLAlgo.settings.kernel'
                                 --degree '$SelMLAlgo.settings.degree'
                                 --gamma '$SelMLAlgo.settings.gamma'
@@ -35,172 +35,172 @@
 
                         #if $SelMLAlgo.MLAlgo == 'SGDC'
                             #if $SelMLAlgo.settings.advanced == "advanced"
-                               --loss $SelMLAlgo.settings.loss
-                               --penalty $SelMLAlgo.settings.penalty
-                               --alpha $SelMLAlgo.settings.alpha
-                               --l1_ratio $SelMLAlgo.settings.l1_ratio
-                               --fit_intercept $SelMLAlgo.settings.fit_intercept
-                               --max_iter $SelMLAlgo.settings.max_iter
-                               --tol $SelMLAlgo.settings.tol
-                               --shuffle $SelMLAlgo.settings.shuffle
-                               --verbose $SelMLAlgo.settings.verbose
-                               --epsilon $SelMLAlgo.settings.epsilon
-                               --n_jobs $SelMLAlgo.settings.n_jobs
-                               --random_state $SelMLAlgo.settings.random_state
-                               --learning_rate $SelMLAlgo.settings.learning_rate
-                               --eta0 $SelMLAlgo.settings.eta0
-                               --power_t $SelMLAlgo.settings.power_t
-                               --early_stopping $SelMLAlgo.settings.early_stopping
-                               --validation_fraction $SelMLAlgo.settings.validation_fraction
-                               --n_iter_no_change $SelMLAlgo.settings.n_iter_no_change
-                               --warm_start $SelMLAlgo.settings.warm_start
-                               --average $SelMLAlgo.settings.average
+                               --loss '$SelMLAlgo.settings.loss'
+                               --penalty '$SelMLAlgo.settings.penalty'
+                               --alpha '$SelMLAlgo.settings.alpha'
+                               --l1_ratio '$SelMLAlgo.settings.l1_ratio'
+                               --fit_intercept '$SelMLAlgo.settings.fit_intercept'
+                               --max_iter '$SelMLAlgo.settings.max_iter'
+                               --tol '$SelMLAlgo.settings.tol'
+                               --shuffle '$SelMLAlgo.settings.shuffle'
+                               --verbose '$SelMLAlgo.settings.verbose'
+                               --epsilon '$SelMLAlgo.settings.epsilon'
+                               --n_jobs '$SelMLAlgo.settings.n_jobs'
+                               --random_state '$SelMLAlgo.settings.random_state'
+                               --learning_rate '$SelMLAlgo.settings.learning_rate'
+                               --eta0 '$SelMLAlgo.settings.eta0'
+                               --power_t '$SelMLAlgo.settings.power_t'
+                               --early_stopping '$SelMLAlgo.settings.early_stopping'
+                               --validation_fraction '$SelMLAlgo.settings.validation_fraction'
+                               --n_iter_no_change '$SelMLAlgo.settings.n_iter_no_change'
+                               --warm_start '$SelMLAlgo.settings.warm_start'
+                               --average '$SelMLAlgo.settings.average'
 
                             #end if
                         #end if 
 
                         #if $SelMLAlgo.MLAlgo == 'DTC'
                             #if $SelMLAlgo.settings.advanced == "advanced"
-                                --criterion $SelMLAlgo.settings.criterion
-                                --splitter $SelMLAlgo.settings.splitter
-                                --max_depth $SelMLAlgo.settings.max_depth
-                                --min_samples_split $SelMLAlgo.settings.min_samples_split
-                                --min_samples_leaf $SelMLAlgo.settings.min_samples_leaf
-                                --min_weight_fraction_leaf $SelMLAlgo.settings.min_weight_fraction_leaf
-                                --max_features $SelMLAlgo.settings.max_features
-                                --random_state $SelMLAlgo.settings.random_state
-                                --max_leaf_nodes $SelMLAlgo.settings.max_leaf_nodes
-                                --min_impurity_decrease $SelMLAlgo.settings.min_impurity_decrease
-                                --min_impurity_split $SelMLAlgo.settings.min_impurity_split
-                                --presort $SelMLAlgo.settings.presort
-                                --ccpalpha $SelMLAlgo.settings.ccpalpha
+                                --criterion '$SelMLAlgo.settings.criterion'
+                                --splitter '$SelMLAlgo.settings.splitter'
+                                --max_depth '$SelMLAlgo.settings.max_depth'
+                                --min_samples_split '$SelMLAlgo.settings.min_samples_split'
+                                --min_samples_leaf '$SelMLAlgo.settings.min_samples_leaf'
+                                --min_weight_fraction_leaf '$SelMLAlgo.settings.min_weight_fraction_leaf'
+                                --max_features '$SelMLAlgo.settings.max_features'
+                                --random_state '$SelMLAlgo.settings.random_state'
+                                --max_leaf_nodes '$SelMLAlgo.settings.max_leaf_nodes'
+                                --min_impurity_decrease '$SelMLAlgo.settings.min_impurity_decrease'
+                                --min_impurity_split '$SelMLAlgo.settings.min_impurity_split'
+                                --presort '$SelMLAlgo.settings.presort'
+                                --ccpalpha '$SelMLAlgo.settings.ccpalpha'
                             #end if
                         #end if 
 
 
                          #if $SelMLAlgo.MLAlgo == 'GBC'
                             #if $SelMLAlgo.settings.advanced == "advanced"
-                                --loss $SelMLAlgo.settings.loss
-                                --learning_rate $SelMLAlgo.settings.learning_rate
-                                --n_estimators $SelMLAlgo.settings.n_estimators
-                                --subsample $SelMLAlgo.settings.subsample
-                                --criterion $SelMLAlgo.settings.criterion
-                                --min_samples_split $SelMLAlgo.settings.min_samples_split
-                                --min_samples_leaf $SelMLAlgo.settings.min_samples_leaf
-                                --min_weight_fraction_leaf $SelMLAlgo.settings.min_weight_fraction_leaf
-                                --max_depth $SelMLAlgo.settings.max_depth
-                                --min_impurity_decrease $SelMLAlgo.settings.min_impurity_decrease
-                                --min_impurity_split $SelMLAlgo.settings.min_impurity_split
-                                --init $SelMLAlgo.settings.init
-                                --random_state $SelMLAlgo.settings.random_state
-                                --max_features $SelMLAlgo.settings.max_features
-                                --verbose $SelMLAlgo.settings.verbose
-                                --max_leaf_nodes $SelMLAlgo.settings.max_leaf_nodes
-                                --warm_start $SelMLAlgo.settings.warm_start
-                                --presort $SelMLAlgo.settings.presort
-                                --validation_fraction $SelMLAlgo.settings.validation_fraction
-                                --n_iter_no_change $SelMLAlgo.settings.n_iter_no_change
-                                --tol $SelMLAlgo.settings.tol
-                                --ccpalpha $SelMLAlgo.settings.ccpalpha
+                                --loss '$SelMLAlgo.settings.loss'
+                                --learning_rate '$SelMLAlgo.settings.learning_rate'
+                                --n_estimators '$SelMLAlgo.settings.n_estimators'
+                                --subsample '$SelMLAlgo.settings.subsample'
+                                --criterion '$SelMLAlgo.settings.criterion'
+                                --min_samples_split '$SelMLAlgo.settings.min_samples_split
+                                --min_samples_leaf '$SelMLAlgo.settings.min_samples_leaf''
+                                --min_weight_fraction_leaf '$SelMLAlgo.settings.min_weight_fraction_leaf'
+                                --max_depth '$SelMLAlgo.settings.max_depth'
+                                --min_impurity_decrease '$SelMLAlgo.settings.min_impurity_decrease'
+                                --min_impurity_split '$SelMLAlgo.settings.min_impurity_split'
+                                --init '$SelMLAlgo.settings.init'
+                                --random_state '$SelMLAlgo.settings.random_state'
+                                --max_features '$SelMLAlgo.settings.max_features'
+                                --verbose '$SelMLAlgo.settings.verbose'
+                                --max_leaf_nodes '$SelMLAlgo.settings.max_leaf_nodes'
+                                --warm_start '$SelMLAlgo.settings.warm_start'
+                                --presort '$SelMLAlgo.settings.presort'
+                                --validation_fraction '$SelMLAlgo.settings.validation_fraction'
+                                --n_iter_no_change '$SelMLAlgo.settings.n_iter_no_change'
+                                --tol '$SelMLAlgo.settings.tol'
+                                --ccpalpha '$SelMLAlgo.settings.ccpalpha'
                             #end if
                         #end if 
 
                         #if $SelMLAlgo.MLAlgo == 'RFC'
                             #if $SelMLAlgo.settings.advanced == "advanced"
-                                --n_estimators $SelMLAlgo.settings.n_estimators
-                                --criterion $SelMLAlgo.settings.criterion
-                                --max_depth $SelMLAlgo.settings.max_depth
-                                --min_samples_split $SelMLAlgo.settings.min_samples_split
-                                --min_samples_leaf $SelMLAlgo.settings.min_samples_leaf
-                                --min_weight_fraction_leaf $SelMLAlgo.settings.min_weight_fraction_leaf
-                                --max_features $SelMLAlgo.settings.max_features
-                                --max_leaf_nodes $SelMLAlgo.settings.max_leaf_nodes
-                                --min_impurity_decrease $SelMLAlgo.settings.min_impurity_decrease
-                                --min_impurity_split $SelMLAlgo.settings.min_impurity_split
-                                --bootstrap $SelMLAlgo.settings.bootstrap
-                                --oob_score $SelMLAlgo.settings.oob_score
-                                --n_jobs $SelMLAlgo.settings.n_jobs
-                                --random_state $SelMLAlgo.settings.random_state
-                                --verbose $SelMLAlgo.settings.verbose
-                                --warm_start $SelMLAlgo.settings.warm_start
-                                --ccp_alpha $SelMLAlgo.settings.ccp_alpha
-                                --max_samples $SelMLAlgo.settings.max_samples
+                                --n_estimators '$SelMLAlgo.settings.n_estimators'
+                                --criterion '$SelMLAlgo.settings.criterion'
+                                --max_depth '$SelMLAlgo.settings.max_depth'
+                                --min_samples_split '$SelMLAlgo.settings.min_samples_split'
+                                --min_samples_leaf '$SelMLAlgo.settings.min_samples_leaf'
+                                --min_weight_fraction_leaf '$SelMLAlgo.settings.min_weight_fraction_leaf'
+                                --max_features '$SelMLAlgo.settings.max_features'
+                                --max_leaf_nodes '$SelMLAlgo.settings.max_leaf_nodes'
+                                --min_impurity_decrease '$SelMLAlgo.settings.min_impurity_decrease'
+                                --min_impurity_split '$SelMLAlgo.settings.min_impurity_split'
+                                --bootstrap '$SelMLAlgo.settings.bootstrap'
+                                --oob_score '$SelMLAlgo.settings.oob_score'
+                                --n_jobs '$SelMLAlgo.settings.n_jobs'
+                                --random_state '$SelMLAlgo.settings.random_state'
+                                --verbose '$SelMLAlgo.settings.verbose'
+                                --warm_start '$SelMLAlgo.settings.warm_start'
+                                --ccp_alpha '$SelMLAlgo.settings.ccp_alpha'
+                                --max_samples '$SelMLAlgo.settings.max_samples'
                             #end if
                         #end if 
 
 
                         #if $SelMLAlgo.MLAlgo == 'LRC'
                             #if $SelMLAlgo.settings.advanced == "advanced"
-                                --penalty $SelMLAlgo.settings.penalty
-                                --dual $SelMLAlgo.settings.dual
-                                --tol $SelMLAlgo.settings.tol
-                                --C $SelMLAlgo.settings.C
-                                --fit_intercept $SelMLAlgo.settings.fit_intercept
-                                --intercept_scaling $SelMLAlgo.settings.intercept_scaling
-                                --random_state $SelMLAlgo.settings.random_state
-                                --solver $SelMLAlgo.settings.solver
-                                --max_iter $SelMLAlgo.settings.max_iter
-                                --multi_class $SelMLAlgo.settings.multi_class
-                                --verbose $SelMLAlgo.settings.verbose
-                                --warm_start $SelMLAlgo.settings.warm_start
-                                --n_jobs $SelMLAlgo.settings.n_jobs
-                                --l1_ratio $SelMLAlgo.settings.l1_ratio 
+                                --penalty '$SelMLAlgo.settings.penalty'
+                                --dual '$SelMLAlgo.settings.dual'
+                                --tol '$SelMLAlgo.settings.tol'
+                                --C '$SelMLAlgo.settings.C'
+                                --fit_intercept '$SelMLAlgo.settings.fit_intercept'
+                                --intercept_scaling '$SelMLAlgo.settings.intercept_scaling'
+                                --random_state '$SelMLAlgo.settings.random_state'
+                                --solver '$SelMLAlgo.settings.solver'
+                                --max_iter '$SelMLAlgo.settings.max_iter'
+                                --multi_class '$SelMLAlgo.settings.multi_class'
+                                --verbose '$SelMLAlgo.settings.verbose'
+                                --warm_start '$SelMLAlgo.settings.warm_start'
+                                --n_jobs '$SelMLAlgo.settings.n_jobs'
+                                --l1_ratio '$SelMLAlgo.settings.l1_ratio'
                             #end if
                         #end if 
 
                         #if $SelMLAlgo.MLAlgo == 'KNC'
                             #if $SelMLAlgo.settings.advanced == "advanced"
-                                --n_neighbors $SelMLAlgo.settings.n_neighbors
-                                --weights $SelMLAlgo.settings.weights
-                                --algorithm $SelMLAlgo.settings.algorithm
-                                --leaf_size $SelMLAlgo.settings.leaf_size
-                                --p $SelMLAlgo.settings.p
-                                --metric $SelMLAlgo.settings.metric
-                                --n_jobs $SelMLAlgo.settings.n_jobs
+                                --n_neighbors '$SelMLAlgo.settings.n_neighbors'
+                                --weights '$SelMLAlgo.settings.weights'
+                                --algorithm '$SelMLAlgo.settings.algorithm'
+                                --leaf_size '$SelMLAlgo.settings.leaf_size'
+                                --p '$SelMLAlgo.settings.p'
+                                --metric '$SelMLAlgo.settings.metric'
+                                --n_jobs '$SelMLAlgo.settings.n_jobs'
                             #end if
                         #end if 
 
                         #if $SelMLAlgo.MLAlgo == 'GNBC'
                             #if $SelMLAlgo.settings.advanced == "advanced"
-                                --var_smoothing $SelMLAlgo.settings.var_smoothing
+                                --var_smoothing '$SelMLAlgo.settings.var_smoothing'
                             #end if
                         #end if 
 
                         #if $SelMLAlgo.MLAlgo == 'MLP'
                             #if $SelMLAlgo.settings.advanced == "advanced"
-                                --hidden_layer_sizes $SelMLAlgo.settings.hidden_layer_sizes
-                                --activation $SelMLAlgo.settings.activation
-                                --solver $SelMLAlgo.settings.solver
-                                --alpha $SelMLAlgo.settings.alpha
-                                --batch_size $SelMLAlgo.settings.batch_size   
-                                --learning_rate $SelMLAlgo.settings.learning_rate     
-                                --learning_rate_init $SelMLAlgo.settings.learning_rate_init
-                                --power_t $SelMLAlgo.settings.power_t       
-                                --max_iter $SelMLAlgo.settings.max_iter            
-                                --shuffle $SelMLAlgo.settings.shuffle              
-                                --random_state $SelMLAlgo.settings.random_state           
-                                --tol $SelMLAlgo.settings.tol            
-                                --verbose $SelMLAlgo.settings.verbose             
-                                --warm_start $SelMLAlgo.settings.warm_start          
-                                --momentum $SelMLAlgo.settings.momentum         
-                                --nesterovs_momentum $SelMLAlgo.settings.nesterovs_momentum   
-                                --early_stopping $SelMLAlgo.settings.early_stopping  
-                                --validation_fraction $SelMLAlgo.settings.validation_fraction
-                                --beta_1 $SelMLAlgo.settings.beta_1        
-                                --beta_2 $SelMLAlgo.settings.beta_2    
-                                --epsilon $SelMLAlgo.settings.epsilon
-                                --n_iter_no_change $SelMLAlgo.settings.n_iter_no_change
-                                --max_fun $SelMLAlgo.settings.max_fun
-                                --TrainFile $SelMLAlgo.settings.TrainFile
-                                --TestMethod $SelMLAlgo.settings.TestMethod
-                                --SelectedSclaer $SelMLAlgo.settings.SelectedSclaer
-                                --NFolds $SelMLAlgo.settings.NFolds
-                                --Testspt $SelMLAlgo.settings.Testspt
-                                --TestFile $SelMLAlgo.settings.TestFile
-                                --OutFile $SelMLAlgo.settings.OutFile
-                                --htmlOutDir $SelMLAlgo.settings.htmlOutDir
-                                --htmlFname $SelMLAlgo.settings.htmlFname
-                                --Workdirpath $SelMLAlgo.settings.Workdirpath
+                                --hidden_layer_sizes '$SelMLAlgo.settings.hidden_layer_sizes'
+                                --activation '$SelMLAlgo.settings.activation'
+                                --solver '$SelMLAlgo.settings.solver'
+                                --alpha '$SelMLAlgo.settings.alpha'
+                                --batch_size '$SelMLAlgo.settings.batch_size'
+                                --learning_rate '$SelMLAlgo.settings.learning_rate'
+                                --learning_rate_init '$SelMLAlgo.settings.learning_rate_init'
+                                --power_t '$SelMLAlgo.settings.power_t'
+                                --max_iter '$SelMLAlgo.settings.max_iter'
+                                --shuffle '$SelMLAlgo.settings.shuffle'
+                                --random_state '$SelMLAlgo.settings.random_state'
+                                --tol '$SelMLAlgo.settings.tol'
+                                --verbose '$SelMLAlgo.settings.verbose'
+                                --warm_start '$SelMLAlgo.settings.warm_start'
+                                --momentum '$SelMLAlgo.settings.momentum'
+                                --nesterovs_momentum '$SelMLAlgo.settings.nesterovs_momentum'
+                                --early_stopping '$SelMLAlgo.settings.early_stopping'
+                                --validation_fraction '$SelMLAlgo.settings.validation_fraction'
+                                --beta_1 '$SelMLAlgo.settings.beta_1'
+                                --beta_2 '$SelMLAlgo.settings.beta_2'
+                                --epsilon '$SelMLAlgo.settings.epsilon'
+                                --n_iter_no_change '$SelMLAlgo.settings.n_iter_no_change'
+                                --max_fun '$SelMLAlgo.settings.max_fun'
+                                --TrainFile '$SelMLAlgo.settings.TrainFile'
+                                --TestMethod '$SelMLAlgo.settings.TestMethod'
+                                --SelectedSclaer '$SelMLAlgo.settings.SelectedSclaer'
+                                --NFolds '$SelMLAlgo.settings.NFolds'
+                                --Testspt '$SelMLAlgo.settings.Testspt'
+                                --TestFile '$SelMLAlgo.settings.TestFile'
+                                --OutFile '$SelMLAlgo.settings.OutFile'
+                                --htmlOutDir '$SelMLAlgo.settings.htmlOutDir'
+                                --htmlFname '$SelMLAlgo.settings.htmlFname'
+                                --Workdirpath '$SelMLAlgo.settings.Workdirpath'
                             #end if
                         #end if 
 

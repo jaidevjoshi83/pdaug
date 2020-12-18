@@ -14,11 +14,11 @@
         python '$__tool_directory__/PDAUG_Peptide_Data_Access.py' -d '$SelectDatasets.DataBaseType' -o '$output1'
 
             #if $SelectDatasets.DataBaseType == "query_apd"
-                -L $SelectDatasets.list1 
+                -L '$SelectDatasets.list1'
             #end if
 
             #if $SelectDatasets.DataBaseType == "query_camp"
-                -L $SelectDatasets.list2 
+                -L '$SelectDatasets.list2'
             #end if            
                   
     ]]></command>
