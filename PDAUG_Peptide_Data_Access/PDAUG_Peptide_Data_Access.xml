@@ -29,9 +29,9 @@
     <conditional name="SelectDatasets">
 
       <param name="DataBaseType" type="select" label="Datasets"   argument="--DataBaseType" help="Name of the data set.">   
-          <option value="AMPvsTM" selected="true" > AMPvsTM </option>
+          <option value="AMPvsTMP" selected="true" > AMPvsTMP </option>
           <option value="AMPvsUniProt" > AMPvsUniProt </option>
-          <option value="ACPvsTM"> ACPvsTM </option>
+          <option value="ACPvsTMP"> ACPvsTMP </option>
           <option value="ACPvsRandom"> ACPvsRandom </option>
           <option value="query_apd"> Query APD Database</option>
           <option value="query_camp" > Query CAMP Database </option>
@@ -58,8 +58,8 @@
 
   <tests>
     <test>
-      <param name="DataBaseType" value="AMPvsTM"/>
-      <output name="output1" file="out.tsv"/>
+      <param name="DataBaseType" value="AMPvsTMP"/>
+      <output name="output1" file="Out.tsv"/>
     </test>
 
     <test>

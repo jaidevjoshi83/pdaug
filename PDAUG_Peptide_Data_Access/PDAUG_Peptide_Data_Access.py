@@ -10,13 +10,13 @@ import pandas as pd
 
 def DataGen(DataBaseType, OutFile, IDs):
 
-    if DataBaseType == 'AMPvsTM':
+    if DataBaseType == 'AMPvsTMP':
         data = load_AMPvsTM()
 
     elif DataBaseType == 'AMPvsUniProt':
         data = load_AMPvsUniProt()
 
-    elif DataBaseType == 'ACPvsTM':
+    elif DataBaseType == 'ACPvsTMP':
         data = load_ACPvsTM()
 
     elif DataBaseType == 'ACPvsRandom':
@@ -39,16 +39,11 @@ def DataGen(DataBaseType, OutFile, IDs):
         print ("Enter Correct Values")
         exit()
 
-    Target = data.target.tolist()
-    Target_list = set(Target)
-    df = data.sequences
-
-
-    Target = pd.DataFrame(Target, columns=['Target'])
-    df = pd.DataFrame(df, columns=['Peptide'])
-    
-    df = pd.DataFrame(df)
-    df = pd.concat([df, Target], axis=1)
+    peptide_data = data.sequences
+    class_label = int(len(peptide_data)/2)*[data.target_names[0]]+int(len(peptide_data)/2)*[data.target_names[1]]
+    peptide_data = pd.DataFrame(peptide_data, columns=['name'])
+    class_label = pd.DataFrame(class_label, columns=['class_label'])
+    df = pd.concat([peptide_data,class_label], axis=1)
 
     df.to_csv(OutFile, index=False, sep='\t')
 
@@ -69,9 +64,9 @@ if __name__=="__main__":
                         help="Out put file name for str descriptors")   
 
     parser.add_argument("-L", "--List",
-    					required=False,
-    					default=None,
-    					help="List of integer as ID")
+                        required=False,
+                        default=None,
+                        help="List of integer as ID")
 
     args = parser.parse_args()
     DataGen(args.DataBaseType, args.OutFile, args.List)
