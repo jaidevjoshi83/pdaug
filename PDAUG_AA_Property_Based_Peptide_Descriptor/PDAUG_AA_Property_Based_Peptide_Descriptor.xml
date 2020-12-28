@@ -16,39 +16,39 @@
         				--InFile '$InFile'
 
                         #if $SelDescriptor.Descriptor == 'AutoCorrCal'
-                            --WindowSize $SelDescriptor.WindowSize
-                            --ScaleName $SelDescriptor.ScaleName
+                            --WindowSize '$SelDescriptor.WindowSize'
+                            --ScaleName '$SelDescriptor.ScaleName'
                         #end if 
 
                         #if $SelDescriptor.Descriptor == 'CrossCorrCal'
-                            --WindowSize $SelDescriptor.WindowSize
-                            --ScaleName $SelDescriptor.ScaleName                        
+                            --WindowSize '$SelDescriptor.WindowSize'
+                            --ScaleName '$SelDescriptor.ScaleName'
                         #end if 
 
                         #if $SelDescriptor.Descriptor == 'CalculateMovement'
-                            --WindowSize $SelDescriptor.WindowSize
-                            --Angle $SelDescriptor.Angle
-                            --Modality $SelDescriptor.Modality
-                            --ScaleName $SelDescriptor.ScaleName
+                            --WindowSize '$SelDescriptor.WindowSize'
+                            --Angle '$SelDescriptor.Angle'
+                            --Modality '$SelDescriptor.Modality'
+                            --ScaleName '$SelDescriptor.ScaleName'
                         #end if 
 
                         #if $SelDescriptor.Descriptor == 'GlobalCal'
-                            --WindowSize $SelDescriptor.WindowSize
-                            --Modality $SelDescriptor.Modality
-                            --ScaleName $SelDescriptor.ScaleName
+                            --WindowSize '$SelDescriptor.WindowSize'
+                            --Modality '$SelDescriptor.Modality'
+                            --ScaleName '$SelDescriptor.ScaleName'
                         #end if 
 
                         #if $SelDescriptor.Descriptor == 'ProfileCal'
-                            --ProfType $SelDescriptor.ProfType 
-                            --WindowSize $SelDescriptor.WindowSize
-                            --ScaleName $SelDescriptor.ScaleName
+                            --ProfType '$SelDescriptor.ProfType'
+                            --WindowSize '$SelDescriptor.WindowSize'
+                            --ScaleName '$SelDescriptor.ScaleName'
                         #end if 
 
                         #if $SelDescriptor.Descriptor == 'ArcCal'
-                            --Modality $SelDescriptor.Modality
+                            --Modality '$SelDescriptor.Modality'
                         #end if    
 
-                        --OutFile $output1
+                        --OutFile '$output1'
 
     ]]></command>
 
