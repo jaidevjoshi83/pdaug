@@ -21,14 +21,16 @@ def TSVtoFASTA(InFile, Method, Positive, Negative, OutFile):
             l.append(line.split('\t')[1].strip('\n').strip('\r'))
         l = list(set(l))
 
+        print(l)
+
         for line in lines:
 
-            if l[0] in line.split('\t')[1].strip('\n').strip('\r'):
+            if l[1] in line.split('\t')[1].strip('\n').strip('\r'):
                 n= n+1
                 of1.write('>peptide_'+str(n)+'_'+str(l[0])+'\n')
                 of1.write(line.split('\t')[0]+'\n')
 
-            if l[1] in line.split('\t')[1].strip('\n').strip('\r'):
+            if l[0] in line.split('\t')[1].strip('\n').strip('\r'):
                 m= m+1
                 of2.write('>peptide_'+str(m)+'_'+str(l[1])+'\n')
                 of2.write(line.split('\t')[0]+'\n')

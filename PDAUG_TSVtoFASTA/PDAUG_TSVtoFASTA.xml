@@ -49,8 +49,8 @@
     <test>
       <param name="InFile" value="test1.tsv"/>
       <param name="Method" value="WithClassLabel"/>
-      <output name="OutFile1" file="test1/Positive.fasta"/>
-      <output name="OutFile2" file="test1/Negative.fasta"/>
+      <output name="OutFile1" file="test1/FirstDataFile.fasta"/>
+      <output name="OutFile2" file="test1/SecondDataFile.fasta"/>
     </test>
     <test>
       <param name="InFile" value="test2.tsv"/>
