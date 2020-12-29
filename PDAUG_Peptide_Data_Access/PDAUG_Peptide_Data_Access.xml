@@ -84,10 +84,12 @@
 
 This tool returns inbuild peptide data sets. 
 
-  * **AMPvsTM**  This option returns Antimicrobial peptides and transmembrane sequences. 
-  * **AMPvsUniProt** This option returns AMPs from the APD3 and  other peptides from the UniProt database.
-  * **ACPvsTM**  This option returns anticancer peptides (CancerPPD) and helical transmembrane sequences.
-  * **ACPvsRandom**  This option returns anticancer peptides (CancerPPD) and random scrambled AMP sequences.
+  * **AMPvsTMP**  Antimicrobial peptides (AMP) consist of an intersection of all activity annotations of the APD2 and CAMP databases, where gram-positive, gram-negative, and antifungal exact matches were observed versus transmenbrane peptides (TMP) extracted from alpha-helical transmembrane regions of proteins for classification.
+  * **AMPvsUniProt** AMP consisting of the whole APD3 versus UniProt peptides randomly extracted from the UniProt database, to be used for classification.
+  * **ACPvsTMP**  Anticancer Peptide (ACP) sequences from the CancerPPD database  versus TM extracted from alpha-helical transmembrane regions of proteins for classification.
+  * **ACPvsRandom** ACP sequences from the CancerPPD database versus Random peptides generated randomly with the amino acid composition of AMPs.
+  * **query_apd** Retrive sequences from the antimicrobial peptide database APD.
+  * **query_camp** Retrive sequences from the antimicrobial peptide database CAMP.
 
 -----
 
