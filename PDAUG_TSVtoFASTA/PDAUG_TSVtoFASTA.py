@@ -1,64 +1,72 @@
-import os
-import argparse
+
+import pandas as pd
 
 
-def TSVtoFASTA(InFile, Method, Positive, Negative, OutFile):
+def TSVtoFASTA(infile, method, firstdatafile, seconddatafile, outfile, clmpepid, slcclasslabel, peps):
 
-    if Method == 'WithClassLabel':
 
-        f = open(InFile)
-        lines = f.readlines()
+    fn = [firstdatafile, seconddatafile]
 
-        of1 = open(Positive,'w')
-        of2 = open(Negative,'w')
 
-        n = 0
-        m = 0
-        
-        l = []
-
-        for line in lines[1:]:
-            l.append(line.split('\t')[1].strip('\n').strip('\r'))
-        l = list(set(l))
-
-        print(l)
-
-        for line in lines:
-
-            if l[1] in line.split('\t')[1].strip('\n').strip('\r'):
-                n= n+1
-                of1.write('>peptide_'+str(n)+'_'+str(l[1])+'\n')
-                of1.write(line.split('\t')[0]+'\n')
-
-            if l[0] in line.split('\t')[1].strip('\n').strip('\r'):
-                m= m+1
-                of2.write('>peptide_'+str(m)+'_'+str(l[0])+'\n')
-                of2.write(line.split('\t')[0]+'\n')
-
-    elif Method == 'NoClassLabel':
-
-        f = open(InFile)
-        lines = f.readlines()
-        of1 = open(OutFile,'w')
-
-        for i, line in enumerate(lines[1:]):
-            of1.write('>peptide_'+str(i)+'\n')
-            of1.write(line.split('\t')[0]+'\n')
-
-    else:
+    df = pd.read_csv(infile, sep="\t")
+    if clmpepid == None:
         pass
+    else:
+        names = df[clmpepid].tolist()
+
+    peps = df[peps].tolist()
+    
+    if method == "withoutlabel":
+        f = open(outfile,'w')
+        if clmpepid is not None:
+            for i,n in enumerate(peps):
+                f.write(">"+names[i]+'\n')
+                f.write(n+'\n')
+            f.close()
+        else:
+            for i,n in enumerate(peps):
+                f.write(">"+str(i)+'\n')
+                f.write(n+'\n')
+            f.close()
+                 
+    elif method == "withlabel":
+        labels = df[slcclasslabel].tolist()
+
+        label = list(set(labels))
+        
+        if clmpepid is None:
+            for i, l in enumerate(label):
+                f = open(fn[i],'w')
+                print('ok1')
+                for i, L in enumerate(labels):
+                    if l == L:
+                        f.write(">"+str(i)+"_"+str(l)+'\n')
+                        f.write(peps[i]+'\n')
+            f.close()
+        else:
+            for i, l in enumerate(label):
+                f = open(fn[i],'w')          
+                for i, L in enumerate(labels):
+                    if l == L:
+                        f.write(">"+names[i]+"_"+l+'\n')
+                        f.write(peps[i]+'\n')        
+            f.close()
 
 if __name__=="__main__":
 
     import argparse
-
     parser = argparse.ArgumentParser()
-
     parser.add_argument("-I", "--InFile", required=True, default=None, help=".fasta or .tsv")
-    parser.add_argument("-P", "--Postvs", required=False, default='FirstDataFile.fasta', help="Path to target tsv file")
-    parser.add_argument("-N", "--Negtvs", required=False, default='SecondDataFile.fasta', help="Path to target tsv file")
+    parser.add_argument("-F", "--FirstDataFile", required=False, default='FirstDataFile.fasta', help="Path to target tsv file")
+    parser.add_argument("-S", "--SecondDataFile", required=False, default='SecondDataFile.fasta', help="Path to target tsv file")
     parser.add_argument("-O", "--OutFile", required=False, default='OutFile.fasta', help="Path to target tsv file")
     parser.add_argument("-M", "--Method", required=True, default=None, help="Path to target tsv file")
+    parser.add_argument("-C", "--ClmPepID", required=False, default=None, help="Peptide Column Name")
+    parser.add_argument("-L", "--SlcClassLabel", required=False, default="Class_label", help="Class Label Column Name")
+    parser.add_argument("-P", "--PeptideColumn", required=True, default=None, help="Class Label Column Name")
     args = parser.parse_args()
 
-    TSVtoFASTA(args.InFile, args.Method, args.Postvs, args.Negtvs, args.OutFile)
+    TSVtoFASTA(args.InFile, args.Method, args.FirstDataFile, args.SecondDataFile, args.OutFile, args.ClmPepID, args.SlcClassLabel, args.PeptideColumn)
+
+
+

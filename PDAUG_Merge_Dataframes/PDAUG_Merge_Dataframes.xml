@@ -8,17 +8,47 @@
 
 
     <command detect_errors="exit_code"><![CDATA[
-        python $__tool_directory__/PDAUG_Merge_Dataframes.py '$input1' '$output1'
+        python $__tool_directory__/PDAUG_Merge_Dataframes.py -I '$input1' -O '$output1'
+
+            #if $selmethod.method == 'advance'
+              -L "True"
+              -C '$selmethod.classlabel'
+            #end if 
+
     ]]></command>
     <inputs>
-        <param type="data" name="input1" label="Input files" format="tabular" multiple="true" help="Input tabular data files"/>
+
+      <param type="data" name="input1" label="Input files" format="tabular" multiple="true" help="Input tabular data files"/>
+
+        <conditional name='selmethod' >
+          <param name="method" type="select" label="Option to merg data"  argument="--Method" help="Split file if class labels are present" >   
+            <option value="advance"> Merge data and add class labels</option>
+            <option value="default" selected="true" > Merge data without adding class labels</option>
+          </param> 
+
+          <when value="advance">
+            <param name="classlabel" type="text" label="Name the column for class label"  argument= "--SlcClassLabel" help="Select Class Label"/>
+          </when>
+
+          <when value="default">
+          </when>
+        </conditional>
     </inputs>
+
     <outputs>
         <data name='output1' label="${tool.name} on $on_string - (tabular)" format='tabular' />
     </outputs>
+
     <tests>
         <test>
-            <param name="input1" value="1.tsv,2.tsv,3.tsv,4.tsv,5.tsv,6.tsv"/>
+            <param name="method" value="advance"/>
+            <param name="classlabel" value="class_label" />
+            <param name="input1" value="1.tsv,2.tsv"/>
+            <output name="output1" file="out1.tsv" />
+        </test>
+        <test>
+            <param name="method" value="default" />
+            <param name="input1" value="1.tsv,2.tsv"/>
             <output name="output1" file="out.tsv" />
         </test>
     </tests>
@@ -32,12 +62,13 @@ This tool merges two data frames.
 -----
 
 **Inputs**
-    * Tabular data file (example input1.tsv and input2.tsv ).
+    * Tabular data file (example input1.tsv and input2.tsv).
+    * Option to merge data adds class label after merging the tabular data. 
 
 -----
 
 **Outputs**
-    * Returns merged tabular data file.
+    * Returns merged tabular data file with or without class labels.
 
 
 ]]></help>

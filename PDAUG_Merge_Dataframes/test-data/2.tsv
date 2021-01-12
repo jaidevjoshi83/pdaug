@@ -1,2 +1,2 @@
-Algo	accuracy	presision	recall	f1	mean_auc
-SVMC	0.608	0.781	0.608	0.537	0.608
+NAME	COL1	COL2	COL3	COL4	COL5
+2	15	10	12	5	3

@@ -3,60 +3,110 @@
   <description>Converts tabular peptide sequence data into fasta format</description>
 
   <requirements>
-    <requirement type="package" version="0.24.2">pandas</requirement>
-    <requirement type="package" version="4.1.2">modlamp</requirement> 
+    <requirement type="package" version="1.2.0">pandas</requirement>
   </requirements>
   <stdio>
     <exit_code range="1" level="fatal" />
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-            python '$__tool_directory__/PDAUG_TSVtoFASTA.py'  -I '$InFile' -M '$Method' 
+            python '$__tool_directory__/PDAUG_TSVtoFASTA.py'  -I '$infile' -P '$peps'
 
-            #if $Method == 'WithClassLabel'
-              -P '$OutFile1' 
-              -N '$OutFile2' 
-            #end if
+            #if $selmethod.method == 'withlabel'
+              #if $selmethod.advancefeature.columnselect == 'advancefeature'
+                --ClmPepID $selmethod.advancefeature.clmname
+              #end if 
+              --SlcClassLabel '$selmethod.classlabel'
+              -M '$selmethod.method'
+              -F '$output2' 
+              -S '$output3'
+            #end if 
 
-          #if $Method == 'NoClassLabel'
-              -O '$OutFile3'
-          #end if 
-   
+            #if $selmethod.method == 'withoutlabel'
+              #if $selmethod.advancefeature.columnselect == 'advancefeature'
+                --ClmPepID $selmethod.advancefeature.clmname
+              #end if 
+              -M '$selmethod.method'
+              -O '$output1'
+            #end if 
+
+            &&
+
+            ls
+
     ]]></command>
 
   <inputs>
-    <param name="InFile" type="data" label="Input file" format="tabular" argument= "--InFile1" help="Input tabular file"/>
-    <param name="Method" type="select" label="Data conversion"  argument="--Method" help="Split file if class labels are present" >   
-      <option value="WithClassLabel"> WithClassLabel </option>
-      <option value="NoClassLabel" selected="true" > NoClassLabel </option>
-    </param> 
+    <param name="infile" type="data" label="Peptide data" format="tabular" argument= "--InFile1" help="Input tabular file"/>
+    <param name="peps" type="text" label="Peptide Column" format="tabular" argument= "--InFile1" help="Input tabular file"/>
+
+    <conditional name='selmethod' >
+      <param name="method" type="select" label="Method to convert data"  argument="--Method" help="Split file if class labels are present" >   
+        <option value="withoutlabel"> Convert Without Split </option>
+        <option value="withlabel" selected="true" >Split Data By Class Label</option>
+      </param> 
+
+      <when value="withlabel">
+        <param name="classlabel" type="text" label="Column with the class label"  value="Class_label" argument= "--SlcClassLabel" help="Select Class Label"/>
+
+        <conditional name='advancefeature' >
+          <param name="columnselect" type="select" label="Peptide ID Column"  argument="--Method" help="Split file if class labels are present" >   
+           <option value="advancefeature" > Add Peptide ID Column Name </option>
+           <option value="normalfeature" selected="true"> No Peptide ID Column </option>
+          </param> 
+
+          <when value="advancefeature">
+            <param name="clmname" type="text" label="Column name with peptide IDs"  argument= "--ClmPepID" help="Select Peptide ID Column"/>
+          </when>
+        </conditional>
+      </when>
+
+      <when value="withoutlabel">
+        <conditional name='advancefeature' >
+          <param name="columnselect" type="select" label="Column name with peptide IDs"  argument="--Method" help="Split file if class labels are present" >   
+            <option value="advancefeature" > Add Peptide ID Column Name </option>
+            <option value="normalfeature" selected="true"> No Peptide ID Column </option>
+          </param> 
+
+          <when value="advancefeature">
+            <param name="clmname" type="text" label="Select Peptide ID Column"  argument= "--ClmPepID" help="Select Peptide ID Column"/>
+          </when>
+          
+        </conditional>
+      </when>
+    </conditional>
   </inputs>
 
   <outputs>
-    <data name='OutFile1' format='fasta' label="${tool.name} on $on_string - first (fasta)" >  
-       <filter>Method == "WithClassLabel"</filter>
+    <data name='output1' format='fasta' label="${tool.name} on $on_string - first (fasta)" >  
+       <filter>selmethod['method'] == "withoutlabel"</filter>
     </data>
 
-    <data name='OutFile2' format='fasta' label="${tool.name} on $on_string - second (fasta)">   
-       <filter>Method == "WithClassLabel"</filter>
+    <data name='output2' format='fasta' label="${tool.name} on $on_string - second (fasta)">   
+       <filter>selmethod['method'] == "withlabel"</filter>
     </data>
 
-    <data name='OutFile3' format='fasta' label="${tool.name} on $on_string - (fasta)" >
-      <filter>Method == "NoClassLabel"</filter>
+    <data name='output3' format='fasta' label="${tool.name} on $on_string - (fasta)" >
+      <filter>selmethod['method'] == "withlabel"</filter>
     </data>
   </outputs>
+
   <tests>
+ 
     <test>
-      <param name="InFile" value="test1.tsv"/>
-      <param name="Method" value="WithClassLabel"/>
-      <output name="OutFile1" file="test1/FirstDataFile.fasta"/>
-      <output name="OutFile2" file="test1/SecondDataFile.fasta"/>
+      <param name="infile" value="test.tsv"/>
+      <param name="method" value="withoutlabel" /> 
+      <param name="peps" value="Peptides" />
+      <param name="output2" file="out.fasta" />
     </test>
+
     <test>
-      <param name="InFile" value="test2.tsv"/>
-      <param name="Method" value="NoClassLabel"/>
-      <output name="OutFile3" file="test2/Out.fasta"/>
+      <param name="infile" value="test.tsv"/>
+      <param name="peps" value="Peptides" />
+      <param name="output2" file="1.fasta" />
+       <param name="output3" file="2.fasta" />
     </test>
+
   </tests>
     <help><![CDATA[
 .. class:: infomark
@@ -68,7 +118,13 @@ This tool converts tabular files into fasta file and split fasta file on the bas
 -----
 
 **Inputs**
-    * **--InFile** Takes input as Tabular file with or without label.
+    * **Method to convert data** Converts tabular data into fasta with or without splitting based on the availability of class labels.
+
+    * **Column with the class label** Enter the column name with the class labels. 
+
+    * **Peptide data** Enter the column name with peptides.
+
+    * **Peptide ID Column** Enter the column name with peptide IDs.
 
 -----
 
