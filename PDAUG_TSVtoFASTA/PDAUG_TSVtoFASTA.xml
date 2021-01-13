@@ -78,15 +78,15 @@
   </inputs>
 
   <outputs>
-    <data name='output1' format='fasta' label="${tool.name} on $on_string - first (fasta)" >  
+    <data name='output1' format='fasta' label="${tool.name} on $on_string -(fasta)" >  
        <filter>selmethod['method'] == "withoutlabel"</filter>
     </data>
 
-    <data name='output2' format='fasta' label="${tool.name} on $on_string - second (fasta)">   
+    <data name='output2' format='fasta' label="${tool.name} on $on_string - Second (fasta)">   
        <filter>selmethod['method'] == "withlabel"</filter>
     </data>
 
-    <data name='output3' format='fasta' label="${tool.name} on $on_string - (fasta)" >
+    <data name='output3' format='fasta' label="${tool.name} on $on_string - First (fasta)" >
       <filter>selmethod['method'] == "withlabel"</filter>
     </data>
   </outputs>
