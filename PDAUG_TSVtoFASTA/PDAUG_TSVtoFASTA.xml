@@ -38,7 +38,7 @@
 
   <inputs>
     <param name="infile" type="data" label="Peptide data" format="tabular" argument= "--InFile1" help="Input tabular file"/>
-    <param name="peps" type="text" label="Peptide Column" format="tabular" argument= "--InFile1" help="Input tabular file"/>
+    <param name="peps" type="text" label="Peptide Column" argument= "--PeptideColumn" help="Peptide Column Name"/>
 
     <conditional name='selmethod' >
       <param name="method" type="select" label="Method to convert data"  argument="--Method" help="Split file if class labels are present" >   
@@ -97,14 +97,16 @@
  
     <test>
       <param name="infile" value="test.tsv"/>
-      <param name="method" value="withoutlabel" /> 
+      <param name="method" value="withoutlabel" />
       <param name="peps" value="Peptides" />
-      <output name="output2" file="out.fasta" />
+      <output name="output1" file="out.fasta" />
     </test>
 
     <test>
       <param name="infile" value="test.tsv"/>
+      <param name="method" value="withlabel" />
       <param name="peps" value="Peptides" />
+      <param name="withlabel" value="Class_label" />
       <output name="output2" file="1.fasta" />
       <output name="output3" file="2.fasta" />
     </test>
