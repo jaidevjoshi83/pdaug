@@ -182,4 +182,4 @@ if __name__=="__main__":
         WordCloudPlot(args.InFile, args.FragSize, args.Workdirpath,  args.htmlOutDir, args.htmlFname)   
 
     else:
-        print("In Correct Option:")
+        print("Incorrect option provided: %s" % (sys.argv[1]))
