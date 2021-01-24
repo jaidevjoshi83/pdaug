@@ -39,6 +39,10 @@
 
 
 
+       <when value="AMPvsTMP"/>
+       <when value="AMPvsUniProt"/>
+       <when value="ACPvsTMP"/>
+       <when value="ACPvsRandom"/>
        <when value="query_apd">
           <param name="list1" type='text' argument="-List" label="List of integers as IDs" help="List of integers as IDs" />
        </when>

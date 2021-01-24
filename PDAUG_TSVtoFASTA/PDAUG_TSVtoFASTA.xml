@@ -58,6 +58,7 @@
           <when value="advancefeature">
             <param name="clmname" type="text" label="Column name with peptide IDs"  argument= "--ClmPepID" help="Select Peptide ID Column"/>
           </when>
+          <when value="normalfeature"/>
         </conditional>
       </when>
 
@@ -66,11 +67,12 @@
           <param name="columnselect" type="select" label="Column name with peptide IDs"  argument="--Method" help="Split file if class labels are present" >   
             <option value="advancefeature" > Add Peptide ID Column Name </option>
             <option value="normalfeature" selected="true"> No Peptide ID Column </option>
-          </param> 
+          </param>
 
           <when value="advancefeature">
             <param name="clmname" type="text" label="Select Peptide ID Column"  argument= "--ClmPepID" help="Select Peptide ID Column"/>
           </when>
+          <when value="normalfeature"/>
           
         </conditional>
       </when>
@@ -97,14 +99,14 @@
       <param name="infile" value="test.tsv"/>
       <param name="method" value="withoutlabel" /> 
       <param name="peps" value="Peptides" />
-      <param name="output2" file="out.fasta" />
+      <output name="output2" file="out.fasta" />
     </test>
 
     <test>
       <param name="infile" value="test.tsv"/>
       <param name="peps" value="Peptides" />
-      <param name="output2" file="1.fasta" />
-       <param name="output3" file="2.fasta" />
+      <output name="output2" file="1.fasta" />
+      <output name="output3" file="2.fasta" />
     </test>
 
   </tests>
