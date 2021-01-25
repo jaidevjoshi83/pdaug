@@ -150,5 +150,5 @@ if __name__=='__main__':
         SlidingWindowPeptide(args.InFile, args.winSize, args.FragSize, args.outputFile)
 
     else:
-        print("In Correct Option:")
+        print("Incorrect option provided: %s" % (sys.argv[1]))
 

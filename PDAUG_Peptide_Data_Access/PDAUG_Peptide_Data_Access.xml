@@ -39,6 +39,10 @@
 
 
 
+       <when value="AMPvsTMP"/>
+       <when value="AMPvsUniProt"/>
+       <when value="ACPvsTMP"/>
+       <when value="ACPvsRandom"/>
        <when value="query_apd">
           <param name="list1" type='text' argument="-List" label="List of integers as IDs" help="List of integers as IDs" />
        </when>
@@ -62,11 +66,13 @@
       <output name="output1" file="Out.tsv"/>
     </test>
 
+  <!-- This test has consistently failed over several months, due to inability to access host/URL http://aps.unmc.edu/AP/database/query_output.php?ID=00004
     <test>
       <param name="DataBaseType" value="query_apd"/>
       <param name="list1" value="4,5,6" />
       <output name="output1" file="apd.tsv" lines_diff="8"/>
     </test>
+  -->
 
     <test>
       <param name="DataBaseType" value="query_camp"/>
