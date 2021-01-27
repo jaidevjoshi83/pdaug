@@ -38,7 +38,7 @@
 
   <inputs>
     <param name="infile" type="data" label="Peptide data" format="tabular" argument= "--InFile1" help="Input tabular file"/>
-    <param name="peps" type="text" label="Peptide Column" format="tabular" argument= "--InFile1" help="Input tabular file"/>
+    <param name="peps" type="text" label="Peptide Column" argument= "--PeptideColumn" help="Peptide Column Name"/>
 
     <conditional name='selmethod' >
       <param name="method" type="select" label="Method to convert data"  argument="--Method" help="Split file if class labels are present" >   
@@ -58,6 +58,7 @@
           <when value="advancefeature">
             <param name="clmname" type="text" label="Column name with peptide IDs"  argument= "--ClmPepID" help="Select Peptide ID Column"/>
           </when>
+          <when value="normalfeature"/>
         </conditional>
       </when>
 
@@ -66,11 +67,12 @@
           <param name="columnselect" type="select" label="Column name with peptide IDs"  argument="--Method" help="Split file if class labels are present" >   
             <option value="advancefeature" > Add Peptide ID Column Name </option>
             <option value="normalfeature" selected="true"> No Peptide ID Column </option>
-          </param> 
+          </param>
 
           <when value="advancefeature">
             <param name="clmname" type="text" label="Select Peptide ID Column"  argument= "--ClmPepID" help="Select Peptide ID Column"/>
           </when>
+          <when value="normalfeature"/>
           
         </conditional>
       </when>
@@ -78,15 +80,15 @@
   </inputs>
 
   <outputs>
-    <data name='output1' format='fasta' label="${tool.name} on $on_string - first (fasta)" >  
+    <data name='output1' format='fasta' label="${tool.name} on $on_string -(fasta)" >  
        <filter>selmethod['method'] == "withoutlabel"</filter>
     </data>
 
-    <data name='output2' format='fasta' label="${tool.name} on $on_string - second (fasta)">   
+    <data name='output2' format='fasta' label="${tool.name} on $on_string - Second (fasta)">   
        <filter>selmethod['method'] == "withlabel"</filter>
     </data>
 
-    <data name='output3' format='fasta' label="${tool.name} on $on_string - (fasta)" >
+    <data name='output3' format='fasta' label="${tool.name} on $on_string - First (fasta)" >
       <filter>selmethod['method'] == "withlabel"</filter>
     </data>
   </outputs>
@@ -95,16 +97,18 @@
  
     <test>
       <param name="infile" value="test.tsv"/>
-      <param name="method" value="withoutlabel" /> 
+      <param name="method" value="withoutlabel" />
       <param name="peps" value="Peptides" />
-      <param name="output2" file="out.fasta" />
+      <output name="output1" file="out.fasta" />
     </test>
 
     <test>
       <param name="infile" value="test.tsv"/>
+      <param name="method" value="withlabel" />
       <param name="peps" value="Peptides" />
-      <param name="output2" file="1.fasta" />
-       <param name="output3" file="2.fasta" />
+      <param name="withlabel" value="Class_label" />
+      <output name="output2" file="1.fasta" />
+      <output name="output3" file="2.fasta" />
     </test>
 
   </tests>

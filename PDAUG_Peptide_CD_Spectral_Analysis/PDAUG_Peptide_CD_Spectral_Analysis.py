@@ -71,8 +71,6 @@ if sys.argv[1] == "calc_ellipticity":
 
 if sys.argv[1] == "PlotData":
 
-    os.system('ls temp')
-
     if args.Type == "mean residue ellipticity":
 
         cd = CD(args.DirPath, wmin=int(args.WMin), wmax=int(args.Wmax), amide=args.Amide, pathlen=float(args.Pathlen))
@@ -119,7 +117,3 @@ if sys.argv[1] == "helicity":
     cd = CD(args.DirPath, wmin=int(args.WMin), wmax=int(args.Wmax), amide=args.Amide, pathlen=float(args.Pathlen))    
     cd.calc_meanres_ellipticity()
     cd.helicity(temperature=float(args.temperature), k=float(args.k), induction=args.Induction, filename=args.OutPut )
-
-
-
-
