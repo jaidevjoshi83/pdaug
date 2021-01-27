@@ -6,29 +6,53 @@
     <requirement type="package" version="0.24.2">pandas</requirement>
     <requirement type="package" version="1.0">pydpi</requirement>
   </requirements>
-  <stdio>
-    <exit_code range="1" level="fatal" />
-  </stdio>
+
     <command detect_errors="exit_code"><![CDATA[
 
         python '$__tool_directory__/PDAUG_Sequence_Property_Based_Descriptors.py' --InFile '$input1' 
 
         --DesType '$SelectDiscriptor.DesType'
 
-        #if '$SelectDiscriptor.DesType' == 'PAAC'
-          --Lamda '$SelectDiscriptor.Lamda'
-          --Weight '$SelectDiscriptor.Weight'
+
+        #if $SelectDiscriptor.DesType == 'GetPAAC'
+
+        --Lamda '$SelectDiscriptor.Lamda'
+        --Weight '$SelectDiscriptor.Weight'
+
         #end if 
 
-        #if $SelectDiscriptor.DesType == 'APAAC'
+
+        #if $SelectDiscriptor.DesType == 'GetAPAAC'
+
           --Lamda '$SelectDiscriptor.Lamda'
           --Weight '$SelectDiscriptor.Weight'
+
         #end if
 
-        #if $SelectDiscriptor.DesType == 'All'
-          --Lamda '$SelectDiscriptor.Lamda'
+
+        #if $SelectDiscriptor.DesType == 'GetSOCN'
+
+        --MaxLag '$SelectDiscriptor.MaxLag'
+
+        #end if 
+
+
+        #if $SelectDiscriptor.DesType =='GetQSO'
+
+          --MaxLag '$SelectDiscriptor.MaxLag'
           --Weight '$SelectDiscriptor.Weight'
-        #end if
+
+        #end if 
+
+
+        #if $SelectDiscriptor.DesType =='All'
+
+          --MaxLag '$SelectDiscriptor.MaxLag'
+          --Weight '$SelectDiscriptor.Weight'
+          --Lamda '$SelectDiscriptor.Lamda'
+
+        #end if 
+
 
 
         -O '$output1'
@@ -42,62 +66,82 @@
       <conditional name="SelectDiscriptor">
 
         <param name="DesType" type="select" label="Descriptor Type" argument="">
-          <option value="PAAC">PAAC</option>
-          <option value="APAAC">APAAC</option>
-          <option value="CTD" selected="true">CTD</option>
-          <option value="DPComp">DPComp</option>
-          <option value="GearyAuto">GearyAuto</option>
-          <option value="MoranAuto">MoranAuto</option>
-          <option value="MoreauBrotoAuto">MoreauBrotoAuto</option>
-          <option value="QSO">QSO</option>
-          <option value="SOCN">SOCN</option>
-          <option value="TPComp">TPComp</option>
+          <option value="GetAAComp">GetAAComp</option>
+          <option value="GetDPComp">GetDPComp</option>
+          <option value="GetTPComp" selected="true">GetTPComp</option>
+          <option value="GetMoreauBrotoAuto">GetMoreauBrotoAuto</option>
+          <option value="GetMoranAuto">GetMoranAuto</option>
+          <option value="GetGearyAuto">GetGearyAuto</option>
+          <option value="GetCTD">GetCTD</option>
+          <option value="GetPAAC">GetPAAC</option>
+          <option value="GetAPAAC">GetAPAAC</option>
+          <option value="GetSOCN">GetSOCN</option>
+          <option value="GetQSO">GetQSO</option>
+          <option value="GetTriad">GetTriad</option>
           <option value="BinaryDescriptor">Binary Descriptor</option>
           <option value="All">All</option>  
         </param>
 
-        <when value="PAAC" >
-          <param name="Lamda" type="integer" label="Lamda" value="50" argument="--Lamda" help="Lamda"/>
+        <when value="GetPAAC" >
+          <param name="Lamda" type="integer" label="Lamda" value="1" argument="--Lamda" help="Lamda"/>
           <param name="Weight" type="float" label="Weight" value="0.5" argument="--Weight" help="Weight"/>
         </when>
 
-        <when value="APAAC" >
-          <param name="Lamda" type="integer" value="50" argument="--Lamda" help="Lamda"/>
+        <when value="GetAPAAC" >
+          <param name="Lamda" type="integer" value="1" argument="--Lamda" help="Lamda"/>
           <param name="Weight" type="float" value="0.5" argument="--Weight" help="Weight"/>
+        </when>
+
+        <when value="GetQSO">
+          <param name="MaxLag" type="integer" value="10" argument="--Lamda" help="Lamda"/>
+          <param name="Weight" type="float" value="0.5" argument="--Weight" help="Weight"/>
+        </when>
+
+        <when value="GetSOCN">
+            <param name="MaxLag" type="integer" value="10" argument="--Lamda" help="Lamda"/>
         </when>
 
         <when value="All" >
-          <param name="Lamda" type="integer" value="50" label="Lamda" argument="--Lamda" help="Lamda"/>
+          <param name="Lamda" type="integer" value="1" label="Lamda" argument="--Lamda" help="Lamda"/>
           <param name="Weight" type="float" value="0.5" argument="--Weight" help="Weight"/>
+          <param name="MaxLag" type="integer" value="50" argument="--Lamda" help="Lamda"/>
         </when>
 
-        <when value="DPComp" >
+        <when value="GetAAComp" >
         </when>
 
-        <when value="GearyAuto" >
+        <when value="GetDPComp" >
         </when>
 
-        <when value="MoranAuto" >
+        <when value="GetTPComp" >
         </when>
 
-        <when value="MoreauBrotoAuto" >
+        <when value="GetMoreauBrotoAuto" >
         </when>
 
-        <when value="QSO" >
+        <when value="GetGearyAuto" >
         </when>
 
-        <when value="SOCN" >
+        <when value="GetCTD" >
         </when>
 
-        <when value="CTD" >
+        <when value="GetPAAC" >
         </when>
 
-        <when value="TPComp" >
+        <when value="GetAPAAC" >
+        </when>
+
+        <when value="GetSOCN">
+        </when>
+
+        <when value="GetQSO">
+        </when>
+
+        <when value="GetTriad">
         </when>
 
         <when value="BinaryDescriptor" >
         </when>
-
 
       </conditional>
 
@@ -111,8 +155,9 @@
     <test>
       <param name="input1" value="positive.fasta"/>
       <param name="DesType" value="All"/>
-      <param name="Lamda" value="5"/>
+      <param name="Lamda" value="10"/>
       <param name="Weight" value="0.5"/>
+      <param name="MaxLag" value="10"/>
       <output name="output1" value="Out.tsv"/>
     </test>
 

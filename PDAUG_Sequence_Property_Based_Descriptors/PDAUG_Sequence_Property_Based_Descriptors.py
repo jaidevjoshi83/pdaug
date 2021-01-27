@@ -43,10 +43,10 @@ def BinaryDescriptor(seq):
 
     return df
 
-def Decriptor_generator(InFile, Lamda, Weight, DesType, Out_file):
+def Decriptor_generator(infile, lamda, weight, maxlag, destype, out_file):
 
     list_pep_name = []
-    f = open(InFile)
+    f = open(infile)
     lines = f.readlines()
     
     for line in lines:
@@ -62,62 +62,71 @@ def Decriptor_generator(InFile, Lamda, Weight, DesType, Out_file):
         protein = PyPro()
         protein.ReadProteinSequence(seq)
 
-        if DesType == 'PAAC':
-            DS = protein.GetPAAC(lamda=int(Lamda), weight=float(Weight))
+ 
+        if destype == "GetAAComp":
+            DS = protein.GetAAComp()
             df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'APAAC':
-            DS = protein.GetAPAAC(lamda=int(Lamda), weight=float(Weight))
-            df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'CTD':
-            DS = protein.GetCTD()
-            df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'DPComp':
+        elif destype == "GetDPComp":
             DS = protein.GetDPComp()
             df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'GearyAuto':
-            DS = protein.GetGearyAuto()
-            df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'MoranAuto':
-            DS = protein.GetMoranAuto()
-            df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'MoreauBrotoAuto':
-            DS = protein.GetMoreauBrotoAuto()
-            df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'QSO':
-            DS = protein.GetQSO()
-            df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'SOCN':
-            DS = protein.GetSOCN()
-            df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'TPComp':
+        elif destype == "GetTPComp":
             DS = protein.GetTPComp()
             df  = pd.DataFrame(DS, index=[0])
-        elif DesType == 'All':
-            DS_1 = protein.GetPAAC(lamda=int(Lamda), weight=float(Weight))
-            DS_2 = protein.GetAPAAC(lamda=int(Lamda), weight=float(Weight))
-            DS_3 = protein.GetCTD()
-            DS_4 = protein.GetDPComp()
-            DS_5 = protein.GetGearyAuto()
-            DS_6 = protein.GetMoranAuto()
-            DS_7 = protein.GetMoreauBrotoAuto()
-            DS_8 = protein.GetQSO()
-            DS_9 = protein.GetSOCN()
-            DS_10 = protein.GetTPComp()
+        elif destype == "GetMoreauBrotoAuto":
+            DS = protein.GetMoreauBrotoAuto()
+            df  = pd.DataFrame(DS, index=[0])
+        elif destype =="GetMoranAuto":
+            DS = protein.GetMoranAuto()
+            df  = pd.DataFrame(DS, index=[0])
+        elif destype =="GetGearyAuto":
+            DS = protein.GetGearyAuto()
+            df  = pd.DataFrame(DS, index=[0])
+        elif destype == "GetCTD":
+            DS = protein.GetCTD()
+            df  = pd.DataFrame(DS, index=[0])
+        elif destype == "GetPAAC":
+            DS = protein.GetPAAC(lamda=int(lamda),  weight=float(weight))
+            df  = pd.DataFrame(DS, index=[0])
+        elif destype == "GetAPAAC":
+            DS = protein.GetAPAAC(lamda=int(lamda), weight=float(weight))
+            df  = pd.DataFrame(DS, index=[0])
+        elif destype =="GetSOCN":
+            DS = protein.GetSOCN(maxlag=int(maxlag))
+            df  = pd.DataFrame(DS, index=[0])
+        elif destype =="GetQSO":
+            DS = protein.GetQSO(maxlag=int(maxlag),  weight=float(weight))
+            df  = pd.DataFrame(DS, index=[0])
+        elif destype == "GetTriad":
+            DS = protein.GetTriad()
+            df  = pd.DataFrame(DS, index=[0])
+        elif destype == "All":
+            DS1 = protein.GetAAComp()
+            DS2 = protein.GetDPComp()
+            DS3 = protein.GetTPComp()
+            DS4 = protein.GetMoreauBrotoAuto()
+            DS5 = protein.GetMoranAuto()
+            DS6 = protein.GetGearyAuto()
+            DS7 = protein.GetCTD()
+            DS8 = protein.GetPAAC(lamda=int(lamda),  weight=float(weight))
+            DS9 = protein.GetAPAAC(lamda=int(lamda), weight=float(weight))
+            DS10 = protein.GetSOCN(maxlag=int(maxlag))
+            DS11 = protein.GetQSO(maxlag=int(maxlag),  weight=float(weight))
+            DS12 = protein.GetTriad()
 
             DS = {}
 
-            for D in (DS_1, DS_2, DS_3, DS_4, DS_5, DS_6, DS_7, DS_8, DS_9, DS_10):
+            for D in (DS1,DS2,DS3,DS4,DS5,DS6,DS7,DS8,DS9,DS10,DS11,DS12):
+                print(D)
                 DS.update(D)
-
             df  = pd.DataFrame(DS, index=[0])
 
-        if DesType == 'BinaryDescriptor':
+        if destype == 'BinaryDescriptor':
             out_df = BinaryDescriptor(list_pep_name)
         else:
             out_df = pd.concat([out_df, df], axis=0)
 
 
-    out_df.to_csv(Out_file, index=False, sep='\t')
+    out_df.to_csv(out_file, index=False, sep='\t')
 
 
 if __name__=="__main__":
@@ -141,7 +150,12 @@ if __name__=="__main__":
                         required=False,
                         default=0.5,
                         help="pep file")
-                        
+    
+    parser.add_argument("-m", "--MaxLag",
+                        required=False,
+                        default=10,
+                        help="pep file")  
+
     parser.add_argument("-t", "--DesType",
                         required=True,
                         default=None,
@@ -153,6 +167,6 @@ if __name__=="__main__":
                         help="Path to target tsv file")  
                               
     args = parser.parse_args()
-    Decriptor_generator(args.InFile, args.Lamda, args.Weight, args.DesType, args.Out_file)
+    Decriptor_generator(args.InFile, args.Lamda, args.Weight, args.MaxLag, args.DesType, args.Out_file)
 
    
