@@ -11,6 +11,7 @@ parser.add_argument("-I", "--Input", required=True, default=None, help="Path to 
 parser.add_argument("-M", "--min_count", required=False, default=0, help="Path to target tsv file")
 parser.add_argument("-W", "--window", required=False, default=5, help="Path to target tsv file")
 parser.add_argument("-O", "--OutFile", required=False, default='model.txt', help="Path to target tsv file")
+parser.add_argument("-S", "--SG", required=False, default='skip-gram', help="Training algorithm: 1 for skip-gram; otherwise CBOW")
 
 args = parser.parse_args()
 
@@ -30,9 +31,14 @@ class ProteinSeq(object):
 #min_count = 0
 size = 200
 #window = 5
-sg = 1
+
+print (args.SG)
+if args.SG == 'skip-gram':
+    SG = 1
+elif args.SG == 'CBOW':
+    SG = 0
 
 sentences = ProteinSeq() 
-model = gensim.models.Word2Vec(sentences, min_count=int(args.min_count), size=size, window=int(args.window), sg = sg, workers = 10)
+model = gensim.models.Word2Vec(sentences, min_count=int(args.min_count), size=size, window=int(args.window), sg = SG, workers = 10)
 model.wv.save_word2vec_format(args.OutFile, binary=False)
 

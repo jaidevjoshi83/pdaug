@@ -13,7 +13,7 @@
   </stdio>
     <command detect_errors="exit_code"><![CDATA[
 
-        python '$__tool_directory__/PDAUG_Word_Vector_Model.py' -I '$input' -M '$meanCount' -W '$window' -O '$OutFile'
+        python '$__tool_directory__/PDAUG_Word_Vector_Model.py' -I '$input' -M '$meanCount' -W '$window' -O '$OutFile' --SG '$sg'
         
     ]]></command>
 
@@ -21,6 +21,11 @@
     <param name="input" type="data" label="Input fasta file" format="fasta" argument= "--Input" help="Input fasta file with peptides"/>
     <param name="meanCount" type="integer" label="Mean Count" value="0" format="fasta" argument= "--min_count" help="Ignores a all words with total frequency lower than this"/>
     <param name="window" type="integer" label="window" value="5" argument="--window" help="Maximum distance between the current and predicted word within a sentence"/>
+    <param name="sg" type="select" label="Select algorithm" help="Training algorithm skip-gram or  CBOW.">
+        <option value="skip-gram">Skip-gram</option>
+        <option value="CBOW" >CBOW</option>
+    </param>
+
   </inputs>
 
   <outputs>
@@ -33,6 +38,7 @@
       <param name="meanCount" value="0"/>
       <param name="window" value="5"/>
       <output name="OutFile" value="model.txt" lines_diff="2268" />
+      <output name=""
     </test>
   </tests>
     <help><![CDATA[
@@ -48,6 +54,7 @@ This tool calculates the skip-gram model which is a neural network where the inp
     * **--Input** Fasta file with protein sequences.
     * **--min_count** Ignores all words with total frequency lower than this 
     * **--window** Maximum distance between the current and predicted word within a sentence, accepts integer value.
+    * **--SG** Select training algorithm skip-gram or CBOW.
 
 -----
 
