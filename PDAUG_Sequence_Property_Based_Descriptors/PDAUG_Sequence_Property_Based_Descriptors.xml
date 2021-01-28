@@ -140,7 +140,7 @@
         <when value="GetTriad">
         </when>
 
-        <when value="GetMoranAuto">
+        <when value="GetMoranAuto" >
         </when>
 
         <when value="BinaryDescriptor" >
@@ -191,6 +191,8 @@ This tool calculates sequence property based descriptor for a peptide descripto
 * **GetSOCN** Sequence order coupling numbers.
 * **GetQSO** Quasi sequence order descriptors default is 10, maxlag is the maximum lag. (The length of the protein should be larger than maxlag). 
 * **GetTriad** Calculate the conjoint triad features from the protein sequence.
+* **Binary Descriptors** Calculate the conjoint triad features from the protein sequence.
+* **All** Calculates all the available descriptors except binary. 
 
 **Inputes**
 
