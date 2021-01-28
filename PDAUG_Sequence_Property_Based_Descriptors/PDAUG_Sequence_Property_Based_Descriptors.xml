@@ -83,28 +83,28 @@
         </param>
 
         <when value="GetPAAC" >
-          <param name="Lamda" type="integer" label="Lamda" value="1" argument="--Lamda" help="Lamda"/>
-          <param name="Weight" type="float" label="Weight" value="0.5" argument="--Weight" help="Weight"/>
+          <param name="Lamda" type="integer" label="Lamda" value="10" help="A non negative integer"/>
+          <param name="Weight" type="float" label="Weight" value="0.5"  help="Any value within the range from 0.05 to 0.7"/>
         </when>
 
         <when value="GetAPAAC" >
-          <param name="Lamda" type="integer" value="1" argument="--Lamda" help="Lamda"/>
-          <param name="Weight" type="float" value="0.5" argument="--Weight" help="Weight"/>
+          <param name="Lamda" type="integer" label="Lamda" value="10" help="A non negative integer"/>
+          <param name="Weight" type="float" label="Weight" value="0.5" help="Any value within the range from 0.05 to 0.7"/>
         </when>
 
         <when value="GetQSO">
-          <param name="MaxLag" type="integer" value="10" argument="--Lamda" help="Lamda"/>
-          <param name="Weight" type="float" value="0.5" argument="--Weight" help="Weight"/>
+          <param name="MaxLag" type="integer" label="MaxLag"  value="10"  help="A non negative integer"/>
+          <param name="Weight" type="float" label="Weight" value="0.5"  help="Any value within the range from 0.05 to 0.7"/>
         </when>
 
         <when value="GetSOCN">
-            <param name="MaxLag" type="integer" value="10" argument="--Lamda" help="Lamda"/>
+            <param name="MaxLag" type="integer" label="MaxLag"  value="10"  help="A non negative integer"/>
         </when>
 
         <when value="All" >
-          <param name="Lamda" type="integer" value="1" label="Lamda" argument="--Lamda" help="Lamda"/>
-          <param name="Weight" type="float" value="0.5" argument="--Weight" help="Weight"/>
-          <param name="MaxLag" type="integer" value="50" argument="--Lamda" help="Lamda"/>
+          <param name="Lamda" type="integer" value="10" label="Lamda"  help="A non negative integer"/>
+          <param name="Weight" type="float" value="0.5" label="Weight" help="Weight"/>
+          <param name="MaxLag" type="integer" value="10" label="Lamda" help="A non negative integer"/>
         </when>
 
         <when value="GetAAComp" >
@@ -176,28 +176,25 @@
 
 This tool calculates sequence property based descriptor for a peptide descriptor.  
 
-    * **AAC** This option calculates amino acid composition descriptors (20).
-    * **DPComp** This option calculates dipeptide composition descriptors (400).
-    * **TPComp** This option calculates tri-peptide composition descriptors (8000).
-    * **MoreauBrotoAuto** This option calculates Normalized Moreau-Broto autocorrelation descriptors (depend on the given properties, the default is 240). 
-    * **MoranAuto** This option calculates Moran autocorrelation descriptors (depend on the given properties, the default is 240).
-    * **GearyAuto** This option calculates Geary autocorrelation descriptors (depend on the given properties, the default is 240).
-    * **CTD** This option calculates Composition, Transition, Distribution descriptors(200). 
-    * **SOCN** This option calculates sequence order coupling numbers (depend on the choice of maxlag, the default is 60).
-    * **QSO** This option calculates quasi-sequence order descriptors (depend on the choice of maxlag, the default is 100).
-    * **PAAC** This option calculates pseudo amino acid composition descriptors (depend on the choice of lamda, the default is 50).
-    * **APAAC** This option calculates amphiphilic pseudo amino acid composition descriptors, (depend on the choice of lamda, the default is 50). 
-    * **BinaryDescriptor** This option calculates the binary descriptor of peptide sequences (All the peptides should be the same length). 
-    * **All** This option calculates all the descriptors except the binary descriptor.
+* **GetAAComp** Amino acid compositon descriptors. 
+* **GetDPComp**  Dipeptide composition descriptors. 
+* **GetTPComp** Tri-peptide composition descriptors. 
+* **GetMoreauBrotoAuto** Normalized Moreau-Broto autocorrelation descriptors. 
+* **GetMoranAuto** Moran autocorrelation descriptors. 
+* **GetGearyAuto** Geary autocorrelation descriptors. 
+* **GetCTD** Composition Transition Distribution descriptors. 
+* **GetPAAC**  Type I Pseudo amino acid composition descriptors. 
+* **GetAPAAC** Amphiphilic (Type II) Pseudo amino acid composition descriptors. 
+* **GetSOCN** Sequence order coupling numbers.
+* **GetQSO** Quasi sequence order descriptors default is 10, maxlag is the maximum lag. (The length of the protein should be larger than maxlag). 
+* **GetTriad** Calculate the conjoint triad features from the protein sequence.
 
------
+**Inputes**
 
-**Inputs**
-    * **--InFile** A fasta file with peptide sequences.
-    * **--Lamda** PAAC & APAAC descriptors (depend on the choice of lamda, the default is 50).
-    * **--Weight** PAAC & APAAC descriptors (depend on the choice of lamda, the default is 0.5).
-    * **--DesType** Select the descriptor type.  
-
+    * **Input fasta file** Fasta file with peptide sequences.
+    * **Lamda** lamda reflects the rank of correlation, must be a non-Negative integer. Lamda should NOT be larger than the length of the input protein sequence.
+    * **Weight** weight is designed for the users to put weight on the additional PseAA components. Any value within the range from 0.05 to 0.7 for the weight factor can be used. 
+    * **Maxlag** maxlag is the maximum lag. a non negative integer. The length of the protein should be larger than maxlag. 
 
 -----
 
