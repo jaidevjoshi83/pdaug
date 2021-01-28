@@ -140,6 +140,9 @@
         <when value="GetTriad">
         </when>
 
+        <when value="GetMoranAuto">
+        </when>
+
         <when value="BinaryDescriptor" >
         </when>
 

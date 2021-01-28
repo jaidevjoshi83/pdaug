@@ -38,7 +38,6 @@
       <param name="meanCount" value="0"/>
       <param name="window" value="5"/>
       <output name="OutFile" value="model.txt" lines_diff="2268" />
-      <output name=""
     </test>
   </tests>
     <help><![CDATA[
