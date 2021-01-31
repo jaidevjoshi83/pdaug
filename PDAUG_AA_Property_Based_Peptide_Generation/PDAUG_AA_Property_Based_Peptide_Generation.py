@@ -129,6 +129,21 @@ def AmphipathicArc_seq(seq_num, lenmin_s, lenmax_s, gen_seq, hyd_gra, OutFasta):
             OutFasta.write(">sequence_"+str(i)+'\n')
             OutFasta.write(O+'\n')
 
+
+def MixedLibrary_seq(seqnum, centrosymmetric, centroasymmetric, helix, kinked, oblique, rand, randAMP, randAMPnoCM, OutFasta):
+
+    lib = MixedLibrary(int(seqnum), int(centrosymmetric), int(centroasymmetric), int(helix), int(kinked), int(oblique), int(rand), int(randAMP), int(randAMPnoCM))
+    lib.generate_sequences()
+    OutFasta = open(OutFasta, 'w')
+
+    OutPep = lib.sequences
+        
+    for i,O in enumerate(OutPep):
+        OutFasta.write(">sequence_"+str(i)+'\n')
+        OutFasta.write(O+'\n')
+
+
+
 if __name__=='__main__':
 
     parser = argparse.ArgumentParser(description='Deployment tool')
@@ -192,6 +207,19 @@ if __name__=='__main__':
     Arc.add_argument("-y","--hyd_gra", default='False', help="Method to mutate the generated sequences to have a hydrophobic gradient by substituting the last third of the sequence amino acids to hydrophobic.")
     Arc.add_argument("-O", "--OutFasta", required=True, default=None, help="Output Fasta")
 
+    Mix = subparsers.add_parser('MixedLibrary')
+    Mix.add_argument("-s","--seq_num", required=True, default=None, help="number of sequences to be generated")
+    Mix.add_argument("-c","--centrosymmetric", required=False, default=1, help="ratio of symmetric centrosymmetric sequences in the library")
+    Mix.add_argument("-ca","--centroasymmetric", required=False, default=1, help="ratio of asymmetric centrosymmetric sequences in the library")
+    Mix.add_argument("-hl","--helix", required=False, default=1, help="ratio of asymmetric centrosymmetric sequences in the library")
+    Mix.add_argument("-k","--kinked", required=False, default=1,   help="ratio of asymmetric centrosymmetric sequences in the library")
+    Mix.add_argument("-o", "--oblique", required=False, default=1,  help=" ratio of oblique oriented amphipathic helical sequences in the library")
+    Mix.add_argument("-r", "--rand", required=False, default=1,  help="ratio of random sequneces in the library")
+    Mix.add_argument("-ra", "--randAMP", required=False, default=1,  help="ratio of random sequences with APD2 amino acid distribution in the library")
+    Mix.add_argument("-rp", "--randAMPnoCM", required=False, default=1, help="ratio of random sequences with APD2 amino acid distribution without Cys and Met in the library")
+    Mix.add_argument("-O", "--OutFasta", required=True, default=None, help="Output Fasta")
+
+
     args = parser.parse_args()
 
     if sys.argv[1] == 'Random':
@@ -212,5 +240,9 @@ if __name__=='__main__':
         AMPngrams_seq(args.seq_num, args.n_min, args.n_max, args.OutFasta)
     elif sys.argv[1] == 'AmphipathicArc':
         AmphipathicArc_seq(int(args.seq_num), int(args.lenmin_s), int(args.lenmax_s), int(args.arcsize), args.hyd_gra, args.OutFasta)
+    elif sys.argv[1] == 'MixedLibrary':
+        MixedLibrary_seq(args.seq_num, args.centrosymmetric, args.centroasymmetric, args.helix, args.kinked, args.oblique, args.rand, args.randAMP, args.randAMPnoCM, args.OutFasta)
     else:
         print("You entered Wrong Values: ")
+
+

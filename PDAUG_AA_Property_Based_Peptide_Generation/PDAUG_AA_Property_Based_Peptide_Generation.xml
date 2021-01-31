@@ -68,7 +68,20 @@
                             --lenmin_s '$SelLibGene.lenmin_s'
                             --arcsize '$SelLibGene.arcsize'
                             --hyd_gra '$SelLibGene.hydgra'
-                        #end if      
+                        #end if    
+
+
+                        #if $SelLibGene.LibGene == 'MixedLibrary' 
+                            --seq_num '$SelLibGene.seq_num'
+                            --centrosymmetric '$SelLibGene.centrosymmetric'
+                            --centroasymmetric '$SelLibGene.centroasymmetric'
+                            --helix '$SelLibGene.helix'
+                            --kinked '$SelLibGene.kinked'
+                            --oblique '$SelLibGene.oblique'
+                            --rand '$SelLibGene.rand'
+                            --randAMP '$SelLibGene.randAMP'
+                            --randAMPnoCM '$SelLibGene.randAMPnoCM'
+                        #end if 
 
 
                         --OutFasta '$output1'
@@ -152,6 +165,20 @@
             <param name="lenmax_s" type="integer" value="21" label="Maximum length" argument="--lenmax_s" help="Maximum length of generated peptides."/>
             <param name="arcsize" type="integer" value="180" label="Arc size" argument="--arcsize" help="Arc size to choose among 100, 140, 180, 220, 260, or choose mixed to generate a mixture."/>
             <param name="hydgra" type="boolean"  value="false" argument="--hyd_gra" label="Hydrophobic gradient" help="Method to mutate the generated sequences to have a hydrophobic gradient by substituting the last third of the sequence amino acids to hydrophobic."/>
+        </when>
+
+        <when value="MixedLibrary">
+
+            <param name="seq_num"  type="integer" value="1000" label="Number of peptides" argument= "--seq_num" help="Number of peptides."/>
+            <param name="centrosymmetric" type="integer" value="5" label="Ratio of symmetric centrosymmetric sequences in the library" argument="--lenmin_s" help="Ratio of symmetric centrosymmetric sequences in the library"/>
+            <param name="centroasymmetric" type="integer" value="5" label="Ratio of asymmetric centrosymmetric sequences" help="Ratio of asymmetric centrosymmetric sequences in the library"/>
+            <param name="helix" type="integer" value="3" label="Ratio of asymmetric centrosymmetric sequences"  help="Ratio of asymmetric centrosymmetric sequences in the library"/>
+            <param name="kinked" type="integer"  value="3" label="Ratio of kinked" help="Ratio of kinked amphipathic helical sequences in the library"/>
+            <param name="oblique" type="integer"  value="2" label="Ratio of oblique" help="Ratio of oblique oriented amphipathic helical sequences in the library"/>
+            <param name="rand" type="integer"  value="10" label="Ratio of random sequneces" help="Ratio of random sequneces in the library"/>
+            <param name="randAMP" type="integer"  value="10"  label="Ratio of random sequences with APD2 amino acid distribution" help="Ratio of random sequences with APD2 amino acid distribution in the library"/>
+            <param name="randAMPnoCM" type="integer" value="5"  label="Ratio of random sequences with APD2 amino acid distribution without Cys and Met in the library" help="Ratio of random sequences with APD2 amino acid distribution in the library"/>
+
         </when>
 
     </conditional>
