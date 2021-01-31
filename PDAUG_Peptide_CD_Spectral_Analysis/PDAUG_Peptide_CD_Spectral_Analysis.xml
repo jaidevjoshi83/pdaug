@@ -70,9 +70,9 @@
 
         <param name="Methods" type="select" label="Circular dichroism data analysis options" help="Circular dichroism data analysis options" >
           <option value="calc_ellipticity">Calculate Ellipticity</option>
-          <option value="PlotData">Plot Data</option>
-          <option value="Dichroweb">Save data in DichroWeb readable format</option>
-          <option value="helicity">Calculate the percentage of helicity</option>
+          <option value="PlotData">Generate CD Plots</option>
+          <option value="Dichroweb">Save Data in DichroWeb Readable Format</option>
+          <option value="helicity">Calculate the Percentage of Helicity</option>
         </param>
 
       <when value="calc_ellipticity">
@@ -303,36 +303,36 @@
 This tool handles circular dichroism data files and calculates several ellipticity and helicity values. The class can handle data files of the Applied Photophysics type. For explanations of different units used in CD spectroscopy, visit https://www.photophysics.com/resources/7-cd-units-conversions. Provided with four different options. 
 
   * **Calculate Ellipticity** Calculates molar and mean residue ellipticity.  
-  * **Plot Data** Generates circular_dichroism plots for all read data in the initial directory.
-  * **Save data in DichroWeb readable format** Method to save the calculated CD data into DichroWeb readable format (semi-colon separated). The produced files can then directly be uploaded to the DichroWeb analysis tool.
-  * **Calculate the percentage of helicity** Method to calculate the percentage of helicity out of the mean residue ellipticity data. The calculation is based on the formula by Fairlie and co-workers.
+  * **Generate CD Plots** Generates circular_dichroism plots for all read data in the initial directory.
+  * **Save Data in DichroWeb Readable Format** Method to save the calculated CD data into DichroWeb readable format (semi-colon separated). The produced files can then directly be uploaded to the DichroWeb analysis tool.
+  * **Calculate the Percentage of Helicity<** Method to calculate the percentage of helicity out of the mean residue ellipticity data. The calculation is based on the formula by Fairlie and co-workers.
 
 -----
 
 **Inputs**
 
-  **1** calc_ellipticity
+  **1** Calculate Ellipticity
      * **--Type**
      * **--Wmin** smallest wavelength measured
      * **--Wmax** highest wavelength measured
      * **--Amide** specifies whether the sequences have amidated C-termini
      * **--Pathlen** cuvette path length in mm
 
-  **2** PlotData
+  **2** Generate CD Plots
      * **--Type**
      * **--Wmin** smallest wavelength measured
      * **--Wmax** highest wavelength measured
      * **--Amide** specifies whether the sequences have amidated C-termini
      * **--Pathlen**  cuvette path length in mm
 
-  **3** Dicroweb
+  **3** Save Data in DichroWeb Readable Format
      * **--Type**
      * **--Wmin** smallest wavelength measured
      * **--Wmax** highest wavelength measured
      * **--Amide** specifies whether the sequences have amidated C-termini
      * **--Pathlen**  cuvette path length in mm
 
-  **4** helicity 
+  **4** Calculate the Percentage of Helicity 
      * **--Type**
      * **--Wmin** smallest wavelength measured
      * **--Wmax** highest wavelength measured
@@ -341,7 +341,6 @@ This tool handles circular dichroism data files and calculates several elliptici
      * **--temperature** experiment temperature in °C
      * **--k** {float, 2.4 - 4.5} finite length correction factor. Can be adapted to the helicity of a known peptide.
      * **--Induction** whether the helical induction upon changing from one solvent to another should be calculated.
-
 
 -----
 

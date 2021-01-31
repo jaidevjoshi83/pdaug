@@ -194,18 +194,18 @@ This tool generates four different types of plots.
 -----
 
 **Inputs**
-    **1**  HeatMap    
+    **1**  Heat Map    
        * **--Infile** Input data frame as a tabular file.
        * **--IndexColumn**  Number of sequence to be generated.  
        * **--x_label** Peptide minimum length. 
        * **--y_label_s** Peptide maximum length. 
 
-    **2** BoxPlot
+    **2** Box Plot
        * **--Infile** Input data frame as a tabular file. 
        * **--Feature** Feature(column name) to be assessed. 
        * **--Label** Class label column name. 
 
-    **3** ScatterPlot
+    **3** Scatter Plot
        * **--Infile** Input data frame as a tabular file.  
        * **--PlotType** 2D or 3D scatter plot. 
        * **--Feature1** First feature column name. 
@@ -213,7 +213,7 @@ This tool generates four different types of plots.
        * **--Feature3** Third feature column name if 3D scatter plot option selected.
        * **--Label** CLass label column name.
 
-    **4** WordCloud
+    **4** Word Cloud
        * **--Infile** Input fasta file with peptides.  
        * **--FragSize** ngram size to be calculated.
 

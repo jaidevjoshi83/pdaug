@@ -585,10 +585,10 @@
 
       <conditional name='TestMethods'>
         <param name="SelTestMethods" type="select" label="Choose the Test method" argument="--TestMethod" help="Data testing method">
-          <option value="Internal">Internal</option>
-          <option value="TestSplit">TestSplit</option>
-          <option value="External">External</option>
-          <option value="Predict">Predict</option>
+          <option value="Internal">Internal Test</option>
+          <option value="TestSplit">Train Test Split</option>
+          <option value="External">External Test Data</option>
+          <option value="Predict">Predict Unknown</option>
         </param>
         <when value="Internal">
           <param name="nFolds" type="integer" label="Cross validation" value="5" min="5" max="10" argument="--nfold" help="Cross validation"/>
@@ -720,7 +720,7 @@ A detail Description of all the algorithms can be found at sklearn (https://scik
     * **Training File**  Tabulalr files with labeled peptide descriptor data.  
     * **Select Machine Learning algorithms** Select algorithm. 
     * **Select Advanced Parameters** Select the advance parameter details of each of the parameters that can be found on sklearn website. 
-    * **Select the test method** (predict or internal test)
+    * **Select the test method** (Internal Test, Train Test Split, External Test Data, and Predict Unknown)
     * **Cross Validation** Up to 10 fold cross-validation. 
     * **Method to Scale the data** MinMaxScaler and  standard scaler. 
 

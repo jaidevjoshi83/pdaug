@@ -38,9 +38,9 @@
     <conditional name='SelMethod' >
 
         <param name="Method" type="select" label="Methods to generate peptides " argument="">
-          <option value="MutatedPeptides">MutatedPeptides</option>
-          <option value="RandomPeptides">RandomPeptides</option>
-          <option value="SlidingWindowPeptide">SlidingWindowPeptide</option>
+          <option value="MutatedPeptides">Mutated Peptides</option>
+          <option value="RandomPeptides">Random Peptides</option>
+          <option value="SlidingWindowPeptide">Sliding Window Peptide</option>
         </param>
 
         <when value="MutatedPeptides">

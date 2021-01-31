@@ -36,9 +36,9 @@
 
         <param name="CoreFunction" type="select" label="Analysis options" argument="">
           <option value="mutateAA">Mutate Amino Acid</option>
-          <option value="filterduplicates">Filter Duplicates</option>
-          <option value="keepnaturalaa">Keep Naturalaa</option>
-          <option value="filteraa">Filter Amino Acid</option>
+          <option value="filterduplicates">Filter Duplicates Peptides</option>
+          <option value="keepnaturalaa">Remove Peptides With Unatural Amino Acids</option>
+          <option value="filteraa">Filter Peptides With Specific Amino Acid</option>
         </param>
 
         <when value="mutateAA">
@@ -94,8 +94,8 @@
 
 This tool performs some core functions on the peptide sequences and equipped with various options
 
-  * **Mutated Amino Acid** Method to mutate with prob probability an nr of positions per sequence randomly.
-  * **Filter Duplicates** Method to filter duplicates in the sequences from the class attribute sequences.
+  * **Mutate Amino Acid** Method to mutate with prob probability an nr of positions per sequence randomly.
+  * **Filter Duplicates Peptides** Method to filter duplicates in the sequences from the class attribute sequences.
   * **Keep Naturalaa** Method to filter out sequences that do not contain natural amino acids. If the sequence contains a character.
   * **Filter Amino Acid** Method to filter out corresponding names and descriptor values of sequences with given amino acids in the argument list aminoacids.
 
@@ -108,13 +108,13 @@ This tool performs some core functions on the peptide sequences and equipped wit
         * **--nr**  Number of mutations. 
         * **--probability** Probability of mutating a sequence.
 
-    2 **Filter Duplicates***
+    2 **Filter Duplicates Peptides***
         * **--InFile** takes Fasta file with peptide sequences. 
 
-    3 **Keep Naturalaa**
+    3 **Remove Peptides With Unatural Amino Acids**
         * **--InFile** takes Fasta file with peptide sequences. 
 
-    4 **Filter Amino Acid**
+    4 **Filter Peptides With Specific Amino Acid**
         * **--InFile** takes Fasta file with peptide sequences. 
 
 -----

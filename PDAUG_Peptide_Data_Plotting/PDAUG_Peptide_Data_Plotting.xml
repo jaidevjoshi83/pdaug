@@ -46,10 +46,10 @@
     <conditional name='SelPlot' >
 
         <param name="Plot" type="select" label="Plotting method" argument="">
-          <option value="HelWhl">Helical wheel</option>
-          <option value="PltPde">Probability density estimations</option>
-          <option value="PltVio">Violin</option>
-          <option value="PltAaDis">Amino acid distribution</option>
+          <option value="HelWhl">Helical Wheel Plot</option>
+          <option value="PltPde">Probability Density Estimations Plot</option>
+          <option value="PltVio">Violin Plot</option>
+          <option value="PltAaDis">Amino Acid Distribution Plot</option>
         </param>
 
         <when value="HelWhl">
@@ -121,23 +121,23 @@
 
 This tool provided with some advance plotting functions for peptide data.
 
-  * **Helical wheel** Generates a helical wheel projection plot of a given sequence.
-  * **Probability density estimations** Generates a probability density estimation plot of given data arrays.
-  * **Violin** Generates a violin plot for given classes and corresponding distributions.
-  * **Amino acid distribution**  Generates an amino acid frequency plot for all 20 natural amino acids.
+  * **Helical Wheel Plot** Generates a helical wheel projection plot of a given sequence.
+  * **Probability Density Estimations Plot** Generates a probability density estimation plot of given data arrays.
+  * **Violin Plot** Generates a violin plot for given classes and corresponding distributions.
+  * **Amino Acid Distribution Plot**  Generates an amino acid frequency plot for all 20 natural amino acids.
 
 
 -----
 
 **Inputs**
-    **1** HelWhl
+    **1** Helical Wheel Plot
       * **--InFile** Input fasta file with peptide sequences. 
       * **----colorcoding**  the color coding to be used, available: rainbow, charge, polar, simple, amphipathic
       * **--lineweights** defines whether connection lines decrease in thickness along the sequence
       * **--seq** whether the amino acid sequence should be plotted as a title
       * **--movment** whether the Eisenberg hydrophobic moment should be calculated and plotted
 
-    **2** PltPde
+    **2** Probability Density Estimations Plot
       * **--InFile** Input descriptor data as tabular file.
       * **--ClmList** Listt of dataframe columns to be plotted. 
       * **--Title** Plot title.
@@ -147,7 +147,7 @@ This tool provided with some advance plotting functions for peptide data.
       * **--x_min**  x-axis maximum.
       * **--alpha** color alpha for filling pde curve.
 
-    **3** PltVio
+    **3** Violin Plot
       * **--InFile** Input fasta file with peptide sequences. 
       * **--ClmList** List of data frame columns to be plotted. 
       * **--colors**  Face color of the violin plots, can also be a list of colors with the same dimension as x
@@ -157,7 +157,7 @@ This tool provided with some advance plotting functions for peptide data.
       * **--y_max** y-axis minimum.
       * **--y_min** y_max – {number} y-axis maximum.
 
-    **4** PltAaDis
+    **4** Amino Acid Distribution Plot
       * **--InFile** Input fasta file with peptide sequences.
 
 -----
