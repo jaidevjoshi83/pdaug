@@ -21,7 +21,15 @@
               #end if 
 
               #if $SelCoreFunction.CoreFunction == 'filteraa'
-                  --FilterAA '$SelCoreFunction.FilterAA'
+                  --FilterAA 'filterAA'
+              #end if 
+
+              #if $SelCoreFunction.CoreFunction == 'filterduplicates'
+                  --FilterAA 'filterduplicates'
+              #end if 
+
+              #if $SelCoreFunction.CoreFunction == 'keepnaturalaa'
+                  --FilterAA 'keepnaturalaa'
               #end if 
 
               --FastOut '$output1'
@@ -149,6 +157,3 @@ This tool performs some core functions on the peptide sequences and equipped wit
   </citation>
     </citations>
 </tool>
-
-
-

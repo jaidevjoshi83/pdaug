@@ -13,13 +13,29 @@
 
         python '$__tool_directory__/PDAUG_Peptide_Data_Access.py' -d '$SelectDatasets.DataBaseType' -o '$output1'
 
+            #if $SelectDatasets.DataBaseType == "AMPvsTMP"
+                -d 'AMPvsTMP'
+            #end if
+
+            #if $SelectDatasets.DataBaseType == "AMPvsUniProt"
+                -d 'AMPvsUniProt'
+            #end if     
+
+            #if $SelectDatasets.DataBaseType == "ACPvsTMP"
+                -d 'ACPvsTMP'
+            #end if    
+
+            #if $SelectDatasets.DataBaseType == "ACPvsRandom"
+                -d 'ACPvsRandom'
+            #end if   
+
             #if $SelectDatasets.DataBaseType == "query_apd"
                 -L '$SelectDatasets.list1'
             #end if
 
             #if $SelectDatasets.DataBaseType == "query_camp"
-                -L '$SelectDatasets.list2'
-            #end if            
+                -L '$SelectDatasets.list1'
+            #end if
                   
     ]]></command>
 
@@ -37,12 +53,20 @@
           <option value="query_camp" > Query CAMP Database </option>
       </param> 
 
+       <when value="AMPvsTMP">
 
+       </when>
 
-       <when value="AMPvsTMP"/>
-       <when value="AMPvsUniProt"/>
-       <when value="ACPvsTMP"/>
-       <when value="ACPvsRandom"/>
+       <when value="AMPvsUniProt">
+
+       </when>
+
+       <when value="ACPvsTMP">
+       </when>
+
+       <when value="ACPvsRandom">
+       </when>
+
        <when value="query_apd">
           <param name="list1" type='text' argument="-List" label="List of integers as IDs" help="List of integers as IDs" />
        </when>

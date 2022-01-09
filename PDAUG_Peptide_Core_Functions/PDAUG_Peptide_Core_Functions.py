@@ -16,12 +16,12 @@ mutateAA.add_argument("-F","--FastOut", required=False, default='Out.fasta', hel
 filterduplicates = subparsers.add_parser('filterduplicates')
 filterduplicates.add_argument("-I","--InFile", required=True, default=None, help="Input file")
 filterduplicates.add_argument("-F","--FastOut", required=False, default='Out.fasta', help="Output file")
-
+filterduplicates.add_argument("-A","--FilterAA", required=True, default=None, help="Filter amino acide")
 
 keepnaturalaa = subparsers.add_parser('keepnaturalaa')
 keepnaturalaa.add_argument("-I","--InFile", required=True, default=None, help="Inputt file")
 keepnaturalaa.add_argument("-F","--FastOut", required=False, default='Out.fasta', help="Output file")
-
+keepnaturalaa.add_argument("-A","--FilterAA", required=True, default=None, help="Filter amino acide")
 
 filteraa = subparsers.add_parser('filteraa')
 filteraa.add_argument("-I","--InFile", required=True, default=None, help="Input file")
