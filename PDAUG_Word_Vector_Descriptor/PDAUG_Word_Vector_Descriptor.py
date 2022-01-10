@@ -46,7 +46,7 @@ temp_word = temp_word
 
 
 clm = [x for x in range(0,temp_word.shape[1])]
-y_temp_word = np.vstack((np.ones((int(args.positive), 1)), np.zeros((int(args.negative),1))))
+y_temp_word = np.vstack((np.ones((int(args.positive), 1),dtype=int), np.zeros((int(args.negative),1),dtype=int)))
 
 c, r = y_temp_word.shape
 y_temp_word = y_temp_word.reshape(c,)
