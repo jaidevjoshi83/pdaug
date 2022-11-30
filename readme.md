@@ -11,16 +11,16 @@ Peptide Design and Analysis Under Galaxy (PDAUG) package, a Galaxy based python 
  
  - Command to run PDAUG-Galaxy server on docker
  
-  `docker run -i -t -p 8080:80 jayadevjoshi12/galaxy_pdaug:latest`
+    `docker run -i -t -p 8080:80 jayadevjoshi12/galaxy_pdaug:latest`
   
  - Server is accessible at 
    
-   `http://127.0.0.1:8080`
+    `http://127.0.0.1:8080`
  
  - Galaxy's default user login details
   
-   *user id:* admin
-   *passowrd:* password
+     *user id:* admin
+     *passowrd:* password
  
  
  # For more details about the latest docker image, check the bellow link...
