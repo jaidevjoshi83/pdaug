@@ -9,9 +9,9 @@ Peptide Design and Analysis Under Galaxy (PDAUG) package, a Galaxy based python 
 
 A prebuild build docker image based on the recent galaxy release can be obtained by the link below for a quick installation. 
  
- command run PDAUG-Galaxy server run `docker run -i -t -p 8080:80 jayadevjoshi12/galaxy_pdaug:latest`
+ Command to run PDAUG-Galaxy server on docker `docker run -i -t -p 8080:80 jayadevjoshi12/galaxy_pdaug:latest`
  
- For more details check the link bellow...
+ For more details about the latest docker image, check the bellow link...
 
  - [Docker Image](https://github.com/jaidevjoshi83/docker_pdaug)
 
