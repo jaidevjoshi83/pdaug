@@ -9,14 +9,18 @@ Peptide Design and Analysis Under Galaxy (PDAUG) package, a Galaxy based python 
 
 A prebuild build docker image based on the recent galaxy release can be obtained by the link below for a quick installation. 
  
- Command to run PDAUG-Galaxy server on docker
+ - Command to run PDAUG-Galaxy server on docker
  
- - `docker run -i -t -p 8080:80 jayadevjoshi12/galaxy_pdaug:latest`
- 
-    Galaxy server default user login details
+  `docker run -i -t -p 8080:80 jayadevjoshi12/galaxy_pdaug:latest`
   
-  - user id: admin
-  - passowrd: password
+ - Server is accessible at 
+   
+   `http://127.0.0.1:8080`
+ 
+ - Galaxy's default user login details
+  
+  - *user id:* admin
+  - *passowrd:* password
  
  
  For more details about the latest docker image, check the bellow link...
