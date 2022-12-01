@@ -4,10 +4,11 @@
 
 Peptide Design and Analysis Under Galaxy (PDAUG) package, a Galaxy based python powered collection of tools, workflows, and datasets for a rapid in-silico peptide library analysis. PDAUG offers tools for peptide library generation, data visualization, in-built and public database based peptide sequence retrieval, peptide feature calculation, and machine learning modeling. PDAUG tool suite can be downloaded and install through galaxy toolshed as a standard galaxy tool. 
 
-Galaxy Tutorials: Check our Galaxy tutorials for more details
+## Galaxy Tutorials: Check our Galaxy tutorials for more details
 
-  -- [Peptide Library Data Analysis](https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/peptide-library-data-analysis/tutorial.html)
-  -- [ML Modeling Of Anti-Cancer Peptides](https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/ml-modeling-of-anti-cancer-peptides/tutorial.html)
+  ### [Peptide Library Data Analysis](https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/peptide-library-data-analysis/tutorial.html)
+  
+  ### [ML Modeling Of Anti-Cancer Peptides](https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/ml-modeling-of-anti-cancer-peptides/tutorial.html)
 
 
 # Prebuild Docker Image 
