@@ -47,3 +47,11 @@ Peptide Design and Analysis Under Galaxy (PDAUG) package, a Galaxy based python 
 # Support & Bug Reports
 
 You can file an [github issue](https://github.com/jaidevjoshi83/docker_pdaug/issues). 
+
+
+
+## Citation: Don't forget to cite our work if your find this toolset usefull for your research. 
+
+
+  [Joshi, J., &#38; Blankenberg, D. (2022). PDAUG: A Galaxy based toolset for peptide library analysis, visualization, and machine learning modeling. BMC Bioinformatics, 23(1). https://doi.org/10.1186/s12859-022-04727-6](https://doi.org/10.1186/s12859-022-04727-6)
+
