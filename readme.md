@@ -33,7 +33,7 @@ Peptide Design and Analysis Under Galaxy (PDAUG) package, a Galaxy based python 
 
  - [Docker Image](https://github.com/jaidevjoshi83/docker_pdaug)
 
- *Note* To install docker on windows machine always run installer as an adminstrator by right clicking on the installer incon. 
+ **Note:** To install docker on the windows machine, run the installer as an administrator by right-clicking on the installer icon.
 
 # Contributors
  - Jayadev Joshi
